@@ -1,0 +1,20 @@
+{
+  "name": "elitencdveterans",
+  "version": "1.0.0",
+  "description": "What is CodeIgniter\r ###################",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazatpro/elitencdveterans.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kazatpro/elitencdveterans/issues"
+  },
+  "homepage": "https://github.com/kazatpro/elitencdveterans#readme"
+}
