@@ -202,9 +202,10 @@ class Survey extends MY_Controller {
 			 $link = site_url('survey/?hash='.md5($email));
 			 $survey = '<br><br>Please using access survey link bellow:<br><a href="'.$link.'">'.$link.'</a>';
 			 $content = 'Hi, '.$v['name']. "<br/>".$email_content.$survey;
-
+			 $image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
+			// echo '<pre>';print_r($content. $image_refer);die();
 			 if($email){
-				 $this->sendMail($email, $content, $subject);
+				 $this->sendMail($email, $content. $image_refer, $subject);
 			 }
 
 		 }

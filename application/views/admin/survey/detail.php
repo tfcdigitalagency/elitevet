@@ -13,7 +13,7 @@
         <div class="page-title d-flex">
             <h4><span class="font-weight-semibold">Survey result
 
-</span></h4> 
+</span></h4>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
             <div class="col-md-12">
                 <div class="row">
@@ -48,10 +48,10 @@
 			<hr/>
             <div class="col-md-12">
                 <?php foreach($survey as $k=>$item){?>
-				<div class="mt-3 question-item questype_<?php echo $item->type;?>">					 
+				<div class="mt-3 question-item questype_<?php echo $item->type;?>">
 					<div style="font-weight:bold"><?php echo ($k+1)?>. <?php echo $item->question;?></div>
 					<div class="mt-3">
-						<?php 
+						<?php
 						 $choise = json_decode($item->content);
 						 $detail = json_decode($item->detail);
 						 switch($item->type){
@@ -76,11 +76,12 @@
 							case 3:
 								foreach($choise as $idx=>$c){
 								?>
-								<div class="mb-2 rate_choise"><div><?php echo $c?>:</div> 
+								<div class="mb-2 rate_choise"><div><?php echo $c?>:</div>
+									<label><input type="radio" name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="N/A"> N/A</label>
 								<?php
 								for($i=1;$i<=10;$i++){
-								?> 
-								<label><input disabled type="radio" <?php if($i == $detail->answer[$idx]) echo 'checked';?> name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="<?php echo $i?>"> <?php echo $i?></label> 
+								?>
+								<label><input disabled type="radio" <?php if($i == $detail->answer[$idx]) echo 'checked';?> name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="<?php echo $i?>"> <?php echo $i?></label>
 								<?php
 								}
 								?>
@@ -99,4 +100,3 @@
 
 </div>
 <!-- /content area -->
-  
