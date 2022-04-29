@@ -80,7 +80,7 @@
 
         <div class="card-body">
 
-            Check user: 
+            Check user:
 
             <select id="check-user" class="form-control" style="width: auto; display: inline-block; vertical-align: middle;">
 
@@ -128,19 +128,19 @@
 
     <!-- Basic modals -->
 
-    <div class="card"> 
+    <div class="card">
 
         <div class="card-body">
 
             <div class="col-md-12">
 
                 <button class="btn btn-primary" data-toggle="modal" data-target="#modal_add_user">&nbsp&nbsp NEW USER &nbsp&nbsp</button>
-				
+
 				&nbsp;&nbsp;<a class="btn btn-warning" href="<?php echo site_url('/admin/user/import');?>">Import Users</a>
 
                 <table class="table table-bordered table-hover" id="user_datatable" width="100%">
 
-                </table>                
+                </table>
 
             </div>
 
@@ -148,7 +148,7 @@
 
     </div>
 
-    <!-- /basic modals -->    
+    <!-- /basic modals -->
 
 </div>
 
@@ -213,18 +213,14 @@
                         <div class="col-sm-6">
 
                             <label>Role:</label>
-
-                            <label>Role</label>
-
-							<!-- <select id="is_admin" name="is_admin" class="form-control">
+							<select id="is_admin" name="is_admin" class="form-control">
 
 								<option class="role_0" value="0">User</option>
-
-								<option class="role_2" value="2">Host</option>
-
 								<option class="role_1" value="1">Admin</option>
+								<option class="role_2" value="2">Host</option>
+								<option class="role_3" value="3">Email admin</option>
 
-							</select>				 -->
+							</select>
 
                         </div>
 
@@ -278,7 +274,7 @@
 
                         </div>
 
-                    </div> 
+                    </div>
 
                     <!-- <div class="form-group row">
 
@@ -362,11 +358,11 @@
 
 
 
-           
+
 
             <div class="modal-body">
 
-                
+
 
                 <div class="form-group">
 
@@ -442,15 +438,12 @@
 
                     <label>Role</label>
 
-                    <!-- <select id="add_admin" class="form-control">
-
-                        <option class="role_0" value="0">User</option>
-
-                        <option class="role_1" value="2">Host</option>
-
-                        <option class="role_2" value="1">Admin</option>
-
-                    </select> -->
+                    <select id="add_admin" class="form-control">
+						<option class="role_0" value="0">User</option>
+						<option class="role_1" value="1">Admin</option>
+						<option class="role_2" value="2">Host</option>
+						<option class="role_3" value="3">Email admin</option>
+                    </select>
 
                 </div>
 
@@ -524,7 +517,7 @@
 
                 type : 'POST',
 
-                data : {                
+                data : {
 
                   select: select
 
@@ -606,7 +599,7 @@
 
             $('#add_error').html('');
 
-            
+
 
             var error = '';
 
@@ -652,7 +645,7 @@
 
                 type : 'POST',
 
-                data : {                
+                data : {
 
                     email: email,
 
@@ -872,7 +865,7 @@
 
                         }
 
-                        
+
 
                         $(td).html(html);
 
@@ -890,7 +883,7 @@
 
                         var html = '';
 
-                        html +=                           
+                        html +=
 
                             '<a href="'+base_url+'admin/user/display_reg_History?id='+rowData.id+'" style="color: deepskyblue;text-decoration:underline">'+cellData+'</a>';
 
@@ -910,7 +903,7 @@
 
                         var html = '';
 
-                        html +=                           
+                        html +=
 
                             '<a href="'+base_url+'admin/user/display_attend_History?id='+rowData.id+'" style="color: deepskyblue;text-decoration:underline">'+cellData+'</a>';
 
@@ -930,7 +923,7 @@
 
                         var html = '';
 
-                        html +=                           
+                        html +=
 
                             '<a style="color: deepskyblue;" title="Edit"><i class="icon-pencil7"></i>Edit</a>&nbsp&nbsp'+
 
@@ -964,7 +957,7 @@
 
                     {"title": "Registered webinars", "data": "real_register", "class": "text-center", "width": "5%"},
 
-                    {"title": "Attended Webinars", "data": "real_attend", "class": "text-center", "width": "5%"},                    
+                    {"title": "Attended Webinars", "data": "real_attend", "class": "text-center", "width": "5%"},
 
                     {"title": "Action", "data": "id", "class": "text-center", "width": "10%"},
 
@@ -994,7 +987,7 @@
 
         $(function () {
 
-            datatableInit();           
+            datatableInit();
 
 
 
@@ -1024,7 +1017,7 @@
 
 				$('#is_admin').val(data.is_admin);
 
-                 
+
 
                 // $('#password').val("");
 
@@ -1238,7 +1231,7 @@
 
                         required: 'This field is required.'
 
-                    }, 
+                    },
 
                     phone_number: {
 
@@ -1294,7 +1287,7 @@
 
     function update_Check(state,id) {
 
-        
+
 
         if(state==0){
 
@@ -1326,7 +1319,7 @@
 
                         'success'
 
-                    );                   
+                    );
 
                 }
 
@@ -1378,7 +1371,7 @@
 
        //      location.reload();
 
-            
+
 
        //  }, 2000);
 
@@ -1388,7 +1381,7 @@
 
     function save_User() {
 
-        
+
 
         var check = validator.checkForm();
 
@@ -1396,7 +1389,7 @@
 
             validator.showErrors();
 
-        else{           
+        else{
 
             var A = new FormData();
 
@@ -1416,19 +1409,19 @@
 
             A.append("is_admin", $("#is_admin").val());
 
-			 
+
 
             var C = new XMLHttpRequest();
 
-            C.open("POST", base_url + 'admin/user/insert_User');            
+            C.open("POST", base_url + 'admin/user/insert_User');
 
-            C.onload = function() {              
+            C.onload = function() {
 
 
 
                 setTimeout(function () {
 
-                    
+
 
                     new PNotify({
 
