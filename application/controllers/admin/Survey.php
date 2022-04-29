@@ -211,9 +211,11 @@ class Survey extends MY_Controller {
 		 }
 		 echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has sent.'));
 	}
-	public function sendMail($toEmail='' , $email_content = '' , $subject = '')
+	public function sendMail($toEmail='' , $content = '' , $subject = '')
     {
         $mail = new PHPMailer();
+
+		$email_content = $this->load->view('email/template',array('email_content'=>$content),true);
 
         $mail->IsSMTP();
         $mail->Host = 'localhost';

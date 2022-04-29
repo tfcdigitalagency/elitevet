@@ -56,7 +56,7 @@ class Webinar extends MY_Controller {
 
         $this->Webinar_model->setTable('tbl_gallery');
         $insert_ID = 0;
-               
+
         if (!empty($_FILES['thumbnail']['name'])) {
             if( !file_exists('./assets/uploads/webinar/') )
             mkdir('./assets/uploads/webinar/', 0777, true);
@@ -74,7 +74,7 @@ class Webinar extends MY_Controller {
         try {
             if(isset($_FILES['file_data'])){
                 $file_name = time().'_'.$_FILES['file_data']['name'];
-    
+
                 if (move_uploaded_file($_FILES['file_data']['tmp_name'],'assets/uploads/webinar/'.$file_name)) {
                     $this->Webinar_model->setTable('tbl_gallery');
                     $data = array(
@@ -96,7 +96,7 @@ class Webinar extends MY_Controller {
         } catch (Exception $e) {
             echo 'error';
         }
-        
+
     }
 
     public function save_Music(){
@@ -130,12 +130,12 @@ class Webinar extends MY_Controller {
         $id = $this->input->post('id');
         $this->Webinar_model->setTable('tbl_gallery');
         $item = $this->Webinar_model->find(array("id" => $id), array(), array(), true);
-        
+
         if(count($item) > 0){
             try {
                 unlink($item[0]['thumbnail']);
             }catch (Exception $e){
-                
+
             }
             $result['msg'] = $this->Webinar_model->delete(array("id"=>$id));
         }
@@ -239,7 +239,7 @@ class Webinar extends MY_Controller {
 
         $update = $this->Settings_model->update(array("skey" => "display_zoom"),array("svalue" => $display_zoom));
     }
-    
+
     public function update_settings(){
         $data = $this->input->post();
         foreach ($data as $key => $value){
@@ -318,16 +318,16 @@ class Webinar extends MY_Controller {
     }
 
     // public function edit(){
-        
+
     //     $this->mHeader['sub_id'] = 'postbids';
     //     $id = $this->input->get('id');
     //     $this->mContent['data'] = $this->Event_model->find(array("id"=>$id), array(), array(), true);
-       
+
     //     $this->render("{$this->sub_mLayout}edit", $this->mLayout);
     // }
 
     public function add(){
-       
+
         $this->mHeader['sub_id'] = 'postbids';
         $this->mContent['data'][0]['id']='0';
         $this->render("{$this->sub_mLayout}contract_add", $this->mLayout);
@@ -340,12 +340,12 @@ class Webinar extends MY_Controller {
     }
 
     public function contract_edit(){
-        
+
         $this->mHeader['sub_id'] = 'postbids';
         $id = $this->input->get('id');
         $this->Webinar_model->setTable('tbl_contract');
         $this->mContent['data'] = $this->Webinar_model->find(array("id"=>$id), array(), array(), true);
-       
+
         $this->render("{$this->sub_mLayout}contract_edit", $this->mLayout);
     }
 
@@ -389,11 +389,11 @@ class Webinar extends MY_Controller {
         $this->mHeader['sub_id'] = 'mailchimp';
 
         $this->mContent['owner_id'] = $this->mUser['id'];
-        
+
         $this->mContent['contact'] = $this->User_model->find(array('is_checked' => 1), array(), array(), true);
-		 
+
         $data = $this->Settings_model->find(array("skey"=>'mailchimp'), array(), array(), true);
-		 
+
         $this->mContent['mailchimp'] = $data[0]['svalue'];
         $this->mContent['subject'] = "Upcoming Webinar";
 
@@ -420,14 +420,14 @@ class Webinar extends MY_Controller {
     public function send_Email(){
 
         $input = $this->input->post();
-		 
+
 
         $email_content = $input['description'];
         $emails = $input['address'];
         //$emails = array('agnese.barak@gmail.com','lucdt@ideavietnam.com'); //joneslj2@gmail.com user@gmail.com
-		
+
         $subject = $input['subject'];
-        
+
 
         foreach($emails as $email) {
             $user = $this->User_model->find(array('email' => $email), array(), array(), true);
@@ -446,22 +446,24 @@ class Webinar extends MY_Controller {
         */
     }
 
-    public function sendMail($toEmail='' , $email_content = '' , $subject = '')
+    public function sendMail($toEmail='' , $content = '' , $subject = '')
     {
         $mail = new PHPMailer();
-                    
+
+		$email_content = $this->load->view('email/template',array('email_content'=>$content),true);
+
         $mail->IsSMTP();
         $mail->Host = 'localhost';
         $mail->SMTPAuth = false;
         $mail->From = 'support@ncdeliteveterans.org';
         $mail->FromName = 'Elite Nor-Cal';
-        
+
         $mail->AddAddress($toEmail);
 
         $mail->IsHTML(true);
         $mail->Subject = $subject;
-        $mail->MsgHTML($email_content); 
-        
+        $mail->MsgHTML($email_content);
+
         if(!$mail->Send()) {
             echo "Error while sending Email.";
         } else {
@@ -484,7 +486,7 @@ class Webinar extends MY_Controller {
 
         $data = $this->Settings_model->find(array("skey"=>'remindsubject'), array(), array(), true);
         $this->mContent['subject'] = $data[0]['svalue'];
-        
+
         $this->render("{$this->sub_mLayout}remindemail", $this->mLayout);
     }
 
@@ -514,7 +516,7 @@ class Webinar extends MY_Controller {
 
         $data = $this->Settings_model->find(array("skey"=>'createsubject'), array(), array(), true);
         $this->mContent['subject'] = $data[0]['svalue'];
-        
+
         $this->render("{$this->sub_mLayout}createemail", $this->mLayout);
     }
 
@@ -546,7 +548,7 @@ class Webinar extends MY_Controller {
 
         $data = $this->Settings_model->find(array("skey"=>'smtp_password'), array(), array(), true);
         $this->mContent['smtp_password'] = $data[0]['svalue'];
-        
+
         $this->render("{$this->sub_mLayout}smtp_config", $this->mLayout);
     }
 
@@ -564,25 +566,25 @@ class Webinar extends MY_Controller {
         $update = $this->Settings_model->update(array("skey" => "smtp_username"),array("svalue" => $smtp_username));
         $update = $this->Settings_model->update(array("skey" => "smtp_password"),array("svalue" => $smtp_password));
     }
-	
+
 	public function broadcast($port='8080'){
 		$this->load->view('admin/webinar/broadcast.php',array('port'=>$port));
 	}
-	 
+
 	public function broadcast_status(){
 		header('Content-Type: application/json; charset=utf-8');
 		$data = array();
-		
+
 		$uid = $this->input->post('uid');
 		$port = $this->input->post('port');
 		$act = $this->input->post('act');
-		
+
 		$data['currentName'] = '';
-		
+
 		$data['request'] = $uid.":".$port;
-		
+
 		$current_user =  $this->session->userdata('user');
-		
+
 		//clear old
 		$this->db->delete('tbl_broadcast_status',array('updated <'=>date("Y-m-d H:i:s",strtotime("-30 seconds"))));
 		switch($act){
@@ -590,14 +592,14 @@ class Webinar extends MY_Controller {
 				$this->db->delete('tbl_broadcast_status',array('uid'=>$uid,'channel'=>$port));
 				$status = 1;
 				break;
-			case 'up':		
+			case 'up':
 				$row = $this->db->get_where('tbl_broadcast_status',array('uid'=>$uid,'channel'=>$port))->row();
 				if(empty($row)){
 					$this->db->insert('tbl_broadcast_status',array(
 					'uid'=>$uid,'channel'=>$port,
 					'updated'=>date("Y-m-d H:i:s")));
 				}else{
-					$this->db->update('tbl_broadcast_status',array(			 
+					$this->db->update('tbl_broadcast_status',array(
 					'updated'=>date("Y-m-d H:i:s")),
 					array('id'=>$row->id)
 					);
@@ -615,7 +617,7 @@ class Webinar extends MY_Controller {
 						$status = 0;
 					}
 					$u = $this->db->get_where('tbl_user',array('id'=>$row->uid))->row();
-					$data['currentName'] = $u->name; 
+					$data['currentName'] = $u->name;
 				}
 				break;
 		}
@@ -623,13 +625,13 @@ class Webinar extends MY_Controller {
 		echo json_encode($data);
 		die();
 	}
-	
+
 	function fix(){
 		$infos = $this->db->get('user_information')->result();
 		foreach($infos as $row){
-			 
+
 			$user = $this->db->get_where('tbl_user',array('email'=>$row->email))->row();
-			
+
 			$this->db->update('user_information',array('type'=>$user->title),array('id'=>$row->id));
 		}
 		print_r($infos);
