@@ -842,10 +842,38 @@
                     }
 
                 },
+					{
 
+						orderable: false,
+
+						"targets": [8],
+
+						"createdCell": function (td, cellData, rowData, row, col) {
+
+							var html = '';
+
+							if (rowData.subscribe == 0){
+
+
+
+								html = '<a onclick="update_Check(1,'+rowData.id+')"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input">No</label></div></a>';
+
+							}
+
+							else{
+
+								html = '<a onclick="update_Check(0,'+rowData.id+')"><div class="form-check"><label class="form-check-label"><input type="checkbox" class="form-check-input" checked="">Yes</label></div></a>';
+
+							}
+
+							$(td).html(html);
+
+						}
+
+					},
                 {
 
-                    "targets": [8],
+                    "targets": [9],
 
                     orderable: false,
 
@@ -875,7 +903,7 @@
 
                 {
 
-                    "targets": [9],
+                    "targets": [10],
 
                     orderable: false,
 
@@ -895,7 +923,7 @@
 
                 {
 
-                    "targets": [10],
+                    "targets": [11],
 
                     orderable: false,
 
@@ -915,7 +943,7 @@
 
                 {
 
-                    "targets": [11],
+                    "targets": [12],
 
                     orderable: false,
 
@@ -952,6 +980,7 @@
                     {"title": "Company", "data": "company", "class": "text-center", "width": "10%"},
 
                     {"title": "Select User", "data": "is_checked", "class": "text-center", "width": "10%"},
+                    {"title": "Subscribe", "data": "subscribe", "class": "text-center", "width": "10%"},
 
                     {"title": "Capability Statement Pdf", "data": "capability_statement_pdf", "class": "text-center", "width": "10%"},
 
