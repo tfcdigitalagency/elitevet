@@ -390,7 +390,7 @@ class Webinar extends MY_Controller {
 
         $this->mContent['owner_id'] = $this->mUser['id'];
 
-        $this->mContent['contact'] = $this->User_model->find(array('is_checked' => 1), array(), array(), true);
+        $this->mContent['contact'] = $this->User_model->find(array('is_checked' => 1,'subscribe'=>1), array(), array(), true);
 
         $data = $this->Settings_model->find(array("skey"=>'mailchimp'), array(), array(), true);
 

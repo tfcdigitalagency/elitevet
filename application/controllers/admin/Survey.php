@@ -195,7 +195,7 @@ class Survey extends MY_Controller {
 			$this->db->where('id',$user_id);
 		 }
 
-		 $data = $this->db->get_where('tbl_user')->result_array();
+		 $data = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
 		//echo '<pre>';print_r($data);die();
 		 foreach($data as $k=>$v){
 			 $email = $v['email'];
