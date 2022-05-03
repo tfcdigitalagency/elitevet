@@ -19,7 +19,7 @@ class Email extends CI_Controller {
 
 	public function subscribe($email){
 		if($email){
-			$this->db->update('tbl_user',array('subscribe'=>1),array('email'=>$email));
+			$this->db->update('tbl_user',array('subscribe'=>1),array('MD5(email)'=>$email));
 			$this->session->set_flashdata('success','The '.$email.' has subscribed successfully.');
 		}
 		redirect('/');
@@ -27,7 +27,7 @@ class Email extends CI_Controller {
 
 	public function unsubscribe($email){
 		if($email){
-			$this->db->update('tbl_user',array('subscribe'=>0),array('email'=>$email));
+			$this->db->update('tbl_user',array('subscribe'=>0),array('MD5(email)'=>$email));
 			$this->session->set_flashdata('success','The '.$email.' has unsubscribed successfully.');
 		}
 

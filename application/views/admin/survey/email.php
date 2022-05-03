@@ -29,7 +29,7 @@
 					 <div class="form-group row">
 						 <label class="col-form-label col-lg-2">Type</label>
 						 <div class="col-lg-10">
-							 <select type="text" class="select2-choice form-control" name="type" id="type" required>
+							 <select type="text" class="select2-choice form-control" name="type" id="type" >
 								 <option value="">All Members</option>
 								 <option value="1">Individual</option>
 							 </select>

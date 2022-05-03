@@ -215,7 +215,7 @@ class Survey extends MY_Controller {
     {
         $mail = new PHPMailer();
 
-		$email_content = $this->load->view('email/template',array('email_content'=>$content),true);
+		$email_content = $this->load->view('email/template',array('email_content'=>$content,'email'=>$toEmail),true);
 
         $mail->IsSMTP();
         $mail->Host = 'localhost';

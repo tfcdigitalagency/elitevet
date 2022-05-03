@@ -289,13 +289,24 @@
 																					<td align="right" class="bodyTitle"
 																						id="footerUnsubscribeText-16"
 																						style="font-family: 'Poppins', sans-serif; font-size: 12px; line-height: 18px; color: #111111;">
-
+																						<p style="margin-top: 0px; margin-bottom: 0px;">
+																							You received this email
+																							because you signed up on our
+																							website.</p>
 																					</td>
 																				</tr>
 																				<tr>
 																					<td height="10"></td>
 																				</tr>
-
+																				<tr>
+																					<td align="right" class="bodyTitle"
+																						style="font-family: 'Poppins', sans-serif; font-size: 12px; line-height: 18px; color: #111111;">
+																						<a href="<?php echo base_url('email/unsubscribe/'.md5($email))?>"
+																						   style="color: #111111; text-decoration: underline;">
+																							<span style="color: #111111;">Unsubscribe</span>
+																						</a>
+																					</td>
+																				</tr>
 																				</tbody>
 																			</table>
 																		</td>
