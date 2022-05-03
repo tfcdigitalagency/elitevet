@@ -55,7 +55,7 @@
     <script src="<?=base_url(ADMIN_URL)?>js/app.js"></script>
     <script src="<?=base_url(GLOBAL_URL)?>js/demo_pages/form_select2.js"></script>
     <script src="<?=base_url(GLOBAL_URL)?>js/demo_pages/picker_date.js"></script>
-    
+
     <!-- /theme JS files -->
 
 </head>
@@ -164,7 +164,7 @@
                                 'icon' => 'icon-arrow-right5',
                                 'id' => 'contact',
                             )
-                        )    
+                        )
                     ),array(
                         'name' => 'Training',
                         'url' => 'training',
@@ -202,7 +202,7 @@
                                 'icon' => 'icon-arrow-right5',
                                 'id' => 'add',
                             )
-                        )    
+                        )
                     ),array(
                         'name' => 'Survey',
                         'url' => 'survey',
@@ -221,7 +221,7 @@
                                 'icon' => 'icon-arrow-right5',
                                 'id' => 'add',
                             )
-                        )    
+                        )
                     ),array(
                         'name' => 'Webinar',
                         'url' => 'webinar',
@@ -276,19 +276,20 @@
                                 'icon' => 'icon-arrow-right5',
                                 'id' => 'smtp_config',
                             )
-                        )    
+                        )
                     )
                 );
                 ?>
 
-                <ul class="nav nav-sidebar" data-nav-type="accordion">  
-                    <li class="nav-item">                        
+                <ul class="nav nav-sidebar" data-nav-type="accordion">
+                    <li class="nav-item">
                         <a href="<?=base_url().'customer'?>" class="nav-link" target="_blank">
                             <i class="icon-home"></i><span>Go to website</span>
-                        </a>                        
-                    </li>                  
+                        </a>
+                    </li>
+					<?php if(get_admin_level() == 1):?>
                 <?php foreach ($menus as $menu) : ?>
-                    <li class="nav-item nav-item-submenu <?= $menu['id'] == $id ? 'nav-item-expanded nav-item-open' : ''; ?>">                        
+                    <li class="nav-item nav-item-submenu <?= $menu['id'] == $id ? 'nav-item-expanded nav-item-open' : ''; ?>">
                         <a href="<?=($menu['id'] == 'logout')?base_url().'auth/logout':'#'?>" class="nav-link">
                             <i class="<?=isset($menu['icon']) ? $menu['icon'] : ''?>"></i><span><?= $menu['name'] ?></span>
                         </a>
@@ -302,30 +303,47 @@
                         <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
-                    <li class="nav-item">                        
+                    <li class="nav-item">
                         <a href="<?=base_url().'admin/membership'?>" class="nav-link">
                             <i class="icon-puzzle2"></i><span>Membership</span>
-                        </a>                        
+                        </a>
                     </li>
-                    <li class="nav-item">                        
+                    <li class="nav-item">
                         <a href="<?=base_url().'admin/sponsors'?>" class="nav-link">
                             <i class="icon-stack2"></i><span>Sponsors</span>
-                        </a>                        
+                        </a>
                     </li>
-					<li class="nav-item">                        
+					<li class="nav-item">
                         <a href="<?=base_url().'admin/email/view'?>" class="nav-link">
                             <i class="icon-stack2"></i><span>Email Logs</span>
-                        </a>                        
+                        </a>
                     </li>
-                    <li class="nav-item">                        
-                        <a href="<?=base_url().'admin/contactus'?>" class="nav-link">
-                            <i class="icon-pencil3"></i><span>Contact Us</span>
-                        </a>                        
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="icon-pencil3"></i><span>Emails Management</span>
+                        </a>
                     </li>
-                    <li class="nav-item">                        
+					<?php endif;?>
+					<?php if(get_admin_level() == 3):?>
+						<li class="nav-item nav-item-submenu <?php echo (in_array($sub_id,array('mailchimp','remindemail','createemail'))?'nav-item-expanded nav-item-open':'')?>">
+							<a href="<?=base_url().'auth/logout'?>" class="nav-link">
+								<i class="icon-feed"></i><span>Email Management</span>
+							</a>
+							<ul id="webinar" class="nav nav-group-sub" style="display: block;">
+								<li class="nav-item">
+									<a href="<?php echo site_url('admin/webinar/mailchimp')?>" class="<?php echo ($sub_id == 'mailchimp')?'nav-link  active':'nav-link'?>"><i class="icon-arrow-right5"></i>MailChimp</a></li>
+								<li class="nav-item">
+									<a href="<?php echo site_url('admin/webinar/remindemail')?>" class="<?php echo ($sub_id == 'remindemail')?'nav-link  active':'nav-link'?>"><i class="icon-arrow-right5"></i>Remind Email Template</a></li>
+								<li class="nav-item">
+									<a href="<?php echo site_url('admin/webinar/createemail')?>" class="<?php echo ($sub_id == 'createemail')?'nav-link  active':'nav-link'?>"><i class="icon-arrow-right5"></i>Create a webinar email</a></li>
+							</ul>
+						</li>
+					<?php endif;?>
+                    <li class="nav-item">
                         <a href="<?=base_url().'auth/logout'?>" class="nav-link">
-                            <i class="icon-align-left"></i><span>Log out</span>
-                        </a>                        
+                            <i class="icon-align-left"></i><span>Logout</span>
+                        </a>
+
                     </li>
 
                 </ul>

@@ -29,10 +29,15 @@ class Auth extends MY_Controller {
         } else {
             $user = $this->User_model->login($param['email'], $param['password']);
 
-            if(!empty($user) && $user['is_admin']==1){
+            if(!empty($user) && ($user['is_admin']==1 || $user['is_admin']==3)){
                 //TODO: ==
                 $this->session->set_userdata('user', $user);
-                redirect('admin/user/user');
+				if($user['is_admin']== 1){
+					redirect('admin/user/user');
+				}else{
+					redirect('admin/dashboard');
+				}
+
             }else if(!empty($user) && ($user['is_admin']==0 || $user['is_admin']==2)){
                 $this->session->set_userdata('user', $user);
                 redirect('customer/home');
@@ -65,7 +70,7 @@ class Auth extends MY_Controller {
                 $this->session->set_flashdata('success','success');
                 $this->redirect('auth/login');
             }
-            
+
         }
     }
 

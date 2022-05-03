@@ -15,14 +15,18 @@ class User extends MY_Controller {
         $this->load->model(array('Reg_history_model'));
         $this->load->model(array('Membership_model'));
         $this->load->model(array('Attend_history_model'));
+		if(get_admin_level() != 1){
+			redirect('admin/dashboard');
+		}
+
     }
 
      /*
      * User
      * */
     public function user(){
-        
-        $this->mHeader['sub_id'] = 'user_view'; 
+
+        $this->mHeader['sub_id'] = 'user_view';
         $this->mContent['membership'] = $this->Membership_model->find(array(), array(), array(), true);
         $this->render("{$this->sub_mLayout}user", $this->mLayout);
     }
@@ -44,13 +48,13 @@ class User extends MY_Controller {
 
        $data = $this->input->post();
        $this->User_model->update(array("id"=>$data['id']), array("name"=>$data['name'],"email"=>$data['email'], "phone_number"=>$data['phone_number'],"title"=>$data['title'],"company"=>$data['company'], "membership_id"=>$data['membership_id'], "is_admin"=>$data['is_admin']));
-       
-       
+
+
    }
 
     public function del_User(){
         $id = $this->input->post('id');
-        $this->User_model->setTable('tbl_user');        
+        $this->User_model->setTable('tbl_user');
         $result['msg'] = $this->User_model->delete(array("id"=>$id));
     }
 
@@ -67,7 +71,7 @@ class User extends MY_Controller {
         $this->render("{$this->sub_mLayout}contact", $this->mLayout);
     }
 
-    public function get_Contact(){ 
+    public function get_Contact(){
 
     	$id = $this->input->get('id');
 
@@ -78,16 +82,16 @@ class User extends MY_Controller {
         $this->mContent['contact'] = $this->User_model->get_Contact($id);
         $this->mContent['sel_id']=$id;
         $this->render("{$this->sub_mLayout}contact", $this->mLayout);
-        
+
     }
 
     public function display_reg_History(){
-        
+
         $this->mHeader['sub_id'] = 'view';
         $id = $this->input->get('id');
         $this->mContent['user_id'] = $id;
         $this->mContent['user'] = $this->User_model->find(array("id"=>$id), array(), array(), true);
-       
+
         $this->render("{$this->sub_mLayout}reg_history_index", $this->mLayout);
     }
 
@@ -102,12 +106,12 @@ class User extends MY_Controller {
     }
 
     public function display_attend_History(){
-        
+
         $this->mHeader['sub_id'] = 'view';
         $id = $this->input->get('id');
         $this->mContent['user_id'] = $id;
         $this->mContent['user'] = $this->User_model->find(array("id"=>$id), array(), array(), true);
-        
+
         $this->render("{$this->sub_mLayout}attend_history_index", $this->mLayout);
     }
 
@@ -130,7 +134,7 @@ class User extends MY_Controller {
     public function check_user(){
         $data = $this->input->post();
         $result = array();
-        
+
         if(isset($data['select'])){
             $select = $data['select'];
             $select = explode("-",$select);
@@ -186,44 +190,44 @@ class User extends MY_Controller {
             echo json_encode($result);
         }
 
-        
+
     }
-	
+
 	public function import(){
 		if($this->input->post('submit')){
 			$this->do_import();
 		}
-		$this->mHeader['sub_id'] = 'Import'; 
+		$this->mHeader['sub_id'] = 'Import';
         $this->mContent['membership'] = $this->Membership_model->find(array(), array(), array(), true);
         $this->render("{$this->sub_mLayout}import", $this->mLayout);
 	}
-	
+
 	private function do_import(){
-		set_time_limit(0); 
-		 	
-		$this->load->library('excel');	   
-		 
+		set_time_limit(0);
+
+		$this->load->library('excel');
+
 		$config['upload_path'] = './assets/uploads/import';
 		$config['allowed_types'] = 'xls';
 		$config['max_size']	= '10000';
-		$file_import ='';		
+		$file_import ='';
 		$this->load->library('upload', $config);
 
 		if ( ! $this->upload->do_upload())
 		{
 			$error = array('error' => $this->upload->display_errors());
 			$this->session->set_flashdata('error', $error );
-		}	
+		}
 		else
 		{
-			$upload = $this->upload->data();			
-			$file_import = $upload['full_path'];	
-								
+			$upload = $this->upload->data();
+			$file_import = $upload['full_path'];
+
 		}
 		if(!$error){
-			 
+
 			$aryData = $this->excel->load($file_import,2);//Input file path,Rows Start
-			 
+
 			$imported = 0;
 			$dupliated = [];
 			foreach($aryData['data'] as $row){
@@ -235,25 +239,25 @@ class User extends MY_Controller {
 					$dupliated[] = $email;
 				}
 			}
-			 
+
 			$this->session->set_flashdata('message','Import '.$imported .' users ('.count($dupliated).' duplicated) successfully.');
 		}else{
 			$this->session->set_flashdata('error',implode('<br>',$error));
 		}
 	}
-	
+
 	private function checkExisted($email){
-		 
+
 		$row = $this->db->get_where('tbl_user',array('email'=>$email))->row();
 		return ($row)?true:false;
 	}
-	
+
 	private function getMemberShip($member_ship){
-		 
+
 		$row = $this->db->get_where('tbl_membership',array('name'=>$member_ship))->row();
 		return $row->id;
 	}
-	
+
 	private function insertMember($row){
 		//echo '<pre>';print_r($row);die();
 		$email = $row[1];
@@ -271,7 +275,7 @@ class User extends MY_Controller {
 			'phone_number'=>$phone_number,
 			'title'=>$title,
 			'company'=>$company,
-			'membership_id'=>$membership_id		
+			'membership_id'=>$membership_id
 		));
 	}
 }
