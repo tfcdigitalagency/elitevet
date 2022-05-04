@@ -116,6 +116,9 @@
 
 	<?php if($live){ ?>
 	<div class="alert alert-success timeleft"></div>
+	<?php if(get_admin_level() == 2):?>
+	<div style="text-align:right;padding-bottom:10px;"><a class="btn btn-success" id="broadcasterNow" style="color:white">Start Broadcast</a></div>
+	<?php endif;?>
 	<?php } ?>
 
   <!-- Gallery -->
@@ -163,7 +166,7 @@
 				<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1" width="100%" height="180" scrolling="no"  style="border:0;overflow:hidden"></iframe>    
 			</td>
 			<td>
-				<iframe id="frameBroast" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="180" scrolling="no" style="border:0;overflow:hidden"></iframe>
+				<iframe id="frameBroast1" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="180" scrolling="no" style="border:0;overflow:hidden"></iframe>
 			</td>
 			</tr>
 			</table>
@@ -258,7 +261,7 @@
 				<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1" width="100%" height="180" scrolling="no"  style="border:0;overflow:hidden"></iframe>    
 			</td>
 			<td>
-				<iframe id="frameBroast" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="180" scrolling="no" style="border:0;overflow:hidden"></iframe>
+				<iframe id="frameBroast2" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="180" scrolling="no" style="border:0;overflow:hidden"></iframe>
 			</td>
 			</tr>
 			</table>
@@ -453,12 +456,13 @@
     jQuery(document).ready(function() {
 		var broascatX = false;
 		$('#broadcasterNow').click(function(){
+			var t = new Date().getSeconds();
 			if(!broascatX){
 				broascatX = true;
-				$('#frameBroast').attr('src', "<?php echo site_url('customer/whilewebinar/host/4000');?>");
+				$('#frameBroast2').attr('src', "<?php echo site_url('customer/whilewebinar/host/4000');?>?t="+t);
 				$('#broadcasterNow').removeClass('btn-success').addClass('btn-danger').html('<i class="fa fa-camera"></i> Stop Broadcasting');
 			}else{
-				$('#frameBroast').attr('src',"<?php echo site_url('customer/whilewebinar/live/4000');?>" );
+				$('#frameBroast2').attr('src',"https://server.ncdeliteveterans.org:4000/video.html?t="+t );
 				$('#broadcasterNow').removeClass('btn-danger').addClass('btn-success').html('<i class="fa fa-camera"></i> Start Broadcasting');
 				broascatX = false;
 			}
