@@ -424,8 +424,6 @@ class Webinar extends MY_Controller {
 
         $email_content = $input['description'];
         $emails = $input['address'];
-        //$emails = array('agnese.barak@gmail.com','lucdt@ideavietnam.com'); //joneslj2@gmail.com user@gmail.com
-
         $subject = $input['subject'];
 
 
@@ -451,7 +449,7 @@ class Webinar extends MY_Controller {
         $mail = new PHPMailer();
 
 		$email_content = $this->load->view('email/template',array('email_content'=>$content,'email'=>$toEmail),true);
-		die($email_content );
+
         $mail->IsSMTP();
         $mail->Host = 'localhost';
         $mail->SMTPAuth = false;

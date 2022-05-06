@@ -99,8 +99,6 @@ class Survey extends MY_Controller {
 		$this->db->join('tbl_user as u','u.id = sr.user_id','left');
         $this->mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$id))->row();
 
-		//echo '<pre>'; print_r($this->mContent['result']);die();
-
 		$this->db->select('s.*,d.detail');
 		$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$id.'"','left');
 		$this->mContent['survey'] = $this->db->get('tbl_survey as s')->result();
@@ -196,14 +194,14 @@ class Survey extends MY_Controller {
 		 }
 
 		 $data = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
-		//echo '<pre>';print_r($data);die();
+
 		 foreach($data as $k=>$v){
 			 $email = $v['email'];
 			 $link = site_url('survey/?hash='.md5($email));
 			 $survey = '<br><br>Please using access survey link bellow:<br><a href="'.$link.'">'.$link.'</a>';
 			 $content = 'Hi, '.$v['name']. "<br/>".$email_content.$survey;
 			 $image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
-			// echo '<pre>';print_r($content. $image_refer);die();
+
 			 if($email){
 				 $this->sendMail($email, $content. $image_refer, $subject);
 			 }

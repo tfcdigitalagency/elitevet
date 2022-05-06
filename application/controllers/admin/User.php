@@ -259,7 +259,7 @@ class User extends MY_Controller {
 	}
 
 	private function insertMember($row){
-		//echo '<pre>';print_r($row);die();
+
 		$email = $row[1];
 		$password = ($row[2])? md5($row[2]): md5('123');
 		$name = $row[0];
