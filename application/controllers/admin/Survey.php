@@ -203,11 +203,14 @@ class Survey extends MY_Controller {
 			 $image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
 
 			 if($email){
-				 $this->sendMail($email, $content. $image_refer, $subject);
+				 //$this->sendMail($email, $content. $image_refer, $subject);
+				 $this->db->insert('tbl_email_queue',array('email'=>$email,
+					 'content'=>$content. $image_refer,
+					 'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
 			 }
 
 		 }
-		 echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has sent.'));
+		 echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has added to queue.'));
 	}
 	public function sendMail($toEmail='' , $content = '' , $subject = '')
     {

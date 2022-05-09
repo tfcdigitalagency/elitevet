@@ -426,13 +426,18 @@ class Webinar extends MY_Controller {
         $emails = $input['address'];
         $subject = $input['subject'];
 
-
         foreach($emails as $email) {
             $user = $this->User_model->find(array('email' => $email), array(), array(), true);
             if(count($user) > 0) $user = $user[0];
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
             //$email_content = 'Hi, '.$user['name']. "<br/>".$email_content;
-        	$this->sendMail($email, 'Hi, '.$user['name']. "<br/>".$email_content.$image_refer, $subject);
+        	//$this->sendMail($email, 'Hi, '.$user['name']. "<br/>".$email_content.$image_refer, $subject);
+
+			$queue = array('email'=>$email,
+				'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
+				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
+			$this->db->insert('tbl_email_queue',$queue);
+
         }
 
         /*
