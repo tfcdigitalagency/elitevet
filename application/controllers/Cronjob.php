@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 require 'system/PHPMailer.php';
-class Cronjob extends CI_Controller { 
+class Cronjob extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -12,7 +12,7 @@ class Cronjob extends CI_Controller {
 
 
 	public function queue(){
-		$this->db->limit(30);
+		$this->db->limit(50);
 		$data = $this->db->get_where('tbl_email_queue',array('status'=>0))->result();
 
 		foreach ($data as $email){
