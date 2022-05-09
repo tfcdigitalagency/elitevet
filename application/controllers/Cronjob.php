@@ -1,30 +1,30 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-class Cronjob extends CI_Controller {
-	public $mLayout = 'customer/';
-    public $sub_mLayout = 'survey/';
+require 'system/PHPMailer.php';
+class Cronjob extends CI_Controller { 
 
 	function __construct() {
-        parent::__construct();
-        $this->mHeader['id'] = 'home';
-        $this->mHeader['title'] = 'Home';
-        $this->mContent['msg'] = "";
-        $this->load->model(['Training_model','Sponsors_model']);
-    }
+		parent::__construct();
+		$this->mHeader['id'] = 'home';
+		$this->mHeader['title'] = 'Home';
+		$this->mContent['msg'] = "";
+	}
 
 
 	public function queue(){
-		$this->db->limit(20);
+		$this->db->limit(30);
 		$data = $this->db->get_where('tbl_email_queue',array('status'=>0))->result();
+
 		foreach ($data as $email){
+
 			$check = $this->sendMail($email->email, $email->content, $email->subject);
+
 			if($check){
 				$this->db->update('tbl_email_queue',array('status'=>1),array('id'=>$email->id));
 			}
 		}
 
-    }
+	}
 
 	public function sendMail($toEmail='' , $content = '' , $subject = '')
 	{
