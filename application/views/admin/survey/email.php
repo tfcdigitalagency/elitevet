@@ -38,7 +38,7 @@
 								 <div class="membersList" style="max-height: 300px; margin-top: 10px; overflow-y: auto;">
 									 <?php foreach ($users as $u):
 										 ?>
-									 <div><label><input type="radio" value="<?php echo $u['id']?>" name="user"/> <?php echo $u['name']?> (<?php echo $u['email']?>)</label></div>
+									 <div><label><input type="checkbox" value="<?php echo $u['id']?>" name="user[]"/> <?php echo $u['name']?> (<?php echo $u['email']?>)</label></div>
 									 <?php endforeach;?>
 								 </div>
 							 </div>

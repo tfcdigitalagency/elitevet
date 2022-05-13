@@ -189,8 +189,8 @@ class Survey extends MY_Controller {
 
 		 $type = $this->input->post('type');
 		 if($type){
-			$user_id = intval($this->input->post('user'));
-			$this->db->where('id',$user_id);
+			$user_id = $this->input->post('user');
+			$this->db->where_in('id',$user_id);
 		 }
 
 		 $data = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();

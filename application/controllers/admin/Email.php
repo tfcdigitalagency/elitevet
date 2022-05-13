@@ -28,7 +28,7 @@ class Email extends MY_Controller {
         foreach ($table_data['data'] as $key => $row) {
             $table_data['data'][$key]["no"] = $key + 1;
             $table_data['data'][$key]["email_open"] = ($row["email_open"])?"Yes":"No";
-            
+
         }
         echo json_encode($table_data);
     }
@@ -39,7 +39,7 @@ public function export_Logs(){
         foreach ($result as $key => $row) {
             $result[$key]["no"] = $key + 1;
         }
-		 
+
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
         $sheet = $objPHPExcel->getActiveSheet();
@@ -47,7 +47,7 @@ public function export_Logs(){
         $pCol = 0;
         $pRow = 1;
 
-        $field_name = array('No', 'Page Name', 'IP', 'Total Time', 'Date', 'Name', 'Phone'
+        $field_name = array('No', 'Page Name', 'IP', 'Total Time', 'Date', 'Name', 'Phone','Title'
         , 'Email', 'To Email', 'Email Subject', 'Counter', 'Email Open', 'Special Activity');
 
         for ($pCol = 0; $pCol < count($field_name); $pCol++){
@@ -80,6 +80,9 @@ public function export_Logs(){
             $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['phone']);
             $pCol++;
 
+			$sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['type']);
+            $pCol++;
+
             $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['email']);
             $pCol++;
 
@@ -90,11 +93,11 @@ public function export_Logs(){
             $pCol++;
 
             $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['counter']);
-            $pCol++; 
-			
+            $pCol++;
+
 			$sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['email_open']);
             $pCol++;
-			
+
 			$sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['special_activity']);
             $pCol++;
 
@@ -111,5 +114,5 @@ public function export_Logs(){
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         $objWriter->save('php://output');
     }
-	
+
 }

@@ -25,6 +25,19 @@
     <!-- Basic modals -->
     <div class="card">
         <div class="card-body">
+			<h1 class="mb-0 font-weight-semibold">
+				Nor-Cal Elite Disable Veterans Needs Questionnaire
+			</h1>
+			<hr/>
+			<div style="font-size: 18px;">
+				<p><b>Amy</b><br>
+					amy@dynamikinc.com<br>
+					<b>Disable Vetera</b><br>
+					866.820.3110<br>
+					California Distribution LLC<br>
+				</p>
+			</div>
+			<hr/>
             <div class="col-md-12">
                 <div class="row">
 					<div class="col-md-1">Name</div>
@@ -44,6 +57,10 @@
 					<div class="col-md-8"><b><?php echo $result->company?></b></div>
 				</div>
 				<?php }?>
+				<div class="row">
+					<div class="col-md-1">Created</div>
+					<div class="col-md-8"><b><?php echo $result->created_at?></b></div>
+				</div>
             </div>
 			<hr/>
             <div class="col-md-12">
@@ -77,7 +94,7 @@
 								foreach($choise as $idx=>$c){
 								?>
 								<div class="mb-2 rate_choise"><div><?php echo $c?>:</div>
-									<label><input type="radio" name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="N/A"> N/A</label>
+									<label><input disabled type="radio" name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="N/A"> N/A</label>
 								<?php
 								for($i=1;$i<=10;$i++){
 								?>

@@ -18,16 +18,30 @@ label{
 </style>
 <div class="content wrapper">
 
-  <div class="mb-3">
-    <h1 class="mb-0 font-weight-semibold" style="color:red">
-      EliteNCDVeterans
-    </h1>
-  </div>
+
 
 <div class="card">
     <div class="card-body">
 	<div class="faqWrap">
-	<h3>Survey</h3>
+		<div class="mb-3 text-center">
+			<h1 class="mb-0 font-weight-semibold">
+				Nor-Cal Elite Disable Veterans Needs Questionnaire
+			</h1>
+			<hr/>
+			<div style="font-size: 18px;">
+				<p><b>Amy</b><br>
+					amy@dynamikinc.com<br>
+					<b>Disable Vetera</b><br>
+					866.820.3110<br>
+					California Distribution LLC<br>
+				</p>
+				<?php if($user){?>
+					<b><?php echo $user->name?> (<?php echo $user->email?>)</b></br>
+				<?php }else{?>
+					<b>Non-member</b></br>
+				<?php }?>
+			</div>
+		</div>
 
 	<div class="mt-3">
 		<?php
@@ -38,11 +52,11 @@ label{
 		</div>
 		<?php }?>
 		<?php if($didSurvey){?>
-		<div style="color:blue">
+		<div style="color:blue" class="text-center">
 			Thanks, you already sent survey.
 		</div>
 		<?php }?>
-
+		<hr/>
 		<?php if($didSurvey){?>
 			<?php foreach($survey as $k=>$item){?>
 				<div class="mt-3 question-item questype_<?php echo $item->type;?>">
@@ -74,7 +88,7 @@ label{
 								foreach($choise as $idx=>$c){
 								?>
 								<div class="mb-2 rate_choise"><div><?php echo $c?>:</div>
-									<label><input type="radio" name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="N/A"> N/A</label>
+									<label><input disabled type="radio" name="question[<?php echo $item->id?>][answer][<?php echo $idx?>]" value="N/A"> N/A</label>
 								<?php
 								for($i=1;$i<=10;$i++){
 								?>
