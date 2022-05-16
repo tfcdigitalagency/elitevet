@@ -30,38 +30,29 @@
 			</h1>
 			<hr/>
 			<div style="font-size: 18px;">
-				<p><b>Amy</b><br>
-					amy@dynamikinc.com<br>
-					<b>Disable Vetera</b><br>
-					866.820.3110<br>
-					California Distribution LLC<br>
+				<?php if($result->user_id){
+				$user= get_user($result->user_id);
+				?>
+				<p><b><?php echo $user->name ?></b><br>
+					<?php echo $user->email ?><br>
+					<?php if($user->title):?><b><?php echo $user->title ?></b><br><?php endif;?>
+					<?php if($user->phone):?><?php echo $user->phone ?><br><?php endif;?>
+					<?php if($user->company):?><?php echo $user->company ?><br><?php endif;?>
+					<?php echo ($user->membership)?$user->membership->name:'non-member'; ?>
 				</p>
-			</div>
-			<hr/>
-            <div class="col-md-12">
-                <div class="row">
-					<div class="col-md-1">Name</div>
-					<div class="col-md-8"><b><?php echo $result->name?></b></div>
-				</div>
+				<?php }else{
+					?>
+					<p><b><?php echo $result->uname; ?></b><br>
+						<?php echo $result->email; ?><br>
+					</p>
+					<?php
+				}?>
 				<div class="row">
-					<div class="col-md-1">Email</div>
-					<div class="col-md-8"><b><?php echo $result->email?></b></div>
-				</div>
-				<div class="row">
-					<div class="col-md-1">Phone</div>
-					<div class="col-md-8"><b><?php echo $result->phone_number?></b></div>
-				</div>
-				<?php if($result->company){?>
-				<div class="row">
-					<div class="col-md-1">Company</div>
-					<div class="col-md-8"><b><?php echo $result->company?></b></div>
-				</div>
-				<?php }?>
-				<div class="row">
-					<div class="col-md-1">Created</div>
+					<div class="col-md-1">Completed at </div>
 					<div class="col-md-8"><b><?php echo $result->created_at?></b></div>
 				</div>
-            </div>
+			</div>
+			<hr/>
 			<hr/>
             <div class="col-md-12">
                 <?php foreach($survey as $k=>$item){?>

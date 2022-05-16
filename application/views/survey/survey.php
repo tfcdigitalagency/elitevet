@@ -29,17 +29,21 @@ label{
 			</h1>
 			<hr/>
 			<div style="font-size: 18px;">
-				<p><b>Amy</b><br>
-					amy@dynamikinc.com<br>
-					<b>Disable Vetera</b><br>
-					866.820.3110<br>
-					California Distribution LLC<br>
-				</p>
-				<?php if($user){?>
-					<b><?php echo $user->name?> (<?php echo $user->email?>)</b></br>
-				<?php }else{?>
-					<b>Non-member</b></br>
-				<?php }?>
+				<?php if($user){
+					$user= get_user($user->id);
+					?>
+					<p><b><?php echo $user->name ?></b><br>
+						<?php echo $user->email ?><br>
+						<?php if($user->title):?><b><?php echo $user->title ?></b><br><?php endif;?>
+						<?php if($user->phone):?><?php echo $user->phone ?><br><?php endif;?>
+						<?php if($user->company):?><?php echo $user->company ?><br><?php endif;?>
+						<?php echo ($user->membership)?$user->membership->name:'non-member'; ?>
+					</p>
+				<?php }else{
+					?>
+
+					<?php
+				}?>
 			</div>
 		</div>
 
