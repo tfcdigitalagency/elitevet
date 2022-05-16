@@ -113,6 +113,7 @@ label{
 
 
 			<form method="post" onsubmit="return validate();" action="<?php echo site_url('/survey/?hash='.$_GET['hash']);?>">
+				<input type="hidden" name="user_id" value="<?php echo $user->id;?>"/>
 				<?php foreach($survey as $k=>$item){?>
 				<div class="mt-3 question-item questype_<?php echo $item->type;?>">
 					<div style="font-weight:bold"><?php echo ($k+1)?>. <?php echo $item->question;?></div>

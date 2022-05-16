@@ -33,6 +33,7 @@ class Survey extends CI_Controller {
 				$item = array(
 					'email'=>$user->email,
 					'name'=>$user->name,
+					'user_id'=>$user->id,
 					'created_at'=>date("Y-m-d H:i:s")
 				);
 				$this->db->insert('tbl_survey_result',$item);
