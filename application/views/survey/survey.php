@@ -28,17 +28,17 @@ label{
 				Nor-Cal Elite Disable Veterans Needs Questionnaire
 			</h1>
 			<hr/>
-			<div style="font-size: 18px;">
+			<div class="text-center" style="font-size: 18px;">
 				<?php if($user){
 					$user= get_user($user->id);
 					?>
-					<p><b><?php echo $user->name ?></b><br>
-						<?php echo $user->email ?><br>
-						<?php if($user->title):?><b><?php echo $user->title ?></b><br><?php endif;?>
-						<?php if($user->phone):?><?php echo $user->phone ?><br><?php endif;?>
-						<?php if($user->company):?><?php echo $user->company ?><br><?php endif;?>
-						<?php echo ($user->membership)?$user->membership->name:'non-member'; ?>
-					</p>
+				<p><b>Name:</b><?php echo $user->name ?><br>
+					<?php if($user->company):?><b>Company:</b><?php echo $user->company ?><br><?php endif;?>
+					<?php echo ($user->membership)?'<b>Member:</b>'.$user->membership->name:'non-member'; ?>
+					<b>Email:</b><?php echo $user->email ?><br>
+					<?php if($user->title):?><b>Type:</b><?php echo $user->title ?><br><?php endif;?>
+					<?php if($user->phone):?><b>Phone:</b><?php echo $user->phone ?><br><?php endif;?>
+				</p>
 				<?php }else{
 					?>
 

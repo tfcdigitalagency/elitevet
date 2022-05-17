@@ -29,30 +29,30 @@
 				Nor-Cal Elite Disable Veterans Needs Questionnaire
 			</h1>
 			<hr/>
-			<div style="font-size: 18px;">
+			<div class="text-center" style="font-size: 18px;">
 				<?php if($result->user_id){
 				$user= get_user($result->user_id);
 				?>
-				<p><b><?php echo $user->name ?></b><br>
-					<?php echo $user->email ?><br>
-					<?php if($user->title):?><b><?php echo $user->title ?></b><br><?php endif;?>
-					<?php if($user->phone):?><?php echo $user->phone ?><br><?php endif;?>
-					<?php if($user->company):?><?php echo $user->company ?><br><?php endif;?>
-					<?php echo ($user->membership)?$user->membership->name:'non-member'; ?>
+					<p><b>Name:</b><?php echo $user->name ?><br>
+					<?php if($user->company):?><b>Company:</b><?php echo $user->company ?><br><?php endif;?>
+					<?php echo ($user->membership)?'<b>Member:</b>'.$user->membership->name.'<br/>':'non-member'.'<br/>'; ?>
+						<b>Email:</b><?php echo $user->email ?><br>
+						<?php if($user->title):?><b>Type:</b><?php echo $user->title ?><br><?php endif;?>
+					<?php if($user->phone):?><b>Phone:</b><?php echo $user->phone ?><br><?php endif;?>
+
+
 				</p>
 				<?php }else{
 					?>
-					<p><b><?php echo $result->uname; ?></b><br>
-						<?php echo $result->email; ?><br>
+					<p><b>Name:</b><?php echo $result->uname; ?></p><br>
+					<b></b>Email:</b><?php echo $result->email; ?><br>
 					</p>
 					<?php
 				}?>
-				<div class="row">
-					<div class="col-md-1">Completed at </div>
-					<div class="col-md-8"><b><?php echo $result->created_at?></b></div>
+				<div class="row text-center">
+					<div class="col-md-12"><b>Completed at:<?php echo $result->created_at?></b></div>
 				</div>
 			</div>
-			<hr/>
 			<hr/>
             <div class="col-md-12">
                 <?php foreach($survey as $k=>$item){?>
