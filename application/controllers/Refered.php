@@ -9,8 +9,7 @@ class Refered extends CI_Controller {
         $name = $_GET['n'];
         $phone = $_GET['t'];
         $type = $_GET['type'];
-        $email_subject = $_GET['s'];
-        $title = $_GET['title'];
+        $email_subject = $_GET['s']; 
 		$user = $this->User_model->find(array('email' => $email), array(), array(), true);
 		if(count($user) > 0) $user = $user[0];
 
@@ -24,7 +23,6 @@ class Refered extends CI_Controller {
 			'phone'=>$phone,
 			'email'=>$email,
 			'type'=>$type,
-			'title'=>$title,
 			'email_subject'=>$email_subject,
 			'email_open'=>1,
 		);
