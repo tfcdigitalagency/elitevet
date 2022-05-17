@@ -35,7 +35,7 @@
 				?>
 					<p><b>Name:</b><?php echo $user->name ?><br>
 					<?php if($user->company):?><b>Company:</b><?php echo $user->company ?><br><?php endif;?>
-					<?php echo ($user->membership)?'<b>Member:</b>'.$user->membership->name.'<br/>':'non-member'.'<br/>'; ?>
+					<?php echo ($user->membership)?'<b>Member:</b>'.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
 						<b>Email:</b><?php echo $user->email ?><br>
 						<?php if($user->title):?><b>Type:</b><?php echo $user->title ?><br><?php endif;?>
 					<?php if($user->phone):?><b>Phone:</b><?php echo $user->phone ?><br><?php endif;?>
@@ -50,7 +50,7 @@
 					<?php
 				}?>
 				<div class="row text-center">
-					<div class="col-md-12"><b>Completed at:<?php echo $result->created_at?></b></div>
+					<div class="col-md-12"><b>Completed: <?php echo $result->created_at?></b></div>
 				</div>
 			</div>
 			<hr/>
