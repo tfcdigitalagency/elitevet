@@ -39,17 +39,17 @@
 						<b>Email:</b> <?php echo $user->email ?><br>
 						<?php if($user->title):?><b>Type:</b> <?php echo $user->title ?><br><?php endif;?>
 					<?php if($user->phone):?><b>Phone:</b> <?php echo $user->phone ?><br><?php endif;?>
+					 <b>Completed:</b> <?php echo $result->created_at?>
 				</p>
 				<?php }else{
 					?>
 					<p><b>Name:</b><?php echo $result->uname; ?></p><br>
 					<b></b>Email:</b><?php echo $result->email; ?><br>
+					<b>Completed:</b> <?php echo $result->created_at?>
 					</p>
 					<?php
 				}?>
-				<div class="row text-center">
-					<div class="col-md-12"><b>Completed:</b> <?php echo $result->created_at?></div>
-				</div>
+
 			</div>
 			<hr/>
             <div class="col-md-12">
