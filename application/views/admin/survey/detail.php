@@ -25,7 +25,7 @@
     <!-- Basic modals -->
     <div class="card">
         <div class="card-body">
-			<h1 class="mb-0 font-weight-semibold">
+			<h1 class="mb-0 font-weight-semibold text-center">
 				Nor-Cal Elite Disable Veterans Needs Questionnaire
 			</h1>
 			<hr/>
