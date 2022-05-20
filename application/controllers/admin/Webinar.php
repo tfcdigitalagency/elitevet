@@ -350,8 +350,7 @@ class Webinar extends MY_Controller {
     }
 
     public function insert_contract(){
-        $data = $this->input->post();
-//		echo '<pre>';print_r($data);die();
+        $data = $this->input->post(); 
         $this->Webinar_model->setTable('tbl_contract');
 
         if ($data['id'] == "0"){

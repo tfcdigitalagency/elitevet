@@ -95,7 +95,7 @@
 						</select>
 					</div>
 				</div>
-				<?php echo ($data[0]['type']);?>
+
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Content Type</label>
 					<div class="col-lg-4" style="float: right">
