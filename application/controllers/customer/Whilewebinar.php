@@ -27,12 +27,12 @@ class Whilewebinar extends MY_Controller {
 
         $this->While_webinar_model->setTable("tbl_training");
         $this->mContent['trainingvideo'] = $this->While_webinar_model->find(array("show_on_webinar" => 1), array(), array(), true);
-        
+
         $this->While_webinar_model->setTable("tbl_adsimage");
         $this->mContent['adsimage'] = $this->While_webinar_model->find(array(), array(), array(), true);
 
         $this->While_webinar_model->setTable("tbl_contract");
-        $this->mContent['contract'] = $this->While_webinar_model->find(array(), array("created_at" => "DESC"), array(), true);
+        $this->mContent['contract'] = $this->While_webinar_model->find(array('type'=>0), array("created_at" => "DESC"), array(), true);
 
         $this->While_webinar_model->setTable('tbl_asset');
         $handout = $this->While_webinar_model->find(array(), array(), array(), true);
@@ -41,17 +41,17 @@ class Whilewebinar extends MY_Controller {
 
         $this->While_webinar_model->setTable("tbl_sponsor_image");
         $this->mContent['sponsors_image'] = $this->While_webinar_model->find(array(), array("date_inserted" => "ASC"), array(), true);
-		
+
 		$this->db->select("count(*) as total");
 		$row = $this->db->get('tbl_whilewebinar_question')->row();
 		$this->mContent['total_question'] = $row->total;
 
         $this->While_webinar_model->setTable("tbl_event");
         $this->mContent['event'] = $this->While_webinar_model->find(array("status"=>"upcoming"), array(), array(), true);
-		
+
 		$this->mContent["real_register"] = $this->Reg_history_model->count(array("event_id"=>$this->mContent['event'][0]["id"]));
         $this->mContent["real_attend"] = $this->Attend_history_model->count(array("event_id"=>$this->mContent['event'][0]["id"]));
-		
+
 		//link
 		$current_user =  $this->session->userdata('user');
 		$id = $current_user['id'];
@@ -76,66 +76,66 @@ class Whilewebinar extends MY_Controller {
 
         echo json_encode($data);
     }
-	
+
 	public function live($port='8080'){
 		$this->load->view('customer/whilewebinar/live.php',array('port'=>$port));
 	}
-	
+
 	public function host($port='4000'){
 		$this->load->view('customer/whilewebinar/host.php',array('port'=>$port));
 	}
-	
+
 	public function addQuestion(){
 		$question = $this->input->post('question');
 		$current_user =  $this->session->userdata('user');
-		 
+
 		$name = $current_user['name'];
 		$email = $current_user['email'];
 		$this->db->insert('tbl_contactus',array('content'=>$question,'name'=>$name,'email'=>$email,'created_at'=>date("Y-m-d H:i:s")));
-		
+
 		$this->db->select("count(*) as total");
 		$row = $this->db->get('tbl_contactus')->row();
-		
+
 		echo json_encode(array('total'=>$row->total));
 	}
-	
+
 	public function totalRefresh(){
 		$this->db->select("count(*) as total");
 		$row = $this->db->get('tbl_contactus')->row();
 		echo json_encode(array('total'=>$row->total));
 	}
-	
+
 	public function upload(){
 		$config['upload_path']          = './assets/uploads/pdf';
-		$config['allowed_types']        = 'pdf'; 
+		$config['allowed_types']        = 'pdf';
 		$config['max_size']	= 0;
 		$error = '';
 		$data = array();
-		
-		
+
+
 		$new_name = uniqid();
 		$config['file_name'] = $new_name;
-		
+
 		$this->load->library('upload', $config);
 
 		if ( ! $this->upload->do_upload('userfile'))
 		{
-			 $error = array('error' => $this->upload->display_errors()); 
+			 $error = array('error' => $this->upload->display_errors());
 			 $status = 0;
 		}
 		else
 		{
 			 $status = 1;
 			 $data = array('upload_data' => $this->upload->data());
-			 
+
 			 //
 			 $current_user =  $this->session->userdata('user');
 			 $id = $current_user['id'];
 			 $this->db->update('tbl_user',array('capability_statement_pdf'=>$data['upload_data']['file_name']),array('id'=>$id));
-			 
-			 
+
+
 		}
-		
+
 		echo json_encode(array('status'=>$status,'data'=>$data,'error'=>$error ));
 	}
 

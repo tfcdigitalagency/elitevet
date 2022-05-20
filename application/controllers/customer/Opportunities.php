@@ -19,7 +19,7 @@ class Opportunities extends MY_Controller {
     public function index(){
         $this->mHeader['sub_id'] = 'opportunities';
 		$this->db->order_by('id','DESC');
-        $this->mContent['opportunities'] = $this->db->get_where('tbl_contract',array('status'=>'available'))->result_array();
+        $this->mContent['opportunities'] = $this->db->get_where('tbl_contract',array('status'=>'available','type'=>1))->result_array();
         $this->render("{$this->sub_mLayout}index", $this->mLayout);
     }
 

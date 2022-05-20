@@ -28,7 +28,7 @@
             </div>
         </div>
     </div>
-    <!-- /basic modals -->    
+    <!-- /basic modals -->
 </div>
 <!-- /content area -->
 
@@ -74,10 +74,10 @@
                     "targets": [4],
                     orderable: false,
                     "createdCell": function (td, cellData, rowData, row, col) {
-                        if (!rowData.second_thumbnail || rowData.second_thumbnail == null || rowData.second_thumbnail == "") {
-                            $(td).html("");
+                        if (!rowData.type) {
+                            $(td).html("Link Ads");
                         }else{
-                            $(td).html("<img style='height: 2.5em; width: 3em;' src='"+base_url+rowData.second_thumbnail+"'>");
+                            $(td).html("Opportunities");
                         }
                     }
                 },
@@ -112,14 +112,14 @@
                     {"title": "Contract title", "data": "title", "class": "text-center", "width": "20%"},
                     {"title": "Sponsor", "data": "sponsor", "class": "text-center", "width": "5%"},
                     {"title": "thumbnail", "data": "thumbnail", "class": "text-center", "width": "5%"},
-                    {"title": "second_thumbnail", "data": "thumbnail", "class": "text-center", "width": "5%"},
+                    {"title": "Content Type", "data": "thumbnail", "class": "text-center", "width": "5%"},
                     {"title": "Details", "data": "details", "class": "text-center", "width": "20%"},
                     {"title": "Status", "data": "status", "class": "text-center", "width": "20%",
                         mRender: function(data, type, row) {
                             if (data == 'available')
-                                return '<span class="badge-pill badge-info">available</span>';
-                            else 
-                                return '<span class="badge-pill badge-warning">not available</span>';
+                                return '<span class="badge-pill badge-info">Available</span>';
+                            else
+                                return '<span class="badge-pill badge-warning">Not available</span>';
                     }},
                     {"title": "Action", "data": "id", "class": "text-center", "width": "10%"},
                 ],

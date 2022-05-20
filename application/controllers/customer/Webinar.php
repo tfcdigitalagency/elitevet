@@ -21,7 +21,7 @@ class Webinar extends MY_Controller {
         //     echo "You don't have permission to access this page!";
         //     die();
         // }
-        
+
         $this->mHeader['sub_id'] = 'webinar';
         $this->Webinar_model->setTable("tbl_gallery");
         $this->mContent['webinar'] = $this->Webinar_model->find(array("type"=>"image"), array(), array(), true);
@@ -32,10 +32,10 @@ class Webinar extends MY_Controller {
 
         $this->Webinar_model->setTable("tbl_event");
         $this->mContent['event'] = $this->Webinar_model->find(array("status"=>"upcoming"), array(), array(), true);
-		
+
 		$this->mContent["real_register"] = $this->Reg_history_model->count(array("event_id"=>$this->mContent['event'][0]["id"]));
         $this->mContent["real_attend"] = $this->Attend_history_model->count(array("event_id"=>$this->mContent['event'][0]["id"]));
-		 
+
 
         $this->Webinar_model->setTable("tbl_training");
         $this->mContent['trainingvideo'] = $this->Webinar_model->find(array("show_on_webinar" => 1), array(), array(), true);
@@ -50,7 +50,7 @@ class Webinar extends MY_Controller {
         $this->mContent['sponsors_image'] = $this->Webinar_model->find(array(), array("date_inserted" => "ASC"), array(), true);
 
         $this->Webinar_model->setTable("tbl_contract");
-        $this->mContent['contract'] = $this->Webinar_model->find(array(), array("created_at" => "DESC"), array(), true);
+        $this->mContent['contract'] = $this->Webinar_model->find(array('type'=>0), array("created_at" => "DESC"), array(), true);
 
         $this->Webinar_model->setTable('tbl_asset');
         $handout = $this->Webinar_model->find(array(), array(), array(), true);
@@ -62,7 +62,7 @@ class Webinar extends MY_Controller {
 
         $sponsor_image = $this->Settings_model->find(array("skey"=>'sponsor_image'), array(), array(), true);
         $this->mContent['sponsor_image_url'] = $sponsor_image[0]['svalue'];
-		
+
 		//link
 		$current_user =  $this->session->userdata('user');
 		$id = $current_user['id'];
@@ -74,7 +74,7 @@ class Webinar extends MY_Controller {
     }
 
     public function register(){
-                
+
         $this->mHeader['sub_id'] = 'register';
         $this->render("{$this->sub_mLayout}register", $this->mLayout);
     }
@@ -105,10 +105,10 @@ class Webinar extends MY_Controller {
         $this->Webinar_model->setTable('tbl_event');
         $event = $this->Webinar_model->find(array("status"=>"upcoming"), array("start_time" => "ASC"), array(), true);
         if(count($event) > 0){
-            
+
 			$register = $this->Reg_history_model->count(array("event_id"=>$event[0]["id"]));
 			$attended = $this->Attend_history_model->count(array("event_id"=>$event[0]["id"]));
-		
+
             $display_sponsor = $event[0]['display_sponsor'];
             $data['status'] = 'ok';
             $data['display_sponsor'] = $display_sponsor;
@@ -119,7 +119,7 @@ class Webinar extends MY_Controller {
 
         $display_zoom = $this->Settings_model->find(array("skey"=>'display_zoom'), array(), array(), true);
         $data['display_zoom'] = $display_zoom[0]['svalue'];
-        
+
         $close_broadcasting = $this->Settings_model->find(array("skey"=>'close_broadcasting'), array(), array(), true);
         $data['close_broadcasting'] = $close_broadcasting[0]['svalue'];
 
