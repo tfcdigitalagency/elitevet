@@ -48,15 +48,15 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-form-label col-lg-2">Phone<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-2">Phone</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="phone" name="phone" placeholder="Please enter Phone number" required>
+						<input type="text" class="form-control" id="phone" name="phone" placeholder="Please enter Phone number" >
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-form-label col-lg-2">Sponsor<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-2">Sponsor</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="sponsor" name="sponsor" placeholder="Website Link" required>
+						<input type="text" class="form-control" id="sponsor" name="sponsor" placeholder="Website Link" >
 					</div>
 				</div>
 				<div class="form-group row">
@@ -92,6 +92,15 @@
 						<select  class="form-control select" id="status" name="status" required data-fouc>
 							<option value="available">available</option>
 							<option value="not available">not available</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Content Type</label>
+					<div class="col-lg-4" style="float: right">
+						<select  class="form-control select" id="type" name="type" required data-fouc>
+							<option value="0">Link Ads</option>
+							<option value="1">Opportunities</option>
 						</select>
 					</div>
 				</div>
@@ -333,7 +342,7 @@
                     });
 
                 }, 1000)
-                //location.href = base_url+'admin/webinar/postbids';
+                location.href = base_url+'admin/webinar/postbids';
                 return;
             };
             C.send(A);
