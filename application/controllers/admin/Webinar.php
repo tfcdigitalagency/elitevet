@@ -351,16 +351,38 @@ class Webinar extends MY_Controller {
 
     public function insert_contract(){
         $data = $this->input->post();
+
         $this->Webinar_model->setTable('tbl_contract');
 
         if ($data['id'] == "0"){
-            $insert_ID = $this->Webinar_model->insert($data);
+            $insert_ID = $this->Webinar_model->insert(array(
+				"title"=>$data['title'],
+				"details"=>$data['details'],
+				"company"=>$data['company'],
+				"name"=>$data['name'],
+				"name"=>$data['name'],
+				"email"=>$data['email'],
+				"phone"=>$data['phone'],
+				"start_date"=>date("Y-m-d",strtotime($data['start_date'])),
+				"end_date"=>date("Y-m-d",strtotime($data['end_date'])),
+				"details"=>$data['details'],
+				"sponsor"=>$data['sponsor'],
+				"status"=>$data['status']
+			));
         }else{
             $this->Webinar_model->update(array("id"=>$data['id']), array(
-                "title"=>$data['title'],
-                "details"=>$data['details'],
-                "sponsor"=>$data['sponsor'],
-                "status"=>$data['status']
+				"title"=>$data['title'],
+				"details"=>$data['details'],
+				"company"=>$data['company'],
+				"name"=>$data['name'],
+				"name"=>$data['name'],
+				"email"=>$data['email'],
+				"phone"=>$data['phone'],
+				"start_date"=>date("Y-m-d",strtotime($data['start_date'])),
+				"end_date"=>date("Y-m-d",strtotime($data['end_date'])),
+				"details"=>$data['details'],
+				"sponsor"=>$data['sponsor'],
+				"status"=>$data['status']
             ));
             $insert_ID = $data['id'];
         }

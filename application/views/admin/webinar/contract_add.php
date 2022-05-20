@@ -13,50 +13,89 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
         	<form class="form-validate-jquery" method="post" target="_other">
         		<input type="text" class="form-control" id="contract_id" name="contract_id" value="<?php echo $data[0]['id']; ?>" hidden>
 	            <div class="form-group row">
-					<label class="col-form-label col-lg-2">Title<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-2">Opportunity Title<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="title" " required>
+						<input type="text" class="form-control" id="title" name="title" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Description</label>
 					<div class="col-lg-10">
-						<textarea rows="5" cols="3" class="form-control" id="description" placeholder="Please Input Description" ></textarea>
+						<textarea rows="5" cols="3" class="form-control" id="description" name="description" placeholder="Please Input Description" ></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Company<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="company" name="company" placeholder="Please input company name" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Please enter Name" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Please enter Email" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Phone<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="phone" name="phone" placeholder="Please enter Phone number" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Sponsor<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" id="sponsor" required>
+						<input type="text" class="form-control" id="sponsor" name="sponsor" placeholder="Website Link" required>
 					</div>
 				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Post Start Date<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control pickadate" value="<?php echo date("Y-m-d")?>" id="start_date" name="start_date" placeholder="" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Post End Date<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control pickadate" id="end_date" name="end_date" placeholder="" required>
+					</div>
+				</div>
+
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Status</label>
-                    <div class="col-lg-4" style="float: right">
-                        <select  class="form-control select" id="status" name="status" required data-fouc>
-                            <option value="available">available</option>
-                            <option value="not available">not available</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">thumbnail</label>
+                    <label class="col-form-label col-lg-2">Thumbnail</label>
                     <div class="col-lg-6" id="image_">
                         <input type="file" class="file-input-overwrite" name="image" id="image"  data-fouc>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-form-label col-lg-2">second_thumbnail</label>
+                    <label class="col-form-label col-lg-2">Include attachment (PDF/JPG</label>
                     <div class="col-lg-6" id="second_image_">
                         <input type="file" class="file-input-overwrite" name="second_image" id="second_image"  data-fouc>
                     </div>
                 </div>
-				<div class="form-group row" style="float: right;">					
+
+
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Status</label>
+					<div class="col-lg-4" style="float: right">
+						<select  class="form-control select" id="status" name="status" required data-fouc>
+							<option value="available">available</option>
+							<option value="not available">not available</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row" style="float: right;">
 					<button type="button" class="btn btn-primary" onclick="save_Contract()">&nbsp&nbspSave&nbsp&nbsp</button>
 				</div>
 			</form>
@@ -76,6 +115,10 @@
     var fileActionSettings;
 
     jQuery(document).ready(function() {
+
+		$('.pickadate').pickadate({
+			format : 'yyyy-mm-dd'
+		});
 
         $('#image_').empty();
         $('#image_').append('<input type="file" class="file-input-overwrite" name="image" id="image"  data-fouc>');
@@ -229,7 +272,7 @@
                     },
                     sponsor: {
                         required: 'This field is required.'
-                    }                   
+                    }
                 }
             });
 
@@ -251,31 +294,37 @@
     });
 
     function save_Contract() {
-        
+
         var check = validator.checkForm();
         if (!check)
             validator.showErrors();
         else{
-            var file = $("#image")[0].files[0]; 
-            var second_file=$("#second_image")[0].files[0];           
+            var file = $("#image")[0].files[0];
+            var second_file=$("#second_image")[0].files[0];
             var A = new FormData();
             A.append("id", $("#contract_id").val());
             A.append("title", $("#title").val());
             A.append("details", $("#description").val());
+			A.append("company", $("#company").val());
+			A.append("name", $("#name").val());
+			A.append("email", $("#email").val());
+			A.append("phone", $("#phone").val());
+			A.append("start_date", $("#start_date").val());
+			A.append("end_date", $("#end_date").val());
             A.append("sponsor", $("#sponsor").val());
             A.append("status", $("#status").val());
             if (file) {
                 A.append("thumbnail", file);
-            }    
+            }
             if (second_file) {
                 A.append("second_thumbnail", second_file);
-            }          
+            }
             var C = new XMLHttpRequest();
             C.open("POST", base_url + 'admin/webinar/insert_Contract');
-            C.onload = function() {              
+            C.onload = function() {
 
                 setTimeout(function () {
-                    
+
                     new PNotify({
                         title: 'SUCCESS!',
                         text: 'The Operation is correct.',
@@ -284,7 +333,7 @@
                     });
 
                 }, 1000)
-                location.href = base_url+'admin/webinar/postbids';
+                //location.href = base_url+'admin/webinar/postbids';
                 return;
             };
             C.send(A);

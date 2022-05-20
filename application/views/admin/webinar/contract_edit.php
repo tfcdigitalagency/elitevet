@@ -13,54 +13,94 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
-        	<form class="form-validate-jquery" method="post" target="_other">
-                <input type="text" class="form-control" id="contract_id" name="contract_id" value="<?php echo $data[0]['id']; ?>" hidden>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Title<span class="text-danger">*</span></label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" id="title" " value="<?php echo $data[0]['title']; ?>" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Description</label>
-                    <div class="col-lg-10">
-                        <textarea rows="5" cols="3" class="form-control" id="description" ><?php echo $data[0]['details']; ?></textarea>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Sponsor<span class="text-danger">*</span></label>
-                    <div class="col-lg-10">
-                        <input type="text" class="form-control" id="sponsor" value="<?php echo $data[0]['sponsor']; ?>" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">Status</label>
-                    <div class="col-lg-4" style="float: right">
-                        <select  class="form-control select" id="status" name="status" required data-fouc>
-                            <option value="available" <?= ($data[0]['status'] == 'available')?"selected":"";?>>available</option>
-                            <option value="not available" <?= ($data[0]['status'] == 'available')?"":"selected";?>>not available</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">thumbnail</label>
-                    <div class="col-lg-6" id="image_">
-                        <input type="file" class="file-input-overwrite" name="image" id="image"  data-fouc>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-form-label col-lg-2">second_thumbnail</label>
-                    <div class="col-lg-6" id="second_image_">
-                        <input type="file" class="file-input-overwrite" name="second_image" id="second_image"  data-fouc>
-                    </div>
-                </div>
-                <div class="form-group row" style="float: right;">
-                    <button type="button" class="btn btn-warning" onclick="backList()">&nbsp&nbspBack&nbsp&nbsp</button>&nbsp&nbsp                  
-                    <button type="button" class="btn btn-primary" onclick="save_Contract()">&nbsp&nbspSave&nbsp&nbsp</button>
-                </div>
+			<form class="form-validate-jquery" method="post" target="_other">
+				<input type="text" class="form-control" id="contract_id" name="contract_id" value="<?php echo $data[0]['id']; ?>" hidden>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Opportunity Title<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="title" name="title" value="<?php echo $data[0]['title']; ?>" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Description</label>
+					<div class="col-lg-10">
+						<textarea rows="5" cols="3" class="form-control" id="description" name="description" placeholder="Please Input Description" ><?php echo $data[0]['details']; ?></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Company<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="company" name="company" value="<?php echo $data[0]['company']; ?>" placeholder="Please input company name" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="name" name="name" value="<?php echo $data[0]['name']; ?>" placeholder="Please enter Name" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="email" class="form-control" id="email" name="email" value="<?php echo $data[0]['email']; ?>" placeholder="Please enter Email" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Phone<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="phone" name="phone" value="<?php echo $data[0]['phone']; ?>" placeholder="Please enter Phone number" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Sponsor<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" id="sponsor" name="sponsor" value="<?php echo $data[0]['sponsor']; ?>" placeholder="Website Link" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Post Start Date<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control pickadate" value="<?php echo $data[0]['start_date']; ?>"  id="start_date" name="start_date" placeholder="" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Post End Date<span class="text-danger">*</span></label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control pickadate" id="end_date" name="end_date" value="<?php echo $data[0]['end_date']; ?>" placeholder="" required>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Thumbnail</label>
+					<div class="col-lg-6" id="image_">
+						<input type="file" class="file-input-overwrite" name="image" id="image"  data-fouc>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Include attachment (PDF/JPG</label>
+					<div class="col-lg-6" id="second_image_">
+						<input type="file" class="file-input-overwrite" name="second_image" id="second_image"  data-fouc>
+					</div>
+				</div>
+
+
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Status</label>
+					<div class="col-lg-4" style="float: right">
+						<select  class="form-control select" id="status" name="status" required data-fouc>
+							<option value="available" <?= ($data[0]['status'] == 'available')?"selected":"";?>>available</option>
+							<option value="not available" <?= ($data[0]['status'] == 'available')?"":"selected";?>>not available</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row" style="float: right;">
+					<button type="button" class="btn btn-warning" onclick="backList()">&nbsp&nbspBack&nbsp&nbsp</button>&nbsp&nbsp
+					<button type="button" class="btn btn-primary" onclick="save_Contract()">&nbsp&nbspSave&nbsp&nbsp</button>
+				</div>
 			</form>
+
         </div>
     </div>
     <!-- /basic modals -->
@@ -160,7 +200,7 @@
         });
     };
 
-    jQuery(document).ready(function() {     
+    jQuery(document).ready(function() {
         //$('#status').val('<?php echo $data[0]['thumbnail']; ?>').trigger("change");
         if(thumbnail==''){
             $('#image_').empty();
@@ -233,10 +273,16 @@
                 fileActionSettings: fileActionSettings
             });
 
-            var html = '<img src="' + image_path + '" style="width:auto;height:auto;max-width:100%;max-height:100%;" class="file-preview-image kv-preview-data">';
+			if(checkURLImage(second_thumbnail)){
+				var html = '<img src="' + image_path + '" style="width:auto;height:auto;max-width:100%;max-height:100%;" class="file-preview-image kv-preview-data">';
+			}else{
+				var filename = second_thumbnail.replace(/^.*[\\\/]/, '')
+				var html = '<span>'+filename+'</span>';
+			}
+
             //$('.kv-file-content').html(html);
-            $('#second_image').find('.kv-file-content').html(html);
-        }       
+            $('#second_image_').find('.kv-file-content').html(html);
+        }
 
     });
 
@@ -301,7 +347,7 @@
                     },
                     sponsor: {
                         required: 'This field is required.'
-                    }                   
+                    }
                 }
             });
 
@@ -323,31 +369,37 @@
     });
 
     function save_Contract() {
-        
+
         var check = validator.checkForm();
         if (!check)
             validator.showErrors();
         else{
-            var file = $("#image")[0].files[0];  
-            var second_file = $("#second_image")[0].files[0];            
+            var file = $("#image")[0].files[0];
+            var second_file = $("#second_image")[0].files[0];
             var A = new FormData();
             A.append("id", $("#contract_id").val());
             A.append("title", $("#title").val());
             A.append("details", $("#description").val());
+			A.append("company", $("#company").val());
+			A.append("name", $("#name").val());
+			A.append("email", $("#email").val());
+			A.append("phone", $("#phone").val());
+			A.append("start_date", $("#start_date").val());
+			A.append("end_date", $("#end_date").val());
             A.append("sponsor", $("#sponsor").val());
             A.append("status", $("#status").val());
             if (file) {
                 A.append("thumbnail", file);
-            }   
+            }
             if (second_file) {
                 A.append("second_thumbnail", second_file);
-            }            
+            }
             var C = new XMLHttpRequest();
             C.open("POST", base_url + 'admin/webinar/insert_Contract');
-            C.onload = function() {              
+            C.onload = function() {
 
                 setTimeout(function () {
-                    
+
                     new PNotify({
                         title: 'SUCCESS!',
                         text: 'The Operation is correct.',
@@ -359,15 +411,19 @@
                 location.href = base_url+'admin/webinar/postbids';
                 return;
             };
-            
+
             C.send(A);
-            
+
         }
     }
 
      function backList() {
         location.href = base_url+'admin/webinar/postbids';
      }
+
+	function checkURLImage(url) {
+		return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+	}
 
 </script>
 <iframe name="_other" id="_other" hidden></iframe>

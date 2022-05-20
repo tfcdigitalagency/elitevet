@@ -1159,7 +1159,11 @@
                                                         <?php if($this->session->userdata('user')['is_admin'] > 0){ ?>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/whilewebinar'?>" class="elementor-item <?=($id == 'whilewebinar')?'elementor-item-active':'elementor-item-anchor'?>">WHILEWEBINAR</a></li>
                                                         <?php } ?>
-                                                        
+
+														<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
+															<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/opportunities'?>" class="elementor-item <?=($id == 'opportunities')?'elementor-item-active':'elementor-item-anchor'?>">OPPORTUNITIES</a></li>
+														<?php } ?>
+
                                                         <?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
                                                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/training'?>" class="elementor-item <?=($id == 'training')?'elementor-item-active':'elementor-item-anchor'?>">TRAINING</a></li>
                                                         <?php } else { ?>
@@ -1181,7 +1185,7 @@
 													</ul>
 												</nav>
                                                 <?php endif;?>
-												
+
 												<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false" style="">
 													<i class="eicon-menu-bar" aria-hidden="true"></i>
 													<span class="elementor-screen-only">Menu</span>
