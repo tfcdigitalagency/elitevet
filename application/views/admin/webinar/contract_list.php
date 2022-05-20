@@ -74,7 +74,7 @@
                     "targets": [4],
                     orderable: false,
                     "createdCell": function (td, cellData, rowData, row, col) {
-                        if (!rowData.type) {
+                        if (parseInt(rowData.type) == 0 ) {
                             $(td).html("Link Ads");
                         }else{
                             $(td).html("Opportunities");

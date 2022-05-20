@@ -90,17 +90,18 @@
 					<label class="col-form-label col-lg-2">Status</label>
 					<div class="col-lg-4" style="float: right">
 						<select  class="form-control select" id="status" name="status" required data-fouc>
-							<option value="available" <?= ($data[0]['status'] == 'available')?"selected":"";?>>available</option>
-							<option value="not available" <?= ($data[0]['status'] == 'available')?"":"selected";?>>not available</option>
+							<option value="available" <?php echo  ($data[0]['status'] == 'available')?"selected":"";?>>available</option>
+							<option value="not available" <?php echo  ($data[0]['status'] == 'available')?"":"selected";?>>not available</option>
 						</select>
 					</div>
 				</div>
+				<?php echo ($data[0]['type']);?>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Content Type</label>
 					<div class="col-lg-4" style="float: right">
 						<select  class="form-control select" id="type" name="type" required data-fouc>
-							<option value="0" <?= ($data[0]['type'] == '0')?"selected":"";?>>Link Ads</option>
-							<option value="1" <?= ($data[0]['type'] == '1')?"":"selected";?>>Opportunities</option>
+							<option value="0" <?php echo (intval($data[0]['type']) == 0)?"selected":"";?>>Link Ads</option>
+							<option value="1" <?php echo (intval($data[0]['type']) == 0)?"":"selected";?>>Opportunities</option>
 						</select>
 					</div>
 				</div>
@@ -397,6 +398,7 @@
 			A.append("end_date", $("#end_date").val());
             A.append("sponsor", $("#sponsor").val());
             A.append("status", $("#status").val());
+            A.append("type", $("#type").val());
             if (file) {
                 A.append("thumbnail", file);
             }

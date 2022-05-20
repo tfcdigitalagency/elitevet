@@ -351,7 +351,7 @@ class Webinar extends MY_Controller {
 
     public function insert_contract(){
         $data = $this->input->post();
-
+//		echo '<pre>';print_r($data);die();
         $this->Webinar_model->setTable('tbl_contract');
 
         if ($data['id'] == "0"){
@@ -367,7 +367,8 @@ class Webinar extends MY_Controller {
 				"end_date"=>date("Y-m-d",strtotime($data['end_date'])),
 				"details"=>$data['details'],
 				"sponsor"=>$data['sponsor'],
-				"status"=>$data['status']
+				"status"=>$data['status'],
+				"type"=>$data['type']
 			));
         }else{
             $this->Webinar_model->update(array("id"=>$data['id']), array(
@@ -382,7 +383,8 @@ class Webinar extends MY_Controller {
 				"end_date"=>date("Y-m-d",strtotime($data['end_date'])),
 				"details"=>$data['details'],
 				"sponsor"=>$data['sponsor'],
-				"status"=>$data['status']
+				"status"=>$data['status'],
+				"type"=>$data['type']
             ));
             $insert_ID = $data['id'];
         }

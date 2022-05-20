@@ -322,6 +322,7 @@
 			A.append("end_date", $("#end_date").val());
             A.append("sponsor", $("#sponsor").val());
             A.append("status", $("#status").val());
+			A.append("type", $("#type").val());
             if (file) {
                 A.append("thumbnail", file);
             }
