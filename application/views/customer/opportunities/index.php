@@ -21,6 +21,10 @@
                             EliteNCDVeterans
                         </h1>
 
+						<div>
+							<img style="width: 100%; border-radius: 10px;" src="<?php echo base_url()?>/assets/banner_opp.png">
+						</div>
+
                     </div>
                     <div class="row">
 						<div class="col-md-12">
@@ -42,9 +46,9 @@
 												<tbody>
 												<?php for($k=0;$k<count($opportunities);$k++){ ?>
 												<tr class="<?php echo ($k%2==0)? 'alt':'' ?>">
-													<td id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><?php echo $opportunities[$k]['company']; ?></td>
+													<td id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo $opportunities[$k]['company']; ?></a></td>
 													<td id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo $opportunities[$k]['title']; ?></a></td>
-													<td id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><?php echo ($opportunities[$k]['end_date'])?date("m/d/Y",strtotime($opportunities[$k]['end_date'])):''; ?></td>
+													<td id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo ($opportunities[$k]['end_date'])?date("m/d/Y",strtotime($opportunities[$k]['end_date'])):''; ?></a></td>
 												</tr>
 												<?php } ?>
 												</tbody>
@@ -66,10 +70,10 @@
 					</div>
                     <!-- /layout 1 -->
 
-                    <p style="height: 30px;"></p>
                     <div class="mb-3">
                         <h1 class="mb-0 font-weight-semibold" style="color:red">
                             EliteNCDVeterans
+							<div style="float: right; font-size: 15px"> See more <a href="https://www.vibnetwork.org/opportunity-board/" target="_blank">https://www.vibnetwork.org/opportunity-board/</a></div>
                         </h1>
                     </div>
 
