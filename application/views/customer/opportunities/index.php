@@ -17,8 +17,8 @@
                     <!-- Layout 1 -->
                     <div class="mb-3">
 
-                        <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
+                        <h1 class="mb-2 font-weight-semibold" >
+                            
                         </h1>
 
 						<div>
@@ -40,7 +40,7 @@
 												<thead>
 												<tr>
 													<th width="20%" id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th>
-													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity Title</span></th>
+													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity</span></th>
 													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>		</tr>
 												</thead>
 												<tbody>
@@ -54,7 +54,10 @@
 												</tbody>
 												<tfoot>
 												<tr>
-													<th id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a href="/opportunity-board/?sort%5B1%5D=asc" data-multisort-href="/opportunity-board/" class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th><th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a href="/opportunity-board/?sort%5B11%5D=asc" data-multisort-href="/opportunity-board/" class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity Title</span></th><th id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a href="/opportunity-board/?sort%5B8%5D=asc" data-multisort-href="/opportunity-board/" class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>		</tr>
+													<th width="20%" id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th>
+													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity</span></th>
+													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>
+												</tr>
 												</tfoot>
 											</table>
 										</div>
