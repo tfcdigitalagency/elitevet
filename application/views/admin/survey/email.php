@@ -19,7 +19,12 @@
 
 <!-- Content area -->
 <div class="content">
-
+	<?php
+		$config = $this->db->get_where('tbl_config',array('code'=>'SURVEY'))->row();
+		if($config) {
+			$data = json_decode($config->detail);
+		}
+	?>
     <!-- Basic modals -->
     <div class="card">
         <div class="card-body">
@@ -47,19 +52,21 @@
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Subject *</label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control" value="Webinar Online Survey" name="subject" id="subject" required/>
+						<input type="text" class="form-control" value="<?php echo @$data->subject; ?>" name="subject" id="subject" required/>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Email content *</label>
 					<div class="col-lg-10">
-						<textarea rows="5" cols="3" class="form-control" id="content" name="content" placeholder="Please Enter content" required></textarea>
+						<textarea rows="5" cols="3" class="form-control" id="content" name="content" placeholder="Please Enter content" required><?php echo @$data->content; ?></textarea>
 					</div>
 				</div>
 				<div class="form-group row" >
 					<label class="col-form-label col-lg-2"> </label>
 					<div class="col-lg-10">
-					<button type="submit" value="submit" name="submit" class="btn btn-primary" >&nbsp;&nbsp;Submit&nbsp&nbsp; <i id="loadding" style="display:none" class="icon-spinner spinning hide loading"></i></button>
+					<button type="submit" value="submit" name="submit" class="btn btn-primary" >&nbsp;&nbsp;Submit</button> &nbsp;
+					<button type="button" value="save" name="save" id="save_content" class="btn btn-warning" >Save</button>
+						<i id="loadding" style="display:none" class="icon-spinner spinning hide loading"></i>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -119,6 +126,37 @@
 					$('#loadding').hide();
 					$('#survey_msg').html('Error! try again.').show();
 				  }
+		});
+
+
+	});
+
+	$('#save_content').click(function (){
+
+		var val = $('#subject').val();
+		if(!val){
+			$('#subject').focus();
+			return;
+		}
+		var val = $('#content').val();
+		if(!val){
+			$('#content').focus();
+			return;
+		}
+		$('#loadding').show();
+		jQuery.ajax({
+			type: "POST",
+			url: "<?php echo base_url(); ?>" + "admin/survey/save",
+			data: $('#sendEmail').serialize() ,
+			dataType: 'json',
+			success: function (res) {
+				$('#loadding').hide();
+				$('#survey_msg').html(res.message).show();
+			},
+			error:function() {
+				$('#loadding').hide();
+				$('#survey_msg').html('Error! try again.').show();
+			}
 		});
 	});
 

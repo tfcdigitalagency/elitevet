@@ -177,6 +177,19 @@ class Survey extends MY_Controller {
 
 	}
 
+	public function save(){
+		$data = $this->input->post();
+		$config = $this->db->get_where('tbl_config',array('code'=>'SURVEY'))->row();
+		if(!$config){
+			$this->db->insert('tbl_config' ,array('code'=>'SURVEY','detail'=>json_encode($data)));
+		}else{
+			$this->db->update('tbl_config' ,array('detail'=>json_encode($data),array('code'=>'SURVEY')));
+		}
+
+		echo json_encode(array('message'=>'Data was saved.'));
+
+	}
+
 	public function email(){
 		$this->mHeader['sub_id'] = 'view';
 		$this->mContent['users'] = $this->db->get_where('tbl_user')->result_array();
