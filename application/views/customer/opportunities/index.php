@@ -74,7 +74,7 @@
                     <!-- /layout 1 -->
 
                     <div class="mb-3">
-						<div style="text-align: right; font-size: 15px"> See more <a href="https://www.vibnetwork.org/opportunity-board/" target="_blank">https://www.vibnetwork.org/opportunity-board/</a></div>
+						
                     </div>
 
                 </div>
