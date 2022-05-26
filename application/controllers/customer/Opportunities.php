@@ -19,7 +19,12 @@ class Opportunities extends MY_Controller {
     public function index(){
         $this->mHeader['sub_id'] = 'opportunities';
 		$this->db->order_by('id','DESC');
-        $this->mContent['opportunities'] = $this->db->get_where('tbl_contract',array('status'=>'available','type'=>1))->result_array();
+		$current_user =  $this->session->userdata('user');
+		if(!$current_user){
+			$this->db->limit(2);
+		}
+        $this->mContent['current_user']  = $current_user;
+		$this->mContent['opportunities'] = $this->db->get_where('tbl_contract',array('status'=>'available','type'=>1))->result_array();
         $this->render("{$this->sub_mLayout}index", $this->mLayout);
     }
 

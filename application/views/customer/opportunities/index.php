@@ -62,6 +62,9 @@
 											</table>
 										</div>
 
+
+
+										<?php if(!$current_user):?><div class="mt-3 text-center" style="margin-top: 20px;"><a class="btn submit-btn btn-primary" style="color: #fff; font-size: 1.2em;" href="<?php echo site_url('/customer/other/membership')?>">Become member to see more Bids</a></div><?php endif;?>
 									</div>
 
 
@@ -73,8 +76,8 @@
 					</div>
                     <!-- /layout 1 -->
 
-                    <div class="mb-3">
-						
+                    <div class="mb-3 text-center">
+
                     </div>
 
                 </div>
