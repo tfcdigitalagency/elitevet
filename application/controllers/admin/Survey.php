@@ -105,6 +105,25 @@ class Survey extends MY_Controller {
         $this->render("{$this->sub_mLayout}detail", $this->mLayout);
     }
 
+	public function capsta(){
+		$this->mHeader['sub_id'] = 'view';
+        $id = $this->input->get('id');
+		$this->db->select('sr.*,u.name as uname ,sr.created_at submited');
+		$this->db->join('tbl_user as u','u.id = sr.user_id','left');
+        $this->mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$id))->row();
+
+		$this->db->select('s.*,d.detail');
+		$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$id.'"','left');
+		$this->db->limit(8);
+		$this->mContent['survey'] = $this->db->get('tbl_survey as s')->result();
+        $html = $this->load->view('admin/survey/capsta',$this->mContent,true);
+
+		$this->load->library('pdf');
+		$this->pdf->createPDF($html, 'capsta', true);
+    }
+
+
+
 	public function delete_result(){
         $id = $this->input->post('id');
         $this->db->delete('tbl_survey_detail',array('result_id'=>$id));

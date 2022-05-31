@@ -109,9 +109,6 @@ label{
 				</div>
 				<?php }?>
 		<?php }else{?>
-
-
-
 			<form method="post" onsubmit="return validate();" action="<?php echo site_url('/survey/?hash='.$_GET['hash']);?>">
 				<input type="hidden" name="user_id" value="<?php echo $user->id;?>"/>
 				<?php foreach($survey as $k=>$item){?>

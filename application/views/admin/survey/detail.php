@@ -11,9 +11,8 @@
 <div class="page-header page-header-light">
     <div class="page-header-content header-elements-md-inline">
         <div class="page-title d-flex">
-            <h4><span class="font-weight-semibold">Survey result
-
-</span></h4>
+            <h4><span class="font-weight-semibold">Survey result </span></h4>
+			<a style="margin-left:40px;" href="<?php echo site_url('admin/survey/capsta?id='.$result->id);?>" class="btn btn-primary">Create cap-sta </a>
         </div>
     </div>
 </div>
