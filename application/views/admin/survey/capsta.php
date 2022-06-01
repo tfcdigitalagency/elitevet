@@ -8,11 +8,35 @@
 	.title{
 		font-size: 18px;
 		font-weight: bold;
-		background: #0a6ebd;
-		color: #fff;
+		/*background: #0a6ebd;
+		color: #fff;*/
 		padding: 5px 10px;
 		border-radius: 10px;
 		margin-bottom: 10px;
+		min-height: 50px;
+	}
+	.left .content{
+		padding-left: 80px;
+	}
+	.left .arrow{
+		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg");
+		background-repeat: no-repeat;
+		background-position: top left;
+		padding-left: 80px;
+	}
+	.right .arrow{
+		background-image: url("<?php echo base_url()?>assets/capsta/right_arrow.jpg");
+		background-repeat: no-repeat;
+		background-position: top right;
+		padding-right: 60px;
+	}
+	.right .content{
+		padding-right: 60px;
+		padding-left: 10px;
+	}
+	.border{
+		border: 1px solid #000;
+		padding: 20px;
 	}
 </style>
 
@@ -31,26 +55,26 @@
 			<table width="100%" style="font-size: 14px;">
 				<tr>
 					<td width="45%" style="vertical-align: top">
-						<div class="box">
-							<div class="title">CORPORATE PROFILE</div>
+						<div class="box left">
+							<div class="title arrow">CORPORATE PROFILE</div>
 							<div class="content">
 								<?php echo $company_name;?>, is an <?php echo getSelected($survey[3])?> <?php echo getSelected($survey[0])?> owned company  Our company is an entrepreneurial business where we assess client’s needs finding products or services that are beneficial to their everyday life.
 							</div>
 						</div>
-						<div class="box">
-							<div class="title"><?php echo $company_name;?> has been in business for</div>
+						<div class="box left">
+							<div class="title arrow"><?php echo $company_name;?> has been in business for</div>
 							<div class="content">
 								<?php echo getSelected($survey[2])?> years
 							</div>
 						</div>
-						<div class="box">
-							<div class="title">Type of company</div>
+						<div class="box left">
+							<div class="title arrow">Type of company</div>
 							<div class="content">
 								<?php echo getSelected($survey[3])?>
 							</div>
 						</div>
-						<div class="box">
-							<div class="title">Employees at <?php echo $company_name;?> between</div>
+						<div class="box left">
+							<div class="title arrow">Employees at <?php echo $company_name;?> between</div>
 							<div class="content">
 								<?php echo getSelected($survey[4])?>
 							</div>
@@ -75,23 +99,23 @@
 						<img src="<?php echo base_url()?>/assets/capsta/split.jpg">
 					</td>
 					<td width="45%" style="vertical-align: top">
-						<div class="box">
-							<div class="title">MARKET PROFILE</div>
+						<div class="box right">
+							<div class="title arrow">MARKET PROFILE</div>
 							<div class="content">
 								<?php echo $company_name;?> market?
 								<div><?php echo getSelected($survey[5])?></div>
 							</div>
 						</div>
-						<div class="box">
-							<div class="title">  Contract Bids <?php echo $company_name;?>
+						<div class="box right">
+							<div class="title arrow">  Contract Bids <?php echo $company_name;?>
 
 							</div>
 							<div class="content">
 								prepared to receive between <?php echo getSelected($survey[7])?>
 							</div>
 						</div>
-						<div class="box">
-							<div class="title">In what sector do you work? </div>
+						<div class="box right">
+							<div class="title arrow">In what sector do you work? </div>
 							<div class="content">
 								<ul><?php $temp = getSelected($survey[9])?>
 									<?php foreach ($temp as $val):?>
@@ -109,6 +133,7 @@
 
 						<div class="box">
 							<div class="content">
+								<div class="border">
 								<table width="100%">
 									<tr>
 										<td width="70%" style="vertical-align: top">
@@ -124,6 +149,7 @@
 										</td>
 									</tr>
 								</table>
+							</div>
 							</div>
 						</div>
 
