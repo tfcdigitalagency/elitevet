@@ -50,7 +50,7 @@
 		<div style="text-align: center">
 		<h1 style="margin: 0; font-size: 24px;">Compatible Statement</h1>
 		<div style="font-size:24px"><b>Company:</b> <?php echo $company_name ?></div>
-			<div style="margin-top: 5px"><img src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
+			<div style="margin-top: 5px"><img width="350" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
 			<div style="margin-top: 5px"><img src="<?php echo base_url()?>/assets/capsta/Disable_Vet.jpg"></div>
 		</div>
 
