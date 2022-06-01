@@ -13,7 +13,7 @@
 		padding: 5px 10px;
 		border-radius: 10px;
 		margin-bottom: 10px;
-		min-height: 50px;
+		min-height: 35px;
 	}
 	.left .content{
 		padding-left: 80px;
@@ -22,6 +22,7 @@
 		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg");
 		background-repeat: no-repeat;
 		background-position: top left;
+		background-size:contain ;
 		padding-left: 80px;
 	}
 	.right .arrow{
@@ -29,6 +30,7 @@
 		background-repeat: no-repeat;
 		background-position: top right;
 		padding-right: 60px;
+		background-size:contain ;
 	}
 	.right .content{
 		padding-right: 60px;
@@ -157,7 +159,7 @@
 				</tr>
 			</table>
 		</div>
-		<div style="text-align: center; margin-top: 30px; font-weight: bold;">
+		<div style="text-align: center; margin-top: 10px; font-weight: bold;">
 			<?php echo $user->name ?> - <?php echo $user->phone ?> - <?php echo $user->email ?>
 		</div>
 	</div>
