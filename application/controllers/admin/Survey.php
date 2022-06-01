@@ -114,10 +114,10 @@ class Survey extends MY_Controller {
 
 		$this->db->select('s.*,d.detail');
 		$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$id.'"','left');
-		$this->db->limit(8);
+
 		$this->mContent['survey'] = $this->db->get('tbl_survey as s')->result();
         $html = $this->load->view('admin/survey/capsta',$this->mContent,true);
-
+//		echo $html;
 		$this->load->library('pdf');
 		$this->pdf->createPDF($html, 'capsta', true);
     }
