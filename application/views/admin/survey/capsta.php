@@ -50,7 +50,8 @@
 		<div style="text-align: center">
 		<h1 style="margin: 0; font-size: 24px;">Compatible Statement</h1>
 		<div style="font-size:24px"><b>Company:</b> <?php echo $company_name ?></div>
-			<div style="margin-top: 5px"><img src="<?php echo base_url()?>/assets/capsta/logo.jpg"></div>
+			<div style="margin-top: 5px"><img src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
+			<div style="margin-top: 5px"><img src="<?php echo base_url()?>/assets/capsta/Disable_Vet.jpg"></div>
 		</div>
 
 		<div style="margin-top: 30px">
@@ -81,7 +82,7 @@
 								<?php echo getSelected($survey[4])?>
 							</div>
 							<div>
-								<img width="100%" src="<?php echo base_url()?>/assets/capsta/img1.jpg">
+								<img width="100%" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_15.jpg">
 							</div>
 						</div>
 						<div class="box">
@@ -119,11 +120,7 @@
 						<div class="box right">
 							<div class="title arrow">In what sector do you work? </div>
 							<div class="content">
-								<ul><?php $temp = getSelected($survey[9])?>
-									<?php foreach ($temp as $val):?>
-									<li><?php echo $val?></li>
-									<?php endforeach;?>
-								</ul>
+								 <?php echo getSelected($survey[9])?>
 							</div>
 						</div>
 						<div class="box">
@@ -147,7 +144,7 @@
 
 										</td>
 										<td width="30%">
-											<img width="100%" src="<?php echo base_url()?>/assets/capsta/img2.jpg">
+											<img width="100%" src="<?php echo base_url()?>/assets/capsta/img3.jpg">
 										</td>
 									</tr>
 								</table>
@@ -176,11 +173,12 @@ function getSelected($item){
 			}
 			break;
 		case 2:
-			$tmp = array();
+			$html="<ul>";
 			foreach($choise as $c){
-				if(in_array($c,$detail->answer)) $tmp[] = $c;
+				if(in_array($c,$detail->answer)) $html.= "<li>".$c."</li>";
 			}
-			return  $tmp;
+			$html.="</ul>";
+			return  $html;
 			break;
 	}
 }
