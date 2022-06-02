@@ -3,17 +3,16 @@
 		margin-top: 5px;
 	}
 	.box{
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 	.title{
-		font-size: 18px;
+		font-size: 16px;
 		font-weight: bold;
 		/*background: #0a6ebd;
 		color: #fff;*/
 		padding: 5px 10px;
 		border-radius: 10px;
-		margin-bottom: 10px;
-		min-height: 35px;
+		min-height: 25px;
 	}
 	.left .content{
 		padding-left: 80px;
@@ -22,7 +21,6 @@
 		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg");
 		background-repeat: no-repeat;
 		background-position: top left;
-		background-size:contain ;
 		padding-left: 80px;
 	}
 	.right .arrow{
@@ -30,7 +28,6 @@
 		background-repeat: no-repeat;
 		background-position: top right;
 		padding-right: 60px;
-		background-size:contain ;
 	}
 	.right .content{
 		padding-right: 60px;
@@ -38,7 +35,11 @@
 	}
 	.border{
 		border: 1px solid #000;
-		padding: 20px;
+		padding: 10px;
+	}
+	ul{
+		margin: 0;
+		padding: 0 0 0 20px;
 	}
 </style>
 
@@ -48,14 +49,14 @@
  		$company_name =  $user->company;
 		?>
 		<div style="text-align: center">
-		<h1 style="margin: 0; font-size: 24px;">Compatible Statement</h1>
+		<h1 style="margin: 0; font-size: 24px;">Capability Statement</h1>
 		<div style="font-size:24px"><b>Company:</b> <?php echo $company_name ?></div>
 			<div style="margin-top: 5px"><img width="400" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
 			<div style="margin-top: 5px"><img width="180" src="<?php echo base_url()?>/assets/capsta/Disable_Vet.jpg"></div>
 		</div>
 
-		<div style="margin-top: 30px">
-			<table width="100%" style="font-size: 14px;">
+		<div style="margin-top: 10px">
+			<table width="100%" style="font-size: 13px;">
 				<tr>
 					<td width="45%" style="vertical-align: top">
 						<div class="box left">
@@ -156,7 +157,7 @@
 				</tr>
 			</table>
 		</div>
-		<div style="text-align: center; margin-top: 10px; font-weight: bold;">
+		<div style="text-align: center; margin-top: 10px; font-weight: bold; position: fixed; bottom: 10px;">
 			<?php echo $user->name ?> - <?php echo $user->phone ?> - <?php echo $user->email ?>
 		</div>
 	</div>
