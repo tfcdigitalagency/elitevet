@@ -15,13 +15,13 @@
 		min-height: 25px;
 	}
 	.left .content{
-		padding-left: 40px;
+		padding-left: 50px;
 	}
 	.left .arrow{
 		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg?v=1");
 		background-repeat: no-repeat;
 		background-position: top left;
-		padding-left: 40px;
+		padding-left: 50px;
 	}
 	.right .arrow{
 		background-image: url("<?php echo base_url()?>assets/capsta/right_arrow.jpg?v=1");
@@ -157,7 +157,7 @@
 				</tr>
 			</table>
 		</div>
-		<div style="text-align: center; margin-top: 10px; font-weight: bold; position: fixed; bottom: 10px;">
+		<div style="text-align: center; margin-top: 10px; font-weight: bold; width: 100%; position: fixed; bottom: 10px;">
 			<?php echo $user->name ?> - <?php echo $user->phone ?> - <?php echo $user->email ?>
 		</div>
 	</div>
