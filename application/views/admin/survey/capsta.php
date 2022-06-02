@@ -90,10 +90,10 @@
 							<div class="title">CONTACT</div>
 							<div class="content">
 								<p><b>Name:</b> <?php echo $user->name ?><br>
-									<?php if($user->company):?><b>Company:</b> <?php echo $user->company ?><br><?php endif;?>
+									<b>Company:</b> <?php echo $user->company ?><br>
 									<?php echo ($user->membership)?'<b>Member:</b> '.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
 									<b>Email:</b> <?php echo $user->email ?><br>
-									<?php if($user->phone):?><b>Phone:</b> <?php echo $user->phone ?><br><?php endif;?>
+									<b>Phone:</b> <?php echo $user->phone ?><br>
 								</p>
 							</div>
 						</div>
