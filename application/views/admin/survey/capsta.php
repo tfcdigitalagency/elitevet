@@ -93,7 +93,7 @@
 									<b>Company:</b> <?php echo $user->company ?><br>
 									<?php echo ($user->membership)?'<b>Member:</b> '.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
 									<b>Email:</b> <?php echo $user->email ?><br>
-									<b>Phone:</b> <?php echo $user->phone ?><br>
+									<b>Phone:</b> <?php echo $user->phone_number ?><br>
 								</p>
 							</div>
 						</div>
@@ -158,7 +158,7 @@
 			</table>
 		</div>
 		<div style="text-align: center; margin-top: 10px; font-weight: bold; width: 100%; position: fixed; bottom: 10px;">
-			<?php echo $user->name ?> - <?php echo $user->phone ?> - <?php echo $user->email ?>
+			<?php echo $user->name ?> - <?php echo $user->phone_number ?> - <?php echo $user->email ?>
 		</div>
 	</div>
 </div>

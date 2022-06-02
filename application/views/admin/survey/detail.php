@@ -37,7 +37,7 @@
 					<?php echo ($user->membership)?'<b>Member:</b> '.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
 						<b>Email:</b> <?php echo $user->email ?><br>
 						<?php if($user->title):?><b>Type:</b> <?php echo $user->title ?><br><?php endif;?>
-					<?php if($user->phone):?><b>Phone:</b> <?php echo $user->phone ?><br><?php endif;?>
+					<?php if($user->phone_number):?><b>Phone:</b> <?php echo $user->phone_number ?><br><?php endif;?>
 					 <b>Completed:</b> <?php echo $result->created_at?>
 				</p>
 				<?php }else{
