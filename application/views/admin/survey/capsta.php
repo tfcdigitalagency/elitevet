@@ -15,19 +15,19 @@
 		min-height: 25px;
 	}
 	.left .content{
-		padding-left: 80px;
+		padding-left: 40px;
 	}
 	.left .arrow{
 		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg?v=1");
 		background-repeat: no-repeat;
 		background-position: top left;
-		padding-left: 80px;
+		padding-left: 40px;
 	}
 	.right .arrow{
 		background-image: url("<?php echo base_url()?>assets/capsta/right_arrow.jpg?v=1");
 		background-repeat: no-repeat;
 		background-position: top right;
-		padding-right: 60px;
+		padding-right: 40px;
 	}
 	.right .content{
 		padding-right: 60px;
@@ -82,7 +82,7 @@
 							<div class="content">
 								<?php echo getSelected($survey[4])?>
 							</div>
-							<div>
+							<div style="margin-top: 5px">
 								<img width="100%" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_15.jpg">
 							</div>
 						</div>
