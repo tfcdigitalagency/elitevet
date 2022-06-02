@@ -18,13 +18,13 @@
 		padding-left: 80px;
 	}
 	.left .arrow{
-		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg");
+		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg?v=1");
 		background-repeat: no-repeat;
 		background-position: top left;
 		padding-left: 80px;
 	}
 	.right .arrow{
-		background-image: url("<?php echo base_url()?>assets/capsta/right_arrow.jpg");
+		background-image: url("<?php echo base_url()?>assets/capsta/right_arrow.jpg?v=1");
 		background-repeat: no-repeat;
 		background-position: top right;
 		padding-right: 60px;
