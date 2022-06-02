@@ -205,7 +205,7 @@ class Survey extends MY_Controller {
 			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>'SURVEY'));
 		}
 
-		echo json_encode(array('message'=>'Data was saved.'));
+		echo json_encode(array('message'=>'Success.'));
 
 	}
 
