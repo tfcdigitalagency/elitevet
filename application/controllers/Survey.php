@@ -69,7 +69,7 @@ class Survey extends CI_Controller {
 				$html = $this->load->view('admin/survey/capsta',$mContent,true);
 				//echo $html;
 				$this->load->library('pdf');
-				$attachment = 'assets/capsta/capsta_'.$$result_id.'_'.date("Ymd-his").'.pdf';
+				$attachment = FCPATH.'assets/capsta/capsta_'.$result_id.'_'.date("Ymd-his").'.pdf';
 
 				$this->pdf->savePDF($html, $attachment, false);
 
