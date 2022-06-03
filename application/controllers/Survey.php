@@ -24,7 +24,7 @@ class Survey extends CI_Controller {
 		$this->mContent['user'] = $user;
 
 		$check = $this->db->get_where('tbl_survey_result',array('md5(email)'=>$hash))->row();
- 
+
 		$data = $this->input->post();
 		if($data['submit']){
 			if(!$check){
@@ -52,8 +52,8 @@ class Survey extends CI_Controller {
 
 				//send the cap-sta
 				$email = $user->email;
-				$subject = "";
-				$email_content = "";
+				$subject = "Capability Statement";
+				$email_content = "Please find attachment its capability statement of your survey.";
 				$content = 'Hi, '.$user->name. "<br/>".$email_content;
 				$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user->name.'&t='.$user->phone_number.'&type='.$user->title.'&p=Email').'"/>';
 
