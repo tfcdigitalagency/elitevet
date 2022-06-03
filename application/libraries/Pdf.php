@@ -15,5 +15,16 @@ class Pdf
 		else
 			$dompdf->stream($filename.'.pdf', array('Attachment' => 0));
 	}
+
+	function savePDF($html, $filename='', $paper='A4', $orientation='portrait'){
+
+		$dompdf = new Dompdf\Dompdf(array('enable_remote' => true));
+		$dompdf->load_html($html);
+		$dompdf->set_paper($paper, $orientation);
+		$dompdf->render();
+		$output = $dompdf->output();
+		file_put_contents($filename, $output);
+	}
+
 }
 ?>

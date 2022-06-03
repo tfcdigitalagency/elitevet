@@ -43,21 +43,23 @@
 	}
 </style>
 
-<div class="card">
-	<div class="card-body">
+<table class="card">
+	<tr>
+	<td class="card-body">
 		<?php $user= get_user($result->user_id);
  		$company_name =  $user->company;
 		?>
 		<div style="text-align: center">
 		<h1 style="margin: 0; font-size: 24px;">Capability Statement</h1>
 		<div style="font-size:24px"><b>Company:</b> <?php echo $company_name ?></div>
-			<div style="margin-top: 5px"><img width="400" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
+			<div style="margin-top: 5px"><img width="380" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
 			<div style="margin-top: 5px"><img width="180" src="<?php echo base_url()?>/assets/capsta/Disable_Vet.jpg"></div>
 		</div>
-
-		<div style="margin-top: 10px">
+	</td>
+	</tr>
+	<tr><td>
 			<table style="width: 100%;">
-				<tr><td valign="middle" style="vertical-align: middle; height: 780px;">
+				<tr><td valign="middle" style="vertical-align: middle; height: 700px;">
 						<table width="100%" style="font-size: 13px;">
 							<tr>
 								<td width="45%" style="vertical-align: top">
@@ -160,12 +162,10 @@
 						</table>
 					</td></tr>
 			</table>
-
-		</div>
-		<div style="text-align: center; margin-top: 10px; font-weight: bold; width: 100%; position: fixed; bottom: 0px;">
-			<?php echo $user->name ?> - <?php echo $user->phone_number ?> - <?php echo $user->email ?>
-		</div>
-	</div>
+		</td></tr>
+</table>
+<div style="text-align: center; margin-top: 10px; font-weight: bold; width: 100%; position: fixed; bottom: 0px;">
+	<?php echo $user->name ?> - <?php echo $user->phone_number ?> - <?php echo $user->email ?>
 </div>
 <?php
 function getSelected($item){

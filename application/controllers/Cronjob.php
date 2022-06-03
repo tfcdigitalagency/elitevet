@@ -17,7 +17,7 @@ class Cronjob extends CI_Controller {
 
 		foreach ($data as $email){
 
-			$check = $this->sendMail($email->email, $email->content, $email->subject);
+			$check = $this->sendMail($email->email, $email->content, $email->subject,$email->attachment);
 
 			if($check){
 				$this->db->update('tbl_email_queue',array('status'=>1),array('id'=>$email->id));
@@ -26,7 +26,7 @@ class Cronjob extends CI_Controller {
 
 	}
 
-	public function sendMail($toEmail='' , $content = '' , $subject = '')
+	public function sendMail($toEmail='' , $content = '' , $subject = '',$attach='')
 	{
 		$mail = new PHPMailer();
 
@@ -37,6 +37,10 @@ class Cronjob extends CI_Controller {
 		$mail->SMTPAuth = false;
 		$mail->From = 'support@ncdeliteveterans.org';
 		$mail->FromName = 'Elite Nor-Cal';
+
+		if($attach){
+			$mail->addAttachment($attach);
+		}
 
 		$mail->AddAddress($toEmail);
 

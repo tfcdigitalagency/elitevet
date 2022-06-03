@@ -24,7 +24,7 @@ class Survey extends CI_Controller {
 		$this->mContent['user'] = $user;
 
 		$check = $this->db->get_where('tbl_survey_result',array('md5(email)'=>$hash))->row();
-
+ 
 		$data = $this->input->post();
 		if($data['submit']){
 			if(!$check){
@@ -40,8 +40,6 @@ class Survey extends CI_Controller {
 
 				$result_id = $this->db->insert_id();
 
-
-
 				foreach($data['question'] as $qid =>$val){
 					$item = array(
 						'result_id'=>$result_id,
@@ -51,6 +49,35 @@ class Survey extends CI_Controller {
 					$this->db->insert('tbl_survey_detail',$item);
 				}
 				$this->db->trans_complete();
+
+				//send the cap-sta
+				$email = $user->email;
+				$subject = "";
+				$email_content = "";
+				$content = 'Hi, '.$user->name. "<br/>".$email_content;
+				$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user->name.'&t='.$user->phone_number.'&type='.$user->title.'&p=Email').'"/>';
+
+
+				$this->db->select('sr.*,u.name as uname ,sr.created_at submited');
+				$this->db->join('tbl_user as u','u.id = sr.user_id','left');
+				$mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$result_id))->row();
+
+				$this->db->select('s.*,d.detail');
+				$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$result_id.'"','left');
+
+				$mContent['survey'] = $this->db->get('tbl_survey as s')->result();
+				$html = $this->load->view('admin/survey/capsta',$mContent,true);
+				//echo $html;
+				$this->load->library('pdf');
+				$attachment = 'assets/capsta/capsta_'.$$result_id.'_'.date("Ymd-his").'.pdf';
+
+				$this->pdf->savePDF($html, $attachment, false);
+
+				$this->db->insert('tbl_email_queue',array('email'=>$email,
+					'content'=>$content. $image_refer,
+					'attachment'=>$attachment,
+					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
+
 			}
 		}
 
