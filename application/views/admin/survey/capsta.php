@@ -66,7 +66,7 @@
 									<div class="box left">
 										<div class="title arrow">CORPORATE PROFILE</div>
 										<div class="content">
-											<?php echo $company_name;?>, is an <?php echo getSelected($survey[3])?> <?php echo getSelected($survey[0])?> owned company  Our company is an entrepreneurial business where we assess client’s needs finding products or services that are beneficial to their everyday life.
+											<?php echo $company_name;?>, is an <?php echo getSelected($survey[3])?> owned company. <?php echo getSelected($survey[0])?> our company is an entrepreneurial business where we assess client’s needs finding products or services that are beneficial to their everyday life.
 										</div>
 									</div>
 									<div class="box left">
