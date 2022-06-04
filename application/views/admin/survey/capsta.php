@@ -144,7 +144,7 @@
 															<div>Are you a member of supplier diversity?
 																<?php echo getSelected($survey[14])?></div>
 															<div>
-																By become a member of a of supplier diversity group, It will build disable veteran business community and help fellow veteran business owners with resources, training and connecting with corporations and government agencies.
+																By becoming a member of a of supplier diversity group, It will build disable veteran business community and help fellow veteran business owners with resources, training and connecting with corporations and government agencies.
 															</div>
 
 														</td>
