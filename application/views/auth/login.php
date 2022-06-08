@@ -28,26 +28,39 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="margin-top: 140px;"> 
+                                            <div class="col-md-3" style="margin-top: 140px;">
+												<?php if($error){?>
+													<div class="form-group">
+														<span style="color: red"><?php echo $error?></span>
+													</div>
+												<?php }?>
+												<?php if($message){?>
+													<div class="form-group">
+														<span style="color: blue"><?php echo $message?></span>
+													</div>
+												<?php }?>
                                                 <div class="form-group">
                                                     <span class="btn btn-warning btn-block">Welcome Back!</span>
                                                 </div>
                                                 <form id="login_form" action="<?=base_url('auth/login')?>" method="post">
                                                     <div class="errMsg" style="margin-bottom: 1rem;"></div>
                                                     <div class="form-group form-group-feedback form-group-feedback-left">
-                                                        <input type="text" class="form-control border-success" placeholder="Please input Email" id="email" name="email">                                                    
+                                                        <input type="text" class="form-control border-success" placeholder="Please input Email" id="email" name="email">
                                                     </div>
                                                     <div class="form-group form-group-feedback form-group-feedback-left">
                                                         <input type="password" class="form-control border-success" placeholder="Please input Password" id="password" name="password">
                                                     </div>
-                                                </form> 
+													<div style="margin-bottom: 15px; text-align: right">
+														<a data-toggle="modal" data-target="#forgotModal" style="cursor: pointer" >Forgot password?</a>
+													</div>
+                                                </form>
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <button class="btn btn-primary"  onclick="Link_reg()" style="margin-left: 20%;">Sign up <i class="icon-circle-right2 ml-2"></i></button>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <button class="btn btn-primary"  onclick="check()" style="margin-left: 20%;">Sign in <i class="icon-circle-right2 ml-2"></i></button>
-                                                    </div>                                                    
+                                                    </div>
                                                 </div>
                                                 <p></p>
                                                 <div class="form-group text-center">
@@ -55,7 +68,7 @@
                                                     <button type="button" class="btn btn-outline bg-pink-300 border-pink-300 text-pink-300 btn-icon rounded-round border-2 ml-2"><i class="icon-dribbble3"></i></button>
                                                     <button type="button" class="btn btn-outline bg-slate-600 border-slate-600 text-slate-600 btn-icon rounded-round border-2 ml-2"><i class="icon-github"></i></button>
                                                     <button type="button" class="btn btn-outline bg-info border-info text-info btn-icon rounded-round border-2 ml-2"><i class="icon-twitter"></i></button>
-                                                </div>  
+                                                </div>
                                             </div>
                                             <div class="col-md-1"></div>
 
@@ -79,6 +92,37 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header"  style="display: block;">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Reset your password</h4>
+			</div>
+			<div class="modal-body">
+				<form id="resetPassword" name="resetPassword" method="post" action="<?php echo site_url('auth/forgot');?>" >
+					<label>Enter Your Email: </label>
+					<div class="form-group form-group-feedback form-group-feedback-left">
+						<input type="text" class="form-control border-success" placeholder="Please input Email" id="email" name="email">
+					</div>
+					<div class="row">
+						<div class="col-lg-6">
+							<button class="btn btn-primary"  type="submit">Submit <i class="icon-circle-right2 ml-2"></i></button>
+						</div>
+
+					</div>
+				</form>
+				<div id="fade" class="black_overlay"></div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+			</div>
+		</div>
+	</div>
 </div>
 
 <script>

@@ -75,8 +75,66 @@ class Auth extends MY_Controller {
     }
 
     function forgot() {
-        $this->load->view("auth/forgot");
+		$email = $this->input->post('email');
+		$user = $this->db->get_where('tbl_user',array('email'=>$email))->row();
+		if($user){
+			$token = md5(uniqid());
+			$expired = date("Y-m-d H:i:s",strtotime("+1 hours"));
+			$this->db->update('tbl_user',array('token'=>$token,'token_expired'=>$expired),array('email'=>$email));
+
+			$link = site_url('auth/reset/'.$token);
+
+			$subject = "New request to reset password in Ncdeliteveterans.org";
+			$content = "Hello ".$user->name."<br><br>";
+			$content.= "An Request has been received to change the password for your Ncdeliteveterans.org account.<br><br>";
+			$content.= "<p><a href='".$link."'>Reset Passsword</a></p>";
+			$content.= "Thank you, <br>";
+			$content.= "Ncdeliteveterans Team<br>";
+
+			$this->db->insert('tbl_email_queue',array('email'=>$email,
+				'content'=>$content,
+				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
+
+
+			$this->mContent['message'] = "An request change password has sent your email.";
+		}else{
+			$this->mContent['error'] = "Sorry. Email does not existed";
+		}
+		$this->render("{$this->sub_mLayout}login", $this->mLayout);
     }
+
+	function reset($token){
+		$user = $this->db->get_where('tbl_user',array('token'=>$token))->row();
+
+		if($user && $user->token_expired >= date("Y-m-d H:i:s")){
+			$pass_plain= uniqid();
+			$pass = md5($pass_plain);
+
+			$this->db->update('tbl_user',
+				array('token'=>null,'token_expired'=>null,'password'=>$pass),
+				array('email'=>$user->email));
+
+
+			$subject = "New request to reset password in Ncdeliteveterans.org";
+			$content = "Hello ".$user->name."<br><br>";
+			$content.= "Your account:<br><br>";
+			$content.= "<p>
+				Username: ".$user->email."<br>
+				Password: ".$pass_plain."<br>
+			</p>";
+			$content.= "Thank you, <br>";
+			$content.= "Ncdeliteveterans Team<br>";
+
+			$this->db->insert('tbl_email_queue',array('email'=>$user->email,
+				'content'=>$content,
+				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
+
+			$this->mContent['message'] = "New password has sent your email.";
+		}else{
+			$this->mContent['error'] = "Sorry. Invalid request or Token is expired.";
+		}
+		$this->render("{$this->sub_mLayout}login", $this->mLayout);
+	}
 
     function logout() {
         $this->session->sess_destroy();
