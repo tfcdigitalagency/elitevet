@@ -226,11 +226,10 @@ class Survey extends MY_Controller {
 				foreach ($data as $item){
 					$detail = json_decode($item->detail,true);
 					foreach ($detail['answer'] as $k=>$v){
-						$tmp[$k] += $v;
+						$tmp[$k] += intval($v);
 					}
 				}
 			}
-
 
 			$chart_data = array();
 			$i = 0;
@@ -238,6 +237,7 @@ class Survey extends MY_Controller {
 				$chart_data[$k] = round($tmp[$i]/(count($data)),2);
 				$i++;
 			}
+
 
 		}else {
 			foreach ($options as $k => $v) {

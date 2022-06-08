@@ -38,7 +38,7 @@ class Graph
 
 		//$colours = [ ['red', 'yellow'], ['blue', 'white'] ];
 		$barColor = array('#99622B','#808017','#499990','#F3813C','#FEE13A','#41B451','#4564D5');
-		  
+
 		$graph = new Goat1000\SVGGraph\SVGGraph($width, $height, $settings);
 		$graph->colours($barColor);
 		$graph->values($values);
