@@ -29,14 +29,15 @@ class Graph
 		  'grid_subdivision_colour' => '#ccc',
 		);
 		$width = 600;
-		$height = 50*count($values[0]);
+		$height = 50*count($values);
+
 		//$type = 'HorizontalBarGraph';
 		/*$values = [
 		  ['Dough' => 30, 'Ray' => 50, 'Me' => 40, 'So' => 25, 'Far' => 45, 'Lard' => 35],
 		];*/
 
 		//$colours = [ ['red', 'yellow'], ['blue', 'white'] ];
-		$colours = [ 'blue', 'blue' ];
+		$colours = array( 'blue', 'blue' );
 
 		$graph = new Goat1000\SVGGraph\SVGGraph($width, $height, $settings);
 		$graph->colours($colours);
