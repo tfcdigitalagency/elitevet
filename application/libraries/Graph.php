@@ -29,7 +29,7 @@ class Graph
 		  'grid_subdivision_colour' => '#ccc',
 		);
 		$width = 600;
-		$height = 200;
+		$height = 50*count($values[0]);
 		//$type = 'HorizontalBarGraph';
 		/*$values = [
 		  ['Dough' => 30, 'Ray' => 50, 'Me' => 40, 'So' => 25, 'Far' => 45, 'Lard' => 35],
