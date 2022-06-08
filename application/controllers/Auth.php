@@ -115,9 +115,9 @@ class Auth extends MY_Controller {
 				array('email'=>$user->email));
 
 
-			$subject = "New request to reset password in Ncdeliteveterans.org";
+			$subject = "New password from Ncdeliteveterans.org";
 			$content = "Hello ".$user->name."<br><br>";
-			$content.= "Your account:<br><br>";
+			$content.= "Your new password :";
 			$content.= "<p>
 				Username: ".$user->email."<br>
 				Password: ".$pass_plain."<br>
