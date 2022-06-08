@@ -1,7 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-require APPPATH . '/third_party/PHPExcel.php';
-
 require 'system/PHPMailer.php';
 
 class Survey extends MY_Controller {
@@ -194,6 +192,121 @@ class Survey extends MY_Controller {
 		exit;
 
 
+	}
+
+	public function report(){
+		set_time_limit(0);
+
+		$questions = $this->db->get_where('tbl_survey')->result();
+		foreach ($questions as $m=>$n){
+			$questions[$m]->statistic = $this->getStatistic($n);
+			$questions[$m]->chart = $this->chart($n->id);
+		}
+		$this->mContent['questions'] = $questions;
+		$this->db->select("COUNT(*) as total");
+		$total_members = $this->db->get_where('tbl_survey_result',array())->row();
+
+		$this->mContent['total_members'] = $total_members->total;
+		$html = $this->load->view('admin/survey/report',$this->mContent,true);
+//		die($html);
+		$this->load->library('pdf');
+		$this->pdf->createPDF($html, 'report', true);
+	}
+
+	public function getStatistic($n){
+		$options = json_decode($n->content,true);
+		$head = array();
+		if($n->type ==3 ){
+			foreach ($options as $k => $v) {
+				$head[$v] = 0;
+			}
+			$data = $this->db->get_where('tbl_survey_detail',array('question_id'=>$n->id))->result();
+			$tmp = array();
+			if(!empty($data)){
+				foreach ($data as $item){
+					$detail = json_decode($item->detail,true);
+					foreach ($detail['answer'] as $k=>$v){
+						$tmp[$k] += $v;
+					}
+				}
+			}
+
+
+			$chart_data = array();
+			$i = 0;
+			foreach ($head as $k=>$v){
+				$chart_data[$k] = round($tmp[$i]/(count($data)),2);
+				$i++;
+			}
+
+		}else {
+			foreach ($options as $k => $v) {
+				$head[$v] = 0;
+			}
+			$data = $this->db->get_where('tbl_survey_detail',array('question_id'=>$n->id))->result();
+
+			if(!empty($data)){
+				foreach ($data as $item){
+					$detail = json_decode($item->detail,true);
+					$answer = array_flip($detail['answer']);
+					foreach ($answer as $k=>$v){
+						$head[$k]++;
+					}
+				}
+			}
+
+			$total = 0;
+			foreach ($head as $k=>$v){
+				$total+= $v;
+			}
+
+			$chart_data = array();
+			foreach ($head as $k=>$v){
+				$chart_data[$k] = round($v/$total,2)* 100;
+			}
+		}
+
+		return $chart_data;
+	}
+
+	public function chart($id){
+
+		$quest = $this->db->get_where('tbl_survey',array('id'=>$id))->row();
+		$chart_data = $this->getStatistic($quest);
+
+		$this->load->library('Graph');
+		//$values = array( array('Dough' => 30, 'Ray' => 50, 'Me' => 40, 'So' => 25, 'Far' => 45, 'Lard' => 35));
+		$values = array();
+		foreach ($chart_data as $k=>$v){
+			$values[$this->truncate($k,30)] = $v;
+		}
+		ob_start();
+			if($quest->type == 3){
+				$this->graph->createChart($values,'HorizontalBarGraph',10);
+			}else {
+				$this->graph->createChart($values);
+			}
+		$content2 = ob_get_contents();
+		ob_clean();
+		ob_end_flush();
+
+		$base64 = base64_encode($content2);
+		if(headers_sent()){
+			foreach(headers_list() as $header){
+				header_remove($header);
+			}
+		}
+
+		return '<img src="data:image/svg+xml;base64,'.$base64.'"/>';
+
+	}
+
+	public function truncate($text, $length) {
+		$length = abs((int)$length);
+		if(strlen($text) > $length) {
+			$text = preg_replace("/^(.{1,$length})(\s.*|$)/s", '\\1...', $text);
+		}
+		return($text);
 	}
 
 	public function save(){

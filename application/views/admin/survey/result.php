@@ -13,6 +13,7 @@
         <div class="page-title d-flex">
             <h4><span class="font-weight-semibold">Survey Results</span></h4>
 			<a style="margin-left:40px;" href="<?php echo site_url('admin/survey/export');?>" class="btn btn-primary">Export</a>
+			<a style="margin-left:20px;" href="<?php echo site_url('admin/survey/report');?>" class="btn btn-warning">Report</a>
         </div>
     </div>
 </div>
@@ -22,9 +23,9 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
-              
+
             <div class="col-md-12">
                 <table class="table table-bordered" id="survey_datatable" width="100%">
                 </table>
@@ -35,11 +36,11 @@
 
 </div>
 <!-- /content area -->
- 
+
 
 <script>
-    
-    var $survey_datatable = $('#survey_datatable');   
+
+    var $survey_datatable = $('#survey_datatable');
 
     jQuery(document).ready(function() {
         $('.pickadate-year').pickadate({
@@ -66,13 +67,13 @@
                     "dataType": "json",
                     "cache": false,
                 },
-                "columnDefs": [ 
+                "columnDefs": [
                     {
                         "targets": [3],
                         orderable: false,
                         "createdCell": function (td, cellData, rowData, row, col) {
                             var html = '';
-                            html +=                           
+                            html +=
                                 '<a style="color: deepskyblue;" title="View"><i class="icon-eye"></i>Detail</a>&nbsp&nbsp'+
                                 '<a style="color: deepskyblue;" title="Delete"><i class="icon-trash"></i>Delete</a>';
                             $(td).html(html);
@@ -81,8 +82,8 @@
                 ],
                 "columns": [
                     {"title": "No", "data": "id", "class": "text-center", "width": "5%"},
-                    {"title": "Member", "data": "name", "class": "text-left", "width": "10%"}, 
-                    {"title": "Created", "data": "created_at", "class": "text-center", "width": "10%"},                     
+                    {"title": "Member", "data": "name", "class": "text-left", "width": "10%"},
+                    {"title": "Created", "data": "created_at", "class": "text-center", "width": "10%"},
                     {"title": "Action", "data": "id", "class": "text-center action", "width": "10%"},
                 ],
                 dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
@@ -141,10 +142,10 @@
                         }
                     }
                 );
-            });			
-             
+            });
+
         });
 
     });
-  
+
 </script>
