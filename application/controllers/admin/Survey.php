@@ -216,10 +216,11 @@ class Survey extends MY_Controller {
 	public function getStatistic($n){
 		$options = json_decode($n->content,true);
 		$head = array();
-		if($n->type ==3 ){
-			foreach ($options as $k => $v) {
-				$head[$v] = 0;
-			}
+		foreach ($options as $k => $v) {
+			$head[$v] = 0;
+		}
+		if($n->type == 3 ){
+
 			$data = $this->db->get_where('tbl_survey_detail',array('question_id'=>$n->id))->result();
 			$tmp = array();
 			if(!empty($data)){
@@ -240,9 +241,6 @@ class Survey extends MY_Controller {
 
 
 		}else {
-			foreach ($options as $k => $v) {
-				$head[$v] = 0;
-			}
 			$data = $this->db->get_where('tbl_survey_detail',array('question_id'=>$n->id))->result();
 
 			if(!empty($data)){
@@ -250,7 +248,9 @@ class Survey extends MY_Controller {
 					$detail = json_decode($item->detail,true);
 					$answer = array_flip($detail['answer']);
 					foreach ($answer as $k=>$v){
-						$head[$k]++;
+						if(isset($head[$k])) {
+							$head[$k]++;
+						}
 					}
 				}
 			}
@@ -262,7 +262,7 @@ class Survey extends MY_Controller {
 
 			$chart_data = array();
 			foreach ($head as $k=>$v){
-				$chart_data[$k] = round($v/$total,2)* 100;
+				$chart_data[$k] = round($v/$total,4)* 100;
 			}
 		}
 
