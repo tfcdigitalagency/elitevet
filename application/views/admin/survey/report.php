@@ -34,6 +34,9 @@
 <div>
 	<?php foreach ($questions as $k=>$question){
 		//print_r($question);
+		if(in_array($k,array(7))){
+			echo '<div style="page-break-before: always; page-break-after: always;"></div>';
+		}
 		?>
 		<div class="questions" style="text-align: center">
 			<div class="title"><?php echo ($k+1).". ".$question->question?></div>
