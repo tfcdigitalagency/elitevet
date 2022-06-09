@@ -34,15 +34,20 @@
 <div>
 	<?php foreach ($questions as $k=>$question){
 		//print_r($question);
-		if(in_array($k,array(7))){
-			echo '<div style="page-break-before: always; page-break-after: always;"></div>';
+		?>
+		<?if($k==5 || $k ==11){
+			echo '<div style="page-break-after: always;"></div>';
 		}
 		?>
 		<div class="questions" style="text-align: center">
 			<div class="title"><?php echo ($k+1).". ".$question->question?></div>
 			<div>
-				 <?php echo $question->chart;?>
+				<?php echo $question->chart;?>
 			</div>
+			<?if($k==2 || $k==7){
+				echo '<div style="page-break-after: always;"></div>';
+			}
+			?>
 			<div class="table_detail" style="max-width: 600px; margin: auto">
 				<table style="width: 100%; border-collapse: collapse;" border="1" cellpadding="3" cellspacing="0">
 					<tr class="head"><th width="50%">Answer Choices</th><th width="50%">Responses</th></tr>

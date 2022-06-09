@@ -3,29 +3,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require 'system/PHPMailer.php';
 
 class Survey extends MY_Controller {
-    public $mLayout = 'admin/';
-    public $sub_mLayout = 'admin/survey/';
+	public $mLayout = 'admin/';
+	public $sub_mLayout = 'admin/survey/';
 
-    function __construct() {
-        parent::__construct();
-        $this->mHeader['id'] = 'survey';
-        $this->mHeader['title'] = 'Survey';
-        $this->mContent['msg'] = "";
-    }
+	function __construct() {
+		parent::__construct();
+		$this->mHeader['id'] = 'survey';
+		$this->mHeader['title'] = 'Survey';
+		$this->mContent['msg'] = "";
+	}
 
-    public function list(){
-        $this->mHeader['sub_id'] = 'view';
-        $this->render("{$this->sub_mLayout}index", $this->mLayout);
-    }
+	public function list(){
+		$this->mHeader['sub_id'] = 'view';
+		$this->render("{$this->sub_mLayout}index", $this->mLayout);
+	}
 
 	public function get_data(){
 		$this->db->order_by('created_at','desc');
-        $table_data['data'] = $this->db->get_where('tbl_survey',array())->result_array();
+		$table_data['data'] = $this->db->get_where('tbl_survey',array())->result_array();
 
-        echo json_encode($table_data);
-    }
+		echo json_encode($table_data);
+	}
 
-    public function add(){
+	public function add(){
 		if($this->input->post('submit')){
 			$data = array(
 				'question'=>$this->input->post('question'),
@@ -38,13 +38,13 @@ class Survey extends MY_Controller {
 			$this->session->set_flashdata('message','Add Question Successfully.');
 		}
 
-        $this->mHeader['sub_id'] = 'add';
-        $this->mContent['data'][0]['id']='0';
-        $this->render("{$this->sub_mLayout}add", $this->mLayout);
-    }
+		$this->mHeader['sub_id'] = 'add';
+		$this->mContent['data'][0]['id']='0';
+		$this->render("{$this->sub_mLayout}add", $this->mLayout);
+	}
 
-    public function edit(){
-        if($this->input->post('submit')){
+	public function edit(){
+		if($this->input->post('submit')){
 			$data = array(
 				'question'=>$this->input->post('question'),
 				'type'=>$this->input->post('type'),
@@ -56,30 +56,30 @@ class Survey extends MY_Controller {
 			$this->session->set_flashdata('message','Question updated Successfully.');
 		}
 
-        $this->mHeader['sub_id'] = 'view';
-        $id = $this->input->get('id');
-        $this->mContent['data'] = $this->db->get_where('tbl_survey',array('id'=>$id))->row();
-        $this->render("{$this->sub_mLayout}edit", $this->mLayout);
-    }
+		$this->mHeader['sub_id'] = 'view';
+		$id = $this->input->get('id');
+		$this->mContent['data'] = $this->db->get_where('tbl_survey',array('id'=>$id))->row();
+		$this->render("{$this->sub_mLayout}edit", $this->mLayout);
+	}
 
 
-    public function delete(){
-        $id = $this->input->post('id');
-        $this->db->delete('tbl_survey',array('id'=>$id));
-    }
+	public function delete(){
+		$id = $this->input->post('id');
+		$this->db->delete('tbl_survey',array('id'=>$id));
+	}
 
 
 	public function result(){
-        $this->mHeader['sub_id'] = 'view';
-        $this->render("{$this->sub_mLayout}result", $this->mLayout);
-    }
+		$this->mHeader['sub_id'] = 'view';
+		$this->render("{$this->sub_mLayout}result", $this->mLayout);
+	}
 
 	public function get_result(){
 		$this->db->select('sr.*,u.name as uname');
 		$this->db->from('tbl_survey_result sr');
 		$this->db->join('tbl_user u','u.id = sr.user_id','left');
 		$this->db->order_by('sr.created_at','desc');
-        $table_data['data'] = $this->db->get()->result_array();
+		$table_data['data'] = $this->db->get()->result_array();
 
 		foreach($table_data['data'] as $k=>$v){
 			if(!$table_data['data'][$k]['name']){
@@ -87,46 +87,46 @@ class Survey extends MY_Controller {
 			}
 		}
 
-        echo json_encode($table_data);
-    }
+		echo json_encode($table_data);
+	}
 
 	public function detail(){
 		$this->mHeader['sub_id'] = 'view';
-        $id = $this->input->get('id');
+		$id = $this->input->get('id');
 		$this->db->select('sr.*,u.name as uname ,sr.created_at submited');
 		$this->db->join('tbl_user as u','u.id = sr.user_id','left');
-        $this->mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$id))->row();
+		$this->mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$id))->row();
 
 		$this->db->select('s.*,d.detail');
 		$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$id.'"','left');
 		$this->mContent['survey'] = $this->db->get('tbl_survey as s')->result();
-        $this->render("{$this->sub_mLayout}detail", $this->mLayout);
-    }
+		$this->render("{$this->sub_mLayout}detail", $this->mLayout);
+	}
 
 	public function capsta(){
 		$this->mHeader['sub_id'] = 'view';
-        $id = $this->input->get('id');
+		$id = $this->input->get('id');
 		$this->db->select('sr.*,u.name as uname ,sr.created_at submited');
 		$this->db->join('tbl_user as u','u.id = sr.user_id','left');
-        $this->mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$id))->row();
+		$this->mContent['result'] = $this->db->get_where('tbl_survey_result as sr',array('sr.id'=>$id))->row();
 
 		$this->db->select('s.*,d.detail');
 		$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$id.'"','left');
 
 		$this->mContent['survey'] = $this->db->get('tbl_survey as s')->result();
-        $html = $this->load->view('admin/survey/capsta',$this->mContent,true);
+		$html = $this->load->view('admin/survey/capsta',$this->mContent,true);
 //		echo $html;
 		$this->load->library('pdf');
 		$this->pdf->createPDF($html, 'capsta', true);
-    }
+	}
 
 
 
 	public function delete_result(){
-        $id = $this->input->post('id');
-        $this->db->delete('tbl_survey_detail',array('result_id'=>$id));
-        $this->db->delete('tbl_survey_result',array('id'=>$id));
-    }
+		$id = $this->input->post('id');
+		$this->db->delete('tbl_survey_detail',array('result_id'=>$id));
+		$this->db->delete('tbl_survey_result',array('id'=>$id));
+	}
 
 	public function export(){
 
@@ -134,7 +134,7 @@ class Survey extends MY_Controller {
 		$this->db->from('tbl_survey_result sr');
 		$this->db->join('tbl_user u','u.id = sr.user_id','left');
 		$this->db->order_by('sr.created_at','desc');
-        $data = $this->db->get()->result_array();
+		$data = $this->db->get()->result_array();
 
 		foreach($data as $k=>$v){
 			$this->db->select('s.*,d.detail');
@@ -188,7 +188,7 @@ class Survey extends MY_Controller {
 		foreach ($rows as $data_array) {
 			fputcsv($handle, $data_array);
 		}
-			fclose($handle);
+		fclose($handle);
 		exit;
 
 
@@ -217,7 +217,7 @@ class Survey extends MY_Controller {
 		$options = json_decode($n->content,true);
 		$head = array();
 		foreach ($options as $k => $v) {
-			$head[$v] = 0;
+			$head[trim($v)] = 0;
 		}
 		if($n->type == 3 ){
 
@@ -227,7 +227,7 @@ class Survey extends MY_Controller {
 				foreach ($data as $item){
 					$detail = json_decode($item->detail,true);
 					foreach ($detail['answer'] as $k=>$v){
-						$tmp[$k] += intval($v);
+						$tmp[trim($k)] += intval($v);
 					}
 				}
 			}
@@ -241,20 +241,22 @@ class Survey extends MY_Controller {
 
 
 		}else {
+			$this->db->select("tbl_survey_detail.*");
+			$this->db->join("tbl_survey_result", "tbl_survey_result.id = tbl_survey_detail.result_id");
 			$data = $this->db->get_where('tbl_survey_detail',array('question_id'=>$n->id))->result();
 
 			if(!empty($data)){
 				foreach ($data as $item){
 					$detail = json_decode($item->detail,true);
 					$answer = array_flip($detail['answer']);
+
 					foreach ($answer as $k=>$v){
-						if(isset($head[$k])) {
-							$head[$k]++;
+						if(isset($head[trim($k)])) {
+							$head[trim($k)]++;
 						}
 					}
 				}
 			}
-
 			$total = 0;
 			foreach ($head as $k=>$v){
 				$total+= $v;
@@ -264,6 +266,7 @@ class Survey extends MY_Controller {
 			foreach ($head as $k=>$v){
 				$chart_data[$k] = round($v/$total,4)* 100;
 			}
+
 		}
 
 		return $chart_data;
@@ -281,11 +284,11 @@ class Survey extends MY_Controller {
 			$values[$this->truncate($k,30)] = $v;
 		}
 		ob_start();
-			if($quest->type == 3){
-				$this->graph->createChart($values,'HorizontalBarGraph',10);
-			}else {
-				$this->graph->createChart($values);
-			}
+		if($quest->type == 3){
+			$this->graph->createChart($values,'HorizontalBarGraph',10);
+		}else {
+			$this->graph->createChart($values);
+		}
 		$content2 = ob_get_contents();
 		ob_clean();
 		ob_end_flush();
@@ -325,56 +328,56 @@ class Survey extends MY_Controller {
 	public function email(){
 		$this->mHeader['sub_id'] = 'view';
 		$this->mContent['users'] = $this->db->get_where('tbl_user')->result_array();
-        $this->render("{$this->sub_mLayout}email", $this->mLayout);
+		$this->render("{$this->sub_mLayout}email", $this->mLayout);
 	}
 
 	public function sendemail(){
-		 $subject = $this->input->post('subject');
-		 $email_content = $this->input->post('content');
+		$subject = $this->input->post('subject');
+		$email_content = $this->input->post('content');
 
-		 $type = $this->input->post('type');
-		 if($type){
+		$type = $this->input->post('type');
+		if($type){
 			$user_id = $this->input->post('user');
 			$this->db->where_in('id',$user_id);
-		 }
+		}
 
-		 $data = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
+		$data = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
 
-		 foreach($data as $k=>$v){
-			 $email = $v['email'];
-			 $link = site_url('survey/?hash='.md5($email));
-			 $survey = '<br><br>Please using access survey link bellow:<br><a href="'.$link.'">'.$link.'</a>';
-			 $content = 'Hi, '.$v['name']. "<br/>".$email_content.$survey;
-			 $image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
+		foreach($data as $k=>$v){
+			$email = $v['email'];
+			$link = site_url('survey/?hash='.md5($email));
+			$survey = '<br><br>Please using access survey link bellow:<br><a href="'.$link.'">'.$link.'</a>';
+			$content = 'Hi, '.$v['name']. "<br/>".$email_content.$survey;
+			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
 
-			 if($email){
-				 //$this->sendMail($email, $content. $image_refer, $subject);
-				 $this->db->insert('tbl_email_queue',array('email'=>$email,
-					 'content'=>$content. $image_refer,
-					 'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
-			 }
+			if($email){
+				//$this->sendMail($email, $content. $image_refer, $subject);
+				$this->db->insert('tbl_email_queue',array('email'=>$email,
+					'content'=>$content. $image_refer,
+					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
+			}
 
-		 }
-		 echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has added to queue.'));
+		}
+		echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has added to queue.'));
 	}
 	public function sendMail($toEmail='' , $content = '' , $subject = '')
-    {
-        $mail = new PHPMailer();
+	{
+		$mail = new PHPMailer();
 
 		$email_content = $this->load->view('email/template',array('email_content'=>$content,'email'=>$toEmail),true);
 
-        $mail->IsSMTP();
-        $mail->Host = 'localhost';
-        $mail->SMTPAuth = false;
-        $mail->From = 'support@ncdeliteveterans.org';
-        $mail->FromName = 'Elite Nor-Cal';
+		$mail->IsSMTP();
+		$mail->Host = 'localhost';
+		$mail->SMTPAuth = false;
+		$mail->From = 'support@ncdeliteveterans.org';
+		$mail->FromName = 'Elite Nor-Cal';
 
-        $mail->AddAddress($toEmail);
+		$mail->AddAddress($toEmail);
 
-        $mail->IsHTML(true);
-        $mail->Subject = $subject;
-        $mail->MsgHTML($email_content);
+		$mail->IsHTML(true);
+		$mail->Subject = $subject;
+		$mail->MsgHTML($email_content);
 
-        return $mail->Send();
-    }
+		return $mail->Send();
+	}
 }
