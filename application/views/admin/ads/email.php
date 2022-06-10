@@ -84,7 +84,26 @@
 
 </div>
 <!-- /content area -->
-
+<script src="https://cdn.tiny.cloud/1/f3u1hs5fn8m7a9cqwdfsmvcpopd0vtithscdlflgcn34mv6q/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+	$( document ).ready(function() {
+		tinymce.init({
+			selector: '#content',
+			content_css: '//www.tiny.cloud/css/codepen.min.css',
+			plugins: 'link image code',
+			//toolbar: 'undo redo | link image | code',
+			toolbar: ['undo redo copy cut paste redo remove removeformat selectall | styleselect fontselect fontsizeselect lineheight | forecolor formatselect',' h1 h2 h3 h4 h5 h6 | bold italic strikethrough | alignleft aligncenter alignright alignjustify alignnone | blockquote backcolor | outdent indent | link image | code'],
+			height: "600",
+			/* enable title field in the Image dialog*/
+			image_title: true,
+			/* enable automatic uploads of images represented by blob or data URIs*/
+			automatic_uploads: true,
+			remove_linebreaks: false,
+			file_picker_types: 'image',
+			images_upload_url: '<?=base_url()?>admin/Webinar/uploadImage'
+		});
+	});
+</script>
 
 <script>
 	$('#type').change(function (){
@@ -114,7 +133,10 @@
 		jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "admin/ads/sendemail",
-                data: $('#sendEmail').serialize() ,
+				data : {
+					subject: $('#subject').val(),
+					content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				},
                 dataType: 'json',
                 success: function (res) {
 					sending = false;
@@ -147,7 +169,10 @@
 		jQuery.ajax({
 			type: "POST",
 			url: "<?php echo base_url(); ?>" + "admin/ads/save",
-			data: $('#sendEmail').serialize() ,
+			data : {
+				subject: $('#subject').val(),
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+			},
 			dataType: 'json',
 			success: function (res) {
 				$('#loadding').hide();
