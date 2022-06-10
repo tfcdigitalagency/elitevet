@@ -1,9 +1,9 @@
 <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" data-mobile="true" dir="ltr"
-	   data-width="550" style="font-size: 16px; background:#f1f1f1;">
+	  style="font-size: 16px; background:#f1f1f1;">
 	<tbody>
 	<tr>
 		<td align="center" valign="top" style="margin:0;padding:20px;">
-			<table align="center" border="0" cellpadding="0" cellspacing="0" class="mlContentTable" >
+			<table align="center" border="0" cellpadding="0" cellspacing="0" class="mlContentTable" style="background: #fff;">
 				<tbody>
 				<tr>
 					<td>
