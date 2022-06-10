@@ -309,6 +309,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?=base_url().'admin/ads'?>" class="nav-link">
+                            <i class="icon-stack2"></i><span>Ads</span>
+                        </a>
+                    </li>
+					<li class="nav-item">
                         <a href="<?=base_url().'admin/sponsors'?>" class="nav-link">
                             <i class="icon-stack2"></i><span>Sponsors</span>
                         </a>
