@@ -3,24 +3,24 @@
 	<tbody>
 	<tr>
 		<td align="center" valign="top" style="margin:0;padding:20px;">
-			<table align="center" border="0" cellpadding="0" cellspacing="0" class="mlContentTable" width="640">
+			<table align="center" border="0" cellpadding="0" cellspacing="0" class="mlContentTable" >
 				<tbody>
 				<tr>
 					<td>
 						<!--  -->
 						<table align="center" border="0" bgcolor="#ffffff" class="mlContentTable mlContentTableDefault"
-							   cellpadding="0" cellspacing="0" width="640">
+							   cellpadding="0" cellspacing="0" >
 							<tbody>
 							<tr>
 								<td class="mlContentTableCardTd">
 									<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-										   class="mlContentTable ml-default" style="width: 640px; min-width: 640px;"
-										   width="640">
+										   class="mlContentTable ml-default" style=" min-width: 640px;"
+										   >
 										<tbody>
 										<tr>
 											<td>
 												<table cellpadding="0" cellspacing="0" border="0" align="center"
-													   width="640" style="width: 640px; min-width: 640px;"
+													    style=" min-width: 640px;"
 													   class="mlContentTable">
 													<tbody>
 													<tr>
@@ -30,7 +30,7 @@
 													</tbody>
 												</table>
 												<table cellpadding="0" cellspacing="0" border="0" align="center"
-													   width="640" style="width: 640px; min-width: 640px;"
+													    style=" min-width: 640px;"
 													   class="mlContentTable">
 													<tbody>
 													<tr>
@@ -66,19 +66,19 @@
 						</table>
 
 						<table align="center" border="0" bgcolor="#ffffff" class="mlContentTable mlContentTableDefault"
-							   cellpadding="0" cellspacing="0" width="640" style=" ">
+							   cellpadding="0" cellspacing="0"  style=" ">
 							<tbody>
 							<tr>
 								<td class="mlContentTableCardTd">
 									<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-										   class="mlContentTable ml-default" style="width: 640px; min-width: 640px; border-top:1px solid #f1f1f1; margin-top: 30px;"
-										   width="640">
+										   class="mlContentTable ml-default" style=" min-width: 640px; border-top:1px solid #f1f1f1; margin-top: 30px;"
+										   >
 										<tbody>
 										<tr>
 											<td>
 												<selector>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -88,7 +88,7 @@
 														</tbody>
 													</table>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -110,7 +110,7 @@
 														</tbody>
 													</table>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -133,19 +133,19 @@
 
 						<table align="center" border="0" bgcolor="#ffffff"
 							   class="mlContentTable mlContentTableFooterDefault" cellpadding="0" cellspacing="0"
-							   width="640" style="border-top:1px solid #f1f1f1; ">
+							    style="border-top:1px solid #f1f1f1; ">
 							<tbody>
 							<tr>
 								<td class="mlContentTableFooterCardTd">
 									<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
-										   class="mlContentTable ml-default" style="width: 640px; min-width: 640px;"
-										   width="640">
+										   class="mlContentTable ml-default" style=" min-width: 640px;"
+										   >
 										<tbody>
 										<tr>
 											<td>
 												<selector>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -155,7 +155,7 @@
 														</tbody>
 													</table>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -177,7 +177,7 @@
 														</tbody>
 													</table>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -186,7 +186,7 @@
 														</tbody>
 													</table>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>
@@ -318,7 +318,7 @@
 														</tbody>
 													</table>
 													<table cellpadding="0" cellspacing="0" border="0" align="center"
-														   width="640" style="width: 640px; min-width: 640px;"
+														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
 														<tr>

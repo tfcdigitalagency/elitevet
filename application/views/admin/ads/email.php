@@ -130,12 +130,13 @@
 		sending = true;
 		$('#loadding').show();
 		$('#survey_msg').html('<i class="icon-spinner spinning hide loading"></i>Sending...').show();
+		
 		jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "admin/ads/sendemail",
 				data : {
 					subject: $('#subject').val(),
-					content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+					content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
 				},
                 dataType: 'json',
                 success: function (res) {
@@ -171,7 +172,7 @@
 			url: "<?php echo base_url(); ?>" + "admin/ads/save",
 			data : {
 				subject: $('#subject').val(),
-				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
 			},
 			dataType: 'json',
 			success: function (res) {
