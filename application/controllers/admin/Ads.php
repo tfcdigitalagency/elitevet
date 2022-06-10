@@ -36,12 +36,13 @@ class Ads extends MY_Controller {
 	}
 
 	public function sendemail(){
+
 		$subject = $this->input->post('subject');
 		$email_content = $this->input->post('content');
 
 		$type = $this->input->post('type');
 		if($type){
-			$user_id = $this->input->post('user');
+			$user_id = explode(',',$this->input->post('users'));
 			$this->db->where_in('id',$user_id);
 		}else{
 			$this->db->where('title',"Corporate");

@@ -130,11 +130,16 @@
 		sending = true;
 		$('#loadding').show();
 		$('#survey_msg').html('<i class="icon-spinner spinning hide loading"></i>Sending...').show();
-		
+		var members = [];
+		$('.membersList :checked').each(function (){
+			members.push($(this).val());
+		})
 		jQuery.ajax({
                 type: "POST",
                 url: "<?php echo base_url(); ?>" + "admin/ads/sendemail",
 				data : {
+					type: $('#type').val(),
+					users: members.join(','),
 					subject: $('#subject').val(),
 					content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
 				},
