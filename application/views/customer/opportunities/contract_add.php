@@ -98,16 +98,39 @@
                     </div>
                 </div>
 				<div class="form-group row" style="float: right;">
-					<button type="button" class="btn btn-primary" onclick="save_Contract()">&nbsp&nbspSave&nbsp&nbsp</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confirmModal">
+						Save
+					</button>
 				</div>
 			</form>
         </div>
     </div>
     <!-- /basic modals -->
 
+	<div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Confirm information</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					Are you sure that all info is correct ?
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary"  onclick="save_Contract()">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>
 <!-- /content area -->
 </div>
+
 <script>
 
 	var validator;

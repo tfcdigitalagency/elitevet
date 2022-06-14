@@ -37,7 +37,7 @@
 													<th width="20%" id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th>
 													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity</span></th>
 													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>
-													<th width="10%" id="gv-field-5-8" class="gv-field-5-8">Action</th>
+
 												</tr>
 												</thead>
 												<tbody>
@@ -48,7 +48,7 @@
 													<td id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo $opportunities[$k]['company']; ?></a></td>
 													<td id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo $opportunities[$k]['title']; ?></a></td>
 													<td id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo ($opportunities[$k]['end_date'])?date("m/d/Y",strtotime($opportunities[$k]['end_date'])):''; ?></a></td>
-													<td id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><a href="<?php echo site_url('/customer/opportunities/edit/'.$opportunities[$k]['id'])?>">Edit</a> <a href="<?php echo site_url('/customer/opportunities/delete/'.$opportunities[$k]['id'])?>">Delete</a></td>
+
 												</tr>
 												<?php }
 												}else{
@@ -64,7 +64,7 @@
 													<th width="20%" id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th>
 													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity</span></th>
 													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>
-													<th width="10%" id="gv-field-5-8" class="gv-field-5-8">Action</th>
+
 												</tr>
 												</tfoot>
 											</table>
@@ -90,6 +90,14 @@
         </div>
     </div>
 </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	Launch demo modal
+</button>
+
+<!-- Modal -->
+
 
 <script>
     function show_Video(video_url, detail, uploaded_at) {
