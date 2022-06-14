@@ -15,32 +15,20 @@
                 <div class="container">
 
                     <!-- Layout 1 -->
-                    <div class="mb-3">
 
-                        <h1 class="mb-2 font-weight-semibold" >
-
-                        </h1>
-
-						<div>
-							<img style="width: 100%; border-radius: 10px;" src="<?php echo base_url()?>/assets/banner_opp.png">
-						</div>
-
-                    </div>
                     <div class="row">
 						<div class="col-md-12">
 
 							<!-- Blog layout #1 with video -->
 							<div class="card" style="font-size: large;">
 								<div class="card-body">
-									<h1>Opportunity Board
-										<?php if($checkPostBid){?>
+									<h1>My Birds
 										<div style="float: right">
 											<a class="btn btn-primary" style="color: #fff" href="<?php echo site_url('customer/opportunities/mybids')?>">My Opportunities</a>
 											<a class="btn btn-primary" style="color: #fff" href="<?php echo site_url('customer/opportunities/add')?>">Add New</a>
 										</div>
-										<?php }?>
 									</h1>
-									<p>Opportunity Board offers buyers, estimators and Veteran business advocates the ability to reach the Veteran business community for FREE. Share your bid opportunities, RFPs, RFQs, RFIs, outreach events and more! We will share these opportunities for free with Veterans businesses nationwide. Simply fill out the Opportunity Board form, include any attachments if necessary and submit.</p>
+
 									<div class="card-body">
 										<div class="gv-table-view gv-table-container gv-table-multiple-container gv-container gv-container-5724">
 											<table class="gv-table-view" width="100%">
@@ -48,30 +36,39 @@
 												<tr>
 													<th width="20%" id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th>
 													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity</span></th>
-													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>		</tr>
+													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>
+													<th width="10%" id="gv-field-5-8" class="gv-field-5-8">Action</th>
+												</tr>
 												</thead>
 												<tbody>
-												<?php for($k=0;$k<count($opportunities);$k++){ ?>
+												<?php
+												if(!empty($opportunities)){
+												for($k=0;$k<count($opportunities);$k++){ ?>
 												<tr class="<?php echo ($k%2==0)? 'alt':'' ?>">
 													<td id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo $opportunities[$k]['company']; ?></a></td>
 													<td id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo $opportunities[$k]['title']; ?></a></td>
 													<td id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><a href="<?php echo site_url('/customer/opportunities/detail/'.$opportunities[$k]['id'])?>"><?php echo ($opportunities[$k]['end_date'])?date("m/d/Y",strtotime($opportunities[$k]['end_date'])):''; ?></a></td>
+													<td id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><a href="<?php echo site_url('/customer/opportunities/edit/'.$opportunities[$k]['id'])?>">Edit</a> <a href="<?php echo site_url('/customer/opportunities/delete/'.$opportunities[$k]['id'])?>">Delete</a></td>
 												</tr>
-												<?php } ?>
+												<?php }
+												}else{
+													?>
+													<tr><td colspan="3">
+															No item.
+														</td></tr>
+													<?php
+												}?>
 												</tbody>
 												<tfoot>
 												<tr>
 													<th width="20%" id="gv-field-5-1" class="gv-field-5-1" data-label="Company"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Company</span></th>
 													<th id="gv-field-5-11" class="gv-field-5-11" data-label="Opportunity Title"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Opportunity</span></th>
 													<th width="20%" id="gv-field-5-8" class="gv-field-5-8" data-label="Deadline Date"><span class="gv-field-label"><a class="gv-sort gv-icon-caret-up-down"></a>&nbsp;Deadline Date</span></th>
+													<th width="10%" id="gv-field-5-8" class="gv-field-5-8">Action</th>
 												</tr>
 												</tfoot>
 											</table>
 										</div>
-
-
-
-										<?php if(!$current_user):?><div class="mt-3 text-center" style="margin-top: 20px;"><a class="btn submit-btn btn-primary" style="color: #fff; font-size: 1.2em;" href="<?php echo site_url('/customer/other/membership')?>">Become member to see more Bids</a></div><?php endif;?>
 									</div>
 
 
