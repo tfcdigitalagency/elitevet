@@ -31,7 +31,24 @@
 
             <div class="col-md-12">
                  <form class="form-validate-jquery" method="post" id="sendEmail" action="<?php echo site_url('admin/ads/sendemail')?>">
-
+					 <div class="form-group row">
+						 <label class="col-form-label col-lg-2">Type</label>
+						 <div class="col-lg-10">
+							 <select type="text" class="select2-choice form-control" name="type" id="type" >
+								 <option value="">All Sponsors</option>
+								 <option value="1">Individual</option>
+							 </select>
+							 <div id="individual_wrap" style="margin-top: 30px; display: none;">
+								 <div><input type="text" class="form-control" placeholder="Filter by Name" id="filter"/></div>
+								 <div class="membersList" style="max-height: 300px; margin-top: 10px; overflow-y: auto;">
+									 <?php foreach ($users as $u):
+										 ?>
+									 <div><label><input type="checkbox" value="<?php echo $u['id']?>" name="user[]"/> <?php echo $u['name']?> (<?php echo $u['email']?>)</label></div>
+									 <?php endforeach;?>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Subject *</label>
 					<div class="col-lg-10">
@@ -39,17 +56,9 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-form-label col-lg-2"></label>
+					<label class="col-form-label col-lg-2">Email content *</label>
 					<div class="col-lg-10">
-						<div class="row">
-							<div class="col-lg-6">
-								<div><b>MCP Content</b></div>
-								<textarea rows="5" cols="3" class="form-control editor_content" id="content1" name="content1" placeholder="Please Enter content" required><?php echo @$data->content1; ?></textarea></div>
-							<div class="col-lg-6">
-								<div><b>Ads Content</b></div>
-								<textarea rows="5" cols="3" class="form-control editor_content" id="content2" name="content2" placeholder="Please Enter content" required><?php echo @$data->content2; ?></textarea></div>
-						</div>
-
+						<textarea rows="5" cols="3" class="form-control" id="content" name="content" placeholder="Please Enter content" required><?php echo @$data->content; ?></textarea>
 					</div>
 				</div>
 				<div class="form-group row" >
@@ -79,7 +88,7 @@
 <script>
 	$( document ).ready(function() {
 		tinymce.init({
-			selector: '.editor_content',
+			selector: '#content',
 			content_css: '//www.tiny.cloud/css/codepen.min.css',
 			plugins: 'link image code',
 			//toolbar: 'undo redo | link image | code',
@@ -132,8 +141,7 @@
 					type: $('#type').val(),
 					users: members.join(','),
 					subject: $('#subject').val(),
-					content1: tinyMCE.get('content1').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
-					content2: tinyMCE.get('content2').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+					content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
 				},
                 dataType: 'json',
                 success: function (res) {
@@ -158,9 +166,9 @@
 			$('#subject').focus();
 			return;
 		}
-		var val = tinyMCE.get('content1').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/');
+		var val = tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/');
 		if(!val){
-			$('#content1').focus();
+			$('#content').focus();
 			return;
 		}
 		$('#loadding').show();
@@ -169,8 +177,7 @@
 			url: "<?php echo base_url(); ?>" + "admin/ads/save",
 			data : {
 				subject: $('#subject').val(),
-				content1: tinyMCE.get('content1').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
-				content2: tinyMCE.get('content2').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
 			},
 			dataType: 'json',
 			success: function (res) {

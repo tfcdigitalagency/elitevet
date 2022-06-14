@@ -350,7 +350,7 @@ class Webinar extends MY_Controller {
     }
 
     public function insert_contract(){
-        $data = $this->input->post(); 
+        $data = $this->input->post();
         $this->Webinar_model->setTable('tbl_contract');
 
         if ($data['id'] == "0"){
@@ -446,30 +446,49 @@ class Webinar extends MY_Controller {
 
 
         $email_content = $input['description'];
-        $emails = $input['address'];
+        //$emails = $input['address'];
         $subject = $input['subject'];
 
-        foreach($emails as $email) {
-            $user = $this->User_model->find(array('email' => $email), array(), array(), true);
-            if(count($user) > 0) $user = $user[0];
+		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
+		$ads_content  = $config->content;
+
+		//send email to sponsor
+		$this->db->where('title',"Corporate");
+		$this->db->or_where('title',"Other");
+		$sponsors = $this->db->get('tbl_user')->result_array();
+
+        foreach($sponsors as $user) {
+			$email = $user['email'];
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
-            //$email_content = 'Hi, '.$user['name']. "<br/>".$email_content;
-        	//$this->sendMail($email, 'Hi, '.$user['name']. "<br/>".$email_content.$image_refer, $subject);
+
+			$queue = array('email'=>$email,
+				'content'=>'<div>Hi, '.$user['name']. '</div>
+<table width=\'100%\'><tr><td width=\'50%\' valign="top">'.$email_content.'</td>
+<td width=\'50%\' valign="top">'.$ads_content.'</td></tr></table>'.$image_refer,
+				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
+			$this->db->insert('tbl_email_queue',$queue);
+
+        }
+
+		//send email to user
+		$this->db->where('title',"Veteran");
+		$this->db->or_where('title',"Disabled Vet");
+		$members = $this->db->get('tbl_user')->result_array();
+
+		foreach($members as $user) {
+			$email = $user['email'];
+			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 
 			$queue = array('email'=>$email,
 				'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 			$this->db->insert('tbl_email_queue',$queue);
 
-        }
+		}
 
-        /*
-        $data = $this->User_model->get_User();//var_dump($data);die();
-        foreach($data as $email) {
-            //echo $email['email'];
-            $this->sendMail($email['email'] , $email_content , $email); // 2 = birthday_template
-        }
-        */
+		echo json_encode(array('status'=>1,'message'=>'Total emails:  '.count($sponsors).' sponsor\'s emails and '.count($members).' user\'s emails  has added to queue.'));
+
+
     }
 
     public function sendMail($toEmail='' , $content = '' , $subject = '')
