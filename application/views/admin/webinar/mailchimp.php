@@ -13,7 +13,7 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
             <form class="form-validate-jquery" method="post" target="_other">
                 <input type="text" class="form-control" id="owner_id"  value="<?php echo $owner_id; ?>" hidden>
@@ -22,7 +22,7 @@
 			  <div class="col-lg-11">
 				<input type="text" class="form-control" id="subject" name="subject" value="<?=$subject?>" />
 			  </div>
-			</div>				
+			</div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-1">Email:</label>
                     <div class="col-lg-11">
@@ -41,10 +41,15 @@
                     </div>
                 </div>
 
-                <div class="form-group row" style="float: right;">
+                <div class="form-group row" >
+					<label class="col-form-label col-lg-1"> </label>
+					<div class="col-lg-11">
                     <button type="button" class="btn btn-success" onclick="save_mailchimp()" style="margin-right: 10px;">&nbsp&nbsp Save &nbsp&nbsp <i class="icon-spinner spinning hide loading"></i></button>
                     <button type="button" class="btn btn-primary" onclick="send_Email()">Send</button>
+					<div id="message"></div>
+					</div>
                 </div>
+
 
             </form>
         </div>
@@ -82,11 +87,12 @@
         $.ajax({
             url: base_url+'admin/webinar/send_Email',
             type : 'POST',
-            data : {                
+            data : {
                 description: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
                 address: $('#address').val(),
                 subject: $('#subject').val()
             },
+			dataType: 'json',
             cache: false,
             success: function(result) {
                 new PNotify({
@@ -95,7 +101,7 @@
                     icon: 'icon-checkmark3',
                     type: 'success'
                 });
-                //$('#content').val("");
+                $('#message').html(result.message);
             }
         });
     }
@@ -107,7 +113,7 @@
             $.ajax({
                 url: base_url+'admin/webinar/save_mailchimp',
                 type : 'POST',
-                data : {                
+                data : {
                   content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
                 },
                 cache: false,
