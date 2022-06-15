@@ -24,6 +24,7 @@ class Ads extends MY_Controller {
 
 	public function save(){
 		$data = $this->input->post();
+		$data['content'] = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$data['content']);
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		if(!$config){
 			$this->db->insert('tbl_config' ,array('code'=>'SPONSOR','detail'=>json_encode($data)));
@@ -39,6 +40,7 @@ class Ads extends MY_Controller {
 
 		$subject = $this->input->post('subject');
 		$email_content = $this->input->post('content');
+		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$email_content);
 
 		$type = $this->input->post('type');
 		if($type){

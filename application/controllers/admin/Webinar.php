@@ -452,6 +452,7 @@ class Webinar extends MY_Controller {
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
+		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
 
 		//send email to sponsor
 		$this->db->where('title',"Corporate");
@@ -459,8 +460,8 @@ class Webinar extends MY_Controller {
 		$sponsors = $this->db->get('tbl_user')->result_array();
 
 		foreach($sponsors as $user) {
-			//$email = $user['email'];
-			$email = 'lucdt@ideavietnam.com';
+			$email = $user['email'];
+			//$email = 'lucdt@ideavietnam.com';
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 
 			$queue = array('email'=>$email,
@@ -469,7 +470,6 @@ class Webinar extends MY_Controller {
 <td width=\'50%\' valign="top">'.$ads_content.'</td></tr></table>'.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 			$this->db->insert('tbl_email_queue',$queue);
-			die();
 
 		}
 
