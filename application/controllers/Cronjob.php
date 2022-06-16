@@ -13,6 +13,7 @@ class Cronjob extends CI_Controller {
 
 	public function queue(){
 		$this->db->limit(50);
+		$this->db->order_by('id','DESC');
 		$data = $this->db->get_where('tbl_email_queue',array('status'=>0))->result();
 
 		foreach ($data as $email){
@@ -21,6 +22,8 @@ class Cronjob extends CI_Controller {
 
 			if($check){
 				$this->db->update('tbl_email_queue',array('status'=>1),array('id'=>$email->id));
+			}else{
+				$this->db->update('tbl_email_queue',array('status'=>-1),array('id'=>$email->id));
 			}
 		}
 

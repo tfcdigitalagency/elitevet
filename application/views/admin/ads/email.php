@@ -11,7 +11,7 @@
 <div class="page-header page-header-light">
     <div class="page-header-content header-elements-md-inline">
         <div class="page-title d-flex">
-            <h4><span class="font-weight-semibold">Send Email to Sponsor members</span></h4>
+            <h4><span class="font-weight-semibold">Email Ads Content</span></h4>
         </div>
     </div>
 </div>
@@ -31,7 +31,7 @@
 
             <div class="col-md-12">
                  <form class="form-validate-jquery" method="post" id="sendEmail" action="<?php echo site_url('admin/ads/sendemail')?>">
-					 <div class="form-group row">
+					 <!--div class="form-group row">
 						 <label class="col-form-label col-lg-2">Type</label>
 						 <div class="col-lg-10">
 							 <select type="text" class="select2-choice form-control" name="type" id="type" >
@@ -48,7 +48,7 @@
 								 </div>
 							 </div>
 						 </div>
-					 </div>
+					 </div-->
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Subject *</label>
 					<div class="col-lg-10">
@@ -64,7 +64,7 @@
 				<div class="form-group row" >
 					<label class="col-form-label col-lg-2"> </label>
 					<div class="col-lg-10">
-					<button type="submit" value="submit" name="submit" class="btn btn-primary" >&nbsp;&nbsp;Submit</button> &nbsp;
+<!--					<button type="submit" value="submit" name="submit" class="btn btn-primary" >&nbsp;&nbsp;Submit</button> &nbsp;-->
 					<button type="button" value="save" name="save" id="save_content" class="btn btn-warning" >Save</button>
 						<i id="loadding" style="display:none" class="icon-spinner spinning hide loading"></i>
 					</div>
