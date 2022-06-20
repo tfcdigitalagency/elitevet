@@ -11,13 +11,20 @@ class Home extends MY_Controller {
         $this->mHeader['title'] = 'Home';
         $this->mContent['msg'] = "";
         $this->load->model(['Training_model','Sponsors_model']);
+
+		$this->load->library('stripe_lib');
     }
 
     /*
     * Home
     * */
     public function index(){
+		$current_user =  $this->session->userdata('user');
+		$uid = $current_user['id'];
+
         $this->mHeader['sub_id'] = 'home';
+		$this->mContent['sponsors_package'] = $this->db->get_where('tbl_membership',array('type'=>1))->result();
+		$this->mContent['check_sponsor'] = $this->db->get_where('tbl_sponsor',array('uid'=>$uid))->row();
         $this->mContent['training'] = $this->Training_model->find(array(), array(), array(), true);
         $this->mContent['sponsor'] = $this->Sponsors_model->find(array('status'=>1), array(), array(), true);
         $this->render("{$this->sub_mLayout}index", $this->mLayout);

@@ -61,12 +61,12 @@
                         <div class="col-md-8 col-xs-8 col-sm-8 " id="p_amount"> <label class="control-label">  <?php echo $package->cost;?> USD </label>
                         </div>
                     </div>
-                    <div class="row form-group" id="show_hide_div">
+                    <!--div class="row form-group" id="show_hide_div">
                         <label for="text" class="col-md-4 col-xs-4 col-sm-4 control-label"></label>
                         <div class="col-md-8 col-xs-8 col-sm-8 ">
                             <button type="button" onclick="show_coupon();" class="btn btn-default center">Have a coupon?</button>
                         </div>
-                    </div>
+                    </div-->
                     <div id="coupon-div" style="display: none;">
                         <div class="row form-group">
                             <label for="text" class="col-md-4 col-xs-4 col-sm-4 control-label">Discount Coupon</label>

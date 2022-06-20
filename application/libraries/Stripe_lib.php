@@ -70,4 +70,48 @@ class Stripe_lib{
             return false;
         }
     }
+
+	function createPlan($planName, $planPrice, $planInterval){
+		// Convert price to cents
+		$priceCents = ($planPrice*100);
+		$currency = $this->CI->config->item('stripe_currency');
+
+		try {
+			// Create a plan
+			$plan = \Stripe\Plan::create(array(
+				"product" => array(
+					"name" => $planName
+				),
+				"amount" => $priceCents,
+				"currency" => $currency,
+				"interval" => $planInterval,
+				"interval_count" => 1
+			));
+			return $plan;
+		}catch(Exception $e) {
+			$this->api_error = $e->getMessage();
+			return false;
+		}
+	}
+
+	function createSubscription($customerID, $planID){
+		try {
+			// Creates a new subscription
+			$subscription = \Stripe\Subscription::create(array(
+				"customer" => $customerID,
+				"items" => array(
+					array(
+						"plan" => $planID
+					),
+				),
+			));
+
+			// Retrieve charge details
+			$subsData = $subscription->jsonSerialize();
+			return $subsData;
+		}catch(Exception $e) {
+			$this->api_error = $e->getMessage();
+			return false;
+		}
+	}
 }
