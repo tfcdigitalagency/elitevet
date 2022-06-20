@@ -491,6 +491,7 @@ class Webinar extends MY_Controller {
 		//send email to user
 		$this->db->where('title',"Veteran");
 		$this->db->or_where('title',"Disabled Vet");
+		 
 		$members = $this->db->get('tbl_user')->result_array();
 
 		foreach($members as $user) {
@@ -499,7 +500,7 @@ class Webinar extends MY_Controller {
 			}else{
 				$email = $user['email'];
 			}
-			
+
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 
 			$queue = array('email'=>$email,
