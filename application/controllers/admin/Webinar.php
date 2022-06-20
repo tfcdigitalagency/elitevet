@@ -449,6 +449,9 @@ class Webinar extends MY_Controller {
 		//$emails = $input['address'];
 		$subject = $input['subject'];
 
+		$disable_ads = $input['disable_ads'];
+		$test_email = $input['test_email'];
+
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
@@ -460,16 +463,28 @@ class Webinar extends MY_Controller {
 		$sponsors = $this->db->get('tbl_user')->result_array();
 
 		foreach($sponsors as $user) {
-			$email = $user['email'];
+			if($test_email){
+				$email = $test_email;
+			}else{
+				$email = $user['email'];
+			}
+
 			//$email = 'lucdt@ideavietnam.com';
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
-
-			$queue = array('email'=>$email,
-				'content'=>'<div>Hi, '.$user['name']. '</div>
+			if($disable_ads){
+				$queue = array('email'=>$email,
+					'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
+					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
+				$this->db->insert('tbl_email_queue',$queue);
+			}else{
+				$queue = array('email'=>$email,
+					'content'=>'<div>Hi, '.$user['name']. '</div>
 <table width=\'100%\'><tr><td width=\'50%\' valign="top">'.$email_content.'</td>
 <td width=\'50%\' valign="top">'.$ads_content.'</td></tr></table>'.$image_refer,
-				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
-			$this->db->insert('tbl_email_queue',$queue);
+					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
+				$this->db->insert('tbl_email_queue',$queue);
+			}
+
 
 		}
 
@@ -479,7 +494,12 @@ class Webinar extends MY_Controller {
 		$members = $this->db->get('tbl_user')->result_array();
 
 		foreach($members as $user) {
-			$email = $user['email'];
+			if($test_email){
+				$email = $test_email;
+			}else{
+				$email = $user['email'];
+			}
+			
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 
 			$queue = array('email'=>$email,

@@ -30,16 +30,19 @@
                     </div>
                 </div>
 
-                <div class="form-group row" hidden>
-                    <label class="col-form-label col-lg-2">Contact Email:</label>
-                    <div class="col-lg-10">
-                        <select multiple="multiple" class="form-control" id="address">
-                        <?php for($k=0;$k<count($contact);$k++){ ?>
-                            <option value="<?php echo $contact[$k]['email']; ?>" selected><?php echo $contact[$k]['email']; ?></option>
-                        <?php } ?>
-                        </select>
+                <div class="form-group row">
+                    <label class="col-form-label col-lg-1">Ads Options:</label>
+                    <div class="col-lg-11">
+                        <label><input type="checkbox" value="1" name="disable_ads" id="disable_ads"> Do not include Ads content.</label>
                     </div>
-                </div>
+
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-1">Overwrite Test Email:</label>
+					<div class="col-lg-11">
+						<label><input size="100" type="email" class="form-control" value="" name="test_email" id="test_email"/></label>
+					</div>
+				</div>
 
                 <div class="form-group row" >
 					<label class="col-form-label col-lg-1"> </label>
@@ -90,7 +93,9 @@
             data : {
                 description: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
                 address: $('#address').val(),
-                subject: $('#subject').val()
+                subject: $('#subject').val(),
+				disable_ads: $('#disable_ads').is(":checked")?1:0,
+				test_email: $('#test_email').val()
             },
 			dataType: 'json',
             cache: false,
