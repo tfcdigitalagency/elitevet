@@ -207,7 +207,7 @@ class Sponsor extends MY_Controller {
 							);
 							$subscription_id = $this->insertSubscription($subscripData);
 
-							$paidAmount = $package->cost; 
+							$paidAmount = $package->cost;
 							$paidCurrency = $planCurrency;
 							$payment_status = $status;
 							$orderData = array(

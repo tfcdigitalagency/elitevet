@@ -24,6 +24,7 @@ class Home extends MY_Controller {
 
         $this->mHeader['sub_id'] = 'home';
 		$this->mContent['sponsors_package'] = $this->db->get_where('tbl_membership',array('type'=>1))->result();
+		$this->db->order_by('created','DESC');
 		$this->mContent['check_sponsor'] = $this->db->get_where('tbl_sponsor',array('uid'=>$uid))->row();
         $this->mContent['training'] = $this->Training_model->find(array(), array(), array(), true);
         $this->mContent['sponsor'] = $this->Sponsors_model->find(array('status'=>1), array(), array(), true);
