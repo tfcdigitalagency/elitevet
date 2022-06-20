@@ -168,7 +168,7 @@ class Sponsor extends MY_Controller {
 
 				$user = $this->Membership_model->getUserByEmail($email);
 				if(!$user){
-					$this->User_model->insert(array("name"=>$postData['name'],"email"=>$postData['email'],'password'=>md5($postData['password']),"membership_id"=>$package->id));
+					$this->User_model->insert(array("name"=>$name,"email"=>$name,'password'=>md5('123'),"membership_id"=>$package->id));
 				}
 
 				$plan = $this->stripe_lib->createPlan($planName, $planPrice, $planInterval);
