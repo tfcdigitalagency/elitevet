@@ -168,7 +168,23 @@ class Sponsor extends MY_Controller {
 
 				$user = $this->Membership_model->getUserByEmail($email);
 				if(!$user){
-					$this->User_model->insert(array("name"=>$name,"email"=>$name,'password'=>md5('123'),"membership_id"=>$package->id));
+					$pass_plain = uniqid();
+					$this->User_model->insert(array("name"=>$name,"email"=>$email,'password'=>md5($pass_plain),"membership_id"=>$package->id));
+					$subject = "New account from Ncdeliteveterans.org";
+					$content = "Hello ".$name."<br><br>";
+					$content.= "Your new account :";
+					$content.= "<p>
+						Username: ".$email."<br>
+						Password: ".$pass_plain."<br>
+					</p>";
+							$content.= "Thank you, <br>";
+							$content.= "Ncdeliteveterans Team<br>";
+
+					$this->db->insert('tbl_email_queue',array('email'=>$user->email,
+						'content'=>$content,
+						'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
+
+
 				}
 
 				$plan = $this->stripe_lib->createPlan($planName, $planPrice, $planInterval);
