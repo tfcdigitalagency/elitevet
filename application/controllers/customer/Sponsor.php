@@ -148,6 +148,11 @@ class Sponsor extends MY_Controller {
 	function payment($postData){
 		$package_id = $this->input->post('package_id');
 		$package = $this->Membership_model->one(array('id'=>$package_id));
+		$company = $this->input->post('company');
+		$email = $this->input->post('email');
+		$name = $this->input->post('fullname');
+		$phone = $this->input->post('phone');
+		$url = $this->input->post('url');
 		// If post data is not empty
 		if(!empty($postData)){
 			// Retrieve stripe token and user info from the submitted form data
@@ -170,7 +175,15 @@ class Sponsor extends MY_Controller {
 				if(!$user){
 					$pass_plain = uniqid();
 					$name = $this->input->post('fullname');
-					$this->User_model->insert(array("name"=>$name,"email"=>$email,'password'=>md5($pass_plain),"membership_id"=>$package->id));
+					$this->User_model->insert(
+						array(
+							"title"=>'Corporate',
+							"name"=>$name,
+							'company'=>$company,
+							'phone'=>$phone,
+							"email"=>$email,
+							'password'=>md5($pass_plain),
+							"membership_id"=>$package->id));
 					$subject = "New account from Ncdeliteveterans.org";
 					$content = "Hello ".$name."<br><br>";
 					$content.= "Your new account :";
