@@ -152,7 +152,7 @@ class Sponsor extends MY_Controller {
 		if(!empty($postData)){
 			// Retrieve stripe token and user info from the submitted form data
 			$token  = $postData['stripeToken'];
-			$name = $postData['fullname'];
+			$name = $this->input->post('fullname');
 			$email = $postData['email'];
 
 			// Add customer to stripe
@@ -169,6 +169,7 @@ class Sponsor extends MY_Controller {
 				$user = $this->Membership_model->getUserByEmail($email);
 				if(!$user){
 					$pass_plain = uniqid();
+					$name = $this->input->post('fullname');
 					$this->User_model->insert(array("name"=>$name,"email"=>$email,'password'=>md5($pass_plain),"membership_id"=>$package->id));
 					$subject = "New account from Ncdeliteveterans.org";
 					$content = "Hello ".$name."<br><br>";
