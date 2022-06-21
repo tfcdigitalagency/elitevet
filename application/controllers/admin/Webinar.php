@@ -449,6 +449,60 @@ class Webinar extends MY_Controller {
 		//$emails = $input['address'];
 		$subject = $input['subject'];
 
+		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
+		$config  = json_decode($config->detail);
+		$ads_content = $config->content;
+		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
+
+		//send email to sponsor
+		$this->db->where('title',"Corporate");
+		$this->db->or_where('title',"Other");
+		$sponsors = $this->db->get('tbl_user')->result_array();
+
+		foreach($sponsors as $user) {
+			$email = $user['email'];
+			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
+			$queue = array('email'=>$email,
+				'content'=>'<div>Hi, '.$user['name']. '</div>
+<table width=\'100%\'><tr><td width=\'50%\' valign="top">'.$email_content.'</td>
+<td width=\'50%\' valign="top">'.$ads_content.'</td></tr></table>'.$image_refer,
+				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
+			$this->db->insert('tbl_email_queue',$queue);
+
+
+		}
+
+		//send email to user
+		$this->db->where('title',"Veteran");
+		$this->db->or_where('title',"Disabled Vet");
+		$members = $this->db->get('tbl_user')->result_array();
+
+		foreach($members as $user) {
+			$email = $user['email'];
+
+			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
+
+			$queue = array('email'=>$email,
+				'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
+				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
+			$this->db->insert('tbl_email_queue',$queue);
+
+		}
+
+		echo json_encode(array('status'=>1,'message'=>'Total emails:  '.count($sponsors).' sponsor\'s emails and '.count($members).' user\'s emails  has added to queue.'));
+
+
+	}
+
+	public function send_test(){
+
+		$input = $this->input->post();
+
+
+		$email_content = $input['description'];
+
+		$subject = $input['subject'];
+
 		$disable_ads = $input['disable_ads'];
 		$test_email = $input['test_email'];
 
@@ -463,13 +517,8 @@ class Webinar extends MY_Controller {
 		$sponsors = $this->db->get('tbl_user')->result_array();
 
 		foreach($sponsors as $user) {
-			if($test_email){
-				$email = $test_email;
-			}else{
-				$email = $user['email'];
-			}
+			$email = $test_email;
 
-			//$email = 'lucdt@ideavietnam.com';
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 			if($disable_ads){
 				$queue = array('email'=>$email,
@@ -491,15 +540,10 @@ class Webinar extends MY_Controller {
 		//send email to user
 		$this->db->where('title',"Veteran");
 		$this->db->or_where('title',"Disabled Vet");
-		 
 		$members = $this->db->get('tbl_user')->result_array();
 
 		foreach($members as $user) {
-			if($test_email){
-				$email = $test_email;
-			}else{
-				$email = $user['email'];
-			}
+			$email = $test_email;
 
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 

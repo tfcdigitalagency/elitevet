@@ -49,6 +49,7 @@
 					<div class="col-lg-11">
                     <button type="button" class="btn btn-success" onclick="save_mailchimp()" style="margin-right: 10px;">&nbsp&nbsp Save &nbsp&nbsp <i class="icon-spinner spinning hide loading"></i></button>
                     <button type="button" class="btn btn-primary" onclick="send_Email()">Send</button>
+                    <button type="button" class="btn btn-warning" onclick="send_test()()">Send Test Email</button>
 					<div id="message"></div>
 					</div>
                 </div>
@@ -89,6 +90,33 @@
 
         $.ajax({
             url: base_url+'admin/webinar/send_Email',
+            type : 'POST',
+            data : {
+                description: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
+                address: $('#address').val(),
+                subject: $('#subject').val()
+            },
+			dataType: 'json',
+            cache: false,
+            success: function(result) {
+                new PNotify({
+                    title: 'Success!',
+                    text: 'Send Email Success.',
+                    icon: 'icon-checkmark3',
+                    type: 'success'
+                });
+                $('#message').html(result.message);
+            }
+        });
+    }
+
+	function send_test() {
+		if(!$('#test_email').val()){
+			$('#test_email').focus();
+			return;
+		}
+        $.ajax({
+            url: base_url+'admin/webinar/send_test',
             type : 'POST',
             data : {
                 description: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
