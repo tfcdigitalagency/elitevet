@@ -48,7 +48,7 @@
 					<label class="col-form-label col-lg-1"> </label>
 					<div class="col-lg-11">
                     <button type="button" class="btn btn-success" onclick="save_mailchimp()" style="margin-right: 10px;">&nbsp&nbsp Save &nbsp&nbsp <i class="icon-spinner spinning hide loading"></i></button>
-                    <button type="button" class="btn btn-primary" onclick="send_Email()">Send</button>
+                    <button type="button" class="btn btn-primary" onclick="send_Email()" style="margin-right: 10px;">Send</button>
                     <button type="button" class="btn btn-warning" onclick="send_test()()">Send Test Email</button>
 					<div id="message"></div>
 					</div>
@@ -87,7 +87,7 @@
     var base_url = '<?= base_url() ?>';
     var loading = false;
     function send_Email() {
-
+		if(!confirm('Do you want to send email to user now?')) return;
         $.ajax({
             url: base_url+'admin/webinar/send_Email',
             type : 'POST',
