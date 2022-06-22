@@ -119,13 +119,11 @@ class Event extends MY_Controller {
 
 					// Redirect to the page where user can create event
 					//header('Location: home.php');
-					//$user_timezone = $this->Googlecalendarapi->GetUserCalendarTimezone($_SESSION['access_token']);
+					$user_timezone = $this->Googlecalendarapi->GetUserCalendarTimezone($_SESSION['access_token']);
 
 					// Create event on primary calendar
-					//$event_id = $this->Googlecalendarapi->CreateCalendarEvent('primary', $webinar['title'], $webinar['all_day'], $webinar['event_time'], $user_timezone, $_SESSION['access_token']);
-
-					print_r($webinar);
-					die("OK");
+					$event_id = $this->Googlecalendarapi->CreateCalendarEvent('primary', $webinar['title'], 0, $webinar['event_time'], $user_timezone, $_SESSION['access_token']);
+ 					$this->redirect('customer/event');
 				}
 				catch(Exception $e) {
 					echo $e->getMessage();
