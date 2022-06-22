@@ -123,8 +123,7 @@ class Event extends MY_Controller {
 				// Create event on primary calendar
 				$event_id = $this->googlecalendarapi->CreateCalendarEvent('primary', $webinar['name'], 0, $webinar['start_time'], $user_timezone, $_SESSION['access_token']);
 
-				print_r($webinar);
-				die("OK");
+				redirect(site_url('customer/event?google='.$event_id));
 			}
 			catch(Exception $e) {
 				echo $e->getMessage();
