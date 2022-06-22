@@ -299,7 +299,7 @@
     }
 
 	function addGoogleCalendar(){
-
+		location.href = '<?php echo site_url("customer/event/google/".$data[0]['id'])?>';
 	}
 </script>
 
