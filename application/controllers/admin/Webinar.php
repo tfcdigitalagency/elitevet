@@ -555,7 +555,7 @@ class Webinar extends MY_Controller {
 
 		}
 
-		echo json_encode(array('status'=>1,'message'=>'Total emails:  '.count($sponsors).' sponsor\'s emails and '.count($members).' user\'s emails  has added to queue.'));
+		echo json_encode(array('status'=>1,'message'=>'The emails has added to queue.'));
 
 
 	}
