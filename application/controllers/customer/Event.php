@@ -39,6 +39,8 @@ class Event extends MY_Controller {
         $this->mHeader['sub_id'] = 'event';
         $id = $this->input->get('id');
 
+		$this->session->set_userdata('event_id', $id);
+
         $this->mContent['data'] = $this->Event_model->find(array("id"=>$id), array(), array(), true);
         $this->mContent['registed_count'] = $this->Reg_history_model->count(array("event_id"=>$id));
 
@@ -131,7 +133,7 @@ class Event extends MY_Controller {
 				}
 			}
 			if(!$_SESSION['access_token']) {
-				$login_url = 'https://accounts.google.com/o/oauth2/auth?scope=' . urlencode('https://www.googleapis.com/auth/calendar') . '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online';
+				$login_url = 'https://accounts.google.com/o/oauth2/auth?scope=' . urlencode('https://www.googleapis.com/auth/calendar') . '&redirect_uri=' . urlencode(site_url('customer/event/google')) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online';
 				redirect($login_url);
 			}
    }
