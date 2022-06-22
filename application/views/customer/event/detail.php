@@ -50,7 +50,7 @@
 									</div>
 								</div>
 								<div class="col-lg-12">
-									<button type="button" data-toggle="modal" data-target="#modal_gcalendar">Google Calendar</button>
+<!--									<button type="button" data-toggle="modal" data-target="#modal_gcalendar">Google Calendar</button>-->
 									<button type="button" class="btn btn-danger" onclick="Reg_Event()" style="float:right;margin-right: 10%; display:<?= ($data[0]['status'] != "upcoming") ?'none':'';?>" >Buy Ticket | Register Event</button>
 								</div>
 							</div>
