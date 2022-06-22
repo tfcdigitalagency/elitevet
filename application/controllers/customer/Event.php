@@ -120,8 +120,17 @@ class Event extends MY_Controller {
 				// Redirect to the page where user can create event
 				$user_timezone = $this->googlecalendarapi->GetUserCalendarTimezone($_SESSION['access_token']);
 
+				$event = array(
+					'title'=>	$webinar['name'],
+					'all_day'=>	0,
+					'event_time'=>	array(
+						'start_time'=>date(DATE_ATOM,strtotime($webinar['start_time'])),
+						'end_time'=>date(DATE_ATOM,strtotime($webinar['end_time'])),
+						'event_date'=>'',
+					),
+				);
 				// Create event on primary calendar
-				$event_id = $this->googlecalendarapi->CreateCalendarEvent('primary', $webinar['name'], 0, $webinar['start_time'], $user_timezone, $_SESSION['access_token']);
+				$event_id = $this->googlecalendarapi->CreateCalendarEvent('primary', $event['title'], $event['all_day'], $event['event_time'], $user_timezone, $_SESSION['access_token']);
 
 				redirect(site_url('customer/event?google='.$event_id));
 			}
@@ -136,8 +145,19 @@ class Event extends MY_Controller {
 		}else{
 			$user_timezone = $this->googlecalendarapi->GetUserCalendarTimezone($_SESSION['access_token']);
 
+			$event = array(
+				'title'=>	$webinar['name'],
+				'all_day'=>	0,
+				'event_time'=>	array(
+					'start_time'=>date(DATE_ATOM,strtotime($webinar['start_time'])),
+					'end_time'=>date(DATE_ATOM,strtotime($webinar['end_time'])),
+					'event_date'=>'',
+				),
+			);
+
+
 			// Create event on primary calendar
-			$event_id = $this->googlecalendarapi->CreateCalendarEvent('primary', $webinar['name'], 0, $webinar['start_time'], $user_timezone, $_SESSION['access_token']);
+			$event_id = $this->googlecalendarapi->CreateCalendarEvent('primary', $event['title'], $event['all_day'], $event['event_time'], $user_timezone, $_SESSION['access_token']);
 
 			redirect(site_url('customer/event?google='.$event_id));
 		}
