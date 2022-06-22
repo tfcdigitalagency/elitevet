@@ -75,7 +75,7 @@
 <!-- Main navbar -->
 <div class="navbar navbar-expand-md navbar-dark">
     <div class="navbar-brand">
-        <a href="index.html" class="d-inline-block">
+        <a href="<?=base_url()?>" class="d-inline-block">
             <img src="<?=base_url(GLOBAL_URL)?>images/logo_light.png" style="height: 2rem;" alt="">
         </a>
     </div>
@@ -90,15 +90,10 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbar-mobile">
-        <!-- <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
-                    <i class="icon-paragraph-justify3"></i>
-                </a>
-            </li>
-        </ul> -->
 
-        <span class="navbar-text ml-md-3 mr-md-auto">
+
+        <span class="navbar-text ml-md-3 mr-md-auto" style="position: absolute; right: 10px;">
+			Total Visitor: <?php echo get_counter();?>
         </span>
 
         <ul class="navbar-nav">

@@ -24,3 +24,36 @@ function get_user($id){
 	$user->membership = $CI->db->get_where('tbl_membership',array('id'=>$user->membership_id))->row();
 	return $user;
 }
+
+
+function hit_counter(){
+	$CI = &get_instance();
+	$CI->load->helper('cookie');
+
+	$offset = $CI->uri->segment(1);
+	if($offset == 'admin'){
+		return;
+	}
+
+	$name = md5(current_url());
+
+	$visitor = $CI->session->userdata($name);
+	$ipadrs = $CI->input->ip_address();
+
+	if ($visitor == false)
+	{
+		$CI->session->set_userdata($name,$ipadrs);
+
+		$sql = 'UPDATE tbl_counter SET counter = counter + 1';
+		$CI->db->query($sql);
+	}
+
+
+}
+
+function get_counter(){
+	$CI = &get_instance();
+	$row = $CI->db->get('tbl_counter')->row_array();
+	return $row['counter'];
+}
+

@@ -12,6 +12,8 @@ class MY_Controller extends CI_Controller {
     function __construct() {
         parent::__construct();
 
+		hit_counter();
+
         $this->mUser = $this->session->userdata('user');
         $this->is_admin = $this->session->userdata('user')['is_admin'];
         $this->membership = 0;
