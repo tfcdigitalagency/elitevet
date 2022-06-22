@@ -533,7 +533,7 @@ class Webinar extends MY_Controller {
 					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 				$this->db->insert('tbl_email_queue',$queue);
 			}
-
+			break;
 
 		}
 
@@ -551,6 +551,7 @@ class Webinar extends MY_Controller {
 				'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 			$this->db->insert('tbl_email_queue',$queue);
+			break;
 
 		}
 
