@@ -26,7 +26,7 @@ class Event extends MY_Controller {
     }
 
     public function display_Event(){
-        $this->mHeader['sub_id'] = 'event';        
+        $this->mHeader['sub_id'] = 'event';
         $page = $this->input->get('page');
         $this->mContent['event'] = $this->Event_model->get_Event($page);
         $this->mContent['cur_page']=$page;
@@ -41,7 +41,7 @@ class Event extends MY_Controller {
 
         $this->mContent['data'] = $this->Event_model->find(array("id"=>$id), array(), array(), true);
         $this->mContent['registed_count'] = $this->Reg_history_model->count(array("event_id"=>$id));
-       
+
         $this->render("{$this->sub_mLayout}detail", $this->mLayout);
     }
 
@@ -51,6 +51,9 @@ class Event extends MY_Controller {
 
         $user = $this->User_model->find(array("email"=>$data['email']), array(), array(), true);
         $webinar = $this->Webinar_model->find(array("id" => $data['event_id']), array(), array(), true);
+
+		$this->session->set_userdata('event_id',$data['event_id']);
+
         if(count($webinar) > 0){
 
             $webinar = $webinar[0];
@@ -91,5 +94,42 @@ class Event extends MY_Controller {
 
             mail($data['email'],$subject,$message, $headers);
         }
+
+		function google($id =''){
+			if(!$id){
+				$id = $this->session->userdata('event_id');
+			}
+			$webinar = $this->Webinar_model->find(array("id" => $id), array(), array(), true);
+			if(count($webinar) > 0) {
+				$webinar = $webinar[0];
+			}
+			if(isset($_GET['code'])) {
+				try {
+					$this->load->libary('Googlecalendarapi');
+
+					// Get the access token
+					$data = $this->Googlecalendarapi->GetAccessToken(CLIENT_ID, CLIENT_REDIRECT_URL, CLIENT_SECRET, $_GET['code']);
+
+					// Save the access token as a session variable
+					$_SESSION['access_token'] = $data['access_token'];
+
+					// Redirect to the page where user can create event
+					//header('Location: home.php');
+					//$user_timezone = $this->Googlecalendarapi->GetUserCalendarTimezone($_SESSION['access_token']);
+
+					// Create event on primary calendar
+					//$event_id = $this->Googlecalendarapi->CreateCalendarEvent('primary', $webinar['title'], $webinar['all_day'], $webinar['event_time'], $user_timezone, $_SESSION['access_token']);
+
+					print_r($webinar);
+					die("OK");
+				}
+				catch(Exception $e) {
+					echo $e->getMessage();
+					exit();
+				}
+			}
+
+
+		}
    }
 }

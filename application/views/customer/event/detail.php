@@ -15,9 +15,9 @@
 
                     <div class="card-body" style="width: 80%;margin-left: 10%;background-color: khaki;">
 						<div class="card-img-actions mx-1 mt-1">
-							
+
 							<img class="card-img img-fluid" src="<?=base_url().$data[0]['thumbnail'];?>" alt="" style="width: 80%;margin-left: 10%;height: 400px;">
-																
+
 						</div>
 
 						<div class="card-img-actions mx-1 mt-1">
@@ -46,10 +46,11 @@
 									<div class="row" style="width: 80%;margin-left: 10%;">
 										<div class="col-6" style=" height: 64px;border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
 											Registed: <?php echo $registed_count;?> People
-										</div>										
+										</div>
 									</div>
 								</div>
 								<div class="col-lg-12">
+									<button type="button" data-toggle="modal" data-target="#modal_gcalendar">Google Calendar</button>
 									<button type="button" class="btn btn-danger" onclick="Reg_Event()" style="float:right;margin-right: 10%; display:<?= ($data[0]['status'] != "upcoming") ?'none':'';?>" >Buy Ticket | Register Event</button>
 								</div>
 							</div>
@@ -131,14 +132,43 @@
 					<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
 					<button type="button" class="btn bg-primary" onclick="Save_Reg()">Register</button>
 				</div>
-			</form>	
+			</form>
+		</div>
+	</div>
+</div>
+
+<div id="modal_gcalendar" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-primary">
+				<h6 class="modal-title" id="modal_Reg_Title">Successfully</h6>
+				<button type="button" class="close" data-dismiss="modal">×</button>
+			</div>
+
+			<div class="modal-body">
+				<form class="form-validate-jquery" method="post" target="_other">
+					<div class="form-group row">
+
+						<div class="col-lg-12">
+							You have registered to join the Event.<br>
+							Do you want add event to your Google Calendar?
+						</div>
+					</div>
+
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-link" data-dismiss="modal">No thanks</button>
+				<button type="button" class="btn bg-primary" onclick="addGoogleCalendar()">Yes please</button>
+			</div>
+			</form>
 		</div>
 	</div>
 </div>
 
 <!-- /success modal -->
 
-<script> 
+<script>
     function Display_Detail() {
         location.href = base_url+'auth/register';
     }
@@ -154,7 +184,7 @@
             $('#company').val("<?=$this->session->userdata('user')['company']?>");
         <?php endif;?>
         $('#modal_Reg').modal();
-    } 
+    }
 
     var validator;
     var FormValidation = function() {
@@ -215,10 +245,10 @@
                 messages: {
                     name: {
                         required: 'This field is required.'
-                    },   
+                    },
                     link: {
                         required: 'This field is required.'
-                    }                
+                    }
                 }
             });
 
@@ -242,7 +272,7 @@
     function Save_Reg() {
 
     	var check = validator.checkForm();
-        if (!check)            
+        if (!check)
             validator.showErrors();
         else{
             $.ajax({
@@ -259,13 +289,18 @@
                 },
                 cache: false,
                 success: function() {
-                   
-                    //$('#modal_Reg').modal('hide');
-                    location.href = base_url+'customer/event/index';
+
+                    $('#modal_Reg').modal('hide');
+					$('#modal_gcalendar').modal('show');
+                    //location.href = base_url+'customer/event/index';
                 }
             });
         }
     }
+
+	function addGoogleCalendar(){
+
+	}
 </script>
 
 <iframe name="_other" id="_other" hidden></iframe>

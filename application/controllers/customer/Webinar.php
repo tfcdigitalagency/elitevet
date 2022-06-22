@@ -86,12 +86,12 @@ class Webinar extends MY_Controller {
         $meeting_number = $this->Webinar_model->find(array("name"=>"meeting_number"), array(), array(), true);
         $meeting_passcode = $this->Webinar_model->find(array("name"=>"meeting_passcode"), array(), array(), true);
 
-        $this->mContent['webinar'] = [
+        $this->mContent['webinar'] = array(
             'api_key' => $api_key[0]['value'],
             'api_secret' => $api_secret[0]['value'],
             'meeting_number' => $meeting_number[0]['value'],
             'meeting_passcode' => $meeting_passcode[0]['value']
-        ];
+		);
         $this->load->view('customer/webinar/live');
     }
     public function live_close(){
