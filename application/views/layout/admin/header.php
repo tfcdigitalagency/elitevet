@@ -308,6 +308,19 @@
                             <i class="icon-puzzle2"></i><span>Membership</span>
                         </a>
                     </li>
+					<li class="nav-item  nav-item-submenu <?= $id =='page' ? 'nav-item-expanded nav-item-open' : ''; ?>">
+						<a href="<?=base_url().'admin/ads'?>" class="nav-link">
+							<i class="icon-puzzle"></i><span>Pages</span>
+						</a>
+						<ul class="nav nav-group-sub">
+
+								<li class="nav-item">
+									<a href="<?=base_url().'admin/page?page=SDVOSB'?>" class="nav-link">
+										<i class="icon-arrow-right5"></i>SDVOSB & DVBE Programs</a>
+								</li>
+
+						</ul>
+					</li>
                     <li class="nav-item">
                         <a href="<?=base_url().'admin/ads'?>" class="nav-link">
                             <i class="icon-stack2"></i><span>Ads</span>

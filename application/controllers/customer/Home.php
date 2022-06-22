@@ -34,6 +34,18 @@ class Home extends MY_Controller {
         $this->render("{$this->sub_mLayout}index", $this->mLayout);
     }
 
+	public function page($code){
+		$current_user =  $this->session->userdata('user');
+		$uid = $current_user['id'];
+
+		$this->mHeader['sub_id'] = 'page';
+		$page = $this->db->get_where('tbl_config',array('code'=>$code))->row();
+		$page_content = json_decode($page->detail);
+		$this->mContent['page_content'] = $page_content;
+
+		$this->render("{$this->sub_mLayout}page", $this->mLayout);
+	}
+
 	public function survey(){
         $this->mHeader['sub_id'] = 'home';
 		$current_user =  $this->session->userdata('user');
