@@ -133,6 +133,13 @@ class Event extends MY_Controller {
 		if(!$_SESSION['access_token']) {
 			$login_url = 'https://accounts.google.com/o/oauth2/auth?scope=' . urlencode('https://www.googleapis.com/auth/calendar') . '&redirect_uri=' . urlencode(site_url('customer/event/google')) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online';
 			redirect($login_url);
+		}else{
+			$user_timezone = $this->googlecalendarapi->GetUserCalendarTimezone($_SESSION['access_token']);
+
+			// Create event on primary calendar
+			$event_id = $this->googlecalendarapi->CreateCalendarEvent('primary', $webinar['name'], 0, $webinar['start_time'], $user_timezone, $_SESSION['access_token']);
+
+			redirect(site_url('customer/event?google='.$event_id));
 		}
 	}
 }
