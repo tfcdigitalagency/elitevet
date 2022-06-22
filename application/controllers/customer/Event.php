@@ -45,57 +45,59 @@ class Event extends MY_Controller {
         $this->render("{$this->sub_mLayout}detail", $this->mLayout);
     }
 
-    public function insert_RegEvent(){
+    public function insert_RegEvent()
+	{
 
-        $data = $this->input->post();
+		$data = $this->input->post();
 
-        $user = $this->User_model->find(array("email"=>$data['email']), array(), array(), true);
-        $webinar = $this->Webinar_model->find(array("id" => $data['event_id']), array(), array(), true);
+		$user = $this->User_model->find(array("email" => $data['email']), array(), array(), true);
+		$webinar = $this->Webinar_model->find(array("id" => $data['event_id']), array(), array(), true);
 
-		$this->session->set_userdata('event_id',$data['event_id']);
+		$this->session->set_userdata('event_id', $data['event_id']);
 
-        if(count($webinar) > 0){
+		if (count($webinar) > 0) {
 
-            $webinar = $webinar[0];
-            $temp_password = '';
+			$webinar = $webinar[0];
+			$temp_password = '';
 
-            if(empty($user)){
+			if (empty($user)) {
 
-                $temp_password=rand(100000,1000000);
-                $username = $data['first_name']." ".$data['last_name'];
+				$temp_password = rand(100000, 1000000);
+				$username = $data['first_name'] . " " . $data['last_name'];
 
-                $inserted_id=$this->User_model->insert(array("name"=>$username, "email"=>$data['email'], "phone_number"=>$data['phone'], "title"=>$data['title'], "company"=>$data['company'],"password"=>$temp_password));
-                $this->Reg_history_model->insert(array("event_id"=>$data['event_id'], "user_id"=>$inserted_id));
+				$inserted_id = $this->User_model->insert(array("name" => $username, "email" => $data['email'], "phone_number" => $data['phone'], "title" => $data['title'], "company" => $data['company'], "password" => $temp_password));
+				$this->Reg_history_model->insert(array("event_id" => $data['event_id'], "user_id" => $inserted_id));
 
-            }else{
+			} else {
 
-                $id=$user[0]['id'];
-                $username = $user[0]['name'];
-                $this->Reg_history_model->insert(array("event_id"=>$data['event_id'], "user_id"=>$id));
+				$id = $user[0]['id'];
+				$username = $user[0]['name'];
+				$this->Reg_history_model->insert(array("event_id" => $data['event_id'], "user_id" => $id));
 
-            }
+			}
 
-            $html = '';
-            $html .= '<h5>Hi '.$username.'  </h5>';
-            $html .= '<h5> You have register for a webinar. </h5>';
-            $html .= '<p>The webinar <strong>"'.$webinar['name'].'"</strong> will start at: '.$webinar['start_time'];
+			$html = '';
+			$html .= '<h5>Hi ' . $username . '  </h5>';
+			$html .= '<h5> You have register for a webinar. </h5>';
+			$html .= '<p>The webinar <strong>"' . $webinar['name'] . '"</strong> will start at: ' . $webinar['start_time'];
 
-            if($temp_password != '')
-            $html .= '<p>Your temp password: '.$temp_password.'</p>';
+			if ($temp_password != '')
+				$html .= '<p>Your temp password: ' . $temp_password . '</p>';
 
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-            $from = 'joneslj2@gmail.com';
+			$from = 'joneslj2@gmail.com';
 
-            $subject = 'Register webinar';
-            $message = $html;
-            $headers .= "From:". $from;
+			$subject = 'Register webinar';
+			$message = $html;
+			$headers .= "From:" . $from;
 
-            mail($data['email'],$subject,$message, $headers);
-        }
+			mail($data['email'], $subject, $message, $headers);
+		}
+	}
 
-		function google($id =''){
+	public function google($id =''){
 			if(!$id){
 				$id = $this->session->userdata('event_id');
 			}
@@ -127,9 +129,6 @@ class Event extends MY_Controller {
 					echo $e->getMessage();
 					exit();
 				}
-			}
-
-
-		}
+			} 
    }
 }
