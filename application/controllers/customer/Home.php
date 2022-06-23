@@ -7,7 +7,7 @@ class Home extends MY_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->mHeader['id'] = 'home';
+//        $this->mHeader['id'] = 'home';
         $this->mHeader['title'] = 'Home';
         $this->mContent['msg'] = "";
         $this->load->model(['Training_model','Sponsors_model']);
@@ -37,6 +37,7 @@ class Home extends MY_Controller {
 	public function page($code){
 		$current_user =  $this->session->userdata('user');
 		$uid = $current_user['id'];
+		$this->mHeader['id'] = 'page';
 		$this->mHeader['sub_id'] = $code;
 		$page = $this->db->get_where('tbl_config',array('code'=>$code))->row();
 		$page_content = json_decode($page->detail);
