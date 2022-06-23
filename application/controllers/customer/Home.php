@@ -37,7 +37,6 @@ class Home extends MY_Controller {
 	public function page($code){
 		$current_user =  $this->session->userdata('user');
 		$uid = $current_user['id'];
-		$this->mHeader['id'] = 'home';
 		$this->mHeader['sub_id'] = $code;
 		$page = $this->db->get_where('tbl_config',array('code'=>$code))->row();
 		$page_content = json_decode($page->detail);
@@ -47,7 +46,7 @@ class Home extends MY_Controller {
 	}
 
 	public function survey(){
-        $this->mHeader['sub_id'] = 'home';
+        $this->mHeader['sub_id'] = 'survey';
 		$current_user =  $this->session->userdata('user');
 		$uid = $current_user['id'];
 		$check = $this->db->get_where('tbl_survey_result',array('user_id'=>$uid))->row();
