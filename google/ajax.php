@@ -7,6 +7,7 @@ require_once('google-calendar-api.php');
 try {
 	// Get event details
 	$event = $_POST['event_details'];
+	var_dump($event);die();
 
 	$capi = new GoogleCalendarApi();
 

@@ -37,8 +37,8 @@ class Home extends MY_Controller {
 	public function page($code){
 		$current_user =  $this->session->userdata('user');
 		$uid = $current_user['id'];
-
-		$this->mHeader['sub_id'] = 'page';
+		$this->mHeader['id'] = 'home';
+		$this->mHeader['sub_id'] = $code;
 		$page = $this->db->get_where('tbl_config',array('code'=>$code))->row();
 		$page_content = json_decode($page->detail);
 		$this->mContent['page_content'] = $page_content;
