@@ -69,3 +69,24 @@ function process_email_image($content){
 
 }
 
+function process_email_font($ads_content){
+	$partten = "~font\-size: ?([\d]+)pt~";
+	preg_match_all($partten,$ads_content,$match);
+	$fontsize = array();
+	foreach ($match[0] as $k=>$v){
+		$fontsize[] = 'font-size:'.(intval($match[1][$k])*0.6).'pt';
+	}
+	$ads_content = str_replace($match[0],$fontsize,$ads_content);
+
+	$partten = "~font\-size: ?([\d]+)px~";
+	preg_match_all($partten,$ads_content,$match);
+	$fontsize = array();
+	foreach ($match[0] as $k=>$v){
+		$fontsize[] = 'font-size:'.(intval($match[1][$k])*0.6).'px';
+	}
+	$ads_content = str_replace($match[0],$fontsize,$ads_content);
+	return $ads_content;
+
+}
+
+

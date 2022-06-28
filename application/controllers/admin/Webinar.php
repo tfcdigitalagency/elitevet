@@ -513,6 +513,7 @@ class Webinar extends MY_Controller {
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
+		$ads_content = process_email_font($ads_content);
 
 		//send email to sponsor
 		$this->db->where('title',"Corporate");
@@ -647,6 +648,7 @@ class Webinar extends MY_Controller {
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
+		$ads_content = process_email_font($ads_content);
 
 		$email_content = '<div>Hi, [User]</div>
 <table width=\'100%\'><tr><td width=\'60%\' valign="top" style="padding-right: 20px;">'.$email_content.'</td>
