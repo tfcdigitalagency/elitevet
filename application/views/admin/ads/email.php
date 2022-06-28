@@ -6,6 +6,10 @@
 	.action a{
 		cursor:pointer;
 	}
+
+	.modal-lg {
+		max-width: 1170px;
+	}
 </style>
 <!-- Page header -->
 <div class="page-header page-header-light">
@@ -66,6 +70,7 @@
 					<div class="col-lg-10">
 <!--					<button type="submit" value="submit" name="submit" class="btn btn-primary" >&nbsp;&nbsp;Submit</button> &nbsp;-->
 					<button type="button" value="save" name="save" id="save_content" class="btn btn-warning" >Save</button>
+						<button type="button" class="btn btn-default" onclick="preview_email()"><i class="icon-eye"></i>Perview Email</button>
 						<i id="loadding" style="display:none" class="icon-spinner spinning hide loading"></i>
 					</div>
 				</div>
@@ -83,6 +88,26 @@
     <!-- /basic modals -->
 
 </div>
+
+<div id="modalPreview" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Email Content Preview</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div id="contentEmailPreview"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!-- /content area -->
 <script src="https://cdn.tiny.cloud/1/f3u1hs5fn8m7a9cqwdfsmvcpopd0vtithscdlflgcn34mv6q/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script>
@@ -190,5 +215,21 @@
 			}
 		});
 	});
+
+	function preview_email(){
+		$.ajax({
+			url: base_url+'admin/ads/save_preview',
+			type : 'POST',
+			data : {
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+			},
+			dataType: 'json',
+			cache: false,
+			success: function(result) {
+				$('#contentEmailPreview').html(result.preview);
+				$('#modalPreview').modal('show');
+			}
+		});
+	}
 
 </script>

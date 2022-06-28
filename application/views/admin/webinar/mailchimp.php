@@ -55,7 +55,7 @@
                     <button type="button" class="btn btn-success" onclick="save_mailchimp()" style="margin-right: 10px;">&nbsp&nbsp Save &nbsp&nbsp <i class="icon-spinner spinning hide loading"></i></button>
                     <button type="button" class="btn btn-primary" onclick="send_Email()" style="margin-right: 10px;">Send</button>
                     <button type="button" class="btn btn-warning" onclick="send_test()">Send Test Email</button>
-						<button type="button" class="btn btn-default" onclick="preview_email()"><i class="icon-eye"></i>Perview Email</button>
+					<button type="button" class="btn btn-default" onclick="preview_email()"><i class="icon-eye"></i>Perview Email</button>
 					<div id="message"></div>
 					</div>
                 </div>

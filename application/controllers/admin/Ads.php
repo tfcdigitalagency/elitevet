@@ -70,4 +70,33 @@ class Ads extends MY_Controller {
 		echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has added to queue.'));
 	}
 
+	public function save_preview(){
+		$data = $this->input->post();
+		$data['content'] = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$data['content']);
+		$data['content']= process_email_image($data['content']);
+		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
+		if(!$config){
+			$this->db->insert('tbl_config' ,array('code'=>'SPONSOR','detail'=>json_encode($data)));
+		}else{
+			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>'SPONSOR'));
+		}
+
+		$ads_content = $data['content'];
+
+		$config = $this->db->get_where('tbl_config',array('code'=>'MAILADS_PREVIEW'))->row();
+		$config  = json_decode($config->detail);
+		$email_content = $config->content;
+
+		$email_content = '<div>Hi, [User]</div>
+<table width=\'1000\'><tr><td width=\'70%\' valign="top">'.$email_content.'</td>
+<td width=\'30%\' valign="top" style="padding-left: 20px">
+<div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
+'.$ads_content.'</td></tr></table>';
+
+		$preview_content = $this->load->view('email/template',array('email_content'=>$email_content),true);
+
+		echo json_encode(array('ok'=>1,'preview'=>$preview_content));
+
+	}
+
 }
