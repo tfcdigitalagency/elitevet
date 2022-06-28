@@ -57,3 +57,15 @@ function get_counter(){
 	return $row['counter'];
 }
 
+function process_email_image($content){
+	$images = array();
+	preg_match_all('/<img(.*?)src=("|\'|)(.*?)("|\'| )(.*?)>/s', $content, $images);
+	$replace = [];
+	foreach ($images[0] as $k=>$img){
+		$replace[] = '<img src="'.$images[3][$k].'"/>';
+	}
+	$content = str_replace($images[0],$replace,$content);
+	return $content;
+
+}
+

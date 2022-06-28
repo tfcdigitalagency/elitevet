@@ -500,6 +500,8 @@ class Webinar extends MY_Controller {
 
 
 		$email_content = $input['description'];
+		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$email_content);
+		$email_content = process_email_image($email_content);
 
 		$subject = $input['subject'];
 
@@ -509,7 +511,6 @@ class Webinar extends MY_Controller {
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
-		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
 
 		//send email to sponsor
 		$this->db->where('title',"Corporate");
@@ -608,6 +609,8 @@ class Webinar extends MY_Controller {
 		$data = $this->input->post();
 		$subject = $data['subject'];
 		$content = $data['content'];
+		$content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$content = process_email_image($content);
 
 		$update = $this->Settings_model->update(array("skey" => "remindsubject"),array("svalue" => $subject));
 		$update = $this->Settings_model->update(array("skey" => "remindemail"),array("svalue" => $content));
@@ -618,14 +621,18 @@ class Webinar extends MY_Controller {
 	public function save_mailchimp(){
 		$data = $this->input->post();
 		$content = $data['content'];
-
+		$content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$content = process_email_image($content);
 		$update = $this->Settings_model->update(array("skey" => "mailchimp"),array("svalue" => $content));
 	}
 
 	public function save_preview(){
 		$data = $this->input->post();
 		$content = $data['content'];
+
 		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$email_content = process_email_image($email_content);
+
 		$config = $this->db->get_where('tbl_config',array('code'=>'MAILADS_PREVIEW'))->row();
 		if(!$config){
 			$this->db->insert('tbl_config' ,array('code'=>'MAILADS_PREVIEW','detail'=>json_encode($data)));
@@ -636,7 +643,6 @@ class Webinar extends MY_Controller {
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
-		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
 
 		$email_content = '<div>Hi, [User]</div>
 <table width=\'1000\'><tr><td width=\'50%\' valign="top">'.$email_content.'</td>
@@ -647,6 +653,8 @@ class Webinar extends MY_Controller {
 		echo json_encode(array('ok'=>1,'preview'=>$preview_content));
 
 	}
+
+
 
 	public function createemail(){
 		$this->mHeader['sub_id'] = 'createemail';

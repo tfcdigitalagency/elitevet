@@ -25,6 +25,7 @@ class Ads extends MY_Controller {
 	public function save(){
 		$data = $this->input->post();
 		$data['content'] = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$data['content']);
+		$data['content']= process_email_image($data['content']);
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		if(!$config){
 			$this->db->insert('tbl_config' ,array('code'=>'SPONSOR','detail'=>json_encode($data)));
