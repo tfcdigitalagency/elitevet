@@ -1,7 +1,7 @@
 <!-- Page header -->
 <style>
 	.modal-lg {
-		max-width: 1170px;
+		max-width: 80%;
 	}
 </style>
 <div class="page-header page-header-light">

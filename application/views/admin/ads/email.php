@@ -8,7 +8,7 @@
 	}
 
 	.modal-lg {
-		max-width: 1170px;
+		max-width: 80%;
 	}
 </style>
 <!-- Page header -->

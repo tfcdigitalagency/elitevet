@@ -464,8 +464,8 @@ class Webinar extends MY_Controller {
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 			$queue = array('email'=>$email,
 				'content'=>'<div>Hi, '.$user['name']. '</div>
-<table width=\'100%\'><tr><td width=\'70%\' valign="top">'.$email_content.'</td>
-<td width=\'30%\' valign="top">
+<table width=\'100%\'><tr><td width=\'60%\' valign="top">'.$email_content.'</td>
+<td width=\'40%\' valign="top">
 <div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
 '.$ads_content.'</td></tr></table>'.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
@@ -531,8 +531,8 @@ class Webinar extends MY_Controller {
 			}else{
 				$queue = array('email'=>$email,
 					'content'=>'<div>Hi, '.$user['name']. '</div>
-<table width=\'100%\'><tr><td width=\'70%\' valign="top">'.$email_content.'</td>
-<td width=\'30%\' valign="top" style="padding-left: 20px;">
+<table width=\'100%\'><tr><td width=\'60%\' valign="top" style="padding-right: 20px;">'.$email_content.'</td>
+<td width=\'40%\' valign="top" style="padding-left: 20px;border-left: 1px solid #f1f1f1;">
 <div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
 '.$ads_content.'</td></tr></table>'.$image_refer,
 					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
@@ -649,8 +649,8 @@ class Webinar extends MY_Controller {
 		$ads_content = $config->content;
 
 		$email_content = '<div>Hi, [User]</div>
-<table width=\'1000\'><tr><td width=\'60%\' valign="top">'.$email_content.'</td>
-<td width=\'40%\' valign="top" style="padding-left: 20px;">
+<table width=\'100%\'><tr><td width=\'60%\' valign="top" style="padding-right: 20px;">'.$email_content.'</td>
+<td width=\'40%\' valign="top" style="padding-left: 20px;border-left: 1px solid #f1f1f1;">
 <div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
 '.$ads_content.'</td></tr></table>';
 
