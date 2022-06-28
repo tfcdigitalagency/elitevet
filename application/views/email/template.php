@@ -6,7 +6,7 @@
 	<tbody>
 	<tr>
 		<td align="center" valign="top" style="margin:0;padding:20px;">
-			<table align="center" border="0" cellpadding="0" cellspacing="0" class="mlContentTable" style="background: #fff;">
+			<table  align="center" border="0" cellpadding="0" cellspacing="0" class="mlContentTable" style="background: #fff; max-width: 1000px;">
 				<tbody>
 				<tr>
 					<td>
