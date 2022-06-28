@@ -82,6 +82,7 @@ class Ads extends MY_Controller {
 		}
 
 		$ads_content = $data['content'];
+		$ads_content = process_email_font($ads_content);
 
 		$config = $this->db->get_where('tbl_config',array('code'=>'MAILADS_PREVIEW'))->row();
 		$config  = json_decode($config->detail);
@@ -96,6 +97,17 @@ class Ads extends MY_Controller {
 		$preview_content = $this->load->view('email/template',array('email_content'=>$email_content),true);
 
 		echo json_encode(array('ok'=>1,'preview'=>$preview_content));
+
+	}
+
+	public function changefont(){
+		$partten = "~font\-size: ?([\d]+)pt~";
+
+		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
+		$config  = json_decode($config->detail);
+		$ads_content = $config->content;
+		$ads_content = process_email_font($ads_content);
+		die(htmlspecialchars($ads_content));
 
 	}
 
