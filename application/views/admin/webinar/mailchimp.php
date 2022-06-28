@@ -1,4 +1,9 @@
 <!-- Page header -->
+<style>
+	.modal-lg {
+		max-width: 1170px;
+	}
+</style>
 <div class="page-header page-header-light">
     <div class="page-header-content header-elements-md-inline">
         <div class="page-title d-flex">
@@ -49,7 +54,8 @@
 					<div class="col-lg-11">
                     <button type="button" class="btn btn-success" onclick="save_mailchimp()" style="margin-right: 10px;">&nbsp&nbsp Save &nbsp&nbsp <i class="icon-spinner spinning hide loading"></i></button>
                     <button type="button" class="btn btn-primary" onclick="send_Email()" style="margin-right: 10px;">Send</button>
-                    <button type="button" class="btn btn-warning" onclick="send_test()()">Send Test Email</button>
+                    <button type="button" class="btn btn-warning" onclick="send_test()">Send Test Email</button>
+						<button type="button" class="btn btn-default" onclick="preview_email()"><i class="icon-eye"></i>Perview Email</button>
 					<div id="message"></div>
 					</div>
                 </div>
@@ -62,6 +68,25 @@
 
 </div>
 <!-- /content area -->
+
+<div id="modalPreview" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Email Content Preview</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div id="contentEmailPreview"></div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <style>
 .spinning{
@@ -109,6 +134,22 @@
             }
         });
     }
+
+	function preview_email(){
+		$.ajax({
+			url: base_url+'admin/webinar/save_preview',
+			type : 'POST',
+			data : {
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+			},
+			dataType: 'json',
+			cache: false,
+			success: function(result) {
+				$('#contentEmailPreview').html(result.preview);
+				$('#modalPreview').modal('show');
+			}
+		});
+	}
 
 	function send_test() {
 		if(!$('#test_email').val()){

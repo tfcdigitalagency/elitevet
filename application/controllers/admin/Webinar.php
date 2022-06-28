@@ -622,6 +622,32 @@ class Webinar extends MY_Controller {
 		$update = $this->Settings_model->update(array("skey" => "mailchimp"),array("svalue" => $content));
 	}
 
+	public function save_preview(){
+		$data = $this->input->post();
+		$content = $data['content'];
+		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$config = $this->db->get_where('tbl_config',array('code'=>'MAILADS_PREVIEW'))->row();
+		if(!$config){
+			$this->db->insert('tbl_config' ,array('code'=>'MAILADS_PREVIEW','detail'=>json_encode($data)));
+		}else{
+			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>'MAILADS_PREVIEW'));
+		}
+
+		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
+		$config  = json_decode($config->detail);
+		$ads_content = $config->content;
+		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
+
+		$email_content = '<div>Hi, [User]</div>
+<table width=\'1000\'><tr><td width=\'50%\' valign="top">'.$email_content.'</td>
+<td width=\'50%\' valign="top">'.$ads_content.'</td></tr></table>';
+
+		$preview_content = $this->load->view('email/template',array('email_content'=>$email_content),true);
+
+		echo json_encode(array('ok'=>1,'preview'=>$preview_content));
+
+	}
+
 	public function createemail(){
 		$this->mHeader['sub_id'] = 'createemail';
 

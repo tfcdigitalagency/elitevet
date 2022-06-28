@@ -1,4 +1,7 @@
-<table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" data-mobile="true" dir="ltr"
+<style>
+	.tableEmail img{max-width: 100%!important; height: auto!important;}
+</style>
+<table class="tableEmail" width="100%" align="center" border="0" cellpadding="0" cellspacing="0" data-mobile="true" dir="ltr"
 	  style="font-size: 16px; background:#f1f1f1;">
 	<tbody>
 	<tr>
@@ -99,7 +102,7 @@
 																	<tbody>
 																	<tr>
 																		<td class="bodyTitle" id="bodyText-12"
-																			style="font-family: 'Poppins', sans-serif; font-size: 14px; line-height: 24px; color: #6f6f6f;">
+																			style="font-family: 'Poppins', sans-serif; font-size: 14px;  color: #6f6f6f;">
 																			 <?php echo $email_content;?>
 																		</td>
 																	</tr>
@@ -109,7 +112,7 @@
 														</tr>
 														</tbody>
 													</table>
-													<table cellpadding="0" cellspacing="0" border="0" align="center"
+													<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
 														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
@@ -131,20 +134,20 @@
 						<!--  -->
 						<!--  -->
 
-						<table align="center" border="0" bgcolor="#ffffff"
+						<table width="100%" align="center" border="0" bgcolor="#ffffff"
 							   class="mlContentTable mlContentTableFooterDefault" cellpadding="0" cellspacing="0"
 							    style="border-top:1px solid #f1f1f1; ">
 							<tbody>
 							<tr>
 								<td class="mlContentTableFooterCardTd">
-									<table align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
+									<table width="100%" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0"
 										   class="mlContentTable ml-default" style=" min-width: 640px;"
 										   >
 										<tbody>
 										<tr>
 											<td>
 												<selector>
-													<table cellpadding="0" cellspacing="0" border="0" align="center"
+													<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
 														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
@@ -154,7 +157,7 @@
 														</tr>
 														</tbody>
 													</table>
-													<table cellpadding="0" cellspacing="0" border="0" align="center"
+													<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center"
 														    style=" min-width: 640px;"
 														   class="mlContentTable">
 														<tbody>
