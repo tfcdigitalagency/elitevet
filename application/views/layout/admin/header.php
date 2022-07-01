@@ -201,7 +201,7 @@
                     ),array(
                         'name' => 'Survey',
                         'url' => 'survey',
-                        'icon' => 'icon-tree6',
+                        'icon' => 'icon-sun3',
                         'id' => 'survey',
                         'sub_menus' => array(
                             array(
@@ -318,12 +318,18 @@
 					</li>
                     <li class="nav-item">
                         <a href="<?=base_url().'admin/ads'?>" class="nav-link">
-                            <i class="icon-stack2"></i><span>Ads</span>
+                            <i class="icon-image-compare"></i><span>Ads</span>
                         </a>
                     </li>
 					<li class="nav-item">
+						<a href="<?=base_url().'admin/news/list'?>" class="nav-link">
+							<i class="icon-newspaper"></i><span>Articles Management</span>
+						</a>
+					</li>
+
+					<li class="nav-item">
                         <a href="<?=base_url().'admin/sponsors'?>" class="nav-link">
-                            <i class="icon-stack2"></i><span>Sponsors</span>
+                            <i class="icon-book2"></i><span>Sponsors</span>
                         </a>
                     </li>
 					<li class="nav-item">
@@ -336,6 +342,7 @@
                             <i class="icon-pencil3"></i><span>Emails Management</span>
                         </a>
                     </li>
+
 					<?php endif;?>
 					<?php if(get_admin_level() == 3):?>
 						<li class="nav-item nav-item-submenu <?php echo (in_array($sub_id,array('mailchimp','remindemail','createemail'))?'nav-item-expanded nav-item-open':'')?>">
