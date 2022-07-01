@@ -32,7 +32,9 @@ label{
 			<h2><a href="<?php echo base_url('news/article/'.$item['slug'])?>"><?php echo $item['article_title']?></a></h2>
 			<div class="row">
 				<div class="col-md-2 col-sm-3 col-4">
+					<?php if($item['photo']):?>
 					<img src="<?php echo base_url().$item['photo']?>" style="max-width: 100%; max-height: 250px; border: 1px solid #f1f1f1;"/>
+					<?php endif;?>
 				</div>
 				<div class="col-md-10 col-sm-9 col-8">
 					<?php echo $item['short'] ?>

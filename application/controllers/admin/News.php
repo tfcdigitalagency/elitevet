@@ -24,7 +24,9 @@ class News extends MY_Controller {
 		$data = $this->db->get_where('tbl_news',array())->result_array();
 
 		foreach ($data as $k=>$v){
-			$data[$k]['photo'] = '<img src="'.base_url().$v['photo'].'" width="100" height="100"/>';
+			if($v['photo']) {
+				$data[$k]['photo'] = '<img src="' . base_url() . $v['photo'] . '" width="100" height="100"/>';
+			}
 		}
 
 		$table_data['data'] = $data;

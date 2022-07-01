@@ -30,8 +30,12 @@ label{
 		</div>
 	<div class="faqWrap">
 		<div class="row">
+			<?php if($article['photo']):?>
 			<div class="col-md-6"><?php echo @$article['detail'];?></div>
 			<div class="col-md-6 text-center"><img src="<?php echo base_url().$article['photo']?>" style="max-width: 100%;" /></div>
+			<?php else:?>
+				<div class="col-md-12"><?php echo @$article['detail'];?></div>
+			<?php endif;?>
 
 		</div>
 		<h3 class="mt-5">Others Article</h3>
