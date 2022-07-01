@@ -69,7 +69,7 @@
                 },
                 "columnDefs": [
 					{
-						"targets": [4],
+						"targets": [3],
 						orderable: false,
 						"createdCell": function (td, cellData, rowData, row, col) {
 							 if(parseInt(cellData) == 1){
@@ -80,7 +80,7 @@
 						}
 					},
                     {
-                        "targets": [6],
+                        "targets": [5],
                         orderable: false,
                         "createdCell": function (td, cellData, rowData, row, col) {
                             var html = '';
@@ -95,7 +95,6 @@
                     {"title": "No", "data": "id", "class": "text-center", "width": "5%"},
                     {"title": "Image", "data": "photo", "class": "text-left", "width": "10%"},
                     {"title": "Title", "data": "article_title", "class": "text-left", "width": "10%"},
-                    {"title": "Short Description", "data": "short", "class": "text-left", "width": "10%"},
                     {"title": "Status", "data": "status", "class": "text-center", "width": "10%"},
                     {"title": "Created", "data": "created_at", "class": "text-center", "width": "10%"},
                     {"title": "Action", "data": "id", "class": "action text-center", "width": "10%"},
