@@ -42,20 +42,25 @@ class News extends MY_Controller {
 	}
 
 	public function save_article(){
+		$status = $this->input->post('status');
 		$article_id = $this->input->post('article_id');
 		if($article_id){
-			$detail = $this->input->post('detail');
-			$title = $this->input->post('title');
-			$photo = $this->input->post('photo');
-			$data = array(
-				'article_title'=>$title,
-				'photo'=>$photo,
-				'short'=>$this->input->post('short'),
-				'detail'=>$detail,
-				'status'=>$this->input->post('status'),
-				'created_at'=>date("Y-m-d H:i:s")
-			);
-			$this->db->update('tbl_news',$data,array('id'=>$article_id));
+			$old = $this->db->get_where('tbl_news',array('id'=>$article_id))->row_array();
+			if($old) {
+				$detail = $this->input->post('detail');
+				$title = $this->input->post('title');
+				$photo = $this->input->post('photo');
+				$data = array(
+					'article_title' => $title,
+					'photo' => $photo,
+					'short' => $this->input->post('short'),
+					'detail' => $detail,
+					'status' => $this->input->post('status'),
+					'created_at' => date("Y-m-d H:i:s")
+				);
+				$this->db->update('tbl_news', $data, array('id' => $article_id));
+			}
+
 		}else {
 			$detail = $this->input->post('detail');
 			$title = $this->input->post('title');
@@ -71,7 +76,9 @@ class News extends MY_Controller {
 				'created_at' => date("Y-m-d H:i:s")
 			);
 			$this->db->insert('tbl_news', $data);
-			$article_id = $this->db->insert_id();
+			$new_article_id = $this->db->insert_id();
+
+
 		}
 
 		if (!empty($_FILES['icon']['name'])) {
@@ -83,9 +90,43 @@ class News extends MY_Controller {
 				$this->News_model->update(array("id"=>$article_id), array("photo"=>'assets/uploads/news/'.$file_name));
 			}
 		}
+		//send email
+		if(!$article_id && $status == 1){
+			$article = $this->db->get_where('tbl_news',array('id'=>$new_article_id))->row_array();
+			$this->sendNotify($article);
+		}else if($article_id){
+			if($status == 1 && $old['status'] == 0){
+				//send email
+				$article = $this->db->get_where('tbl_news',array('id'=>$article_id))->row_array();
+				$this->sendNotify($article);
+			}
+		}
 
 		echo json_encode($data);
 
+	}
+
+	private function sendNotify($news){
+
+		$subject = "THEE LITE SDVOBNET WORK - ".$news['article_title'] ;
+
+		$email_content = $this->load->view('email/article',array('item'=>$news),true);
+		 
+		$emails = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
+		foreach($emails as $k=>$v){
+			$email = $v['email'];
+
+			$content = 'Hi, '.$v['name']. "<br/>".$email_content;
+			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
+
+			if($email){
+				//$this->sendMail($email, $content. $image_refer, $subject);
+				$this->db->insert('tbl_email_queue',array('email'=>$email,
+					'content'=>$content. $image_refer,
+					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
+			}
+
+		}
 	}
 
 	public function edit(){

@@ -316,20 +316,24 @@
 			}
 			var C = new XMLHttpRequest();
 			C.open("POST", base_url + 'admin/news/save_article');
-			C.onload = function() {
-
-				setTimeout(function () {
-
-					new PNotify({
-						title: 'SUCCESS!',
-						text: 'The Operation is correct.',
-						icon: 'icon-checkmark3',
-						type: 'success'
-					});
-
-				}, 1000)
-				//location.href = base_url+'admin/sponsors/index';
-				return;
+			C.onreadystatechange = function () {
+				if (xhr.readyState == 4) {
+					if (xhr.status == 200) {
+						new PNotify({
+							title: 'SUCCESS!',
+							text: 'The Operation is correct.',
+							icon: 'icon-checkmark3',
+							type: 'success'
+						});
+					}else{
+						new PNotify({
+							title: 'ERROR!',
+							text: 'Canot send request correct.',
+							icon: 'icon-checkmark3',
+							type: 'error'
+						});
+					}
+				}
 			};
 			C.send(A);
 		}
