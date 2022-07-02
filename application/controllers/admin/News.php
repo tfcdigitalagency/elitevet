@@ -80,16 +80,6 @@ class News extends MY_Controller {
 
 
 		}
-
-		if (!empty($_FILES['icon']['name'])) {
-			if( !file_exists('./assets/uploads/news/') )
-				mkdir('./assets/uploads/news/', 0777, true);
-			$file_name = time().$_FILES['icon']['name'];
-
-			if (move_uploaded_file($_FILES['icon']['tmp_name'],'assets/uploads/news/'.$file_name)) {
-				$this->News_model->update(array("id"=>$article_id), array("photo"=>'assets/uploads/news/'.$file_name));
-			}
-		}
 		//send email
 		if(!$article_id && $status == 1){
 			$article = $this->db->get_where('tbl_news',array('id'=>$new_article_id))->row_array();
@@ -101,6 +91,20 @@ class News extends MY_Controller {
 				$this->sendNotify($article);
 			}
 		}
+
+		if (!empty($_FILES['icon']['name'])) {
+			if( !file_exists('./assets/uploads/news/') )
+				mkdir('./assets/uploads/news/', 0777, true);
+			$file_name = time().$_FILES['icon']['name'];
+			if($new_article_id){
+				$article_id = $new_article_id;
+			}
+
+			if (move_uploaded_file($_FILES['icon']['tmp_name'],'assets/uploads/news/'.$file_name)) {
+				$this->News_model->update(array("id"=>$article_id), array("photo"=>'assets/uploads/news/'.$file_name));
+			}
+		}
+
 
 		echo json_encode($data);
 
