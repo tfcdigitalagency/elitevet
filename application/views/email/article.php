@@ -1,6 +1,6 @@
-<div style="text-align: center; margin-bottom: 20pxfont-size: 18px; font-weight: bold">
+<h2 style="text-align: center; margin-bottom: 20pxfont-size: 18px; font-weight: bold">
 	<a href="<?php echo site_url('news/article/'.$item['slug'])?>"><?php echo $item['article_title']?></a>
-</div>
+</h2>
 <div style="text-align: center; ">
 <?php if($item['photo']):?>
 	<img src="<?php echo base_url().$item['photo']?>" style="max-width: 100%; max-height: 250px; border: 1px solid #f1f1f1;"/>
