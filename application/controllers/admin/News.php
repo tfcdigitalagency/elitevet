@@ -111,7 +111,7 @@ class News extends MY_Controller {
 		$subject = "THEE LITE SDVOBNET WORK - ".$news['article_title'] ;
 
 		$email_content = $this->load->view('email/article',array('item'=>$news),true);
-		 
+
 		$emails = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
 		foreach($emails as $k=>$v){
 			$email = $v['email'];

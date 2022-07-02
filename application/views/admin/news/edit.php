@@ -317,8 +317,8 @@
 			var C = new XMLHttpRequest();
 			C.open("POST", base_url + 'admin/news/save_article');
 			C.onreadystatechange = function () {
-				if (xhr.readyState == 4) {
-					if (xhr.status == 200) {
+				if (C.readyState == 4) {
+					if (C.status == 200) {
 						new PNotify({
 							title: 'SUCCESS!',
 							text: 'The Operation is correct.',
