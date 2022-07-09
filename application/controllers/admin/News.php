@@ -155,6 +155,9 @@ class News extends MY_Controller {
 		$email_content = $this->load->view('email/article',array('item'=>$news),true);
 
 		$emails = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
+
+		article_log($news['id'],'sent',count($emails));
+
 		foreach($emails as $k=>$v){
 			$email = $v['email'];
 
