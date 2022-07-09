@@ -18,12 +18,50 @@ class News extends MY_Controller {
 		$this->render("{$this->sub_mLayout}index", $this->mLayout);
 	}
 
+	public function statistic($article_id){
+		$this->mHeader['sub_id'] = 'statistic';
+		$this->mHeader['article'] = $this->db->get_where('tbl_news',array('id'=>$article_id))->row_array();
+
+		$data = [];
+
+		for($i=27;$i>0; $i--){
+			$date = date('M d',strtotime("-$i days"));
+			$opened = article_get_log($article_id,'opened','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$clicked = article_get_log($article_id,'clicked','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$viewed = article_get_log($article_id,'viewed','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$data[] = array($date,$opened,$clicked,$viewed);
+		}
+		for ($i=0;$i<3; $i++){
+			$date = date('M d',strtotime("+$i days"));
+			$opened = article_get_log($article_id,'opened','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$clicked = article_get_log($article_id,'clicked','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$viewed = article_get_log($article_id,'viewed','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$data[] = array($date,$opened,$clicked,$viewed);
+		}
+
+		$this->mContent['statistic'] = $data;
+
+		$this->db->order_by('created','DESC');
+		$this->db->limit(20);
+		$recents = $this->db->get_where('tbl_new_statistic',array('article_id'=>$article_id))->result_array();
+		$this->mContent['recents'] = $recents;
+
+		$this->render("{$this->sub_mLayout}statistic", $this->mLayout);
+	}
+
 	public function get_data(){
 		$this->db->select('*');
 		$this->db->order_by('created_at','desc');
 		$data = $this->db->get_where('tbl_news',array())->result_array();
 
 		foreach ($data as $k=>$v){
+
+			$data[$k]['article_title'] = '<a target="_blank" title="Statistic" href="'.site_url('news/article/'.$v['slug']).'">'.$v['article_title'].'</a>';
+			$sent = article_get_log($v['id'],'sent');
+			$data[$k]['sent'] = '<div><strong><a href="'.site_url('admin/news/statistic/'.$v['id']).'">'.$sent.'</a></strong></div><div><small>sent</small></div>';
+			$data[$k]['clicked'] = '<div><strong>'.article_get_percent($v['id'],'clicked',$sent).'%</strong></div>'.'<div><small>clicked</small></div>';
+			$data[$k]['opened'] = '<div><strong>'.article_get_percent($v['id'],'opened',$sent).'%</strong></div>'.'<div><small>opened</small></div>';
+			$data[$k]['viewed'] = '<div><strong>'.article_get_percent($v['id'],'viewed',$sent).'%</strong></div>'.'<div><small>viewed</small></div>';
 			if($v['photo']) {
 				$data[$k]['photo'] = '<img src="' . base_url() . $v['photo'] . '" width="100" height="100"/>';
 			}
@@ -121,7 +159,7 @@ class News extends MY_Controller {
 			$email = $v['email'];
 
 			$content = 'Hi, '.$v['name']. "<br/>".$email_content;
-			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
+			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?act=article&e='.$email.'&aid='.$news['id']).'"/>';
 
 			if($email){
 				//$this->sendMail($email, $content. $image_refer, $subject);

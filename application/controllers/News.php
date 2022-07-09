@@ -28,6 +28,13 @@ class News extends CI_Controller {
 	public function article($slug){
 
 		$article = $this->db->get_where('tbl_news',array('slug'=>$slug,'status'=>1))->row_array();
+		if($article){
+			article_log($article['id'],'viewed');
+		}
+
+		if(isset($_GET['clicked'])){
+			article_log($article['id'],'clicked');
+		}
 
 		$this->mContent['article'] = $article;
 

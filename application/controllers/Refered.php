@@ -3,30 +3,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Refered extends CI_Controller {
     public function index(){
-		$this->load->model(array('User_model'));
 
-        $email = $_GET['e'];
-        $name = $_GET['n'];
-        $phone = $_GET['t'];
-        $type = $_GET['type'];
-        $email_subject = $_GET['s']; 
-		$user = $this->User_model->find(array('email' => $email), array(), array(), true);
-		if(count($user) > 0) $user = $user[0];
+		$act = $_GET['act'];
+		switch ($act){
+			case 'article':
+				$aid = $_GET['aid'];
+				$email = $_GET['e'];
+				$user = $this->User_model->find(array('email' => $email), array(), array(), true);
+				if(count($user) > 0) $user = $user[0];
+				article_log($aid,'opened',1,$user['id']);
+				break;
+			default:
+				$this->load->model(array('User_model'));
 
-		$ip = $this->get_client_ip();
-		$page = isset($_GET['p'])?$_GET['p']:'Email';
-		$data = array(
-			'page_name'=>$page,
-			'ip_address'=>$ip,
-			'date'=>date("Y-m-d H:m A"),
-			'name'=>$name,
-			'phone'=>$phone,
-			'email'=>$email,
-			'type'=>$type,
-			'email_subject'=>$email_subject,
-			'email_open'=>1,
-		);
-		$this->db->insert('user_information',$data);
+				$email = $_GET['e'];
+				$name = $_GET['n'];
+				$phone = $_GET['t'];
+				$type = $_GET['type'];
+				$email_subject = $_GET['s'];
+				$user = $this->User_model->find(array('email' => $email), array(), array(), true);
+				if(count($user) > 0) $user = $user[0];
+
+				$ip = $this->get_client_ip();
+				$page = isset($_GET['p'])?$_GET['p']:'Email';
+				$data = array(
+					'page_name'=>$page,
+					'ip_address'=>$ip,
+					'date'=>date("Y-m-d H:m A"),
+					'name'=>$name,
+					'phone'=>$phone,
+					'email'=>$email,
+					'type'=>$type,
+					'email_subject'=>$email_subject,
+					'email_open'=>1,
+				);
+				$this->db->insert('user_information',$data);
+		}
+
 
 		//Full URI to the image
 		$graphic_http = site_url('tick.png');

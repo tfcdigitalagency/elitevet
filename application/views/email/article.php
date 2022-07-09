@@ -1,5 +1,5 @@
 <h2 style="text-align: center; margin-bottom: 20pxfont-size: 18px; font-weight: bold">
-	<a href="<?php echo site_url('news/article/'.$item['slug'])?>"><?php echo $item['article_title']?></a>
+	<a href="<?php echo site_url('news/article/'.$item['slug'].'?clicked=1')?>"><?php echo $item['article_title']?></a>
 </h2>
 <div style="text-align: center; ">
 <?php if($item['photo']):?>
