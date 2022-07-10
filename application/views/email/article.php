@@ -10,5 +10,5 @@
 	<?php echo $item['short']?>
 </div>
 <div style="text-align: center; margin-top: 30px">
-	<a href="<?php echo site_url('news/article/'.$item['slug'])?>" style="display: inline-block; padding: 5px 20px; background: #0a6ebd; color: #fff; border-radius: 10px;">View More</a>
+	<a href="<?php echo site_url('news/article/'.$item['slug'].'?clicked=1')?>" style="display: inline-block; padding: 5px 20px; background: #0a6ebd; color: #fff; border-radius: 10px;">View More</a>
 </div>
