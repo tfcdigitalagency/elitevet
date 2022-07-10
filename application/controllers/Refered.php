@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Refered extends CI_Controller {
     public function index(){
-
+		$this->load->model(array('User_model'));
 		$act = $_GET['act'];
 		switch ($act){
 			case 'article':
@@ -14,7 +14,6 @@ class Refered extends CI_Controller {
 				article_log($aid,'opened',1,$user['id']);
 				break;
 			default:
-				$this->load->model(array('User_model'));
 
 				$email = $_GET['e'];
 				$name = $_GET['n'];
