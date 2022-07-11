@@ -342,6 +342,11 @@
                             <i class="icon-pencil3"></i><span>Emails Management</span>
                         </a>
                     </li>
+					<li class="nav-item">
+						<a href="<?=base_url().'admin/contactus'?>" class="nav-link">
+							<i class="icon-cabinet"></i><span>Contact Us</span>
+						</a>
+					</li>
 
 					<?php endif;?>
 					<?php if(get_admin_level() == 3):?>
