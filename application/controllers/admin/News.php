@@ -33,9 +33,9 @@ class News extends MY_Controller {
 		}
 		for ($i=0;$i<3; $i++){
 			$date = date('M d',strtotime("+$i days"));
-			$opened = article_get_log($article_id,'opened','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
-			$clicked = article_get_log($article_id,'clicked','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
-			$viewed = article_get_log($article_id,'viewed','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("-$i days")).'"');
+			$opened = article_get_log($article_id,'opened','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("+$i days")).'"');
+			$clicked = article_get_log($article_id,'clicked','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("+$i days")).'"');
+			$viewed = article_get_log($article_id,'viewed','DATE_FORMAT(created,"%Y-%m-%d")="'.date('Y-m-d',strtotime("+$i days")).'"');
 			$data[] = array($date,$opened,$clicked,$viewed);
 		}
 
