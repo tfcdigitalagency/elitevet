@@ -43,7 +43,10 @@ class News extends MY_Controller {
 
 		$this->db->order_by('created','DESC');
 		$this->db->limit(20);
+		$this->db->select('*');
+		$this->db->join('tbl_user','tbl_user.id = tbl_new_statistic.uid','left');
 		$recents = $this->db->get_where('tbl_new_statistic',array('article_id'=>$article_id))->result_array();
+//		echo '<pre>'; print_r($recents);die();
 		$this->mContent['recents'] = $recents;
 
 		$this->render("{$this->sub_mLayout}statistic", $this->mLayout);

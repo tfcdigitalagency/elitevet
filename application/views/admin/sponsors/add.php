@@ -13,10 +13,10 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
             <form id="sponsor_form" class="form-validate-jquery" method="post" target="_other">
-                <input type="text" class="form-control" id="id" name="id" value="<?php echo $data[0]['id']; ?>" hidden>                
+                <input type="text" class="form-control" id="id" name="id" value="<?php echo $data[0]['id']; ?>" hidden>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Sponsor Name</label>
                     <div class="col-lg-10">
@@ -34,19 +34,19 @@
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Email" >
                     </div>
-                </div>	
+                </div>
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2">Phone</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" >
                     </div>
-                </div>	
+                </div>
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2">URL</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="url" name="url" placeholder="URL" >
                     </div>
-                </div>	
+                </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Icon</label>
                     <div class="col-lg-6" id="image_">
@@ -62,8 +62,8 @@
 						</select>
                     </div>
                 </div>
-                <div class="form-group row" style="float: right;"> 
-                    <button type="button" class="btn btn-warning" onclick="backList()">&nbsp&nbspBack&nbsp&nbsp</button>&nbsp&nbsp                 
+                <div class="form-group row" style="float: right;">
+                    <button type="button" class="btn btn-warning" onclick="backList()">&nbsp&nbspBack&nbsp&nbsp</button>&nbsp&nbsp
                     <button type="button" class="btn btn-primary" onclick="save_Sponsors()">&nbsp&nbspSave&nbsp&nbsp</button>
                 </div>
             </form>
@@ -88,7 +88,7 @@
 
     });
 
-    
+
 
     // Bootstrap file upload
     var _componentFileUpload = function() {
@@ -226,7 +226,7 @@
                 messages: {
                     name: {
                         required: 'This field is required.'
-                    },   
+                    },
                 }
             });
 
@@ -248,34 +248,38 @@
     });
 
     function save_Sponsors() {
-        
+
         var check = validator.checkForm();
         if (!check)
             validator.showErrors();
         else{
             var file = $("#image")[0].files[0];
             var A = new FormData($('#sponsor_form')[0]);
-            
+
             if (file) {
                 A.append("icon", file);
-            }           
+            }
             var C = new XMLHttpRequest();
-            C.open("POST", base_url + 'admin/sponsors/insert_Sponsors');            
-            C.onload = function() {              
-
-                setTimeout(function () {
-                    
-                    new PNotify({
-                        title: 'SUCCESS!',
-                        text: 'The Operation is correct.',
-                        icon: 'icon-checkmark3',
-                        type: 'success'
-                    });
-
-                }, 1000)
-                //location.href = base_url+'admin/sponsors/index';
-                return;
-            };
+            C.open("POST", base_url + 'admin/sponsors/insert_Sponsors');
+			C.onreadystatechange = function () {
+				if (C.readyState == 4) {
+					if (C.status == 200) {
+						new PNotify({
+							title: 'SUCCESS!',
+							text: 'The Operation is correct.',
+							icon: 'icon-checkmark3',
+							type: 'success'
+						});
+					}else{
+						new PNotify({
+							title: 'ERROR!',
+							text: 'Canot send request correct.',
+							icon: 'icon-checkmark3',
+							type: 'error'
+						});
+					}
+				}
+			};
             C.send(A);
         }
     }

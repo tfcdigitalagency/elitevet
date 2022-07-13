@@ -407,18 +407,27 @@
             }
             var C = new XMLHttpRequest();
             C.open("POST", base_url + 'admin/webinar/insert_Contract');
+			C.onreadystatechange = function () {
+				if (C.readyState == 4) {
+					if (C.status == 200) {
+						new PNotify({
+							title: 'SUCCESS!',
+							text: 'The Operation is correct.',
+							icon: 'icon-checkmark3',
+							type: 'success'
+						});
+					}else{
+						new PNotify({
+							title: 'ERROR!',
+							text: 'Canot send request correct.',
+							icon: 'icon-checkmark3',
+							type: 'error'
+						});
+					}
+				}
+			};
             C.onload = function() {
 
-                setTimeout(function () {
-
-                    new PNotify({
-                        title: 'SUCCESS!',
-                        text: 'The Operation is correct.',
-                        icon: 'icon-checkmark3',
-                        type: 'success'
-                    });
-
-                }, 1000)
                 location.href = base_url+'admin/webinar/postbids';
                 return;
             };

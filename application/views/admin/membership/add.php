@@ -13,16 +13,16 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
             <form class="form-validate-jquery" method="post" target="_other">
-                <input type="text" class="form-control" id="id" name="id" value="<?php echo $data[0]['id']; ?>" hidden>                
+                <input type="text" class="form-control" id="id" name="id" value="<?php echo $data[0]['id']; ?>" hidden>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Membership Name</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="name" placeholder="Please Input Membership Name" required>
                     </div>
-                </div> 
+                </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Cost</label>
                     <div class="col-lg-10">
@@ -35,8 +35,8 @@
                         <input type="text" class="form-control" id="details" placeholder="Please Input Membership Details" >
                     </div>
                 </div>
-                <div class="form-group row" style="float: right;"> 
-                    <button type="button" class="btn btn-warning" onclick="backList()">&nbsp&nbspBack&nbsp&nbsp</button>&nbsp&nbsp                 
+                <div class="form-group row" style="float: right;">
+                    <button type="button" class="btn btn-warning" onclick="backList()">&nbsp&nbspBack&nbsp&nbsp</button>&nbsp&nbsp
                     <button type="button" class="btn btn-primary" onclick="save_Membership()">&nbsp&nbspSave&nbsp&nbsp</button>
                 </div>
             </form>
@@ -107,7 +107,7 @@
                 messages: {
                     name: {
                         required: 'This field is required.'
-                    },   
+                    },
                 }
             });
 
@@ -129,7 +129,7 @@
     });
 
     function save_Membership() {
-        
+
         var check = validator.checkForm();
         if (!check)
             validator.showErrors();
@@ -138,24 +138,28 @@
             A.append("id", $("#id").val());
             A.append("name", $("#name").val());
             A.append("cost", $("#cost").val());
-            A.append("details", $("#details").val());       
+            A.append("details", $("#details").val());
             var C = new XMLHttpRequest();
-            C.open("POST", base_url + 'admin/membership/insert_Membership');            
-            C.onload = function() {              
-
-                setTimeout(function () {
-                    
-                    new PNotify({
-                        title: 'SUCCESS!',
-                        text: 'The Operation is correct.',
-                        icon: 'icon-checkmark3',
-                        type: 'success'
-                    });
-
-                }, 1000)
-                location.href = base_url+'admin/membership/index';
-                return;
-            };
+            C.open("POST", base_url + 'admin/membership/insert_Membership');
+			C.onreadystatechange = function () {
+				if (C.readyState == 4) {
+					if (C.status == 200) {
+						new PNotify({
+							title: 'SUCCESS!',
+							text: 'The Operation is correct.',
+							icon: 'icon-checkmark3',
+							type: 'success'
+						});
+					}else{
+						new PNotify({
+							title: 'ERROR!',
+							text: 'Canot send request correct.',
+							icon: 'icon-checkmark3',
+							type: 'error'
+						});
+					}
+				}
+			};
             C.send(A);
         }
     }

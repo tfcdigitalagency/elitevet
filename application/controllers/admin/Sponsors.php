@@ -29,25 +29,25 @@ class Sponsors extends MY_Controller {
     }
 
     public function add(){
-       
+
         //$this->mHeader['sub_id'] = 'add';
         $this->mContent['data'][0]['id']='0';
         $this->render("{$this->sub_mLayout}add", $this->mLayout);
     }
 
     public function edit(){
-        
+
        // $this->mHeader['sub_id'] = 'view';
         $id = $this->input->get('id');
         $this->mContent['data'] = $this->Sponsors_model->find(array("id"=>$id), array(), array(), true);
-       
+
         $this->render("{$this->sub_mLayout}edit", $this->mLayout);
     }
 
 
    public function insert_Sponsors(){
        $data = $this->input->post();
-	   
+
 	   $company = $this->input->post('company');
 	   $email = $this->input->post('email');
 	   $name = $this->input->post('name');
@@ -55,7 +55,9 @@ class Sponsors extends MY_Controller {
 	   $url = $this->input->post('url');
 	   $status = $this->input->post('status');
 	   $sponsors_id = $this->input->post('sponsors_id');
-	   
+
+	   $return['status'] = 1;
+
 	   $sponsor = array(
 			 'uid'=>$id,
 			 'company'=>$company,
@@ -64,14 +66,16 @@ class Sponsors extends MY_Controller {
 			 'phone'=>$phone,
 			 'url'=>$url,
 			 'status'=>$status);
-       
+
        if ($sponsors_id == "0"){
            $insert_ID = $this->Sponsors_model->insert($sponsor);
+		   $return['message'] = 'Insert successfully';
        }else{
            $this->Sponsors_model->update(array("id"=>$sponsors_id),$sponsor);
            $insert_ID = $data['id'];
+		   $return['message'] = 'Update successfully';
        }
-    
+
        if (!empty($_FILES['icon']['name'])) {
            if( !file_exists('./assets/uploads/sponsors/') )
                mkdir('./assets/uploads/sponsors/', 0777, true);
@@ -81,6 +85,8 @@ class Sponsors extends MY_Controller {
                $this->Sponsors_model->update(array("id"=>$insert_ID), array("icon"=>'assets/uploads/sponsors/'.$file_name));
            }
        }
+
+	   echo json_encode($return);
    }
 
     public function del_Sponsors(){
@@ -93,7 +99,7 @@ class Sponsors extends MY_Controller {
 
         $this->Sponsors_model->setTable('tbl_sponsor_image');
         $insert_ID = 0;
-               
+
         if (!empty($_FILES['input_sponsor']['name'])) {
             if( !file_exists('./assets/uploads/sponsors_image/') )
             mkdir('./assets/uploads/sponsors_image/', 0777, true);
@@ -111,15 +117,15 @@ class Sponsors extends MY_Controller {
         $id = $this->input->post('id');
         $this->Sponsors_model->setTable('tbl_sponsor_image');
         $item = $this->Sponsors_model->find(array("id" => $id), array(), array(), true);
-        
+
         if(count($item) > 0){
             try {
                 unlink($item[0]['link']);
             }catch (Exception $e){
-                
+
             }
             $result['msg'] = $this->Sponsors_model->delete(array("id"=>$id));
         }
     }
-   
+
 }

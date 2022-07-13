@@ -19,7 +19,7 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
             <div class="col-md-12">
                 <button type="button" class="btn bg-teal-400" onclick="Add_sponsors()">New Sponsor</button>
@@ -72,7 +72,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    
+
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label font-weight-semibold">Image file upload:</label>
                         <div class="col-lg-9" id="image_">
@@ -99,21 +99,21 @@
             <div class="modal-header">
                 <h6 class="modal-title">Video Player</h6>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>           
+            </div>
             <div class="modal-body">
                 <video id="my_video" width="100%" height="240" controls>
                   <source src="movie.mp4" type="video/mp4">
                   Your browser does not support the video tag.
                 </video>
-                             
-            </div>           
+
+            </div>
         </div>
     </div>
 </div>
 <!-- /success modal -->
 
 <script>
-    
+
     var $sponsors_datatable = $('#sponsors_datatable');
 
     function add_Gallery() {
@@ -131,6 +131,7 @@
 
         var C = new XMLHttpRequest();
         C.open("POST", base_url + 'admin/sponsors/save_Gallery');
+
         C.onload = function() {
             $("#modal_sponsor_image").modal("hide");
             swal({
@@ -238,7 +239,7 @@
                     orderable: false,
                     "createdCell": function (td, cellData, rowData, row, col) {
                         var html = '';
-                        html +=                           
+                        html +=
                             '<a style="color: deepskyblue;" title="Edit"><i class="icon-pencil7"></i>Edit</a>&nbsp&nbsp'+
                             '<a style="color: deepskyblue;" title="Delete"><i class="icon-trash"></i>Delete</a>';
                         $(td).html(html);
@@ -321,5 +322,5 @@
         location.href = base_url+'admin/sponsors/add';
     }
 
-    
+
 </script>

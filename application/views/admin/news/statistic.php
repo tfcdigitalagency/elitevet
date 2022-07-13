@@ -106,6 +106,8 @@
 						<tr style="background: lightyellow">
 							<th>Id</th>
 							<th>Action</th>
+							<th>Who are they</th>
+							<th>Type</th>
 							<th>IP</th>
 							<th>Time</th>
 							<th>Referer</th>
@@ -115,6 +117,8 @@
 						<tr>
 							<td><?php echo $item['id']?></td>
 							<td><?php echo $item['action']?></td>
+							<td><?php echo ($item['email'])?'<b>'.$item['name'].'</b><br>('.$item['email'].')' :''; ?></td>
+							<td><?php echo $item['title']?></td>
 							<td><?php echo $item['ip']?></td>
 							<td><?php echo $item['created']?></td>
 							<td><?php echo $item['referer']?></td>

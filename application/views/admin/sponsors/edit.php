@@ -13,7 +13,7 @@
 <div class="content">
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
         	<form id="sponsor_form" class="form-validate-jquery" method="post" target="_other">
         		<input type="text" class="form-control" id="sponsors_id" name="sponsors_id" value="<?php echo $data[0]['id']; ?>" hidden>
@@ -34,19 +34,19 @@
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?php echo $data[0]['email']; ?>">
                     </div>
-                </div>	
+                </div>
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2">Phone</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone" value="<?php echo $data[0]['phone']; ?>">
                     </div>
-                </div>	
+                </div>
 				<div class="form-group row">
                     <label class="col-form-label col-lg-2">URL</label>
                     <div class="col-lg-10">
                         <input type="text" class="form-control" id="url" name="url" placeholder="Url" value="<?php echo $data[0]['url']; ?>" >
                     </div>
-                </div>				
+                </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Icon</label>
                     <div class="col-lg-6" id="image_">
@@ -261,7 +261,7 @@
                 messages: {
                     name: {
                         required: 'This field is required.'
-                    },                   
+                    },
                 }
             });
 
@@ -281,39 +281,47 @@
     document.addEventListener('DOMContentLoaded', function() {
         FormValidation.init();
     });
-    
-  
+
+
     function save_Sponsors() {
-        
+
         var check = validator.checkForm();
         if (!check)
             validator.showErrors();
         else{
-            var file = $("#image")[0].files[0];       
-            var A = new FormData($('#sponsor_form')[0]); 
+            var file = $("#image")[0].files[0];
+            var A = new FormData($('#sponsor_form')[0]);
             if (file) {
                 A.append("icon", file);
-            }           
+            }
             var C = new XMLHttpRequest();
             C.open("POST", base_url + 'admin/sponsors/insert_Sponsors');
-            C.onload = function() {              
-
-                setTimeout(function () {
-                    
-                    new PNotify({
-                        title: 'SUCCESS!',
-                        text: 'The Operation is correct.',
-                        icon: 'icon-checkmark3',
-                        type: 'success'
-                    });
-
-                }, 1000)
+			C.onreadystatechange = function () {
+				if (C.readyState == 4) {
+					if (C.status == 200) {
+						new PNotify({
+							title: 'SUCCESS!',
+							text: 'The Operation is correct.',
+							icon: 'icon-checkmark3',
+							type: 'success'
+						});
+					}else{
+						new PNotify({
+							title: 'ERROR!',
+							text: 'Canot send request correct.',
+							icon: 'icon-checkmark3',
+							type: 'error'
+						});
+					}
+				}
+			};
+            C.onload = function() {
                 //location.href = base_url+'admin/sponsors/index';
                 return;
             };
-            
+
             C.send(A);
-            
+
         }
     }
 

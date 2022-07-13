@@ -18,7 +18,7 @@
     ?>
 
     <!-- Basic modals -->
-    <div class="card">        
+    <div class="card">
         <div class="card-body">
         	<form class="form-validate-jquery" method="post" target="_other">
         		<input type="text" class="form-control" id="event_id" name="event_id" value="<?php echo $data[0]['id']; ?>" hidden>
@@ -51,7 +51,7 @@
                             <span style="display: inline-block; vertical-align: middle; margin-left: 10px; line-height: 36px">PT</span>
                         </div>
                     </div>
-                </div>                
+                </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">End time</label>
                     <div class="col-lg-5">
@@ -80,7 +80,7 @@
                     <label class="col-form-label col-lg-2">Second thumbnail</label>
                     <div class="col-lg-6" id="image_">
                         <input type="file" class="file-input-overwrite" name="second_image" id="second_image"  data-fouc>
-                    </div> 
+                    </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Auto remind</label>
@@ -91,9 +91,9 @@
                         	<option value="membership_only">Membership only</option>
                         	<option value="none">None</option>
                         </select>
-                    </div> 
+                    </div>
                 </div>
-				<div class="form-group row" style="float: right;">					
+				<div class="form-group row" style="float: right;">
 					<button type="button" class="btn btn-primary" onclick="save_Event()">&nbsp&nbspSave&nbsp&nbsp <i class="icon-spinner spinning hide loading"></i></button>
 				</div>
 			</form>
@@ -150,7 +150,7 @@
 
     });
 
-    
+
 
     // Bootstrap file upload
     var _componentFileUpload = function() {
@@ -294,7 +294,7 @@
                     },
                     location: {
                         required: 'This field is required.'
-                    }                   
+                    }
                 }
             });
 
@@ -316,7 +316,7 @@
     });
 
     function save_Event() {
-        
+
         var check = validator.checkForm();
         if (!check)
             validator.showErrors();
@@ -336,24 +336,32 @@
             A.append("remind_to", $("#remind_to").val());
             if (file) {
                 A.append("image", file);
-            } 
+            }
             if (second_file) {
                 A.append("second_image", second_file);
-            }            
+            }
             var C = new XMLHttpRequest();
-            C.open("POST", base_url + 'admin/event/insert_Event');            
-            C.onload = function() {              
-
-                setTimeout(function () {
-                    
-                    new PNotify({
-                        title: 'SUCCESS!',
-                        text: 'The Operation is correct.',
-                        icon: 'icon-checkmark3',
-                        type: 'success'
-                    });
-
-                }, 1000)
+            C.open("POST", base_url + 'admin/event/insert_Event');
+			C.onreadystatechange = function () {
+				if (C.readyState == 4) {
+					if (C.status == 200) {
+						new PNotify({
+							title: 'SUCCESS!',
+							text: 'The Operation is correct.',
+							icon: 'icon-checkmark3',
+							type: 'success'
+						});
+					}else{
+						new PNotify({
+							title: 'ERROR!',
+							text: 'Canot send request correct.',
+							icon: 'icon-checkmark3',
+							type: 'error'
+						});
+					}
+				}
+			};
+            C.onload = function() {  
                 $('.loading').addClass('hide');
                 location.href = base_url+'admin/event/view';
                 return;
