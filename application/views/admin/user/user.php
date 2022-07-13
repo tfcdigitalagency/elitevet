@@ -1467,7 +1467,7 @@
 
                 $('#modal_theme_primary').modal('hide');
 
-                //location.href = base_url+'admin/user/user';
+				$user_datatable.DataTable().ajax.reload();
 
                 return;
 
