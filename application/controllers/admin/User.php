@@ -47,8 +47,21 @@ class User extends MY_Controller {
     public function insert_User(){
 
        $data = $this->input->post();
-       $this->User_model->update(array("id"=>$data['id']), array("name"=>$data['name'],"email"=>$data['email'], "phone_number"=>$data['phone_number'],"title"=>$data['title'],"company"=>$data['company'], "membership_id"=>$data['membership_id'], "is_admin"=>$data['is_admin']));
+       $status = $this->db->update('tbl_user',
+		   array("name"=>$data['name'],"email"=>$data['email'],
+			   "phone_number"=>$data['phone_number'],
+			   "title"=>$data['title'],
+			   "company"=>$data['company'],
+			   "membership_id"=>$data['membership_id'],
+			   "is_admin"=>$data['is_admin']),
+		   array("id"=>$data['id'])
+	   );
 
+	   $result = array('status'=>$status,'data'=>$data);
+	   if(!$status){
+		   $result['debug'] = $this->db->last_query();
+	   }
+	   echo json_encode($result);
 
    }
 
