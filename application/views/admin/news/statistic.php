@@ -101,7 +101,7 @@
 		<div class="col-md-7">
 			<div class="card">
 				<div class="card-body">
-					<h3>Recent</h3>
+					<h3>Recent Logs</h3>
 					<table width="100%" border="1" cellpadding="3" cellspacing="0" style="border-collapse: collapse; border-color:#f1f1f1; ">
 						<tr style="background: lightyellow">
 							<th>Id</th>
@@ -133,7 +133,7 @@
 
 	<div class="card">
 		<div class="card-body">
-			<h3>Statistics by Date</h3>
+			<h3>Last 30 days</h3>
 			<div>
 				<div id="chart_div"></div>
 				<script>
