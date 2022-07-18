@@ -94,11 +94,22 @@ body.page a{
 }
 
 .fusion-footer{
-    background: #fff;
+    background: #222;
     padding: 30px 0 0 0;
+	color: #fff;
+}
+.fusion-footer a{
+	color: #fff;
 }
 
-
+.footer_menu{
+	background: #000!important;
+}
+.footer_menu a{
+	color: #fff!important;
+	font-size: 16px;
+	text-transform: uppercase;
+}
 
 .fusion-social-networks-wrapper{
     float: right;
