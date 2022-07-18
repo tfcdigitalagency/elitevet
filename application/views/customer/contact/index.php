@@ -4,7 +4,7 @@
         <div class="elementor-section-wrap">
             <div class="content-wrapper">
                 <!-- Content area -->
-                <div class="content">
+                <div class="container">
 
                     <!-- Layout 1 -->
                     <div class="mb-3">
