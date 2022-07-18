@@ -20,6 +20,61 @@
     clear: both;
 }
 
+.header-bg{
+	background-color: #222!important;
+}
+
+.social-list li{
+	list-style: none;
+	display: inline-block;
+}
+
+.social-list li a{
+	color:#fff!important;
+	font-size: 1.2em;
+	margin: 5px 15px 5px 0;
+}
+
+.header_text{
+	color: #fff;
+	font-size: 1.2em;
+}
+
+.user_nav a{
+	fill: #FED831;
+	color: #FED831!important;
+	background-color: rgba(2, 1, 1, 0);
+	padding: 0px 0px 0px 0px;
+}
+
+.image-slide-fit{
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 500px;
+}
+
+.splide__slide{
+	max-height: 550px!important;
+}
+
+.elementor-nav-menu--main a{
+	font-size: 1.2em;
+	color: #fff!important;
+	text-transform: uppercase;
+}
+
+.home_index .elementor-nav-menu--main a{
+	color: #FED831!important;
+}
+
+.elementor-form-fields-wrapper .elementor-field{
+ border: 1px solid #999!important;
+  border-radius:3px!important;
+}
+
+.mtz-download-btn{
+	display: none!important;
+}
 
 body.page{
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
@@ -109,6 +164,25 @@ body.page a{
 	color: #fff!important;
 	font-size: 16px;
 	text-transform: uppercase;
+}
+
+.footer_group h3{
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1em;
+}
+.footer_group ul{
+	padding: 0;
+
+}
+.footer_group li{
+	list-style: none;
+}
+
+.social_menu a{
+	margin-right: 20px;
+	display: inline-block;
+	font-size: 1.5em;
 }
 
 .fusion-social-networks-wrapper{

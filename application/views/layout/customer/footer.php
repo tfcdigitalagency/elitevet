@@ -1,69 +1,94 @@
-<div class="footer_menu">
-	<div class="container elementor-widget-container">
-		<?php include('nav.php'); ?>
-	</div>
-</div>
-<div class="fusion-footer">
+
+<div class="footer_menu p-3">
 	<div class="container">
 		<footer class="fusion-footer-widget-area fusion-widget-area">
 			<div class="fusion-row">
-				<div class="fusion-columns fusion-columns-1 fusion-widget-area">
+				<section class="elementor-element elementor-element-bcf19d5 elementor-section-full_width elementor-section-height-min-height elementor-hidden-tablet elementor-hidden-phone elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="bcf19d5" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+					<div class="elementor-container elementor-column-gap-default">
+						<div class="elementor-row mt-3">
+							<div class="col-md-4">
+								<div class="elementor-image">
+									<img width="198" height="68" src="<?=base_url().'assets/customer_assets'?>/Group-9.png" class="attachment-large size-large" alt="" loading="lazy">
+								</div>
+								<div class="fusion-social-networks boxed-icons">
+									<div class="social_menu mt-2 mb-2">
+										<a class="fa fa-facebook" style="" data-placement="top" data-title="Facebook"
+										   data-toggle="tooltip" title="" href="https://www.facebook.com/elitesdvobnetworkusa/"
+										   target="_blank" rel="noopener noreferrer" data-original-title="Facebook"><span
+													class="screen-reader-text">Facebook</span></a>
+										<a class="fa fa-twitter" style="" data-placement="top" data-title="Twitter"
+										   data-toggle="tooltip" title="" href="https://twitter.com/elitesdvobusa?lang=en"
+										   target="_blank" rel="noopener noreferrer" data-original-title="Twitter"><span
+													class="screen-reader-text">Twitter</span></a>
+										<a class="fa fa-instagram" style="" data-placement="top" data-title="Instagram"
+										   data-toggle="tooltip" title="" href="https://www.instagram.com/elitesdvobnetwork/"
+										   target="_blank" rel="noopener noreferrer" data-original-title="Instagram"><span
+													class="screen-reader-text">Instagram</span></a>
+										<a class="fa fa-youtube" style="" data-placement="top" data-title="YouTube"
+										   data-toggle="tooltip" title=""
+										   href="https://www.youtube.com/channel/UCn0l1CT67W1jU2zYu8FxYbg" target="_blank"
+										   rel="noopener noreferrer" data-original-title="YouTube"><span
+													class="screen-reader-text">YouTube</span></a>
+										<a class="fa fa-linkedin" style="" data-placement="top" data-title="LinkedIn"
+										   data-toggle="tooltip" title="" href="https://www.linkedin.com/in/elitesdvob/"
+										   target="_blank" rel="noopener noreferrer" data-original-title="LinkedIn"><span
+													class="screen-reader-text">LinkedIn</span></a></div>
+								</div>
+								<div>
+									&copy; Copyright 2012 - <?php echo date("Y");?>
+									All Rights Reserved
+								</div>
+							</div>
+							<div class="col-md-8">
+								<div class="row">
+									<div class="col-md-4 footer_group">
+										<h3>Group 1</h3>
+										<ul>
+											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-10 current_page_item menu-item-82"><a href="<?=base_url().'customer/home'?>" aria-current="page" class="elementor-item <?=($id == 'home')?'elementor-item-active':'elementor-item-anchor'?>">Home</a></li>
+											<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
+												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="<?=base_url().'customer/event'?>" class="elementor-item <?=($id == 'event')?'elementor-item-active':'elementor-item-anchor'?>">EVENT</a></li>
+											<?php } ?>
 
-					<div class="fusion-column fusion-column-last col-lg-12 col-md-12 col-sm-12 ">
-						<section id="text-3" class="fusion-footer-widget-column widget widget_text "
-								 style="border-style: solid;border-color:transparent;border-width:0px;">
-							<div class="textwidget ml-3"><strong style="">THE ELITE SDVOB NETWORK. All Right
-									Reserved</strong></div>
-							<div style="clear:both;"></div>
-						</section>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'news'?>" class="elementor-item <?=($id == 'news')?'elementor-item-active':'elementor-item-anchor'?>">NEWS</a></li>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/webinar'?>" class="elementor-item <?=($id == 'webinar')?'elementor-item-active':'elementor-item-anchor'?>">WEBINAR</a></li>
+
+											<?php if($this->session->userdata('user')['is_admin'] > 0){ ?>
+												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/whilewebinar'?>" class="elementor-item <?=($id == 'whilewebinar')?'elementor-item-active':'elementor-item-anchor'?>">WHILEWEBINAR</a></li>
+											<?php } ?>
+										</ul>
+									</div>
+									<div class="col-md-4 footer_group">
+										<h3>Group 2</h3>
+										<ul>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/home/page/sdvosb'?>" class="elementor-item <?=($id == 'sdvosb')?'elementor-item-active':'elementor-item-anchor'?>">SDVOSB Programs</a></li>
+											<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
+												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/opportunities'?>" class="elementor-item <?=($id == 'opportunities')?'elementor-item-active':'elementor-item-anchor'?>">OPPORTUNITIES</a></li>
+											<?php } ?>
+
+										</ul>
+									</div>
+									<div class="col-md-4 footer_group">
+										<h3>Group 3</h3>
+										<ul>
+											<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
+												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/training'?>" class="elementor-item <?=($id == 'training')?'elementor-item-active':'elementor-item-anchor'?>">TRAINING</a></li>
+											<?php } else { ?>
+												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85"><a href="<?=base_url().'customer/other/membership'?>" class="elementor-item <?=($id == 'membership')?'elementor-item-active':'elementor-item-anchor'?>">Membership</a></li>
+											<?php } ?>
+
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'customer/contact'?>" class="elementor-item <?=($id == 'contact')?'elementor-item-active':'elementor-item-anchor'?>">CONTACT</a></li>
+										</ul>
+									</div>
+								</div>
+
+							</div>
+						</div>
 					</div>
-
-					<div class="fusion-clearfix"></div>
-				</div> <!-- fusion-columns -->
+				</section>
 			</div> <!-- fusion-row -->
 		</footer> <!-- fusion-footer-widget-area -->
 
 
-		<footer id="footer" class="fusion-footer-copyright-area">
-			<div class="fusion-row">
-				<div class="fusion-copyright-content ml-3">
-
-					<div class="fusion-copyright-notice">
-						<div>
-							© Copyright 2012 -&nbsp;<script>document.write(new Date().getFullYear());</script>.&nbsp;&nbsp;&nbsp;
-							All Rights Reserved&nbsp;&nbsp;&nbsp;
-						</div>
-					</div>
-					<div class="fusion-social-links-footer">
-						<div class="fusion-social-networks boxed-icons">
-							<div class="fusion-social-networks-wrapper">
-								<a class="fa fa-facebook" style="" data-placement="top" data-title="Facebook"
-								   data-toggle="tooltip" title="" href="https://www.facebook.com/elitesdvobnetworkusa/"
-								   target="_blank" rel="noopener noreferrer" data-original-title="Facebook"><span
-											class="screen-reader-text">Facebook</span></a>
-								<a class="fa fa-twitter" style="" data-placement="top" data-title="Twitter"
-								   data-toggle="tooltip" title="" href="https://twitter.com/elitesdvobusa?lang=en"
-								   target="_blank" rel="noopener noreferrer" data-original-title="Twitter"><span
-											class="screen-reader-text">Twitter</span></a>
-								<a class="fa fa-instagram" style="" data-placement="top" data-title="Instagram"
-								   data-toggle="tooltip" title="" href="https://www.instagram.com/elitesdvobnetwork/"
-								   target="_blank" rel="noopener noreferrer" data-original-title="Instagram"><span
-											class="screen-reader-text">Instagram</span></a>
-								<a class="fa fa-youtube" style="" data-placement="top" data-title="YouTube"
-								   data-toggle="tooltip" title=""
-								   href="https://www.youtube.com/channel/UCn0l1CT67W1jU2zYu8FxYbg" target="_blank"
-								   rel="noopener noreferrer" data-original-title="YouTube"><span
-											class="screen-reader-text">YouTube</span></a>
-								<a class="fa fa-linkedin" style="" data-placement="top" data-title="LinkedIn"
-								   data-toggle="tooltip" title="" href="https://www.linkedin.com/in/elitesdvob/"
-								   target="_blank" rel="noopener noreferrer" data-original-title="LinkedIn"><span
-											class="screen-reader-text">LinkedIn</span></a></div>
-						</div>
-					</div>
-
-				</div> <!-- fusion-fusion-copyright-content -->
-			</div> <!-- fusion-row -->
-		</footer> <!-- #footer -->
 	</div>
 </div>
 

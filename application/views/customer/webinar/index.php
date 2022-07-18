@@ -142,7 +142,7 @@ $now = date("Y-m-d H:i:s");
 	<div class="card" id="gallery">
 		<div class="card-body">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="card">
 						<div class="card-body">
 
@@ -172,7 +172,7 @@ $now = date("Y-m-d H:i:s");
 						</div>
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-9">
 					<div class="splide" id="splide">
 						<div class="splide__track">
 							<ul class="splide__list">
@@ -180,20 +180,20 @@ $now = date("Y-m-d H:i:s");
 
 									<?php foreach ($webinar as $item): ?>
 										<li class="splide__slide" style="text-align: center">
-											<img src="<?= base_url() . $item['thumbnail'] ?>"/>
+											<img  class="image-slide-fit" src="<?= base_url() . $item['thumbnail'] ?>"/>
 										</li>
 									<?php endforeach; ?>
 
 								<?php else: ?>
 
 									<li class="splide__slide">
-										<img src="<?= base_url(ASSETS_URL) ?>image/1.jpg"/>
+										<img  class="image-slide-fit" src="<?= base_url(ASSETS_URL) ?>image/1.jpg"/>
 									</li>
 									<li class="splide__slide gala-item">
-										<img src="<?= base_url(ASSETS_URL) ?>image/2.jpg"/>
+										<img  class="image-slide-fit" src="<?= base_url(ASSETS_URL) ?>image/2.jpg"/>
 									</li>
 									<li class="splide__slide gala-item">
-										<img src="<?= base_url(ASSETS_URL) ?>image/3.jpg"/>
+										<img  class="image-slide-fit" src="<?= base_url(ASSETS_URL) ?>image/3.jpg"/>
 									</li>
 
 								<?php endif; ?>
@@ -224,7 +224,7 @@ $now = date("Y-m-d H:i:s");
 		<!-- Webinar -->
 		<div class="row hide" id="whilewebinar">
 
-			<div class="col-sm-12 col-lg-4">
+			<div class="col-sm-12 col-lg-3">
 				<div class="card">
 					<div class="card-body">
 
@@ -261,7 +261,7 @@ $now = date("Y-m-d H:i:s");
 
 				</div>
 			</div>
-			<div class="col-sm-12 col-lg-8">
+			<div class="col-sm-12 col-lg-9">
 				<div class="card">
 					<div class="card-body">
 
@@ -318,42 +318,56 @@ $now = date("Y-m-d H:i:s");
 			</div>
 			<div class="card">
 				<div class="card-body">
-					<div class="faqWrap">
-						<h3>Your capability Statement Pdf</h3>
-						<form action="<?php echo site_url('customer/whilewebinar/upload') ?>"
-							  style="display:<?php echo ($pdf_link) ? 'none' : '' ?>" id="pdf_form"
-							  enctype="multipart/form-data" method="post" accept-charset="utf-8">
-							<div class="row">
-								<div class="col-md-12">
-									<input type="file" name="userfile" size="20" style="display: inline-block;"/>
-									<input type="submit" value="Upload" class="btn btn-primary" id="submit_file"/>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="faqWrap">
+								<h3>Webinar tool</h3>
+								<form action="<?php echo site_url('customer/whilewebinar/upload') ?>"
+									  style="display:<?php echo ($pdf_link) ? 'none' : '' ?>" id="pdf_form"
+									  enctype="multipart/form-data" method="post" accept-charset="utf-8">
+									<div class="row">
+										<div class="col-md-12">
+											<input type="file" name="userfile" size="20" style="display: inline-block;"/>
+											<input type="submit" value="Upload" class="btn btn-primary" id="submit_file"/>
 
+										</div>
+									</div>
+								</form>
+								<div id="pdf_link">
+									<?php if ($pdf_link) echo '<a target="_blank" style="margin-right:15px;" title="Download Statement Pdf"  href="/assets/uploads/pdf/' . $pdf_link . '"><i class="fa fa-download"></i></a>'; ?>
+									<a style="cursor: pointer;margin-right:15px;"
+									   id="btnEdit" title="Update Statement Pdf"><i class="fa fa-edit"></i></a>
+									<a href="<?= base_url() . $handout ?>" title="Download handout" target="_blank"
+									   style="margin-right:15px;" >
+										<i class="icon-file-pdf"></i>
+									</a>
+									<a href="#" onclick="playMusic()" title="Pre Music Count Down" style="margin-right:15px;" ><i class="icon-music text-pink mr-2"></i>
+									</a>
 								</div>
 							</div>
-						</form>
-						<div id="pdf_link">
-							<?php if ($pdf_link) echo '<a target="_blank" class="btn btn-success" style="color:#fff;margin-top:10px;"  href="/assets/uploads/pdf/' . $pdf_link . '">Download Statement Pdf</a>'; ?>
-							<a style="position: relative; cursor: pointer; display: inline-block; top: 5px; left: 20px;"
-							   id="btnEdit">Update</a>
+						</div>
+						<div class="col-md-6 text-right">
+							<audio controls id="backgroundMusic" hidden>
+								<source src="<?= !empty($music) ? base_url($music[0]['music']) : ''; ?>" type="audio/mpeg"/>
+								Your browser does not support the audio element.
+							</audio>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body">
-					<a href="<?= base_url() . $handout ?>" target="_blank" class="btn btn-info"
-					   style="color: #fff; margin: 10px 0; width: 100%">
-						<i class="icon-file-pdf" style="margin-right: 10px;"></i> Download handout
-					</a>
+
 					<?php if($live):?>
 					<div class="splide" id="gala">
 						<div class="splide__track">
 							<ul class="splide__list">
 								<?php foreach ($adsimage as $i) { ?>
 									<li class="splide__slide gala-item">
-										<img src="<?= base_url() . $i['thumbnail'] ?>"/>
+										<img  class="image-slide-fit" src="<?= base_url() . $i['thumbnail'] ?>"/>
 									</li>
 								<?php } ?>
 							</ul>
@@ -379,15 +393,7 @@ $now = date("Y-m-d H:i:s");
 							</div>
 						<?php } ?>
 					</div>
-					<div style="text-align: right; margin-top: 20px">
-						<audio controls id="backgroundMusic" hidden>
-							<source src="<?= !empty($music) ? base_url($music[0]['music']) : ''; ?>" type="audio/mpeg"/>
-							Your browser does not support the audio element.
-						</audio>
-						<i class="icon-music text-pink mr-2"></i>
-						<button type="button" class="btn btn-primary" onclick="playMusic()">Pre Music Count Down
-						</button>
-					</div>
+
 				</div>
 			</div>
 		</div>

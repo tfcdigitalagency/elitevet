@@ -986,187 +986,74 @@
 </head>
 
 <body class="page <?php echo $this->router->fetch_class();?> <?php echo $this->router->fetch_class();?>_<?php echo $this->router->fetch_method();?>">
-    <div data-elementor-type="header" data-elementor-id="243" class="elementor elementor-243 elementor-location-header" data-elementor-settings="[]">
+    <div data-elementor-type="header" data-elementor-id="243" class="elementor elementor-243 elementor-location-header header-bg" data-elementor-settings="[]">
 		<div class="elementor-inner">
-			<div class="elementor-section-wrap">
-				<section class="elementor-element elementor-element-9af2c1e elementor-section-full_width elementor-hidden-phone elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="9af2c1e" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-					<div class="elementor-background-overlay"></div>
-					<div class="elementor-container elementor-column-gap-default">
-						<div class="elementor-row">
-							<div class="elementor-element elementor-element-c4d7c8e elementor-column elementor-col-20 elementor-top-column" data-id="c4d7c8e" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-360a46d elementor-icon-list--layout-inline elementor-align-center elementor-widget elementor-widget-icon-list" data-id="360a46d" data-element_type="widget" data-widget_type="icon-list.default">
-											<div class="elementor-widget-container">
-												<ul class="elementor-icon-list-items elementor-inline-items">
-                                                	<li class="elementor-icon-list-item">
-														<a href="https://www.facebook.com/elitesdvobnetworkusa/" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-facebook-f"></i></a>
-														<span class="elementor-icon-list-text"></span>
-													</li>
-													<li class="elementor-icon-list-item">
-														<a href="https://twitter.com/elitesdvobusa?lang=en" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-twitter"></i></a>
-														<span class="elementor-icon-list-text"></span>
-													</li>
-													<li class="elementor-icon-list-item">
-                                                    <a href="https://www.linkedin.com/in/elitesdvob/" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-linkedin-in"></i></a>
-														<span class="elementor-icon-list-text"></span>
-														</li>
-													<li class="elementor-icon-list-item">
-                                                    <a href="https://www.youtube.com/channel/UCn0l1CT67W1jU2zYu8FxYbg" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-youtube"></i></a>
-														<span class="elementor-icon-list-text"></span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="elementor-element elementor-element-4c10ff7 elementor-column elementor-col-20 elementor-top-column" data-id="4c10ff7" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-c9c41f6 elementor-widget elementor-widget-heading" data-id="c9c41f6" data-element_type="widget" data-widget_type="heading.default">
-											<div class="elementor-widget-container"><h2 class="elementor-heading-title elementor-size-default">Elite Service Disabled Veteran Owned Business Network - a 501(c)19 Non-Profit Veterans Organization</h2></div>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <?php if(empty($this->session->userdata('user'))):?>
-							<div class="elementor-element elementor-element-acb5425 elementor-column elementor-col-20 elementor-top-column" data-id="acb5425" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-eddc551 elementor-align-right elementor-widget elementor-widget-button" data-id="eddc551" data-element_type="widget" data-widget_type="button.default">
-											<div class="elementor-widget-container">
-												<div class="elementor-button-wrapper">
-													<a href="<?=base_url().'auth/login'?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+			<div class="container-fluid" style="max-width: 1600px;">
+				<div class="row mt-2">
+					<div class="col-md-2">
+						<ul class="social-list">
+							<li class="elementor-icon-list-item">
+								<a href="https://www.facebook.com/elitesdvobnetworkusa/" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-facebook-f"></i></a>
+								<span class="elementor-icon-list-text"></span>
+							</li>
+							<li class="elementor-icon-list-item">
+								<a href="https://twitter.com/elitesdvobusa?lang=en" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-twitter"></i></a>
+								<span class="elementor-icon-list-text"></span>
+							</li>
+							<li class="elementor-icon-list-item">
+								<a href="https://www.linkedin.com/in/elitesdvob/" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-linkedin-in"></i></a>
+								<span class="elementor-icon-list-text"></span>
+							</li>
+							<li class="elementor-icon-list-item">
+								<a href="https://www.youtube.com/channel/UCn0l1CT67W1jU2zYu8FxYbg" target="_blank" class="elementor-icon-list-icon"><i class="fa fa-youtube"></i></a>
+								<span class="elementor-icon-list-text"></span>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-8">
+						<h2 class="header_text">Elite Service Disabled Veteran Owned Business Network - a 501(c)19 Non-Profit Veterans Organization</h2>
+					</div>
+					<div class="col-md-2 user_nav">
+						<?php if(empty($this->session->userdata('user'))):?>
+						<a href="<?=base_url().'auth/login'?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 														<span class="elementor-button-content-wrapper">
 														<span class="elementor-button-icon elementor-align-icon-left">
 														<i class="fa fa-lock"></i></span>
 														<span class="elementor-button-text">Login</span>
 														</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <div class="elementor-element elementor-element-6b53945 elementor-column elementor-col-20 elementor-top-column" data-id="6b53945" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-5f51efb elementor-widget elementor-widget-heading" data-id="5f51efb" data-element_type="widget" data-widget_type="heading.default">
-											<div class="elementor-widget-container"><h2 class="elementor-heading-title elementor-size-default">/</h2></div>
-										</div>
-									</div>
-								</div>
-							</div>
-                            <?php endif;?>
-							<div class="elementor-element elementor-element-0bcfee7 elementor-column elementor-col-20 elementor-top-column" data-id="0bcfee7" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-5920941 elementor-align-left elementor-widget elementor-widget-button" data-id="5920941" data-element_type="widget" data-widget_type="button.default">
-											<div class="elementor-widget-container">
-												<div class="elementor-button-wrapper">
-													<a href="<?=(!empty($this->session->userdata('user')))?base_url().'auth/logout':base_url().'auth/register'?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+						</a>
+						&nbsp; / &nbsp;
+							<a href="<?php echo base_url('auth/register')?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
 														<span class="elementor-button-content-wrapper">
-														<span class="elementor-button-text"><?=!empty($this->session->userdata('user')) ? "Logout": "Register";?></span>
+														<span class="elementor-button-text">Register</span>
 														</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+						</a>
+						<?php else:?>
+						<a href="<?php echo base_url('auth/logout')?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
+														<span class="elementor-button-content-wrapper">
+														<span class="elementor-button-text">Logout</span>
+														</span>
+						</a>
+						<?php endif;?>
+
 					</div>
-				</section>
+				</div>
+
 				<section class="elementor-element elementor-element-d12f52c elementor-section-full_width elementor-section-stretched elementor-section-height-min-height elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section elementor-sticky" data-id="d12f52c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;sticky&quot;:&quot;top&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}" style="width: 1905px; left: 0px;">
 					<div class="elementor-container elementor-column-gap-no">
 						<div class="elementor-row">
-							<div class="elementor-element elementor-element-753ab4a elementor-column elementor-col-20 elementor-top-column" data-id="753ab4a" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-ae87601 elementor-widget elementor-widget-image" data-id="ae87601" data-element_type="widget" data-widget_type="image.default">
-											<div class="elementor-widget-container">
-												<div class="elementor-image">
-													<img width="198" height="68" src="<?=base_url().'assets/customer_assets'?>/Group-9.png" class="attachment-large size-large" alt="" loading="lazy">
-												</div>
-											</div>
-										</div>
+							<div class="row">
+								<div class="col-md-2">
+									<div class="elementor-image mt-3 mb-2">
+										<img width="198" height="68" src="<?=base_url().'assets/customer_assets'?>/Group-9.png" class="attachment-large size-large" alt="" loading="lazy">
 									</div>
 								</div>
-							</div>
-							<div class="elementor-element elementor-element-0d744b0 elementor-hidden-desktop elementor-hidden-tablet elementor-column elementor-col-20 elementor-top-column" data-id="0d744b0" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-86ec6db elementor-align-right elementor-mobile-align-center elementor-widget elementor-widget-button" data-id="86ec6db" data-element_type="widget" data-widget_type="button.default">
-											<div class="elementor-widget-container">
-												<div class="elementor-button-wrapper">
-													<a href="<?=base_url().'auth/login'?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-														<span class="elementor-button-content-wrapper">
-															<span class="elementor-button-icon elementor-align-icon-left"><i class="fa fa-lock"></i></span>
-															<span class="elementor-button-text">Login</span>
-														</span>
-													</a>
-												</div>
-											</div>
-										</div>
+								<div class="col-md-10">
+									<div class="mt-2">
+									<?php include ('nav.php');?>
 									</div>
 								</div>
-							</div>
 
-							<div class="elementor-element elementor-element-54be085 elementor-hidden-desktop elementor-hidden-tablet elementor-column elementor-col-20 elementor-top-column" data-id="54be085" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-e48b737 elementor-widget elementor-widget-heading" data-id="e48b737" data-element_type="widget" data-widget_type="heading.default">
-											<div class="elementor-widget-container"><h2 class="elementor-heading-title elementor-size-default">/</h2></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="elementor-element elementor-element-d905062 elementor-hidden-desktop elementor-hidden-tablet elementor-column elementor-col-20 elementor-top-column" data-id="d905062" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-d409aa9 elementor-align-right elementor-mobile-align-right elementor-widget elementor-widget-button" data-id="d409aa9" data-element_type="widget" data-widget_type="button.default">
-											<div class="elementor-widget-container">
-												<div class="elementor-button-wrapper">
-													<a href="<?=base_url().'auth/register'?>" class="elementor-button-link elementor-button elementor-size-sm" role="button">
-														<span class="elementor-button-content-wrapper">
-															<span class="elementor-button-text">Register</span>
-														</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="elementor-element elementor-element-2473e5f elementor-column elementor-col-20 elementor-top-column" data-id="2473e5f" data-element_type="column">
-								<div class="elementor-column-wrap  elementor-element-populated">
-									<div class="elementor-widget-wrap">
-										<div class="elementor-element elementor-element-c85f928 elementor-nav-menu__align-right elementor-nav-menu--indicator-angle elementor-nav-menu--stretch elementor-nav-menu__text-align-center elementor-nav-menu--dropdown-tablet elementor-nav-menu--toggle elementor-nav-menu--burger elementor-widget elementor-widget-nav-menu" data-id="c85f928" data-element_type="widget" data-settings="{&quot;full_width&quot;:&quot;stretch&quot;,&quot;layout&quot;:&quot;horizontal&quot;,&quot;toggle&quot;:&quot;burger&quot;}" data-widget_type="nav-menu.default">
-											<div class="elementor-widget-container">
-												<?php include ('nav.php');?>
-
-												<div class="elementor-menu-toggle" role="button" tabindex="0" aria-label="Menu Toggle" aria-expanded="false" style="">
-													<i class="eicon-menu-bar" aria-hidden="true"></i>
-													<span class="elementor-screen-only">Menu</span>
-												</div>
-												<nav class="elementor-nav-menu--dropdown elementor-nav-menu__container" role="navigation" aria-hidden="true" style="top: 44px; width: 1905px; left: 0px;">
-													<ul id="menu-2-c85f928" class="elementor-nav-menu" data-smartmenus-id="1606753235391349">
-                                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-10 current_page_item menu-item-82"><a href="<?=base_url().'customer/home'?>" aria-current="page" class="elementor-item <?=($id == 'home')?'elementor-item-active':'elementor-item-anchor'?>">Home</a></li>
-														<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="<?=base_url().'customer/event'?>" class="elementor-item <?=($id == 'event')?'elementor-item-active':'elementor-item-anchor'?>">EVENT</a></li>
-														<!-- <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/mailing'?>" class="elementor-item elementor-item-anchor">MAILING</a></li> -->
-														<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85"><a href="<?=base_url().'customer/webinar'?>" class="elementor-item <?=($id == 'webinar')?'elementor-item-active':'elementor-item-anchor'?>">WEBINAR</a></li>
-														<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/training'?>" class="elementor-item <?=($id == 'training')?'elementor-item-active':'elementor-item-anchor'?>">TRAINING</a></li>
-														<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88"><a href="<?=base_url().'news'?>" class="elementor-item <?=($id == 'news')?'elementor-item-active':'elementor-item-anchor'?>">NEWS</a></li>
-														<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'customer/contact'?>" class="elementor-item <?=($id == 'contact')?'elementor-item-active':'elementor-item-anchor'?>">CONTACT</a></li>
-													</ul>
-												</nav>
-											</div>
-										</div>
-									</div>
-								</div>
 							</div>
 						</div>
 					</div>

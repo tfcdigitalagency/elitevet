@@ -749,7 +749,7 @@ Sponsor today!</p>
                                                                                           name="message" id="message" rows="4" placeholder="Message"></textarea>
                                                                             </div>
                                                                             <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons elementor-sm-100">
-                                                                                <button type="button" class="elementor-button elementor-size-xs" onclick="send_message()">
+                                                                                <button type="button" class="elementor-button btn-primary elementor-size-xs" style="border: 0!important; border-radius:7px; " onclick="send_message()">
                                                                                             <span>
                                                                                                 <span class=" elementor-button-icon"></span>
                                                                                                 <span class="elementor-button-text">SUBMIT</span>
@@ -773,6 +773,8 @@ Sponsor today!</p>
                     </div>
                 </div>
             </section>
+
+
         </div>
     </div>
 </div>
