@@ -10,7 +10,7 @@
 								<div class="elementor-image">
 									<img width="198" height="68" src="<?=base_url().'assets/customer_assets'?>/Group-9.png" class="attachment-large size-large" alt="" loading="lazy">
 								</div>
-								<div class="fusion-social-networks boxed-icons">
+								<div class="fusion-social-networks boxed-icons mt-2">
 									<div class="social_menu mt-2 mb-2">
 										<a class="fa fa-facebook" style="" data-placement="top" data-title="Facebook"
 										   data-toggle="tooltip" title="" href="https://www.facebook.com/elitesdvobnetworkusa/"

@@ -12,7 +12,7 @@
                         </h1>
                     </div>
 
-                    <div class="row">
+                    <div class="row mt-5 mb-5">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-body" style="padding: 0!important;">
