@@ -3,33 +3,26 @@
         <div class="elementor-section-wrap">
             <div class="content-wrapper">
                 <!-- Content area -->
-                <div class="content">
+                <div class="container">
 
                     <!-- Layout 1 -->
                     <div class="mb-3">
-                        <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
+                        <h1 class="mb-0 font-weight-semibold" >
+
                         </h1>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
-                                <div class="card-body">
+                                <div class="card-body" style="padding: 0!important;">
 
                                         <div class="row">
-                                            <div class="col-md-7">
-                                                <div class="card-img-actions mb-3">
-                                                    <img class="card-img img-fluid" src="<?=base_url().'assets/global_assets/'?>images/placeholders/thumbnail.png" style="height: 500px" alt="image">
-                                                    <div class="card-img-actions-overlay card-img">
-                                                        <a href="blog_single.html" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
-                                                            <i class="icon-link"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                            <div class="col-md-6 bg_register">
+
                                             </div>
                                             <div class="col-md-1"></div>
-                                            <div class="col-md-3" style="margin-top: 140px;"> 
+                                            <div class="col-md-4" style="margin-top: 140px;">
                                                 <form class="login-form" action="<?=base_url('auth/register')?>" method="post"> 
                                                     <div class="form-group">
                                                         <button class="btn btn-warning btn-block">Register to EliteNCDVeterans</button>
@@ -89,7 +82,7 @@
 
                     <div class="mb-3">
                         <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
+
                         </h1>
                     </div>
 

@@ -19,9 +19,7 @@ label{
 <div class="content wrapper">
 
   <div class="mb-3">
-    <h1 class="mb-0 font-weight-semibold" style="color:red">
-      EliteNCDVeterans
-    </h1>
+
   </div>
 
 <div class="card">
@@ -153,10 +151,7 @@ label{
  </div>
 
   <div class="mb-3">
-    <h1 class="mb-0 font-weight-semibold" style="color:red">
-      EliteNCDVeterans
 
-    </h1>
   </div>
 
 </div>

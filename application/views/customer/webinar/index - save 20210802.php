@@ -94,9 +94,6 @@ img {vertical-align: middle;}
                     <!-- Layout 1 -->
                     <div class="mb-3">
 
-                        <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
-                        </h1> 
                     </div>
                     <div class="row">
 						<div class="col-md-12">
@@ -181,9 +178,7 @@ img {vertical-align: middle;}
                    	
                     <p style="height: 30px;"></p>
                     <div class="mb-3">
-                        <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
-                        </h1>
+
                     </div>
 
                 </div>

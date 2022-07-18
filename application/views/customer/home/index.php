@@ -10,6 +10,38 @@
                         <div class="elementor-element elementor-element-4db43e2 elementor-column elementor-col-100 elementor-top-column"
                              data-id="4db43e2" data-element_type="column">
                             <div class="elementor-column-wrap  elementor-element-populated">
+								<div class="video_home elementor-widget-wrap" style="">
+									<div class="elementor-element elementor-element-7db41f7 elementor-widget elementor-widget-heading"
+										 data-id="7db41f7" data-element_type="widget" data-widget_type="heading.default">
+										<div class="elementor-widget-container">
+											<h2 class="elementor-heading-title elementor-size-default">Training Videos</h2>
+										</div>
+									</div>
+									<?php $count = 0; ?>
+									<?php for($i=0;$i<count($training);$i++){ ?>
+										<?php if($training[$i]['show_on_landing_page'] == 1){ $count++; if($count > 4) break; ?>
+											<div class="elementor-element elementor-element-12c62fb elementor-widget elementor-widget-pp-flipbox"
+												 data-id="12c62fb" data-element_type="widget" data-widget_type="pp-flipbox.default">
+												<div class="elementor-widget-container">
+													<div class="pp-flipbox-container pp-animate-fade pp-direction-">
+														<div class="pp-flipbox-flip-card">
+															<div>
+																<iframe class="embed-responsive-item" allowfullscreen="true" frameborder="0" mozallowfullscreen="" src="<?=$training[$i]['video_link']?>" webkitallowfullscreen=""></iframe>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="elementor-element elementor-element-bf65a59 elementor-widget elementor-widget-heading"
+												 data-id="bf65a59" data-element_type="widget" data-widget_type="heading.default">
+												<div class="elementor-widget-container">
+													<h2 class="elementor-heading-title elementor-size-default"><?php echo $training[$i]['title']; ?></h2>
+												</div>
+											</div>
+										<?php } ?>
+									<?php } ?>
+
+								</div>
                                 <div class="elementor-widget-wrap">
                                     <div class="elementor-element elementor-element-813fe9c elementor-widget elementor-widget-heading"
                                          data-id="813fe9c" data-element_type="widget" data-widget_type="heading.default">
@@ -205,62 +237,7 @@
                     </div>
                 </div>
             </section>
-            <section class="elementor-element elementor-element-932cae0 elementor-section-full_width elementor-hidden-phone elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section"
-                     data-id="932cae0" data-element_type="section">
-                <div class="elementor-container elementor-column-gap-default">
-                    <div class="elementor-row">
-                        <div class="elementor-element elementor-element-4821d27 elementor-column elementor-col-33 elementor-top-column"
-                             data-id="4821d27" data-element_type="column">
-                            <div class="elementor-column-wrap  elementor-element-populated">
-                                <div class="elementor-widget-wrap">
-                                    <div class="elementor-element elementor-element-7db41f7 elementor-widget elementor-widget-heading"
-                                         data-id="7db41f7" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h2 class="elementor-heading-title elementor-size-default">Training Videos</h2>
-                                        </div>
-                                    </div>
-                                    <?php $count = 0; ?>
-                                    <?php for($i=0;$i<count($training);$i++){ ?>
-                                        <?php if($training[$i]['show_on_landing_page'] == 1){ $count++; if($count > 4) break; ?>
-                                    <div class="elementor-element elementor-element-12c62fb elementor-widget elementor-widget-pp-flipbox"
-                                         data-id="12c62fb" data-element_type="widget" data-widget_type="pp-flipbox.default">
-                                        <div class="elementor-widget-container">
-                                            <div class="pp-flipbox-container pp-animate-fade pp-direction-">
-                                                <div class="pp-flipbox-flip-card">
-                                                    <div>
-                                                        <iframe class="embed-responsive-item" allowfullscreen="true" frameborder="0" mozallowfullscreen="" src="<?=$training[$i]['video_link']?>" webkitallowfullscreen=""></iframe>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-element elementor-element-bf65a59 elementor-widget elementor-widget-heading"
-                                         data-id="bf65a59" data-element_type="widget" data-widget_type="heading.default">
-                                        <div class="elementor-widget-container">
-                                            <h2 class="elementor-heading-title elementor-size-default"><?php echo $training[$i]['title']; ?></h2>
-                                        </div>
-                                    </div>
-                                        <?php } ?>
-                                    <?php } ?>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-7d04c6b elementor-column elementor-col-33 elementor-top-column"
-                             data-id="7d04c6b" data-element_type="column">
-                            <div class="elementor-column-wrap">
-                                <div class="elementor-widget-wrap"></div>
-                            </div>
-                        </div>
-                        <div class="elementor-element elementor-element-360bad6 elementor-column elementor-col-33 elementor-top-column"
-                             data-id="360bad6" data-element_type="column">
-                            <div class="elementor-column-wrap">
-                                <div class="elementor-widget-wrap"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             <section class="elementor-element elementor-element-35edeb1 elementor-section-full_width elementor-hidden-desktop elementor-hidden-tablet elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section"
                      data-id="35edeb1" data-element_type="section">
                 <div class="elementor-container elementor-column-gap-default">
@@ -734,12 +711,7 @@ Sponsor today!</p>
                                              data-id="ace2796" data-element_type="section">
                                         <div class="elementor-container elementor-column-gap-default">
                                             <div class="elementor-row">
-                                                <div class="elementor-element elementor-element-dfcc658 elementor-column elementor-col-33 elementor-inner-column"
-                                                     data-id="dfcc658" data-element_type="column">
-                                                    <div class="elementor-column-wrap">
-                                                        <div class="elementor-widget-wrap"></div>
-                                                    </div>
-                                                </div>
+
                                                 <div class="elementor-element elementor-element-a99874d elementor-column elementor-col-33 elementor-inner-column"
                                                      data-id="a99874d" data-element_type="column">
                                                     <div class="elementor-column-wrap  elementor-element-populated">
@@ -791,12 +763,7 @@ Sponsor today!</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="elementor-element elementor-element-9d4ab18 elementor-column elementor-col-33 elementor-inner-column"
-                                                     data-id="9d4ab18" data-element_type="column">
-                                                    <div class="elementor-column-wrap">
-                                                        <div class="elementor-widget-wrap"></div>
-                                                    </div>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </section>

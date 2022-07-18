@@ -8,9 +8,7 @@
 
                     <!-- Layout 1 -->
                     <div class="mb-3">
-                        <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
-                        </h1>
+
                     </div>
 
                     <div class="card-body" style="width: 80%;margin-left: 10%;background-color: khaki;">
@@ -61,9 +59,7 @@
                     <!-- /layout 1 -->
 
                     <div class="mb-3">
-                        <h1 class="mb-0 font-weight-semibold" style="color:red">
-                            EliteNCDVeterans
-                        </h1>
+
                     </div>
 
                 </div>
