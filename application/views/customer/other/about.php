@@ -8,7 +8,7 @@
                 <div class="bg-white">
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 pt-5">
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/lightgallery.min.js" integrity="sha512-FDbnUqS6P7md6VfBoH57otIQB3rwZKvvs/kQ080nmpK876/q4rycGB0KZ/yzlNIDuNc+ybpu0HV3ePdUYfT5cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>							
 							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.5.0/css/lightgallery.min.css" integrity="sha512-Szyqrwc8kFyWMllOpTgYCMaNNm/Kl8Fz0jJoksPZAWUqhE60VRHiLLJVcIQKi+bOMffjvrPCxtwfL+/3NPh/ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 							<div id="inline-gallery-container" class="inline-gallery-container"></div>
@@ -77,8 +77,8 @@
 							}
 							</style>
                         </div>
-                        <div class="col-md-6">
- <h1>About Us</h1>
+                        <div class="col-md-6" style="font-size: 16px;">
+ 							<h1>About Us</h1>
                             <p>Over 20 years ago, a group of veterans who had served their country found themselves struggling as individual business owners. Recognizing the challenges faced by disabled veterans—and grasping the value of teamwork that sets the veteran community apart—they established a network of businesses to serve as advocates and resources for service disabled veteran owned businesses: The Elite Service Disabled Veteran Owned Business Network.</p>
 							<p>A 501(c)19 non-profit veterans organization, the Elite SDVOB Network is an all-volunteer association comprised of business owners. Our mission is centered on advocacy, education and business opportunities advancement for service disabled veteran owned businesses and their allies.</p>
 							<p>The Nor-Cal Elite Disable Veterans organization chapter, the Nor-Cal Elite SDVOB Network hosts events in Nor California, including a Nor-Cal Event that has been held annually since 2017. We collaborate with business leaders, policy makers, and the general public to provide the means for Service Disabled Veteran Owned Businesses to overcome challenges and prosper in an evolving business environment.</p>
