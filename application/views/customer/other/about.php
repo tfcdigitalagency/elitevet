@@ -42,7 +42,27 @@
 											src: '/assets/about/gallery/2.png',
 											thumb: '/assets/about/gallery/2.png',
 											subHtml: '',
-										} 
+										},
+										{
+											src: '/assets/about/gallery/3.jpg',
+											thumb: '/assets/about/gallery/3.jpg',
+											subHtml: '',
+										},
+										{
+											src: '/assets/about/gallery/4.jpg',
+											thumb: '/assets/about/gallery/4.jpg',
+											subHtml: '',
+										},
+										{
+											src: '/assets/about/gallery/5.jpg',
+											thumb: '/assets/about/gallery/5.jpg',
+											subHtml: '',
+										},
+										{
+											src: '/assets/about/gallery/6.jpg',
+											thumb: '/assets/about/gallery/6.jpg',
+											subHtml: '',
+										}
 									],
 								});
 
