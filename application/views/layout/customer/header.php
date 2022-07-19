@@ -514,7 +514,7 @@
     <link rel="stylesheet" id="powerpack-frontend-css" href="<?=base_url().'assets/customer_assets'?>/frontend.css"type="text/css" media="all">
     <link rel="stylesheet" id="elementor-pro-css" href="<?=base_url().'assets/customer_assets'?>/frontend.min(1).css" type="text/css" media="all">
     <link rel="stylesheet" id="elementor-global-css" href="<?=base_url().'assets/customer_assets'?>/global.css" type="text/css" media="all">
-    <link rel="stylesheet" id="elementor-post-10-css" href="<?=base_url().'assets/customer_assets'?>/post-10.css?v=2" type="text/css" media="all">
+    <link rel="stylesheet" id="elementor-post-10-css" href="<?=base_url().'assets/customer_assets'?>/post-10.css?v=3" type="text/css" media="all">
     <link rel="stylesheet" id="elementor-post-243-css" href="<?=base_url().'assets/customer_assets'?>/post-243.css?v=2" type="text/css" media="all">
     <link rel="stylesheet" id="google-fonts-1-css" href="<?=base_url().'assets/customer_assets'?>/css" type="text/css" media="all">
     <link rel="stylesheet" id="elementor-icons-shared-0-css" href="<?=base_url().'assets/customer_assets'?>/fontawesome.min.css" type="text/css" media="all">

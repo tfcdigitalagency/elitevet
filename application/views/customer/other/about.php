@@ -110,7 +110,7 @@
     <div class="section-blue mt-3">
                     <div class="container">
                         <div class="row">
-                             <div class="col-md-4 text-center">
+                             <div class="col-md-3 text-center">
 								<div class="card"><div class="card-body">
 								<i class="fa fa-file-pdf" style="font-size:3em; color:#FF8000"></i>
 								<h3>Summary of VA Benefits</h3>
@@ -118,18 +118,25 @@
 								</div>
 								</div>
 							 </div>
-                              <div class="col-md-4 text-center">
+                              <div class="col-md-3 text-center">
 							  <div class="card"><div class="card-body">
 							  <i class="fa fa-file-pdf" style="font-size:3em; color:#FF8000"></i>
 								<h3>Federal Benefits</h3>
 								<a class="btn btn-lg btn-info text-white" style="font-size:22px;" href="https://ncdeliteveterans.org/assets/about/2021_Federal_Benefits_for_Veterans_Dependents_and_survivors.pdf">Download </a>
 							 </div></div>
 								</div>
-							  <div class="col-md-4 text-center">
+							  <div class="col-md-3 text-center">
 							  <div class="card"><div class="card-body">
 							  <i class="fa fa-file-pdf" style="font-size:3em; color:#FF8000"></i>
 								<h3>Disability Benefits</h3>
 								<a class="btn btn-lg btn-info text-white" style="font-size:22px;" href="https://ncdeliteveterans.org/assets/about/Disability_Benefits.pdf">Download </a>
+							 </div></div>
+								</div>
+							<div class="col-md-3 text-center">
+							  <div class="card"><div class="card-body">
+							  <i class="fa fa-file-pdf" style="font-size:3em; color:#FF8000"></i>
+								<h3>Veteran Resource</h3>
+								<a class="btn btn-lg btn-info text-white" style="font-size:22px;" href="https://ncdeliteveterans.org/assets/about/Veteran_ Resource_ Book.pdf">Download </a>
 							 </div></div>
 								</div>
                         </div>
