@@ -34,6 +34,11 @@
 									slideDelay: 400,
 									dynamicEl: [
 										{
+											src: '/assets/about/gallery/6.jpg',
+											thumb: '/assets/about/gallery/6.jpg',
+											subHtml: '',
+										},
+										{
 											src: '/assets/about/gallery/4.jpg',
 											thumb: '/assets/about/gallery/4.jpg',
 											subHtml: '',
@@ -57,12 +62,8 @@
 											src: '/assets/about/gallery/5.jpg',
 											thumb: '/assets/about/gallery/5.jpg',
 											subHtml: '',
-										},
-										{
-											src: '/assets/about/gallery/6.jpg',
-											thumb: '/assets/about/gallery/6.jpg',
-											subHtml: '',
 										}
+
 									],
 								});
 
