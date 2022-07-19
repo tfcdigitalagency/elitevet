@@ -521,7 +521,7 @@ Sponsor today!</p>
                                          data-id="8d89065" data-element_type="widget" data-widget_type="button.default">
                                         <div class="elementor-widget-container">
                                             <div class="elementor-button-wrapper">
-                                                <a href="/customer/contact" class="elementor-button-link elementor-button elementor-size-sm"
+                                                <a href="/customer/other/about" class="elementor-button-link elementor-button elementor-size-sm"
                                                    role="button">
 						<span class="elementor-button-content-wrapper">
 						<span class="elementor-button-text">About Us</span>
