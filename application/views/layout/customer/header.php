@@ -522,7 +522,7 @@
     <link rel="stylesheet" id="elementor-icons-fa-brands-css" href="<?=base_url().'assets/customer_assets'?>/brands.min.css" type="text/css" media="all">
 
     <link
-        href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
         rel="stylesheet"  type='text/css'>
 
     <script type="text/javascript" id="jquery-core-js-extra">

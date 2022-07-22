@@ -16,6 +16,7 @@
 			<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/opportunities'?>" class="elementor-item <?=($id == 'opportunities')?'elementor-item-active':'elementor-item-anchor'?>">OPPORTUNITIES</a></li>
 			<?php } ?>
+			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/other/benefit'?>" class="elementor-item <?=($id == 'benefit')?'elementor-item-active':'elementor-item-anchor'?>">Benefit</a></li>
 			<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
 				<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/training'?>" class="elementor-item <?=($id == 'training')?'elementor-item-active':'elementor-item-anchor'?>">TRAINING</a></li>
 			<?php } else { ?>
@@ -34,6 +35,7 @@
 			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="https://elitesdvob.org/find-an-sdvob/" class="elementor-item <?=($id == 'find')?'elementor-item-active':'elementor-item-anchor'?>" target="_blank">Find an SDVOB</a></li>
 			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-89"><a href="<?=base_url().'customer/home/page/sdvosb'?>" class="elementor-item <?=($id == 'sdvosb')?'elementor-item-active':'elementor-item-anchor'?>">SDVOSB Programs</a></li>
 			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/opportunities'?>" class="elementor-item <?=($id == 'find')?'elementor-item-active':'elementor-item-anchor'?>">OPPORTUNITIES</a></li>
+			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/other/benefit'?>" class="elementor-item <?=($id == 'benefit')?'elementor-item-active':'elementor-item-anchor'?>">Benefit</a></li>
 
 			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/home#who'?>" class="elementor-item <?=($id == 'weare')?'elementor-item-active':'elementor-item-anchor'?>">Who we are</a></li>
 			<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-88"><a href="<?=base_url().'news'?>" class="elementor-item <?=($id == 'news')?'elementor-item-active':'elementor-item-anchor'?>">News</a></li>
