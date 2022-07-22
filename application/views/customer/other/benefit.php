@@ -164,6 +164,7 @@
 	}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
 <main class="clearfix width-100 mt-5">
 	<div class="fusion-row" style="max-width:100%;">
 		<section id="content" class="full-width" style="margin-top: 10px;">
@@ -195,15 +196,18 @@
 					</div>
 				</div>
 				<script>
-					var swiper = new Swiper(".mySwiper", {
-						slidesPerView: 10,
-						spaceBetween: 20,
-						freeMode: true,
-						pagination: {
-							el: ".swiper-pagination",
-							clickable: true,
-						},
-					});
+					$(document).ready(function (){
+						var swiper = new Swiper(".mySwiper", {
+							slidesPerView: 10,
+							spaceBetween: 20,
+							freeMode: true,
+							pagination: {
+								el: ".swiper-pagination",
+								clickable: true,
+							},
+						});
+					})
+
 				</script>
 
 				<h1>Benefit </h1>
