@@ -17,9 +17,10 @@
 	}
 	.tablePrice .head{
 		height: 120px;
+		border-bottom: 1px solid #ccc;
 	}
 	.tablePrice .ord {
-		background: #ccc;
+		background: #f1f1f1;
 	}
 	.pack_name{
 		font-size: 18px;
@@ -66,48 +67,44 @@
 		border: 1px solid #fff!important;
 	}
 
-	.bg1:hover,
-	.bg2:hover,
-	.bg3:hover,
-	.bg4:hover,
-	.bg5:hover,
-	.bg6:hover{
+	.tablePrice .highlight_pack:before {
+		position: absolute;
+		background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTMiIGhlaWdodD0iOTMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBmaWxsPSIjMEY5Qjc0IiBkPSJNNzMuNjAyIDkxLjQxOEg2OC45NFY4NS4yNXpNMS4xODUgMTl2Ni42NjNoOC44OTN6Ii8+PHBhdGggZmlsbD0iIzBDREZBMyIgZD0iTTM3LjA2IDE5bDM2LjU0MiAzNi4zNzd2MzYuMDRMMS4xODUgMTl6Ii8+PHBhdGggZD0iTTI2LjMgMzMuOTc0bDIuNTYzLTIuNTYyIDEuNTEzIDEuNTEzYy43OS43OSAxLjU3IDEuMjIzIDIuMzQ0IDEuMy43NzMuMDc4IDEuNTgtLjMwNCAyLjQyMi0xLjE0NS43Ny0uNzcgMS4xMjYtMS41NTIgMS4wNjgtMi4zNDQtLjA1OC0uNzkzLS40NDUtMS41NDctMS4xNi0yLjI2M2wtMy4xMDMtMy4xMDMtNy4xMjUgNy4xMjUgMS40NzkgMS40OHptNS4xNzgtMi40MDJsLTEuMzg4LTEuMzg4IDIuMDk4LTIuMDk3IDEuMzg4IDEuMzg3Yy4zNS4zNTEuNTQ1LjcwMy41ODIgMS4wNTYuMDM3LjM1My0uMTMuNzE1LS41IDEuMDg1cy0uNzM5LjU0NC0xLjEwNS41MmMtLjM2Ni0uMDI0LS43MjQtLjIxMi0xLjA3NS0uNTYzem0xLjk4NiA5LjkzM2MuOTA2LjkwNiAxLjg1NiAxLjMwNiAyLjg1IDEuMjAxLjk5NC0uMTA0IDEuODc4LS41NDQgMi42NTEtMS4zMTcuNzYtLjc2IDEuMTk3LTEuNjQyIDEuMzEtMi42NDQuMTEzLTEuMDAyLS4yODMtMS45NTYtMS4xODktMi44NjItLjkwNi0uOTA1LTEuODYtMS4zMDEtMi44NjItMS4xODktMS4wMDIuMTEzLTEuODgzLjU1LTIuNjQ0IDEuMzEtLjc3My43NzQtMS4yMTIgMS42NTctMS4zMTcgMi42NTItLjEwNS45OTQuMjk2IDEuOTQ0IDEuMjAxIDIuODV6bTEuMTUtMS4xNmMtLjQwMi0uNDAzLS41NjktLjg1Ni0uNS0xLjM2LjA3LS41MDUuMzY5LTEuMDIxLjg5Ny0xLjU1LjUyOS0uNTI4IDEuMDQ0LS44MjYgMS41NDctLjg5NC41MDMtLjA2OC45NTUuMSAxLjM1OC41MDMuNDAzLjQwMi41Ny44NTQuNSAxLjM1NS0uMDY5LjUwMi0uMzY4IDEuMDE2LS44OTYgMS41NDUtLjUyOS41MjgtMS4wNDQuODI4LTEuNTQ3Ljg5OS0uNTAzLjA3LS45NTUtLjA5NS0xLjM1OC0uNDk4em0xLjk2MyA4LjA1M2wyLjc0Ni0yLjc0NmMtLjA3Ny4zNjgtLjA5OC42ODUtLjA2My45NTMuMDY4LjQ4Ni4zMTEuOTM5LjczIDEuMzU4LjY1Ny42NTcgMS40MzguOTUxIDIuMzQyLjg4Mi45MDQtLjA3IDEuODItLjU2OCAyLjc0OC0xLjQ5Ni44OC0uODggMS4zMzMtMS43NiAxLjM2LTIuNjQyLjAyOC0uODgtLjI2Ni0xLjYzLS44ODItMi4yNDUtLjQyMi0uNDIyLS45MDQtLjY2OC0xLjQ0NS0uNzRhMy4xMjggMy4xMjggMCAwMC0xLjAxNS4wNjhsLjc3OC0uNzc4LTEuMzItMS4zMi03LjM0MiA3LjM0MyAxLjM2MyAxLjM2M3ptNC4yMDYtMS45NTNhMS41NzIgMS41NzIgMCAwMS0uNDctLjkwNGMtLjA3Ny0uNTczLjE5LTEuMTY2LjgwMy0xLjc3OS4zODctLjM4Ni43NTQtLjY1NyAxLjEwMi0uODEyLjY2LS4yODYgMS4yNC0uMTggMS43NC4zMi40MTYuNDE1LjU2Ljg3Mi40MzMgMS4zNy0uMTI3LjQ5OC0uMzk0Ljk1LS44IDEuMzU2LS40OTMuNDkzLS45ODguNzg3LTEuNDg2Ljg4Mi0uNDk4LjA5NS0uOTM5LS4wNS0xLjMyMi0uNDMzem00LjIzOSA2LjQ4MmMuMjcuMjcuNTQyLjQ3Mi44MTQuNjAyLjI3My4xMy42MTMuMjA3IDEuMDIzLjIzLjEzMi4wMS4yNjQgMCAuMzk2LS4wMy4xMzItLjAyOC4yMTMtLjA0NC4yNDItLjA0OGwtLjc0NS43NDUgMS4zNCAxLjMzOSA1LjI2OC01LjI3LTEuMzk3LTEuMzk2LTIuODY2IDIuODY2Yy0uMzM5LjMzOS0uNjU2LjU2Ni0uOTUzLjY4Mi0uNTU0LjIwNi0xLjA2Ni4wNzQtMS41MzctLjM5Ny0uMzY3LS4zNjctLjQ4LS43NDctLjMzOC0xLjE0LjA4LS4yMjMuMjctLjQ4NC41Ny0uNzgzbDMuMTc2LTMuMTc2LTEuNDExLTEuNDEyLTMuMTc2IDMuMTc2Yy0uNjAzLjYwMy0uOTgzIDEuMTM1LTEuMTQgMS41OTUtLjI5LjgzMi0uMDQ2IDEuNjM3LjczNCAyLjQxN3ptNS44MDUgNS41NzRsNy4xMjUtNy4xMjUtMS4zNzgtMS4zNzgtNy4xMjQgNy4xMjUgMS4zNzcgMS4zNzh6bTIuNDcgMi43OThjLjM3NC4zNzQuNzk1LjYyNCAxLjI2Mi43NS4zOTMuMTAzLjc4OC4xNDYgMS4xODQuMTNhNS4xMSA1LjExIDAgMDAtLjI4LjM1OCAyLjE3IDIuMTcgMCAwMC0uMjEzLjM4NmwxLjQ5OCAxLjQ5OS4yMDQtLjIwM2EuNjk4LjY5OCAwIDAxLS4wNDQtLjM2M2MuMDItLjExLjExNC0uMjYuMjg1LS40NS4yMzItLjI0NC40MzItLjQ1LjYtLjYxOGwyLjQxNi0yLjQxN2MuNjM1LS42MzUuODQzLTEuMjkuNjI0LTEuOTY3LS4yMi0uNjc3LS42MTctMS4zMDQtMS4xOTQtMS44OC0uODg2LS44ODctMS43NDMtMS4yOC0yLjU3MS0xLjE4LS41MjYuMDY4LTEuMDMzLjMxNy0xLjUyMy43NWwxLjMzIDEuMzI5Yy4yMzQtLjE3MS40Ni0uMjY4LjY3Ni0uMjkuMjk2LS4wMjYuNjA3LjEyNC45MzMuNDUuMjkuMjkuNDY5LjU1LjUzNi43ODIuMDY4LjIzMi0uMDA2LjQ1Ni0uMjIyLjY3Mi0uMTc3LjE3Ny0uNDA2LjIxLS42ODYuMDk3LS4xNTgtLjA2MS0uMzgtLjIwMy0uNjY3LS40MjZsLS41MjctLjQxYy0uNi0uNDY1LTEuMTE1LS43NTUtMS41NDctLjg3LS43OS0uMjEtMS41MDguMDEtMi4xNTYuNjU3LS41LjUtLjczIDEuMDQtLjY5MSAxLjYyNC4wMzguNTgzLjI5NiAxLjExMy43NzMgMS41OXptMS40MDctLjU5NGExLjA0MiAxLjA0MiAwIDAxLS4zMi0uNjM0Yy0uMDI1LS4yMzUuMDgtLjQ3LjMxNS0uNzA1LjI2NC0uMjY0LjU2Ni0uMzUzLjkwNC0uMjY2LjIuMDUxLjQ3LjE5Ni44MTIuNDM1bC4zNjcuMjUxYy4xODQuMTI2LjMzNy4yMTYuNDYuMjcxLjEyMi4wNTUuMjU0LjA5OC4zOTYuMTNsLS41MTIuNTEzYy0uNDcxLjQ1MS0uOTE4LjYzOS0xLjM0Mi41NjNhMS45ODQgMS45ODQgMCAwMS0xLjA4LS41NTh6bTQuMzQ1IDYuMDE4bDIuNTE5LTIuNTE5Yy40MjItLjQyMi43ODgtLjY4MSAxLjA5Ny0uNzc4LjU1MS0uMTcgMS4xMDQuMDIxIDEuNjU4LjU3NWE1LjEwMiA1LjEwMiAwIDAxLjM3Mi40MmwxLjQxMi0xLjQxYTUuODQgNS44NCAwIDAxLS4xMTItLjEyNiAxLjA0NSAxLjA0NSAwIDAwLS4wNjItLjA2OGMtLjQxMy0uNDEyLS44NTYtLjY0LTEuMzMtLjY4Mi0uMjg2LS4wMjktLjcxMi4wMjYtMS4yNzYuMTY1bC45MTktLjkxOS0xLjMxNS0xLjMxNC01LjI2OSA1LjI2OCAxLjM4NyAxLjM4OHoiIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0ibm9uemVybyIvPjwvZz48L3N2Zz4=);
+		width: 93px;
+		height: 93px;
+		top: -24px;
+		right: -24px;
+		content: "";
+		z-index: 10;
+	}
+	.tablePrice .highlight_pack li{
+		border-bottom:1px solid #ccc!important; ;
+	}
+
+	.tablePrice .highlight_pack,
+	.tablePrice .col-md-2:hover{
 		position: relative;
-		top: -10px;
+		top: -5px;
 		border: 1px solid #999!important;
 		-webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);
 		box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);
 		z-index: 99;
 		border-radius: 5px 5px 0 0;-
-		background: lightcyan;
+
+	}
+	.tablePrice .highlight_pack,
+	.tablePrice .highlight_pack .ord,
+	.tablePrice .col-md-2:hover .head,
+	.tablePrice .col-md-2:hover li{
+		background:#294dff!important;
+		color: #fff;
+		z-index: 9999;
+		text-align: center;
+		border-bottom:1px solid #ccc!important; ;
+
 	}
 
-	.bg1 .head{
-		background:#e67e22;
-		color: #fff;
-	}
-	.bg2 .head{
-		background:#3498db;
-		color: #fff;
-	}
-	.bg3 .head{
-		background:#2ecc71;
-		color: #fff;
-	}
-	.bg4 .head{
-		background:#9b59b6;
-		color: #fff;
-	}
-	.bg5 .head{
-		background:#FF0000;
-		color: #fff;
-	}
-	.bg6 .head{
-		background:#0000FF;
-		color: #fff;
-	}
-
-	.action{
+	.tablePrice .action{
 		display: block;
 		margin-top: 10px;
 		text-align: center;
@@ -137,7 +134,7 @@
 <main class="clearfix width-100 mt-5">
 	<div class="fusion-row" style="max-width:100%;">
 		<section id="content" class="full-width" style="margin-top: 10px;">
-			<div class="container">
+			<div class="container-fluid" style="max-width: 1600px">
 				<h1>Benefit </h1>
 				<div class="tablePrice">
 					 <div class="row">
@@ -205,7 +202,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg2">
+						 <div class="col-md-2 bg2 highlight_pack">
 							 <div class="head">
 								 <div class="pack_name">Exellance</div>
 								 <div class="pack_price">$10,000</div>
