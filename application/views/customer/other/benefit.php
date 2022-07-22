@@ -82,7 +82,7 @@
 	}
 
 	.tablePrice .highlight_pack,
-	.tablePrice .col-md-2:hover{
+	.tablePrice .bg:hover{
 		position: relative;
 		top: 0px;
 		border: 1px solid #999!important;
@@ -94,8 +94,8 @@
 	}
 	.tablePrice .highlight_pack,
 	.tablePrice .highlight_pack .ord,
-	.tablePrice .col-md-2:hover .head,
-	.tablePrice .col-md-2:hover li{
+	.tablePrice .bg:hover .head,
+	.tablePrice .bg:hover li{
 		background:#294dff!important;
 		color: #fff;
 		z-index: 10;
@@ -169,7 +169,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg1">
+						 <div class="col-md-2 bg bg1">
 							 <div class="head">
 								 <div class="pack_name">Courage</div>
 								 <div class="pack_price">$15,000</div>
@@ -202,7 +202,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg2 highlight_pack">
+						 <div class="col-md-2 bg bg2 highlight_pack">
 							 <div class="head">
 								 <div class="pack_name">Exellance</div>
 								 <div class="pack_price">$10,000</div>
@@ -235,7 +235,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg3">
+						 <div class="col-md-2 bg bg3">
 							 <div class="head">
 								 <div class="pack_name">Integarity</div>
 								 <div class="pack_price">$5,000</div>
@@ -268,7 +268,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg4">
+						 <div class="col-md-2 bg bg4">
 							 <div class="head">
 								 <div class="pack_name">Honnor</div>
 								 <div class="pack_price">$1,500</div>
@@ -301,7 +301,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg5">
+						 <div class="col-md-2 bg bg5">
 							 <div class="head">
 								 <div class="pack_name">Loyalty</div>
 								 <div class="pack_price">$200</div>
@@ -334,7 +334,7 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg6">
+						 <div class="col-md-2 bg bg6">
 							 <div class="head">
 								 <div class="pack_name">Commitment</div>
 								 <div class="pack_price">$60</div>
