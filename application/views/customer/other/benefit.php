@@ -98,7 +98,7 @@
 	.tablePrice .col-md-2:hover li{
 		background:#294dff!important;
 		color: #fff;
-		z-index: 9999;
+		z-index: 10;
 		text-align: center;
 		border-bottom:1px solid #ccc!important; ;
 
