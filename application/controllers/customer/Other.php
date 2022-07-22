@@ -17,6 +17,8 @@ class Other extends MY_Controller {
     * */
 	public function benefit (){
         $this->mHeader['id'] = 'benefit';
+		$this->load->model(['Sponsors_model']);
+		$this->mContent['sponsor'] = $this->Sponsors_model->find(array('status'=>1), array(), array(), true);
         $this->render("{$this->sub_mLayout}benefit", $this->mLayout);
     }
 

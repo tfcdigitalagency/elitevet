@@ -122,6 +122,26 @@
 		text-align: center;
 	}
 
+	.swiper-slide a {
+		display: block;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		height: 100px;
+		padding-top: 15px;
+	}
+
+	.swiper-container .swiper-slide img {
+		width: auto;
+		max-height: 90px!important;
+	}
+
+	.swiper-slide img {
+		vertical-align: middle;
+		border-style: none;
+		object-fit: revert;
+	}
+
 	@media screen and (max-width: 667px){
 		.tablePrice .col-md-2{
 			padding-left: 0;
@@ -143,10 +163,49 @@
 
 	}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <main class="clearfix width-100 mt-5">
 	<div class="fusion-row" style="max-width:100%;">
 		<section id="content" class="full-width" style="margin-top: 10px;">
 			<div class="container-fluid" style="max-width: 1600px">
+				<h2>Sponsors</h2>
+				<div style="background: #fff; border-radius:5px; " class="elementor-element elementor-element-719f574 elementor-widget elementor-widget-image-carousel"
+					 data-id="719f574" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;6&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;direction&quot;:&quot;ltr&quot;}"
+					 data-widget_type="image-carousel.default">
+					<div class="elementor-widget-container">
+						<div class="elementor-image-carousel-wrapper swiper-container mySwiper swiper-container-initialized swiper-container-horizontal"
+							 dir="ltr">
+							<div class="elementor-image-carousel  swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1840px, 0px, 0px);">
+								<?php $count = 0;?>
+								<?php foreach($sponsor as $item):?>
+									<div class="swiper-slide"
+										 data-swiper-slide-index="<?=$count;?>" style="width: 230px;">
+										<figure class="swiper-slide-inner">
+											<a href="<?php echo $item['url']?$item['url']:'#'?>" target="_blank">
+												<img class="swiper-slide-image" src="<?=base_url().$item['icon']?>"
+													 alt="<?=$item['name']?>">
+											</a>
+										</figure>
+									</div>
+									<?php $count++;?>
+								<?php endforeach;?>
+							</div>
+							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+						</div>
+					</div>
+				</div>
+				<script>
+					var swiper = new Swiper(".mySwiper", {
+						slidesPerView: 10,
+						spaceBetween: 20,
+						freeMode: true,
+						pagination: {
+							el: ".swiper-pagination",
+							clickable: true,
+						},
+					});
+				</script>
+
 				<h1>Benefit </h1>
 				<div class="tablePrice">
 					 <div class="row">
