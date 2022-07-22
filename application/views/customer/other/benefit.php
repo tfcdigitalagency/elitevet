@@ -89,9 +89,7 @@
 		content: "";
 		z-index: 10;
 	}
-	.tablePrice .highlight_pack li{
-		border-bottom:1px solid #ccc!important; ;
-	}
+	 
 
 	.tablePrice .highlight_pack,
 	.tablePrice .bg:hover{
@@ -112,7 +110,6 @@
 		color: #fff;
 		z-index: 10;
 		text-align: center;
-		border-bottom:1px solid #ccc!important; ;
 
 	}
 
