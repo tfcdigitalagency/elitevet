@@ -52,7 +52,7 @@
 		display: block;
 		width: 100%;
 	}
-	.fa-check{
+	.tablePrice .fa-check{
 		font-size: 1.1em;
 		display: inline-block;
 		width: 25px;
@@ -60,6 +60,18 @@
 		border-radius:50% ;
 		color: #fff;
 		background: #0a6ebd;
+		padding: 4px 5px;
+	}
+
+	.tablePrice .highlight_pack .fa-check,
+	.tablePrice .bg:hover .fa-check{
+		font-size: 1.1em;
+		display: inline-block;
+		width: 25px;
+		height: 25px;
+		border-radius:50% ;
+		color: #0a6ebd;
+		background: #fff;
 		padding: 4px 5px;
 	}
 
