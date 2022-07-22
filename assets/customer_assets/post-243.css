@@ -678,8 +678,45 @@ body.home_index .elementor-243 .elementor-element.elementor-element-d12f52c:not(
 .elementor-243 .elementor-element.elementor-element-c85f928 {
     z-index: 800;
 }
+.hidedesktop{
+	display: none;
+}
 
 @media (max-width: 767px) {
+	.hidemobile{
+		display: none;
+	}
+	.hidedesktop{
+		display: block;
+	}
+	.user_nav{
+		position: absolute!important;
+		top:10px;
+		right: 10px;
+		width: 180px!important;
+		text-align: right;
+	}
+
+	.menuMobile{
+		position: absolute;
+		right: 30px;
+		top: 30px;
+		color: #fff!important;
+		display: block!important;
+		z-index: 999999;
+	}
+
+	.elementor-nav-menu{
+		display: none!important;
+	}
+	.mobile_nav{
+		display: block!important;
+	}
+	.logo-img img{
+		height: 40px;
+		width: auto;
+		margin-left: 10px;
+	}
     .elementor-243 .elementor-element.elementor-element-d12f52c > .elementor-container {
         min-height: 81px;
     }

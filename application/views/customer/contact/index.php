@@ -88,7 +88,28 @@
                                                                         <label for="form-field-message" class="elementor-field-label elementor-screen-only">
                                                                             <br>
                                                                         </label>
-                                                                        <textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="message" id="message" rows="4" placeholder="Message" required></textarea>
+                                                                        <textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="message" id="message" rows="4" placeholder="Message" required>
+																			<?php switch ($_GET['pack']){
+																				case 1:
+																					echo 'Register: Courage - $15,000';
+																					break;
+																				case 2:
+																					echo 'Register: Exellance - $10,000';
+																					break;
+																				case 3:
+																					echo 'Register: Integarity - $5,000';
+																					break;
+																				case 4:
+																					echo 'Register: Honnor - $1,500';
+																					break;
+																				case 5:
+																					echo 'Register: Loyalty - $200';
+																					break;
+																				case 6:
+																					echo 'Register: Commitment - $60';
+																					break;
+																			}?>
+																		</textarea>
                                                                     </div>
                                                                     <div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons elementor-sm-100">
                                                                         <button type="button" class="elementor-button elementor-size-xs" onclick="send_message()">

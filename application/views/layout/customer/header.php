@@ -1010,7 +1010,7 @@
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-8 hidemobile">
 						<h2 class="header_text">Elite Service Disabled Veteran Owned Business Network - a 501(c)19 Non-Profit Veterans Organization</h2>
 					</div>
 					<div class="col-md-2 user_nav">
@@ -1042,10 +1042,14 @@
 				<section class="elementor-element elementor-element-d12f52c elementor-section-full_width elementor-section-stretched elementor-section-height-min-height elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section elementor-sticky" data-id="d12f52c" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;stretch_section&quot;:&quot;section-stretched&quot;,&quot;sticky&quot;:&quot;top&quot;,&quot;sticky_on&quot;:[&quot;desktop&quot;,&quot;tablet&quot;,&quot;mobile&quot;],&quot;sticky_offset&quot;:0,&quot;sticky_effects_offset&quot;:0}" style="width: 1905px; left: 0px;">
 					<div class="elementor-container elementor-column-gap-no">
 						<div class="elementor-row">
+							<a class="pointer hidedesktop menuMobile">
+								<i class="fa fa-bars" style="font-size: 1.2em"></i>
+							</a>
 							<div class="row">
 								<div class="col-md-2">
-									<div class="elementor-image mt-3 mb-2">
+									<div class="elementor-image logo-img mt-3 mb-2">
 										<img width="198" height="68" src="<?=base_url().'assets/customer_assets'?>/Group-9.png" class="attachment-large size-large" alt="" loading="lazy">
+
 									</div>
 								</div>
 								<div class="col-md-10">

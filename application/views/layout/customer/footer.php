@@ -249,6 +249,11 @@
 		}
 	};
 </script>
+<script>
+	$('.menuMobile').click(function (){
+		$('.elementor-nav-menu').toggleClass('mobile_nav');
+	});
+</script>
 <script type="text/javascript" src="<?= base_url() . 'assets/customer_assets' ?>/frontend.min(2).js"
 		id="elementor-frontend-js"></script>
 <span id="elementor-device-mode" class="elementor-screen-only"

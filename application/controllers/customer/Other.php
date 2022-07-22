@@ -15,11 +15,16 @@ class Other extends MY_Controller {
     /*
     * Other
     * */
+	public function benefit (){
+        $this->mHeader['id'] = 'benefit';
+        $this->render("{$this->sub_mLayout}benefit", $this->mLayout);
+    }
+
 	public function about(){
         $this->mHeader['id'] = 'about';
         $this->render("{$this->sub_mLayout}about", $this->mLayout);
     }
-	
+
     public function wedo(){
         $this->mHeader['id'] = 'wedo';
         $this->render("{$this->sub_mLayout}wedo", $this->mLayout);
