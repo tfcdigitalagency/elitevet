@@ -89,7 +89,7 @@
 		content: "";
 		z-index: 10;
 	}
-	 
+
 
 	.tablePrice .highlight_pack,
 	.tablePrice .bg:hover{
@@ -167,7 +167,7 @@
 		<section id="content" class="full-width" style="margin-top: 10px;">
 			<div class="container-fluid" style="max-width: 1600px">
 				<h2>Sponsors</h2>
-				<div style="background: #fff; border-radius:5px; " class="elementor-element elementor-element-719f574 elementor-widget elementor-widget-image-carousel"
+				<div style="background: #fff; border-radius:5px; padding: 5px 15px; " class="elementor-element elementor-element-719f574 elementor-widget elementor-widget-image-carousel"
 					 data-id="719f574" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;6&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;direction&quot;:&quot;ltr&quot;}"
 					 data-widget_type="image-carousel.default">
 					<div class="elementor-widget-container">
