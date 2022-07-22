@@ -84,7 +84,7 @@
 	.tablePrice .highlight_pack,
 	.tablePrice .col-md-2:hover{
 		position: relative;
-		top: -5px;
+		top: 0px;
 		border: 1px solid #999!important;
 		-webkit-box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);
 		box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.4);
