@@ -175,28 +175,26 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord">Virtual Exhibitor Table</li>
-									 <li>Event Program Ad</li>
-									 <li class="ord">Logo on Conference Website</li>
-									 <li>Recognition as a Veteran Business</li>
+									 <li class="ord">Event Program Ads</li>
+									 <li>ELITE NOR CAL Annual Corporate Membership</li>
+									 <li class="ord">Logo on Elite Website</li>
+									 <li>Logo on all Nor-Cal Elite emails</li>
 									 <li class="ord">Attendee Registration Sponsor</li>
-									 <li>Recognition at Expo</li>
-									 <li class="ord">Virtual Business Matchmaking</li>
-									 <li>Logo on Event Program</li>
-									 <li class="ord">Wheel of Opportunity Slice</li>
-									 <li>Logo on Virtual Expo Welcome Sign</li>
-									 <li class="ord">Include material in event packets</li>
-									 <li>Logo as a seminar sponsor</li>
-									 <li class="ord">Raffle gift for Expo</li>
-									 <li>Logo Ad on Nor-Cal Elite App</li>
-									 <li class="ord">Participate in VIP Advocacy webinars</li>
-									 <li>Nor-Cal Elite Annual Corporate Membership</li>
-									 <li class="ord">Logo on main Nor-Cal Elite website</li>
-									 <li>Logo on Nor-Cal Elite Network Newsletter</li>
-									 <li class="ord">Assist with Nor-Cal Elite Directory searches</li>
-									 <li>Logo as a Nor-Cal Elite Directory Sponsor</li>
-									 <li class="ord">Assist with posting</li>
-									 <li>events & opportunities</li>
+									 <li>Bid posting ELITE NOR CAL webinar</li>
+									 <li class="ord">Logo on ELITE NOR CAL Network Newsletter</li>
+									 <li>Posting on  ELITE NOR CAL Bid board Opportunities</li>
+									 <li class="ord">Logo as an ELITE NOR CAL Directory </li>
+									 <li>Sponsor?</li>
+									 <li class="ord">Logo on Events Program</li>
+									 <li>Logo on main ELITE NOR CAL website</li>
+									 <li class="ord">Logo on ELITE NOR CAL Network Newsletter</li>
+									 <li>Recognition at Events</li>
+									 <li class="ord">Attended Round Table Talks </li>
+									 <li>Virtual News Article posting </li>
+									 <li class="ord">Logo on Virtual Events Welcome </li>
+									 <li>Include material in event packets</li>
+									 <li class="ord">Raffle gift for Events</li>
+
 								 </ul>
 							 </div>
 						 </div>
@@ -208,28 +206,27 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord"><div class="hidedesktop">Virtual Exhibitor Table</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Event Program Ad</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Conference Website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition as a Veteran Business</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition at Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Virtual Business Matchmaking</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Event Program</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Wheel of Opportunity Slice</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Virtual Expo Welcome Sign</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with posting</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">events & opportunities</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board Opportunities
+										 </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo as an ELITE NOR CAL Directory </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Sponsor?</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Events Program</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Recognition at Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Attended Round Table Talks </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Virtual News Article posting </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+
 								 </ul>
 							 </div>
 						 </div>
@@ -241,28 +238,26 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord"><div class="hidedesktop">Virtual Exhibitor Table</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Event Program Ad</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Conference Website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition as a Veteran Business</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition at Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Virtual Business Matchmaking</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Event Program</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Wheel of Opportunity Slice</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Virtual Expo Welcome Sign</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
-									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Opportunities</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo as an ELITE NOR CAL Directory Sponsor?</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Events Program</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Recognition at Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Attended Round Table Talks </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Virtual News Article posting </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+
 								 </ul>
 							 </div>
 						 </div>
@@ -274,28 +269,26 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord"><div class="hidedesktop">Virtual Exhibitor Table</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Event Program Ad</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Conference Website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition as a Veteran Business</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition at Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Virtual Business Matchmaking</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Event Program</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Wheel of Opportunity Slice</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Virtual Expo Welcome Sign</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
-									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Opportunities</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo as an ELITE NOR CAL Directory Sponsor?</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Events Program</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Recognition at Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Attended Round Table Talks </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Virtual News Article posting </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+
 								 </ul>
 							 </div>
 						 </div>
@@ -307,28 +300,26 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord"><div class="hidedesktop">Virtual Exhibitor Table</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Event Program Ad</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Conference Website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition as a Veteran Business</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition at Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Virtual Business Matchmaking</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Event Program</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Wheel of Opportunity Slice</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Virtual Expo Welcome Sign</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
-									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Opportunities</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo as an ELITE NOR CAL Directory Sponsor?</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Events Program</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Recognition at Events</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Attended Round Table Talks </div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Virtual News Article posting </div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
+
 								 </ul>
 							 </div>
 						 </div>
@@ -340,28 +331,26 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord"><div class="hidedesktop">Virtual Exhibitor Table</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Event Program Ad</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Conference Website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition as a Veteran Business</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Recognition at Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Virtual Business Matchmaking</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on Event Program</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Wheel of Opportunity Slice</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Virtual Expo Welcome Sign</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
-									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Opportunities</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo as an ELITE NOR CAL Directory Sponsor?</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Events Program</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Recognition at Events</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Attended Round Table Talks </div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Virtual News Article posting </div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
+
 								 </ul>
 							 </div>
 						 </div>
@@ -373,28 +362,26 @@
 							 </div>
 							 <div>
 								 <ul>
-									 <li class="ord"><div class="hidedesktop">Virtual Exhibitor Table</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Event Program Ad</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Conference Website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Recognition as a Veteran Business</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Recognition at Expo</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Virtual Business Matchmaking</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Event Program</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Wheel of Opportunity Slice</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Virtual Expo Welcome Sign</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
-									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Opportunities</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo as an ELITE NOR CAL Directory Sponsor?</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Events Program</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Recognition at Events</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Attended Round Table Talks </div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Virtual News Article posting </div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
+
 								 </ul>
 							 </div>
 						 </div>

@@ -153,7 +153,7 @@ class News extends MY_Controller {
 
 	private function sendNotify($news){
 
-		$subject = "THEE LITE SDVOB NET WORK - ".$news['article_title'] ;
+		$subject = "THE ELITE SDVOB NET WORK - ".$news['article_title'] ;
 
 		$email_content = $this->load->view('email/article',array('item'=>$news),true);
 
