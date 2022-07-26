@@ -194,6 +194,7 @@
 									 <li class="ord">Logo on Virtual Events Welcome </li>
 									 <li>Include material in event packets</li>
 									 <li class="ord">Raffle gift for Events</li>
+									 <li>Participate in ELITE NOR CAL webinars training </li>
 
 								 </ul>
 							 </div>
@@ -226,6 +227,7 @@
 									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"><i class="fa fa-check"></i></div></li>
 
 								 </ul>
 							 </div>
@@ -257,6 +259,7 @@
 									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"><i class="fa fa-check"></i></div></li>
 
 								 </ul>
 							 </div>
@@ -288,6 +291,7 @@
 									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"><i class="fa fa-check"></i></div></li>
 
 								 </ul>
 							 </div>
@@ -319,6 +323,7 @@
 									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
 									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"></div></li>
 
 								 </ul>
 							 </div>
@@ -350,7 +355,7 @@
 									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
 									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
-
+									 <li><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"></div></li>
 								 </ul>
 							 </div>
 						 </div>
@@ -381,7 +386,7 @@
 									 <li class="ord"><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
 									 <li><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
-
+									 <li><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"></div></li>
 								 </ul>
 							 </div>
 						 </div>
