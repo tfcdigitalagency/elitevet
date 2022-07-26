@@ -188,13 +188,13 @@
 									 <li class="ord">Include material in event packets</li>
 									 <li>Logo as a seminar sponsor</li>
 									 <li class="ord">Raffle gift for Expo</li>
-									 <li>Logo Ad on VIB App</li>
+									 <li>Logo Ad on Nor-Cal Elite App</li>
 									 <li class="ord">Participate in VIP Advocacy webinars</li>
-									 <li>VIB Annual Corporate Membership</li>
-									 <li class="ord">Logo on main VIB website</li>
-									 <li>Logo on VIB Network Newsletter</li>
-									 <li class="ord">Assist with VIB Directory searches</li>
-									 <li>Logo as a VIB Directory Sponsor</li>
+									 <li>Nor-Cal Elite Annual Corporate Membership</li>
+									 <li class="ord">Logo on main Nor-Cal Elite website</li>
+									 <li>Logo on Nor-Cal Elite Network Newsletter</li>
+									 <li class="ord">Assist with Nor-Cal Elite Directory searches</li>
+									 <li>Logo as a Nor-Cal Elite Directory Sponsor</li>
 									 <li class="ord">Assist with posting</li>
 									 <li>events & opportunities</li>
 								 </ul>
@@ -221,13 +221,13 @@
 									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo Ad on VIB App</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">VIB Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main VIB website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on VIB Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with VIB Directory searches</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo as a VIB Directory Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Assist with posting</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">events & opportunities</div><div class="check"><i class="fa fa-check"></i></div></li>
 								 </ul>
@@ -254,13 +254,13 @@
 									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo Ad on VIB App</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">VIB Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main VIB website</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo on VIB Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with VIB Directory searches</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a VIB Directory Sponsor</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
 									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
 									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
 								 </ul>
@@ -287,13 +287,13 @@
 									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">Logo Ad on VIB App</div><div class="check"><i class="fa fa-check"></i></div></li>
+									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">VIB Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main VIB website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on VIB Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with VIB Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a VIB Directory Sponsor</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
+									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
 									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
 									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
 								 </ul>
@@ -320,13 +320,13 @@
 									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"><i class="fa fa-check"></i></div></li>
 									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo Ad on VIB App</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">VIB Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main VIB website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on VIB Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with VIB Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a VIB Directory Sponsor</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
+									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
 									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
 									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
 								 </ul>
@@ -353,13 +353,13 @@
 									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
 									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo Ad on VIB App</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">VIB Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main VIB website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on VIB Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with VIB Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a VIB Directory Sponsor</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
+									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
 									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
 									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
 								 </ul>
@@ -386,13 +386,13 @@
 									 <li class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
 									 <li><div class="hidedesktop">Logo as a seminar sponsor</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Raffle gift for Expo</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo Ad on VIB App</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo Ad on Nor-Cal Elite App</div><div class="check"></div></li>
 									 <li class="ord"><div class="hidedesktop">Participate in VIP Advocacy webinars</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">VIB Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on main VIB website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on VIB Network Newsletter</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Assist with VIB Directory searches</div><div class="check"></div></li>
-									 <li class="hidemobile"><div class="hidedesktop">Logo as a VIB Directory Sponsor</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Nor-Cal Elite Annual Corporate Membership</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Logo on main Nor-Cal Elite website</div><div class="check"></div></li>
+									 <li><div class="hidedesktop">Logo on Nor-Cal Elite Network Newsletter</div><div class="check"></div></li>
+									 <li class="ord"><div class="hidedesktop">Assist with Nor-Cal Elite Directory searches</div><div class="check"></div></li>
+									 <li class="hidemobile"><div class="hidedesktop">Logo as a Nor-Cal Elite Directory Sponsor</div><div class="check"></div></li>
 									 <li class="ord hidemobile"><div class="hidedesktop">Assist with posting</div><div class="check"></div></li>
 									 <li class="hidemobile"><div class="hidedesktop">events & opportunities</div><div class="check"></div></li>
 								 </ul>
