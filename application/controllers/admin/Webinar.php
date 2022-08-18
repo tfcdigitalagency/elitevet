@@ -455,8 +455,8 @@ class Webinar extends MY_Controller {
 		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
 
 		//send email to sponsor
-		$this->db->where('title',"Corporate");
-		$this->db->or_where('title',"Other");
+		//$this->db->where('title',"Corporate");
+		//$this->db->or_where('title',"Other");
 		$sponsors = $this->db->get('tbl_user')->result_array();
 
 		foreach($sponsors as $user) {
