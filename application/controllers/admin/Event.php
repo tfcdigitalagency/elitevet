@@ -23,6 +23,12 @@ class Event extends MY_Controller {
         $this->mHeader['sub_id'] = 'view';
         $this->render("{$this->sub_mLayout}index", $this->mLayout);
     }
+	
+	public function inperson($id){
+        $this->mHeader['sub_id'] = 'view'; 
+		$this->mContent['event'] = $this->Event_model->find(array("id"=>$id), array(), array(), true);
+        $this->render("{$this->sub_mLayout}inperson", $this->mLayout);
+    }
 
     public function add(){
        
@@ -46,9 +52,26 @@ class Event extends MY_Controller {
 
         foreach ($table_data['data'] as $key => $row) {
             $table_data['data'][$key]["no"] = $key + 1;
+			if($row['homepage']){
+				$table_data['data'][$key]['name'].= ' <span style="color:red">(*)</span>';
+			}
             $table_data['data'][$key]["real_register"] = $this->Reg_history_model->count(array("event_id"=>$row["id"]));
             $table_data['data'][$key]["real_attend"] = $this->Attend_history_model->count(array("event_id"=>$row["id"]));
+			if($row["seats"]){
+				$count = get_event_inperson($row["id"]);
+				$table_data['data'][$key]["seats_registered"] = '<a href="'.site_url('admin/event/inperson/'.$row["id"]).'">'.$count.'/'.$row["seats"].'</a>';
+			}else{
+				$table_data['data'][$key]["seats_registered"] = $row["seats"];
+			}
         }
+        echo json_encode($table_data);
+    }
+	
+	public function get_Event_local($id){
+        $table_data['data'] = $this->db->get_where('tbl_event_book_inperson',array('event_id'=>$id))->result_array();
+		  foreach ($table_data['data'] as $key => $row) {
+					$table_data['data'][$key]["no"] = $key + 1;
+		  }
         echo json_encode($table_data);
     }
 
@@ -58,7 +81,7 @@ class Event extends MY_Controller {
        if ($data['id'] == "0"){
            $data['uploaded_at'] = date("Y-m-d H:i:s");
            $this->Event_model->update(array("status" => "upcoming"),array("status" => "completed"));
-           $insert_ID = $this->Event_model->insert(array("name"=>$data['title'], "description"=>$data['description'], "location"=>$data['location'], "link"=>$data['link'], "start_time"=>$data['start_time'], "end_time"=>$data['end_time'], "remind_to"=>$data['remind_to']));
+           $insert_ID = $this->Event_model->insert(array("name"=>$data['title'], "description"=>$data['description'], "location"=>$data['location'], "seats"=>$data['seats'], "link"=>$data['link'], "start_time"=>$data['start_time'], "end_time"=>$data['end_time'], "remind_to"=>$data['remind_to']));
            $this->Event_model->update(array("id"=>$insert_ID),array("link"=>base_url().'customer/event/display_Detail?id='.$insert_ID));
 
            $datax = $this->Settings_model->find(array("skey"=>'createemail'), array(), array(), true);
@@ -117,7 +140,17 @@ class Event extends MY_Controller {
             }
 
        }else{
-           $this->Event_model->update(array("id"=>$data['id']),array("name"=>$data['title'], "description"=>$data['description'], "location"=>$data['location'], "link"=>$data['link'], "start_time"=>$data['start_time'], "end_time"=>$data['end_time'], "status"=>$data['status'], "remind_to"=>$data['remind_to']));
+           $this->Event_model->update(array("id"=>$data['id']),array(
+		   "name"=>$data['title'], 
+		   "description"=>$data['description'], 
+		   "location"=>$data['location'],
+		   "seats"=>$data['seats'], 
+		   "homepage"=>$data['homepage'], 
+		   "link"=>$data['link'], 
+		   "start_time"=>$data['start_time'], 
+		   "end_time"=>$data['end_time'], 
+		   "status"=>$data['status'], 
+		   "remind_to"=>$data['remind_to']));
            $insert_ID = $data['id'];
 
             if($data['status'] == 'upcoming'){
@@ -218,6 +251,65 @@ class Event extends MY_Controller {
         }
 
         $file_name = "Event Export " . date('Y-m-d H:i:s') . ".xls";
+        header('Content-Encoding: utf-8');
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: inline;filename='. $file_name.'');
+        header('Cache-Control: max-age=0');
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+    }
+	
+	public function export_Event_local($id){
+        $result = $this->db->get_where('tbl_event_book_inperson',array('event_id'=>$id))->result_array();
+
+        foreach ($result as $key => $row) {
+            $result[$key]["no"] = $key + 1;
+        }
+
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        $sheet = $objPHPExcel->getActiveSheet();
+
+        $pCol = 0;
+        $pRow = 1;
+
+        $field_name = array('No', 'Name', 'Email', 'Phone', 'Title', 'Company', 'Registered');
+
+        for ($pCol = 0; $pCol < count($field_name); $pCol++){
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$field_name[$pCol]);
+        }
+
+        $pCol = 0;
+        $pRow = 2;
+
+        foreach ($result as $row) {
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['no']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['name']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['email']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['phone']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['title']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['company']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['created']);
+            $pCol++; 
+            $pCol = 0;
+            $pRow++;
+        }
+
+        $file_name = "Event In-Person Export " . date('Y-m-d H:i:s') . ".xls";
         header('Content-Encoding: utf-8');
         header('Content-Type: application/vnd.ms-excel');
         header('Content-Disposition: inline;filename='. $file_name.'');

@@ -72,7 +72,7 @@
             type : 'POST',
             data : {                
               subject: $('#subject').val(),
-              content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+              content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="https://ncdeliteveterans.org/assets/')
             },
             cache: false,
             success: function(result) {

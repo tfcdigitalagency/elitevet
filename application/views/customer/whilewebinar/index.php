@@ -103,10 +103,8 @@
             <img src="<?=base_url().$s['link']?>" alt="" class="sponsor-image" />
             <?php } ?>
           </div>
-
-          <video id="trainingVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%">
-            Your browser does not support the video element.
-          </video>
+		 <iframe id="frameBroast" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="600" scrolling="no" style="border:0;overflow:hidden"></iframe>
+          
 		  
 		  
         </div>
@@ -119,12 +117,15 @@
           <div style="text-align: center" class="live-iframe">
 			<table width="100%">
 			<tr>
-			<td>
+			<td width="50%">
+				<video id="trainingVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%">
+				Your browser does not support the video element.
+			  </video>
+			</td>
+			<td width="50%">
 				<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1" width="100%" height="180" scrolling="no"  style="border:0;overflow:hidden"></iframe>    
 			</td>
-			<td>
-				<iframe id="frameBroast" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="180" scrolling="no" style="border:0;overflow:hidden"></iframe>
-			</td>
+			
 			</tr>
 			</table>
           </div>

@@ -24,7 +24,7 @@ class Ads extends MY_Controller {
 
 	public function save(){
 		$data = $this->input->post();
-		$data['content'] = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$data['content']);
+		$data['content'] = replace_url($data['content']);		 
 		$data['content']= process_email_image($data['content']);
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		if(!$config){
@@ -41,8 +41,8 @@ class Ads extends MY_Controller {
 
 		$subject = $this->input->post('subject');
 		$email_content = $this->input->post('content');
-		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$email_content);
-
+		$email_content = replace_url($email_content); 
+		 
 		$type = $this->input->post('type');
 		if($type){
 			$user_id = explode(',',$this->input->post('users'));
@@ -72,7 +72,7 @@ class Ads extends MY_Controller {
 
 	public function save_preview(){
 		$data = $this->input->post();
-		$data['content'] = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$data['content']);
+		$data['content'] = replace_url($data['content']); 
 		$data['content']= process_email_image($data['content']);
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		if(!$config){

@@ -40,6 +40,12 @@
 						<input type="text" class="form-control" id="location"  required>
 					</div>
 				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Seats</label>
+					<div class="col-lg-5">
+						<input type="text" class="form-control" id="seats" >
+					</div>
+				</div>
                 <div class="form-group row">
                     <label class="col-form-label col-lg-2">Start time</label>
                     <div class="col-lg-5">
@@ -330,6 +336,7 @@
             A.append("title", $("#title").val());
             A.append("description", $("#description").val());
             A.append("location", $("#location").val());
+			A.append("seats", $("#seats").val());
             A.append("link", $("#link").val());
             A.append("start_time", $("#start_time").val());
             A.append("end_time", $("#end_time").val());

@@ -143,7 +143,7 @@
                         }
                     },
                     {
-                        "targets": [12],
+                        "targets": [13],
                         "createdCell": function (td, cellData, rowData, row, col) {
                             var html = '';
                             if (rowData.display_sponsor == 0){
@@ -157,7 +157,7 @@
                         }
                     },
                     {
-                        "targets": [13],
+                        "targets": [14],
                         orderable: false,
                         "createdCell": function (td, cellData, rowData, row, col) {
                             var html = '';
@@ -182,6 +182,7 @@
                     {"title": "End time", "data": "end_time", "class": "text-center", "width": "10%"},
                     {"title": "Registered", "data": "real_register", "class": "text-center", "width": "5%"},
                     {"title": "Attended", "data": "real_attend", "class": "text-center", "width": "5%"},
+                    {"title": "In-Person", "data": "seats_registered", "class": "text-center", "width": "5%"},
                     {"title": "Link", "data": "link", "class": "text-center", "width": "5%"},
                     {"title": "Status", "data": "status", "class": "text-center", "width": "10%",
                         mRender: function(data, type, row) {

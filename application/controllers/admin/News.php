@@ -12,6 +12,10 @@ class News extends MY_Controller {
 		$this->mContent['msg'] = "";
 		$this->load->model(['News_model']);
 	}
+	
+	public function index(){
+		$this->list();
+	}
 
 	public function list(){
 		$this->mHeader['sub_id'] = 'view';

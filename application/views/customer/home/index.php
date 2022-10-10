@@ -43,6 +43,19 @@
 
 								</div>
                                 <div class="elementor-widget-wrap">
+									<?php $home_event = get_homepage_event();
+										if($home_event){
+									?>
+									<div class="home_event">
+										<a target="_blank" style="display:block; width:100%;height:100%;" href="<?php echo $home_event->status?$home_event->link_active:$home_event->link_normal;?>">
+										<img src="<?php echo base_url(). $home_event->photo?>"/>
+										<div class="hover">
+											<h4 class="text-center"><?php echo $home_event->title;?></h4>
+										</div>
+										</a>
+									</div>
+									<?php }?>
+								
                                     <div class="elementor-element elementor-element-813fe9c elementor-widget elementor-widget-heading"
                                          data-id="813fe9c" data-element_type="widget" data-widget_type="heading.default">
                                         <div class="elementor-widget-container">

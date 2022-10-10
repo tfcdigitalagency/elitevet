@@ -34,6 +34,13 @@
                     </div>
                 </div>
 				<div class="form-group row">
+                    <label class="col-form-label col-lg-2">Homepage</label>
+                    <div class="col-lg-6">
+                        <input name="homepage" id="homepage"  value="1" type="checkbox" <?=$data[0]['homepage']?'checked':''?>/> Show
+                        <p><em>* Show it on Homepage</em></p>
+                    </div>
+                </div>
+				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Description</label>
 					<div class="col-lg-10">
 						<textarea rows="5" cols="3" class="form-control" id="description" placeholder="Please Input Description" ><?php echo $data[0]['description']; ?></textarea>
@@ -43,6 +50,12 @@
 					<label class="col-form-label col-lg-2">Location<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" id="location" value="<?php echo $data[0]['location']; ?>" required>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Seats</label>
+					<div class="col-lg-5">
+						<input type="text" class="form-control" id="seats" value="<?php echo $data[0]['seats']; ?>">
 					</div>
 				</div>
                 <div class="form-group row">
@@ -282,7 +295,7 @@
 
     });
 
-    var FormValidation = function() {
+    var FormValidation = function(){
         // Validation config
         var _componentValidation = function() {
             if (!$().validate) {
@@ -376,10 +389,12 @@
             A.append("status", $("#status").val());
             A.append("description", $("#description").val());
             A.append("location", $("#location").val());
+            A.append("seats", $("#seats").val());
             A.append("link", $("#link").val());
             A.append("start_time", $("#start_time").val());
             A.append("end_time", $("#end_time").val());
             A.append("remind_to", $("#remind_to").val());
+            A.append("homepage", $("#homepage").is(':checked')?1:0);
             if (file) {
                 A.append("image", file);
             }

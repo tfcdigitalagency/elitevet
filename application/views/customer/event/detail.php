@@ -12,9 +12,9 @@
                     </div>
 
                     <div class="card-body" style="width: 80%;margin-left: 10%;background-color: khaki;">
-						<div class="card-img-actions mx-1 mt-1">
+						<div class="card-img-actions mx-1 mt-1 text-center">
 
-							<img class="card-img img-fluid" src="<?=base_url().$data[0]['thumbnail'];?>" alt="" style="width: 80%;margin-left: 10%;height: 400px;">
+							<img class="card-img img-fluid" src="<?=base_url().$data[0]['thumbnail'];?>" alt="" style="margin-left: 10%;max-width: 100%; width:auto;">
 
 						</div>
 
@@ -22,10 +22,10 @@
 							<div class="form-group row">
 								<div class="col-lg-12">
 									<div class="row" style="width: 80%;margin-left: 10%;">
-										<div class="col-6" style=" height: 64px;border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
+										<div class="col-md-6" style=" border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
 											EliteNVDVeterans <?php echo $data[0]['name'];?>
 										</div>
-										<div class="col-6" style=" height: 64px;border-radius: 10px;margin-left: 10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
+										<div class="col-md-6" style=" border-radius: 10px;margin-left: 10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
 
 											Location:<?php echo $data[0]['location'];?>
 										</div>
@@ -33,23 +33,30 @@
 
                     				<input type="text" class="form-control" id="event_id" value="<?php echo $data[0]['id'];?>" hidden>
 									<div class="row" style="width: 80%;margin-left: 10%;">
-										<div class="col-6" style=" height: 64px;border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
+										<div class="col-md-6" style=" border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
 											<?php echo $data[0]['start_time'];?>~<?php echo $data[0]['end_time'];?>
 										</div>
-										<div class="col-6" style=" height: 64px;border-radius: 10px;margin-left: 10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
+										<div class="col-md-6" style=" border-radius: 10px;margin-left: 10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
 
 											Status:<?php echo $data[0]['status'];?>
 										</div>
 									</div>
 									<div class="row" style="width: 80%;margin-left: 10%;">
-										<div class="col-6" style=" height: 64px;border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
-											Registed: <?php echo $registed_count;?> People
+										<div class="col-md-6" style=" border-radius: 10px;margin-left: -10px;margin-top: 10px;color: #000;font-size: large;padding-top: 13px;text-align: center;">
+											<h3>People Registed:</h3> 
+											<?php if($data[0]['seats']){?><div><i class="fa fa-users"></i> <?php echo get_event_inperson($data[0]["id"]);?>/<?php echo $data[0]['seats']?> booked for local event</div><?php }?>
+											<div><i class="fa fa-users"></i> <?php echo $registed_count;?> booked for webinar</div>
+											 
 										</div>
 									</div>
 								</div>
-								<div class="col-lg-12">
+								<div class="col-lg-12 event_button_register">
 <!--									<button type="button" data-toggle="modal" data-target="#modal_gcalendar">Google Calendar</button>-->
+									
 									<button type="button" class="btn btn-danger" onclick="Reg_Event()" style="float:right;margin-right: 10%; display:<?= ($data[0]['status'] != "upcoming") ?'none':'';?>" >Buy Ticket | Register Event</button>
+									<?php if($data[0]['seats'] >0 && get_event_inperson($data[0]['id'])< $data[0]['seats']){?>
+									<button type="button" class="btn btn-danger" onclick="Reg_Event_InPerson()" style="float:right;margin-right: 10%; display:<?= ($data[0]['status'] != "upcoming") ?'none':'';?>" >Book In-Person Event</button>
+									<?php }?>
 								</div>
 							</div>
 
@@ -133,6 +140,69 @@
 	</div>
 </div>
 
+<div id="modal_Reg_local" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header bg-primary">
+				<h6 class="modal-title" id="modal_Reg_Title">Book In-Person Event</h6>
+				<button type="button" class="close" data-dismiss="modal">×</button>
+			</div>
+
+			<div class="modal-body">
+				<form class="form-validate-jquery" id="frm_book_event_local" method="post" target="_other">
+					<div class="form-group row">
+						<label class="col-form-label col-lg-2">First Name:</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" name="first_name" id="first_name_local" placeholder="Enter First Name" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-2">Last Name:</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" name="last_name" id="last_name_local" placeholder="Enter Last Name" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-2">Email:</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" name="email" id="email_local" placeholder="Enter Email" required>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-2">Phone:</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" name="phone" id="phone_local" placeholder="Enter Phone">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-2">Title:</label>
+						<div class="col-lg-10">
+							<select id="title_local" name="title" class="form-control">
+                            	<option value="Corporate">Corporate</option>
+                            	<option value="Veteran">Veteran</option>
+                            	<option value="Disabled Vet">Disabled Vet</option>
+                            	<option value="Other">Other</option>
+                            </select>
+							<!-- <input type="text" class="form-control" id="title" placeholder="Enter Title"> -->
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-lg-2">Company:</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" name="company" id="company_local" placeholder="Enter Company">
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
+					<button type="button" class="btn bg-primary" onclick="Save_Reg_local()">Register</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
 <div id="modal_gcalendar" class="modal fade" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -180,6 +250,19 @@
             $('#company').val("<?=$this->session->userdata('user')['company']?>");
         <?php endif;?>
         $('#modal_Reg').modal();
+    }
+	
+	function Reg_Event_InPerson(){
+    	$('#modal_Reg_Title').html("Book In-Person Event");
+    	validator.resetForm();
+        <?php if(!empty($this->session->userdata('user'))):?>
+            $('#first_name_local').val("<?=$this->session->userdata('user')['name']?>");
+            $('#email_local').val("<?=$this->session->userdata('user')['email']?>");
+            $('#phone_local').val("<?=$this->session->userdata('user')['phone_number']?>");
+            $('#title_local').val("<?=$this->session->userdata('user')['title']?>");
+            $('#company_local').val("<?=$this->session->userdata('user')['company']?>");
+        <?php endif;?>
+        $('#modal_Reg_local').modal();
     }
 
     var validator;
@@ -292,6 +375,29 @@
                 }
             });
         }
+    }
+	
+	function Save_Reg_local() {		 
+    	$.ajax({
+                url: base_url+'customer/event/insert_RegEvent_local',
+                type : 'POST',
+                data : {
+                    first_name: $('#first_name_local').val(),
+                    last_name: $('#last_name_local').val(),
+                    email: $('#email_local').val(),
+                    phone: $('#phone_local').val(),
+                    title: $('#title_local').val(),
+                    company: $('#company_local').val(),
+                    event_id:$('#event_id').val()
+                },
+                cache: false,
+                success: function() {
+
+                    $('#modal_Reg_local').modal('hide');
+					$('#modal_gcalendar').modal('show');
+                    //location.href = base_url+'customer/event/index';
+                }
+            });
     }
 
 	function addGoogleCalendar(){

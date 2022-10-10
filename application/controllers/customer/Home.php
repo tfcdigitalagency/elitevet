@@ -140,4 +140,11 @@ class Home extends MY_Controller {
 
 		echo json_encode(array('status'=>$status,'data'=>$data,'error'=>$error ));
 	}
+	
+	public function hit_dig(){
+		$id= $_POST['id'];
+		$sql = 'UPDATE tbl_dig SET clicked = clicked + 1 WHERE id="'.$id.'"';
+		$this->db->query($sql);
+		echo json_encode(array('status'=>1,'data'=>$id));
+	}
 }

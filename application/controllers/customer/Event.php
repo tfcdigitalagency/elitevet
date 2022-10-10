@@ -98,6 +98,51 @@ class Event extends MY_Controller {
 			mail($data['email'], $subject, $message, $headers);
 		}
 	}
+	
+	public function insert_RegEvent_local()
+	{
+
+		$data = $this->input->post();
+
+		$user = $this->User_model->find(array("email" => $data['email']), array(), array(), true);
+		$webinar = $this->Webinar_model->find(array("id" => $data['event_id']), array(), array(), true);
+
+		$this->session->set_userdata('event_id', $data['event_id']);
+
+		if (count($webinar) > 0) {
+
+			$webinar = $webinar[0];
+			$temp_password = '';
+
+			$this->db->insert('tbl_event_book_inperson',array(
+				'event_id'=>$data ['event_id'],
+				'name'=> $data ['first_name'].' '.$data ['last_name'],
+				'phone'=>$data ['phone'],
+				'email'=>$data ['email'],
+				'company'=>$data ['company'],
+				'title'=>$data ['title'],
+				'created'=>date("Y-m-d H:i:s"),
+			));
+
+			$html = '';
+			$html .= '<h5>Hi ' . $username . '  </h5>';
+			$html .= '<h5> You have booked in-person for a webinar. </h5>';
+			$html .= '<p>The webinar <strong>"' . $webinar['name'] . '"</strong> will start at: ' . $webinar['start_time'];
+			$html .= '<p>Location: <strong>"' . $webinar['location'] . '"</strong>';
+ 
+			 
+			$headers = "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+			$from = 'joneslj2@gmail.com';
+
+			$subject = 'Register webinar';
+			$message = $html;
+			$headers .= "From:" . $from;
+
+			mail($data['email'], $subject, $message, $headers);
+		}
+	}
 
 	public function google($id =''){
 		$this->load->library('Googlecalendarapi');

@@ -67,7 +67,7 @@ class Sponsors extends MY_Controller {
 			 'url'=>$url,
 			 'status'=>$status);
 
-       if ($sponsors_id == "0"){
+       if (!$sponsors_id){
            $insert_ID = $this->Sponsors_model->insert($sponsor);
 		   $return['message'] = 'Insert successfully';
        }else{

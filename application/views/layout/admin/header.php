@@ -326,6 +326,16 @@
 							<i class="icon-newspaper"></i><span>Articles Management</span>
 						</a>
 					</li>
+					<li class="nav-item">
+						<a href="<?=base_url().'admin/dig/list'?>" class="nav-link">
+							<i class="icon-newspaper"></i><span>Dig Mag</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a href="<?=base_url().'admin/landads'?>" class="nav-link">
+							<i class="icon-newspaper"></i><span>Land-Ads</span>
+						</a>
+					</li>
 
 					<li class="nav-item">
                         <a href="<?=base_url().'admin/sponsors'?>" class="nav-link">

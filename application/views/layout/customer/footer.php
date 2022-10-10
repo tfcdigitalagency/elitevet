@@ -1,7 +1,7 @@
 
-<div class="footer_menu p-3">
+<div class="footer_menu p-3" style="position:relative;">
 	<div class="container">
-		<footer class="fusion-footer-widget-area fusion-widget-area">
+		<footer class="fusion-footer-widget-area fusion-widget-area" >
 			<div class="fusion-row">
 				<section class="elementor-element elementor-element-bcf19d5 elementor-section-full_width elementor-section-height-min-height elementor-hidden-tablet elementor-hidden-phone elementor-section-height-default elementor-section-items-middle elementor-section elementor-top-section" data-id="bcf19d5" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="elementor-container elementor-column-gap-default">
@@ -41,7 +41,7 @@
 							</div>
 							<div class="col-md-8">
 								<div class="row">
-									<div class="col-md-4 footer_group">
+									<div class="col-md-3 footer_group">
 										<h3>About us</h3>
 										<ul>
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-10 current_page_item menu-item-82"><a href="<?=base_url().'customer/home'?>" aria-current="page" class="elementor-item <?=($id == 'home')?'elementor-item-active':'elementor-item-anchor'?>">Home</a></li>
@@ -55,7 +55,7 @@
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'customer/contact'?>" class="elementor-item <?=($id == 'contact')?'elementor-item-active':'elementor-item-anchor'?>">CONTACT</a></li>
 										</ul>
 									</div>
-									<div class="col-md-4 footer_group">
+									<div class="col-md-3 footer_group">
 										<h3>Members Area</h3>
 										<ul>
 											<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
@@ -75,7 +75,7 @@
 
 										</ul>
 									</div>
-									<div class="col-md-4 footer_group">
+									<div class="col-md-3 footer_group">
 										<h3>Useful Links</h3>
 										<ul>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="https://elitesdvob.org/find-an-sdvob/" class="elementor-item <?=($id == 'find')?'elementor-item-active':'elementor-item-anchor'?>" target="_blank">Find an SDVOB</a></li>
@@ -89,6 +89,30 @@
 					</div>
 				</section>
 			</div> <!-- fusion-row -->
+			<style>
+				.dig_wrap{ 
+					position:absolute;
+					width:220px; 
+					top:30px;
+					right:30px; 
+				}
+			</style>
+			<div class="dig_wrap">
+			<?php
+				$dig = get_dig();
+				if($dig){
+					?><a target="_blank" style="display:inline-block;width:100%;" class="dig_item" data-id="<?php echo $dig->id ?>" title="Dig Mag" href="<?php echo  base_url().$dig->pdf ?>">
+					<table style="display:block;width:100%;border:1px solid #666;" cellspacing=0 cellpadding=0><tr><td style="padding:0px;">
+					<img style="width:100%;height:100%;" src="<?php echo  base_url().$dig->photo?>"/>
+					</td><td style="padding:10px; text-align:center;color:#fff">
+					<b>View Digital Magazine</b>
+					</td>
+					</tr></table></a>
+					<?php
+				}
+			?>
+			</div>
+			
 		</footer> <!-- fusion-footer-widget-area -->
 
 
@@ -255,6 +279,21 @@
 <script>
 	$('.menuMobile').click(function (){
 		$('.elementor-nav-menu').toggleClass('mobile_nav');
+	});
+	
+	$('.dig_item').click(function(){
+		var id = $(this).data('id');
+		$.ajax({
+			url: '<?php echo site_url("customer/home/hit_dig");?>',
+			type: 'POST',
+			data: 'id=' + id,
+			success: function (data) {
+				 
+			},
+			error: function (e) {
+				console.log(e.message);
+			}
+		});
 	});
 </script>
 <script type="text/javascript" src="<?= base_url() . 'assets/customer_assets' ?>/frontend.min(2).js"

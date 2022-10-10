@@ -143,15 +143,14 @@ $now = date("Y-m-d H:i:s");
 		<div class="card-body">
 			<div class="row">
 				<div class="col-md-3">
-					
-					<div class="card ">
+					<div class="card">
 						<div class="card-body">
 
 							<div style="text-align: center" class="live-iframe">
 								<table width="100%">
 									<tr>
 										<td>
-											<iframe id="frameBroast1" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="200" scrolling="no" style="border:0;overflow:hidden"></iframe>
+											<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1" width="100%" height="200" scrolling="no"  style="border:0;overflow:hidden"></iframe>
 										</td>
 									</tr>
 								</table>
@@ -165,7 +164,7 @@ $now = date("Y-m-d H:i:s");
 								<table width="100%">
 									<tr>
 										<td>
-											<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1" width="100%" height="200" scrolling="no"  style="border:0;overflow:hidden"></iframe>
+											<iframe id="frameBroast1" src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="100%" height="200" scrolling="no" style="border:0;overflow:hidden"></iframe>
 										</td>
 									</tr>
 								</table>
@@ -216,9 +215,9 @@ $now = date("Y-m-d H:i:s");
 		<!-- Pre videos -->
 		<div class="card hide" id="prevideo">
 			<div class="card-body">
-				<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1"
-												width="100%" height="600" scrolling="no"
-												style="border:0;overflow:hidden"></iframe>
+				<video id="preVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%">
+					Your browser does not support the video element.
+				</video>
 			</div>
 		</div>
 
@@ -226,8 +225,23 @@ $now = date("Y-m-d H:i:s");
 		<div class="row hide" id="whilewebinar">
 
 			<div class="col-sm-12 col-lg-3">
-				
-				<div class="card ">
+				<div class="card">
+					<div class="card-body">
+
+						<div style="text-align: center" class="live-iframe">
+							<table width="100%">
+								<tr>
+									<td>
+										<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1"
+												width="100%" height="200" scrolling="no"
+												style="border:0;overflow:hidden"></iframe>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="card mt-3">
 					<div class="card-body">
 
 						<div style="text-align: center" class="live-iframe">
@@ -245,22 +259,6 @@ $now = date("Y-m-d H:i:s");
 					</div>
 
 
-				</div>
-				<div class="card mt-3">
-					<div class="card-body">
-
-						<div style="text-align: center" class="live-iframe">
-							<table width="100%">
-								<tr>
-									<td>
-										<video id="preVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%">
-											Your browser does not support the video element.
-										</video>
-									</td>
-								</tr>
-							</table>
-						</div>
-					</div>
 				</div>
 			</div>
 			<div class="col-sm-12 col-lg-9">

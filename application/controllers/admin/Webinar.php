@@ -452,7 +452,7 @@ class Webinar extends MY_Controller {
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
-		$ads_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$ads_content);
+		$ads_content = replace_url($ads_content); 
 
 		//send email to sponsor
 		//$this->db->where('title',"Corporate");
@@ -502,7 +502,7 @@ class Webinar extends MY_Controller {
 
 
 		$email_content = $input['description'];
-		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$email_content);
+		$email_content = replace_url($email_content); 
 		$email_content = process_email_image($email_content);
 
 		$subject = $input['subject'];
@@ -614,7 +614,7 @@ class Webinar extends MY_Controller {
 		$data = $this->input->post();
 		$subject = $data['subject'];
 		$content = $data['content'];
-		$content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$content = replace_url($content); 
 		$content = process_email_image($content);
 
 		$update = $this->Settings_model->update(array("skey" => "remindsubject"),array("svalue" => $subject));
@@ -626,7 +626,7 @@ class Webinar extends MY_Controller {
 	public function save_mailchimp(){
 		$data = $this->input->post();
 		$content = $data['content'];
-		$content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$content = replace_url($content); 
 		$content = process_email_image($content);
 		$update = $this->Settings_model->update(array("skey" => "mailchimp"),array("svalue" => $content));
 	}
@@ -634,8 +634,7 @@ class Webinar extends MY_Controller {
 	public function save_preview(){
 		$data = $this->input->post();
 		$content = $data['content'];
-
-		$email_content = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$content);
+		$email_content = replace_url($content); 
 		$email_content = process_email_image($email_content);
 
 		$config = $this->db->get_where('tbl_config',array('code'=>'MAILADS_PREVIEW'))->row();

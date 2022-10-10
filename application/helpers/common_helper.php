@@ -26,6 +26,31 @@ function get_user($id)
 }
 
 
+function get_dig($id='')
+{
+	$CI = &get_instance();
+	if($id){
+		$where = array('id' => $id);
+	}else{
+		$where = array();
+	}
+	$user = $CI->db->get_where('tbl_dig',$where )->row();
+	
+	$sql = 'UPDATE tbl_dig SET viewed = viewed + 1 WHERE id="'.$user->id.'"';
+		$CI->db->query($sql);
+	return $user;
+}
+
+function get_homepage_event()
+{
+	$CI = &get_instance();
+	$where = array();
+	$CI->db->order_by('id','desc');
+	$event = $CI->db->get_where('tbl_landads',$where )->row(); 
+	 
+	return $event;
+}
+
 function hit_counter()
 {
 	$CI = &get_instance();
@@ -49,6 +74,22 @@ function hit_counter()
 	}
 
 
+}
+
+function replace_url($content)
+{
+	$content = str_replace('../../',base_url(),$content);
+	$content = str_replace('../',base_url(),$content);
+	return $content;
+}
+
+
+function get_event_inperson($event_id)
+{
+	$CI = &get_instance();
+	$CI->db->select('COUNT(*) as total');
+	$row = $CI->db->get_where('tbl_event_book_inperson',array('event_id' =>$event_id))->row_array();
+	return intval($row['total']);
 }
 
 function get_counter()
