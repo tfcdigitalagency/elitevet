@@ -81,15 +81,10 @@ $db['default'] = array(
 	// 'password' => 'Elitencdveterans123',
 	// 'database' => 'elitencdveterans_joneslj2si500886',
 
-	// 'hostname' => 'localhost',
-	// 'username' => 'elitencdveterans',
-	// 'password' => '33gard?h[2rr',
-	// 'database' => 'elitencdveterans',
-
 	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '',
-	'database' => 'disvettool',
+	'password' => 'root',
+	'database' => 'elitencdveterans',
 
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
