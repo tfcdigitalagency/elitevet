@@ -146,7 +146,7 @@ class Sponsor extends MY_Controller {
 	}
 
 	function payment($postData){
-		$package_id = $this->input->post('package_id');
+		$package_id = $this->input->post('package');
 		$package = $this->Membership_model->one(array('id'=>$package_id));
 		$company = $this->input->post('company');
 		$email = $this->input->post('email');
@@ -281,5 +281,98 @@ class Sponsor extends MY_Controller {
 	public function insertSubscription($data){
 		$insert = $this->db->insert('tbl_subscriptions',$data);
 		return $insert?$this->db->insert_id():false;
+	}
+	
+	function invoice($package_id){
+		$package = $this->db->get_where('tbl_membership',array('md5(id)'=>$package_id))->row();
+		$this->mContent['package'] = $package;
+		$this->render("{$this->sub_mLayout}invoice", $this->mLayout);
+		
+	}
+	function invoice_status($id){
+		$data = array();
+
+		// Get order data from the database
+		$order = $this->Membership_model->getOrder($id);
+		$this->mHeader['id'] = 'membership';
+		// Pass order data to the view
+		$this->mContent['order'] = $order;
+		$this->render('customer/sponsor/invoice-status', $this->mLayout);
+	}
+	function pay_invoice(){
+		$data = array();
+		$postData = $this->input->post();
+		$total_amount = $this->input->post('total_amount'); 
+		// If payment form is submitted with token		
+		if($this->input->post('stripeToken')){
+			// Retrieve stripe token and user info from the posted form data
+
+			// Make payment
+			$paymentID = $this->paymentInvoice($postData);
+
+			// If payment successful
+			if($paymentID){
+
+				 
+
+				redirect('customer/sponsor/invoice_status/'.$paymentID);
+			}else{
+				$apiError = !empty($this->stripe_lib->api_error)?' ('.$this->stripe_lib->api_error.')':'';
+				$this->session->set_flashdata('error','Transaction has been failed!'.$apiError);
+				redirect(site_url('customer/sponsor/invoice/'.$postData['package']));
+			}
+		}else{
+			redirect(site_url('customer/sponsor/invoice/'.$postData['package']));
+		}
+	}
+	
+	function paymentInvoice($postData){
+		$total_amount = $this->input->post('total_amount');
+		$package_id = $this->input->post('package');
+		$email = $this->input->post('email');
+		$name = $this->input->post('fullname');
+		$package = $this->Membership_model->one(array('id'=>$package_id));		
+		// If post data is not empty
+		if(!empty($postData)){
+			// Retrieve stripe token and user info from the submitted form data
+			$token  = $postData['stripeToken'];
+			$name = $this->input->post('fullname');
+			$email = $postData['email'];
+
+			// Add customer to stripe
+			$customer = $this->stripe_lib->addCustomer($email, $token);
+			
+
+			if($customer){
+				// Charge a credit or a debit card
+				//$charge = $this->stripe_lib->createCharge($customer->id, $postData['product']->name, $postData['product']->cost);
+				// Create a plan
+				$planName = "INVOICE - ".$package->name." -$".$total_amount;
+				$planPrice = $total_amount;  
+
+				// Charge a credit or a debit card
+				$charge = $this->stripe_lib->createCharge($customer->id, $planName, $total_amount); 
+				if($charge){
+					$paidAmount = $total_amount;
+					$paidCurrency = $this->config->item('stripe_currency');;
+					$payment_status = $charge['status'];
+					$orderData = array(
+						'product_id' => $package_id,
+						'buyer_name' => $name,
+						'buyer_email' => $email,
+						'paid_amount' => $paidAmount,
+						'paid_amount_currency' => $paidCurrency,
+						'txn_id' => $charge['id'],
+						'payment_status' => $payment_status
+					);
+					$orderID = $this->Membership_model->insertOrder($orderData);
+
+					return $orderID;
+				}else{
+					return false;
+				}
+			}
+		}
+		return false;
 	}
 }

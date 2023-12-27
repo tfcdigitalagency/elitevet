@@ -182,11 +182,22 @@
 
                     <div class="form-group row">
 
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
 
                             <label>Name:</label>
 
                             <input type="text" id="name" name="name" placeholder="Name" class="form-control" required>
+
+                        </div> 
+
+                    </div>
+					<div class="form-group row">
+
+                        <div class="col-sm-6">
+
+                            <label>Zipcode:</label>
+
+                            <input type="text" id="postcode" name="postcode" placeholder="Zipcode" class="form-control" required>
 
                         </div>
 
@@ -219,6 +230,8 @@
 								<option class="role_1" value="1">Admin</option>
 								<option class="role_2" value="2">Host</option>
 								<option class="role_3" value="3">Email admin</option>
+								<option class="role_4" value="4">Content Creator</option>
+								<option class="role_5" value="5">Marketing</option>
 
 							</select>
 
@@ -258,7 +271,7 @@
 
                     <div class="form-group row">
 
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
 
                             <label>Membership:</label>
 
@@ -267,6 +280,21 @@
                                 <?php for($k=0;$k<count($membership);$k++){?>
 
                                     <option value="<?=$membership[$k]['id']?>"><?php echo $membership[$k]['name']?></option>
+
+                                <?php } ?>
+
+                            </select>
+
+                        </div>
+						<div class="col-sm-6">
+
+                            <label>Company Type:</label>
+
+                            <select class="form-control" id="company_type">
+								<option value=""/>
+                                <?php for($k=0;$k<count($company_type);$k++){?>
+
+                                    <option value="<?=$company_type[$k]['id']?>"><?php echo $company_type[$k]['title']?></option>
 
                                 <?php } ?>
 
@@ -402,7 +430,13 @@
 
                 </div>
 
+				<div class="form-group">
 
+					<label>Zipcode:</label>
+
+					<input type="text" id="add_postcode" name="postcode" placeholder="Zipcode" class="form-control" required>
+
+				</div>
 
                 <div class="form-group">
 
@@ -431,7 +465,21 @@
                     <input type="text" id="add_company" class="form-control">
 
                 </div>
+				<div class="form-group">
 
+                    <label>Company Type</label>
+
+                    <select class="form-control" id="company_type">
+
+						<?php for($k=0;$k<count($company_type);$k++){?>
+
+							<option value="<?=$company_type[$k]['id']?>"><?php echo $company_type[$k]['title']?></option>
+
+						<?php } ?>
+
+					</select>
+
+                </div>
 
 
                 <div class="form-group">
@@ -443,6 +491,8 @@
 						<option class="role_1" value="1">Admin</option>
 						<option class="role_2" value="2">Host</option>
 						<option class="role_3" value="3">Email admin</option>
+						<option class="role_4" value="4">Content Creator</option>
+						<option class="role_5" value="5">Marketing</option>
                     </select>
 
                 </div>
@@ -588,10 +638,12 @@
             var name = $('#add_name').val();
 
             var phonenumber = $('#add_phonenumber').val();
+            var postcode = $('#add_postcode').val();
 
             var title = $('#add_title').val();
 
             var company = $('#add_company').val();
+            var company_type = $('#company_type').val();
 
             var admin = $('#add_admin').val();
 
@@ -648,18 +700,15 @@
                 data : {
 
                     email: email,
-
                     password: password,
-
                     name: name,
-
                     phonenumber: phonenumber,
-
+                    postcode: postcode,
                     title: title,
-
                     company: company,
-
+					company_type: company_type,
                     admin: admin
+                    
 
                 },
 
@@ -817,7 +866,7 @@
 
                     orderable: false,
 
-                    "targets": [7],
+                    "targets": [8],
 
                     "createdCell": function (td, cellData, rowData, row, col) {
 
@@ -846,7 +895,7 @@
 
 						orderable: false,
 
-						"targets": [8],
+						"targets": [9],
 
 						"createdCell": function (td, cellData, rowData, row, col) {
 
@@ -873,7 +922,7 @@
 					},
                 {
 
-                    "targets": [9],
+                    "targets": [10],
 
                     orderable: false,
 
@@ -903,7 +952,7 @@
 
                 {
 
-                    "targets": [10],
+                    "targets": [11],
 
                     orderable: false,
 
@@ -923,7 +972,7 @@
 
                 {
 
-                    "targets": [11],
+                    "targets": [12],
 
                     orderable: false,
 
@@ -943,7 +992,7 @@
 
                 {
 
-                    "targets": [12],
+                    "targets": [13],
 
                     orderable: false,
 
@@ -973,6 +1022,7 @@
 
                     {"title": "Membership", "data": "membership", "class": "text-center", "width": "10%"},
 
+                    {"title": "Zipcode", "data": "postcode", "class": "text-center", "width": "10%"},
                     {"title": "Phone Number", "data": "phone_number", "class": "text-center", "width": "10%"},
 
                     {"title": "Title", "data": "title", "class": "text-center", "width": "10%"},
@@ -1033,12 +1083,14 @@
                 $('#email').val(data.email);
 
                 $('#phone_number').val(data.phone_number);
+                $('#postcode').val(data.postcode);
 
                 $('#title').val(data.title);
 
                 $('#company').val(data.company);
 
                 $('#membership_id').val(data.membership_id).trigger("change");
+                $('#company_type').val(data.company_type).trigger("change");
 
                 $('#registered_webinars').val(data.registered_webinars);
 
@@ -1427,6 +1479,7 @@
             A.append("name", $("#name").val());
 
             A.append("phone_number", $("#phone_number").val());
+            A.append("postcode", $("#postcode").val());
 
             A.append("title", $("#title").val());
 
@@ -1435,6 +1488,7 @@
             A.append("email", $("#email").val());
 
             A.append("membership_id", $("#membership_id").val());
+            A.append("company_type", $("#company_type").val());
 
             A.append("is_admin", $("#is_admin").val());
 

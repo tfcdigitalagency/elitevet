@@ -31,14 +31,16 @@
 	$user =  $this->session->userdata('user');
 	//print_r($user);
 ?>	
-<div style="width: 0; height: 0; overflow: hidden;">
-<div style="display:none;opacity: 0" class="select">
+<div id="device" style="display:none">
+<div style="display:flex; margin:10px 0;">
+<div class="select">
 	<label for="audioSource">Audio: </label>
-	<select id="audioSource"></select>
+	<select id="audioSource" style="max-width:150px; padding:5px 10px;"></select>
 </div>
-<div style="display:none;opacity: 0" class="select">
+<div class="select">
 	<label for="videoSource">Video: </label>
-	<select id="videoSource"></select>
+	<select id="videoSource" style="max-width:150px; padding:5px 10px;"></select>
+</div>
 </div>
 </div>
 <video playsinline autoplay muted class="video minor"></video>
@@ -49,7 +51,7 @@
 <button id="start_video" class="btn btn-danger">Start Broadcasting</button>
 <button id="end_video" class="btn btn-danger" style="display:none">End Broadcasting</button> &nbsp; <button id="stopCamera" onclick="stopVideoOnly()" class="btn btn-warning"  style="display:none">Turn off Camera</button>
 <button id="genlink" onclick="generateLink(<?php echo $port?>)" class="btn btn-warning">Create Link</button>
-<div id="currentUser" style="position:absolute; right:0; top:5px; font-weight:bold;"></div>
+<div id="currentUser" style="position:absolute; right:0; bottom: -23px; font-weight:bold;"></div>
  </div>
 
 </div>
@@ -62,6 +64,7 @@ $('#start_video').click(function(){
 		$('#start_video').hide();
 		$('#end_video').show();
 		$('#stopCamera').show();
+		$('#device').show();
 		start();
 		updateStatus();
 		checkInt = setInterval(updateStatus,2000);
@@ -71,6 +74,7 @@ $('#end_video').click(function(){
 	$('#start_video').show();
 	$('#end_video').hide();
 	$('#stopCamera').hide();
+	$('#device').hide();
 	stop();
 	clearInterval(checkInt);
 });

@@ -26,7 +26,7 @@
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Description</label>
 					<div class="col-lg-10">
-						<textarea rows="5" cols="3" class="form-control" id="description" name="description" placeholder="Please Input Description" ></textarea>
+						<textarea rows="10" cols="45" class="form-control" id="description" name="description" placeholder="Please Input Description" ></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -36,15 +36,29 @@
 					</div>
 				</div>
 				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Company Type</label>
+					<div class="col-lg-4" style="float: right">
+						<select  class="form-control" id="company_type" name="company_type" >
+							<option value="">Select</option>
+							<?php foreach($company_type as $type){
+								?>
+								<option <?php echo ($type['id'] == $data['company_type'])?'selected':'' ?> value="<?php echo $type['id']?>"><?php echo $type['title']?></option>
+								<?php
+								
+							}?>
+						</select>
+					</div>
+				</div>
+				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Name<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" id="name" name="name" placeholder="Please enter Name" required>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-2">Email</label>
 					<div class="col-lg-10">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Please enter Email" required>
+						<input type="email" class="form-control" id="email" name="email" placeholder="Please enter Email">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -270,10 +284,7 @@
                 rules: {
                     name:{
                         maxlength: 50
-                    },
-                    description:{
-                        maxlength: 512
-                    },
+                    }
                 },
                 messages: {
                     name: {
@@ -315,6 +326,7 @@
             A.append("title", $("#title").val());
             A.append("details", $("#description").val());
 			A.append("company", $("#company").val());
+			A.append("company_type", $("#company_type").val());
 			A.append("name", $("#name").val());
 			A.append("email", $("#email").val());
 			A.append("phone", $("#phone").val());

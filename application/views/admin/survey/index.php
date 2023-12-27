@@ -24,7 +24,9 @@
     <div class="card">        
         <div class="card-body">
             <div class="col-md-12">
-                <a href="<?php echo site_url('admin/survey/add');?>" class="btn bg-teal-400"><i class="icon-download"></i> Add New</a> <a style="margin-left:10px;" href="<?php echo site_url('admin/survey/email');?>" class="btn bg-teal-400"> Send Survey By Email</a>
+                <a href="<?php echo site_url('admin/survey/add');?>" class="btn bg-teal-400"><i class="icon-plus-circle2 mr-2"></i> Add New</a> 
+				<a style="margin-left:10px;" href="<?php echo site_url('admin/survey/email');?>" class="btn bg-teal-400"> Send Survey By Email</a>
+				<a style="margin-left:10px;" href="<?php echo site_url('/survey/capstas/');?>" class="btn btn-warning"><i class="icon-download"></i> Download All Cap-Stas</a>
             </div>
             <div class="col-md-12">
                 <table class="table table-bordered" id="survey_datatable" width="100%">

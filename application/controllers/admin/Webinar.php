@@ -302,19 +302,56 @@ class Webinar extends MY_Controller {
 
 		// $this->Webinar_model->setTable('tbl_contract');
 		// $this->mContent['contract'] = $this->Webinar_model->find(array(), array(), array(), true);
-
+		
+		$row = $this->db->get_where('tbl_config',array('code'=>'TOKEN1'))->row_array();
+		$this->mContent['token'] = $row;
 		$this->render("{$this->sub_mLayout}contract_list", $this->mLayout);
 	}
+	
+	public function download_bids(){
+		 $this->load->dbutil();
+        $this->load->helper('file');
+        $this->load->helper('download');
+        $query = $this->db->query("SELECT * FROM tbl_contract");
+        $delimiter = ",";
+        $newline = "\r\n";
+        $data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+        force_download('CSV_Report.csv', $data);
+	}
 
-	public function get_Contract(){
-
-		$this->Webinar_model->setTable('tbl_contract');
-		$table_data['data'] = $this->Webinar_model->find(array(), array("created_at"=>'DESC'), array(), true);
-
-		foreach ($table_data['data'] as $key => $row) {
-			$table_data['data'][$key]["no"] = $key + 1;
+	
+	
+	public function get_company_type($id){
+		if($id){
+			$row = $this->db->get_where('tbl_company_type',array('id'=>$id))->row();
+			return $row->title;
 		}
-		echo json_encode($table_data);
+		
+	}
+	
+	public function update_token(){
+ 
+		$code = $this->input->post('code');
+		$detail = $this->input->post('detail');
+		$detail2 = $this->input->post('detail2');
+		$row = $this->db->get_where('tbl_config',array('code'=>$code))->row();
+		
+		$d = json_encode(array('value'=>$detail,
+			'last_updated'=>date("Y-m-d H:i:s"),
+			'value2'=>$detail2,
+			'last_updated2'=>date("Y-m-d H:i:s")
+			));
+		if($row){
+			$this->db->update('tbl_config',
+			array('code'=>$code,
+			'detail'=> $d ),
+			array('code'=>$code));
+		}else{
+			$this->db->insert('tbl_config',array('code'=>$code,
+			'detail'=>$d));
+		} 
+		
+		echo json_encode(array('status'=>1));
 	}
 
 	// public function edit(){
@@ -326,87 +363,8 @@ class Webinar extends MY_Controller {
 	//     $this->render("{$this->sub_mLayout}edit", $this->mLayout);
 	// }
 
-	public function add(){
-
-		$this->mHeader['sub_id'] = 'postbids';
-		$this->mContent['data'][0]['id']='0';
-		$this->render("{$this->sub_mLayout}contract_add", $this->mLayout);
-	}
-
-	public function del_Contract(){
-		$id = $this->input->post('id');
-		$this->Webinar_model->setTable('tbl_contract');
-		$result['msg'] = $this->Webinar_model->delete(array("id"=>$id));
-	}
-
-	public function contract_edit(){
-
-		$this->mHeader['sub_id'] = 'postbids';
-		$id = $this->input->get('id');
-		$this->Webinar_model->setTable('tbl_contract');
-		$this->mContent['data'] = $this->Webinar_model->find(array("id"=>$id), array(), array(), true);
-
-		$this->render("{$this->sub_mLayout}contract_edit", $this->mLayout);
-	}
-
-	public function insert_contract(){
-		$data = $this->input->post();
-		$this->Webinar_model->setTable('tbl_contract');
-
-		if ($data['id'] == "0"){
-			$insert_ID = $this->Webinar_model->insert(array(
-				"title"=>$data['title'],
-				"details"=>$data['details'],
-				"company"=>$data['company'],
-				"name"=>$data['name'],
-				"name"=>$data['name'],
-				"email"=>$data['email'],
-				"phone"=>$data['phone'],
-				"start_date"=>date("Y-m-d",strtotime($data['start_date'])),
-				"end_date"=>date("Y-m-d",strtotime($data['end_date'])),
-				"details"=>$data['details'],
-				"sponsor"=>$data['sponsor'],
-				"status"=>$data['status'],
-				"type"=>$data['type']
-			));
-		}else{
-			$this->Webinar_model->update(array("id"=>$data['id']), array(
-				"title"=>$data['title'],
-				"details"=>$data['details'],
-				"company"=>$data['company'],
-				"name"=>$data['name'],
-				"name"=>$data['name'],
-				"email"=>$data['email'],
-				"phone"=>$data['phone'],
-				"start_date"=>date("Y-m-d",strtotime($data['start_date'])),
-				"end_date"=>date("Y-m-d",strtotime($data['end_date'])),
-				"details"=>$data['details'],
-				"sponsor"=>$data['sponsor'],
-				"status"=>$data['status'],
-				"type"=>$data['type']
-			));
-			$insert_ID = $data['id'];
-		}
-
-		if (!empty($_FILES['thumbnail']['name'])) {
-			if( !file_exists('./assets/uploads/webinar/contract') )
-				mkdir('./assets/uploads/webinar/contract', 0777, true);
-			$file_name = time().$_FILES['thumbnail']['name'];
-
-			if (move_uploaded_file($_FILES['thumbnail']['tmp_name'],'assets/uploads/webinar/contract'.$file_name)) {
-				$this->Webinar_model->update(array("id"=>$insert_ID), array("thumbnail"=>'assets/uploads/webinar/contract'.$file_name));
-			}
-		}
-
-		if (!empty($_FILES['second_thumbnail']['name'])) {
-			if( !file_exists('./assets/uploads/webinar/contract') )
-				mkdir('./assets/uploads/webinar/contract', 0777, true);
-			$second_file_name = time().$_FILES['second_thumbnail']['name'];
-
-			if (move_uploaded_file($_FILES['second_thumbnail']['tmp_name'],'assets/uploads/webinar/contract'.$second_file_name))
-				$this->Webinar_model->update(array("id"=>$insert_ID), array("second_thumbnail"=>'assets/uploads/webinar/contract'.$second_file_name));
-		}
-	}
+	
+	
 
 	public function mailchimp(){
 		$this->mHeader['sub_id'] = 'mailchimp';
@@ -453,6 +411,21 @@ class Webinar extends MY_Controller {
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
 		$ads_content = replace_url($ads_content); 
+		
+		$questions = $config->questions;
+		if($questions){
+			$hash = md5($questions);
+			$aryQuestions = explode("\n",$questions);
+			$questions_html = "<hr/><h2>Questions</h2><ol style='margin-top:20px;'>";
+			foreach($aryQuestions as $q){
+				if($q){
+					$questions_html .= "<li><a href='".site_url('/customer/home/answer/'.$hash.'?email='.$email)."'>".$q."</a></li>";
+				}
+			}
+			$questions_html .= "</ol>";
+		}else{
+			$questions_html = "";
+		}
 
 		//send email to sponsor
 		//$this->db->where('title',"Corporate");
@@ -467,7 +440,7 @@ class Webinar extends MY_Controller {
 <table width=\'100%\'><tr><td width=\'60%\' valign="top">'.$email_content.'</td>
 <td width=\'40%\' valign="top">
 <div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
-'.$ads_content.'</td></tr></table>'.$image_refer,
+'.$ads_content.$questions_html.'</td></tr></table>'.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 			$this->db->insert('tbl_email_queue',$queue);
 
@@ -485,7 +458,7 @@ class Webinar extends MY_Controller {
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 
 			$queue = array('email'=>$email,
-				'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
+				'content'=>'Hi, '.$user['name']. "<br/>".$email_content."<br>".$questions_html.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 			$this->db->insert('tbl_email_queue',$queue);
 
@@ -502,6 +475,7 @@ class Webinar extends MY_Controller {
 
 
 		$email_content = $input['description'];
+		$send_type = $input['send_type'];
 		$email_content = replace_url($email_content); 
 		$email_content = process_email_image($email_content);
 
@@ -522,27 +496,58 @@ class Webinar extends MY_Controller {
 
 		foreach($sponsors as $user) {
 			$email = $test_email;
+			
+			$questions = $config->questions;
+			if($questions){
+				$hash = md5($questions);
+				$aryQuestions = explode("\n",$questions);
+				$questions_html = "<hr/><h2>Questions</h2><ol style='margin-top:20px;'>";
+				foreach($aryQuestions as $q){
+					if($q){
+						$questions_html .= "<li><a href='".site_url('/customer/home/answer/'.$hash.'?email='.$email)."'>".$q."</a></li>";
+					}
+				}
+				$questions_html .= "</ol>";
+			}else{
+				$questions_html = "";
+			}
 
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 			if($disable_ads){
-				$queue = array('email'=>$email,
+				/*$queue = array('email'=>$email,
 					'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
 					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
-				$this->db->insert('tbl_email_queue',$queue);
+				$this->db->insert('tbl_email_queue',$queue);*/
+				$emailContent = 'Hi, '.$user['name']. "<br/>".$email_content."<br/>".$questions_html.$image_refer;
 			}else{
+				/*
 				$queue = array('email'=>$email,
 					'content'=>'<div>Hi, '.$user['name']. '</div>
 <table width=\'100%\'><tr><td width=\'60%\' valign="top" style="padding-right: 20px;">'.$email_content.'</td>
 <td width=\'40%\' valign="top" style="padding-left: 20px;border-left: 1px solid #f1f1f1;">
 <div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
-'.$ads_content.'</td></tr></table>'.$image_refer,
+'.$ads_content.$questions_html.'</td></tr></table>'.$image_refer,
 					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
 				$this->db->insert('tbl_email_queue',$queue);
+				*/
+				$emailContent = '<div>Hi, '.$user['name']. '</div>
+<table width=\'100%\'><tr><td width=\'60%\' valign="top" style="padding-right: 20px;">'.$email_content.'</td>
+<td width=\'40%\' valign="top" style="padding-left: 20px;border-left: 1px solid #f1f1f1;">
+<div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
+'.$ads_content.$questions_html.'</td></tr></table>'.$image_refer;
+				
 			}
 			break;
 
 		}
-
+		if($send_type == 'smtp'){
+			$mail = sendMail($subject,$email,$emailContent);
+		}else{
+			$mail = sendMailFunction($subject,$email,$emailContent);
+		}
+		//echo "$subject,$email";
+		//die($emailContent);
+		
 		//send email to user
 		$this->db->where('title',"Veteran");
 		$this->db->or_where('title',"Disabled Vet");
@@ -553,43 +558,35 @@ class Webinar extends MY_Controller {
 
 			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user['name'].'&t='.$user['phone_number'].'&type='.$user['title'].'&p=Email').'"/>';
 
-			$queue = array('email'=>$email,
-				'content'=>'Hi, '.$user['name']. "<br/>".$email_content.$image_refer,
+			/*$queue = array('email'=>$email,
+				'content'=>'Hi, '.$user['name']. "<br/>".$email_content."<br/>".$questions_html.$image_refer,
 				'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s"));
-			$this->db->insert('tbl_email_queue',$queue);
+			$this->db->insert('tbl_email_queue',$queue);*/
+			
+			$emailContent='Hi, '.$user['name']. "<br/>".$email_content."<br/>".$questions_html.$image_refer;
+			if($send_type == 'smtp'){
+				$mail = sendMail($subject,$email,$emailContent);
+			}else{
+				$mail = sendMailFunction($subject,$email,$emailContent);
+			}
 			break;
 
 		}
-
-		echo json_encode(array('status'=>1,'message'=>'The emails has added to queue.'));
+		
+		echo json_encode(array('status'=>$mail,'message'=>($mail)?'The emails has sent.':'Cannot send email.'));
 
 
 	}
 
-	public function sendMail($toEmail='' , $content = '' , $subject = '')
-	{
-		$mail = new PHPMailer();
-
-		$email_content = $this->load->view('email/template',array('email_content'=>$content,'email'=>$toEmail),true);
-
-		$mail->IsSMTP();
-		$mail->Host = 'localhost';
-		$mail->SMTPAuth = false;
-		$mail->From = 'support@ncdeliteveterans.org';
-		$mail->FromName = 'Elite Nor-Cal';
-
-		$mail->AddAddress($toEmail);
-
-		$mail->IsHTML(true);
-		$mail->Subject = $subject;
-		$mail->MsgHTML($email_content);
-
-		if(!$mail->Send()) {
-			echo "Error while sending Email.";
-		} else {
-			echo "Email sent successfully";
-		}
-	}
+	// public function sendMail($toEmail='' , $content = '' , $subject = '')
+	// {
+	// 	$mail = sendMail($subject,$toEmail,$content);
+	// 	if(!$mail) {
+	// 		echo "Error while sending Email.";
+	// 	} else {
+	// 		echo "Email sent successfully";
+	// 	}
+	// }
 
 	public function live(){
 		$this->load->view('admin/webinar/live');
@@ -629,6 +626,8 @@ class Webinar extends MY_Controller {
 		$content = replace_url($content); 
 		$content = process_email_image($content);
 		$update = $this->Settings_model->update(array("skey" => "mailchimp"),array("svalue" => $content));
+		
+		echo json_encode(array('status'=>$update));
 	}
 
 	public function save_preview(){
@@ -648,12 +647,27 @@ class Webinar extends MY_Controller {
 		$config  = json_decode($config->detail);
 		$ads_content = $config->content;
 		$ads_content = process_email_font($ads_content);
+		
+		$questions = $config->questions;
+		if($questions){
+			$hash = md5($questions);
+			$aryQuestions = explode("\n",$questions);
+			$questions_html = "<hr/><h2>Questions</h2><ol style='margin-top:20px;'>";
+			foreach($aryQuestions as $q){
+				if($q){
+					$questions_html .= "<li><a href='".site_url('/customer/home/answer/'.$hash)."'>".$q."</a></li>";
+				}
+			}
+			$questions_html .= "</ol>";
+		}else{
+			$questions_html = "";
+		}
 
 		$email_content = '<div>Hi, [User]</div>
 <table width=\'100%\'><tr><td width=\'60%\' valign="top" style="padding-right: 20px;">'.$email_content.'</td>
 <td width=\'40%\' valign="top" style="padding-left: 20px;border-left: 1px solid #f1f1f1;">
 <div style="text-align: right"><span style="display: inline-block;padding: 3px 10px;position: relative;top:-20px; background: #f1f1f1;border-radius: 5px;">Ads</span></div>
-'.$ads_content.'</td></tr></table>';
+'.$ads_content.$questions_html.'</td></tr></table>';
 
 		$preview_content = $this->load->view('email/template',array('email_content'=>$email_content),true);
 
@@ -790,6 +804,21 @@ class Webinar extends MY_Controller {
 			$this->db->update('user_information',array('type'=>$user->title),array('id'=>$row->id));
 		}
 		print_r($infos);
+	}
+	
+	function guide(){
+		$this->render("{$this->sub_mLayout}guide", $this->mLayout);	 
+	}
+	 
+	function update_mode(){
+		$data = $this->input->post();
+		$config = $this->db->get_where('tbl_config',array('code'=>'WEBINARMODE'))->row();
+		if(!$config){
+			$this->db->insert('tbl_config' ,array('code'=>'WEBINARMODE','detail'=>json_encode($data)));
+		}else{			
+			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>'WEBINARMODE'));
+		}
+		echo json_encode(array('status'=>1,'message'=>'Updated'));
 	}
 
 }

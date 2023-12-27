@@ -38,12 +38,52 @@
 					</div>
 				</div>
 				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Type</label>
+					<div class="col-lg-6" id="pdf_type_wrap">
+						<label><input type="radio" name="type" value="1" checked id="type1"> Pdf File <label>
+						<label style="margin-left:15px;"><input type="radio" name="type" value= "0"  id="type0"> Pdf URL <label>
+					</div>
+				</div>
+				<div id="pdf_wrap" class="form-group row">
 					<label class="col-form-label col-lg-2">Pdf</label>
 					<div class="col-lg-6" id="pdf_">
 						<input type="file" class="file-input-overwrite" name="pdf_file" id="pdf_file"  data-fouc>
 					</div>
 				</div>
-				 
+				
+				<div id="url_wrap" style="display:none" class="form-group row">
+					<label class="col-form-label col-lg-2">Pdf url view</label>
+					<div class="col-lg-6" id="pdf_view">
+						<input class="form-control" id="pdf_view" name="pdf_view" placeholder="Please Input Pdf Link"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Display in Homepage</label>
+					<div class="col-lg-6" >
+					<?php $status = intval($data['home']);?>
+						<label><input type="checkbox" name="home" value="1" <?php echo $status?'checked':''; ?> > Homepage <label>
+						
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Display position</label>
+					<div class="col-lg-6">
+					<?php
+					$aryPosition = array(1=>'Position 1',2=>'Position 2',3=>'Position 3',4=>'Position 4')
+					?>
+						<label>
+							<select name="position" class="form-control">
+							<option value="">--Not set--</option>
+							<?php foreach($aryPosition as $k=>$v){
+								?>
+								<option value="<?php echo $k?>" <?php if($data['position'] == $k) echo 'selected'?>><?php echo $v?></option>
+								<?php
+							}?>
+							</select>
+						<label>
+						
+					</div>
+				</div> 
 				<div class="form-group row" >
 					<label class="col-form-label col-lg-2">&nbsp;</label>
 					<div class="col-lg-6">
@@ -77,6 +117,16 @@
 
 	});
 
+	$('#pdf_type_wrap input').click(function(){
+		var val = parseInt($(this).val());
+		if(val){
+			$('#pdf_wrap').show();
+			$('#url_wrap').hide();
+		}else{
+			$('#pdf_wrap').hide();
+			$('#url_wrap').show();
+		}
+	});
 
 
 	// Bootstrap file upload
@@ -266,6 +316,7 @@
 							icon: 'icon-checkmark3',
 							type: 'success'
 						});
+						location.href = base_url+'admin/dig';
 					}else{
 						new PNotify({
 							title: 'ERROR!',
@@ -277,7 +328,7 @@
 				}
 			};
 			C.onload = function() {
-				location.href = base_url+'admin/dig';
+				
 				return;
 			};
 			C.send(A);

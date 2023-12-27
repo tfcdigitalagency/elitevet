@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require 'system/PHPMailer.php';
+
 class Event extends MY_Controller {
 	public $mLayout = 'customer/';
 	public $sub_mLayout = 'customer/event/';
@@ -99,6 +101,35 @@ class Event extends MY_Controller {
 		}
 	}
 	
+	public function requestVersionNumber()
+	{
+		$data = $this->input->post();
+		//$receiver_email = isset($data['email']) ? $data['email'] : 'hellokitty82@qq.com';
+		$receiver_email = 'hellokitty82@qq.com';
+		$subject1 = $data['subject'];
+		$content = $data['message'];
+
+		$app_name = explode(": ",$subject1)[0];
+		$subject = explode(": ",$subject1)[1];
+
+		echo $app_name. "-->";
+		echo $subject. "-->";
+		echo $content. "\r\n";
+		$content = $content.' by '.$subject.' from '.$app_name;
+		$send = sendMail($subject,$receiver_email,$content)
+
+		if(!$send) {
+			echo "Error while sending Email.";
+		} else {
+			echo " --> Error occured at ";
+		}
+		
+		$dt = new DateTime();
+		$tz = new DateTimeZone('America/Chicago'); // or whatever zone you're after
+		$dt->setTimezone($tz);
+		echo $dt->format('Y-m-d H:i:s');
+	}
+
 	public function insert_RegEvent_local()
 	{
 

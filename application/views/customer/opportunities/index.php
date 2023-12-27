@@ -6,6 +6,17 @@
 	.gv-table-view tr {
 		border-bottom: 1px solid #CCC;
 	}
+	
+	.paging strong{
+		display:inline-block;
+		padding:5px 10px;
+	}
+	.paging a{
+		display:inline-block;
+		padding:5px 10px;
+		border:1px solid :#f1f1f1!important;
+		border-radius:5px;
+	}
 </style>
 <div data-elementor-type="wp-page" data-elementor-id="10" class="elementor elementor-10" data-elementor-settings="[]">
     <div class="elementor-inner">
@@ -67,6 +78,9 @@
 												</tr>
 												</tfoot>
 											</table>
+											<?php if($current_user){ ?>
+											<div class="paging"><?php echo $paging;?></div>
+											<?php }?>
 										</div>
 
 

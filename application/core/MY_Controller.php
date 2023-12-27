@@ -14,16 +14,19 @@ class MY_Controller extends CI_Controller {
 
 		hit_counter();
 
-        $this->mUser = $this->session->userdata('user');
-        $this->is_admin = $this->session->userdata('user')['is_admin'];
-        $this->membership = 0;
-        $this->isadmin = 0;
-        if($this->session->userdata('user')['membership_id'] != null | $this->session->userdata('user')['membership_id'] != 0){
-            $this->membership = $this->session->userdata('user')['membership_id'];
-        }
-        if($this->session->userdata('user')['is_admin'] != null | $this->session->userdata('user')['is_admin'] != 0){
-            $this->isadmin = $this->session->userdata('user')['is_admin'];
-        }
+        $this->mUser = @$this->session->userdata('user');
+		if($this->mUser){
+			$this->is_admin = $this->mUser['is_admin'];
+			if($this->mUser['membership_id'] != null | $this->mUser['membership_id'] != 0){
+				$this->membership = $this->session->userdata('user')['membership_id'];
+			}
+			if($this->mUser['is_admin'] != null | $this->mUser['is_admin'] != 0){
+				$this->isadmin = $this->session->userdata('user')['is_admin'];
+			}
+		}else{
+			$this->isadmin = 0;
+			$this->membership = 0;
+		}
 
 
         $seg1 = $this->uri->segment(1);
@@ -89,4 +92,12 @@ class MY_Controller extends CI_Controller {
             $data['result'] = $result;
         $this->json($data);
     }
+
+	public function sendMail($subject,$toEmail,$content,$from_email='',$attachment = '',$template = ''){
+		try {
+			return sendMail($subject,$toEmail,$content,$attachment,$template,$from_email);
+		} catch (Exception $e) {
+			return false;
+		}
+	}
 }

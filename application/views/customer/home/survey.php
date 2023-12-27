@@ -155,7 +155,6 @@ label{
   </div>
 
 </div>
-
 <script>
 	function validate(){
 		var ok = true;

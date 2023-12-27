@@ -54,6 +54,18 @@
                     </div>
                 </div>
 				<div class="form-group row">
+                    <label class="col-form-label col-lg-2">Sponsor Level</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="level" name="level">
+						<option value="Platinum">Platinum</option>
+						<option value="Gold">Gold</option>
+						<option value="Silver">Silver</option>
+						<option value="Bronze">Bronze</option>
+						<option value="Trailblazer">Trailblazer</option>
+						</select>
+                    </div>
+                </div>
+				<div class="form-group row">
                     <label class="col-form-label col-lg-2">Status</label>
                     <div class="col-lg-10">
                         <select class="form-control" id="status" name="status">

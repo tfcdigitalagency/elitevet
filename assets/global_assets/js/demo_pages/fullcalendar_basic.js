@@ -80,7 +80,7 @@ var FullCalendarBasic = function() {
             },
             {
                 title: 'Click for Google',
-                url: 'http://google.com/',
+                url: 'https://google.com/',
                 start: '2014-11-28'
             }
         ];
@@ -149,7 +149,7 @@ var FullCalendarBasic = function() {
             },
             {
                 title: 'Click for Google',
-                url: 'http://google.com/',
+                url: 'https://google.com/',
                 start: '2014-11-28',
                 color: '#FF7043'
             }

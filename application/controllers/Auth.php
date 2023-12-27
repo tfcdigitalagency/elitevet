@@ -29,7 +29,7 @@ class Auth extends MY_Controller {
         } else {
             $user = $this->User_model->login($param['email'], $param['password']);
 
-            if(!empty($user) && ($user['is_admin']==1 || $user['is_admin']==3)){
+            if(!empty($user) && ($user['is_admin']==1 || $user['is_admin']==3 || $user['is_admin']==4)){
                 //TODO: ==
                 $this->session->set_userdata('user', $user);
 				if($user['is_admin']== 1){

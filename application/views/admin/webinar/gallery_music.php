@@ -103,6 +103,33 @@
         </div>
     </div>
     <!-- /basic setup -->
+	
+	<!-- Video -->
+    <div class="card">
+        <div class="card-header bg-white header-elements-inline">
+            <h6 class="card-title" style="width:100%">Webinar Videos View Options <a style="float:right;" href="<?php echo site_url('customer/testmode')?>" target="_blank" class="btn btn-danger">Test Mode</a></h6>
+        </div>
+
+        <div class="card-body"> 
+             <?php 
+				$config = $this->db->get_where('tbl_config',array('code'=>'WEBINARMODE'))->row();
+				$mode = @json_decode($config->detail,true);
+			 ?>
+             <div class="form-check option_mode">
+			  <table><tr><td></td><td>
+			  <input type="radio" class="form-check-input" id="radio1" name="videomode" value="0" <?php echo $mode['mod']?'':'checked'?>>
+			  <label style="width:120px;" class="form-check-label" for="radio1">Main mode</label>
+				</td><td>			  
+			  <input type="radio" class="form-check-input" id="radio2" name="videomode" value="1" <?php echo $mode['mod']?'checked':''?>>
+			  <label style="width:120px;" class="form-check-label" for="radio2">Host mode</label>
+			  </td><td>
+			  <button type="button" id="btn_save_mode" class="btn btn-primary">Save</button>
+			  </td></tr></table>
+			  <p>Note: Host mode is current one which has same size of video views(admin hosting video view & hostmember hosting view) and big gallery in center
+main mode is - big admin hosting video view in center and small host video view and small gallery.</p>
+			</div>
+        </div>
+    </div>
 
     <!-- Video -->
     <div class="card">
@@ -266,11 +293,11 @@
 				<table width="100%">
 				<tr>
 				<td><div><strong>Camera 1</strong></div>
-					<iframe src="<?php echo site_url('/admin/webinar/broadcast/8080?t='.time());?>" title="Video1" width="100%" height="380" scrolling="no"  style="border:0;overflow:hidden"></iframe>    
+					<iframe src="<?php echo site_url('/admin/webinar/broadcast/8080?t='.time());?>" title="Video1" width="100%" height="430" scrolling="no"  style="border:0;overflow:hidden"></iframe>    
 				</td>
 				<td>
 					<div><strong>Camera 2</strong></div>
-					<iframe src="<?php echo site_url('/admin/webinar/broadcast/4000?t='.time());?>" title="Video1" width="100%" height="380" scrolling="no" style="border:0;overflow:hidden"></iframe>
+					<iframe src="<?php echo site_url('/admin/webinar/broadcast/4000?t='.time());?>" title="Video1" width="100%" height="430" scrolling="no" style="border:0;overflow:hidden"></iframe>
 				</td>
 				</tr>
 				</table>
@@ -541,4 +568,36 @@
 
 
     });
+	
+	$('#btn_save_mode').click(function(){
+		$('#btn_save_mode').text("Saving...");
+		$.ajax({
+                url: base_url+'admin/webinar/update_mode',
+                type : 'POST',
+                data : {
+					mod: $('.option_mode :checked').val()
+                },
+                cache: false,
+                success: function(result) {
+					$('#btn_save_mode').text("Save");
+					new PNotify({
+						title: 'Success!',
+						text: 'The View mode has updated successfully.',
+						icon: 'icon-checkmark3',
+						type: 'success'
+					});
+                },
+                error: function(){
+					$('#btn_save_mode').text("Save");
+					new PNotify({
+						title: 'Error!',
+						text: '',
+						icon: 'icon-warning',
+						type: 'danger'
+					});
+                },
+                complete: function(){
+                }
+            });
+	});
 </script>

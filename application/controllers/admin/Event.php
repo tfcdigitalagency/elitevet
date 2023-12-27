@@ -114,22 +114,9 @@ class Event extends MY_Controller {
                     
                     $email_body .= '<br><br><p>Click here to register: <a href="'.$link.'" target="_blank">'.$link.'</a></p>';
 
-                    $mail = new PHPMailer();
-                    
-                    $mail->IsSMTP();
-                    $mail->Host = 'localhost';
-                    $mail->SMTPAuth = false;
-                    $mail->From = 'support@ncdeliteveterans.org';
-                    $mail->FromName = 'Elite Nor-Cal';
-                    
-                    $mail->AddAddress($user->email);
+					$send = sendMail($subject,$user->email,$email_body);
 
-                    $mail->IsHTML(true);
-                    $mail->Subject = $subject;
-                    $content = $email_body;
-                    $mail->MsgHTML($content); 
-                    
-                    if(!$mail->Send()) {
+                    if(!$send) {
                         echo "Error while sending Email.";
                     } else {
                         echo "Email sent successfully";
@@ -262,6 +249,7 @@ class Event extends MY_Controller {
 	
 	public function export_Event_local($id){
         $result = $this->db->get_where('tbl_event_book_inperson',array('event_id'=>$id))->result_array();
+		 
 
         foreach ($result as $key => $row) {
             $result[$key]["no"] = $key + 1;
@@ -318,6 +306,70 @@ class Event extends MY_Controller {
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
         $objWriter->save('php://output');
     }
+	 
+	public function export_Event_History($id){
+        $result = $this->Reg_history_model->get_reg_History(array('event_id'=>$id));
+		$event = $this->Event_model->find(array("id"=>$id), array(), array(), true);
+
+        foreach ($result as $key => $row) {			 
+            $result[$key]["no"] = $key + 1;
+            $result[$key]["even_name"] = $event[0]['name'];
+        }
+
+        $objPHPExcel = new PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        $sheet = $objPHPExcel->getActiveSheet();
+
+        $pCol = 0;
+        $pRow = 1;
+
+        $field_name = array('No', 'Username', 'Event Name', 'Ticket Count', 'Total Cost', 'Payment Gateway', 'Transaction Number','Registered At');
+
+        for ($pCol = 0; $pCol < count($field_name); $pCol++){
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$field_name[$pCol]);
+        }
+
+        $pCol = 0;
+        $pRow = 2;
+
+        foreach ($result as $row) {
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['no']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['user_name']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['even_name']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['ticket_count']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['total_cost']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['payment_gateway']);
+            $pCol++;
+			
+			$sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['transaction_number']);
+            $pCol++;
+
+            $sheet->setCellValueByColumnAndRow($pCol, $pRow,$row['registered_at']);
+            $pCol++; 
+            $pCol = 0;
+            $pRow++;
+        }
+
+        $file_name = "Event In-Person Export " . date('Y-m-d H:i:s') . ".xls";
+        header('Content-Encoding: utf-8');
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: inline;filename='. $file_name.'');
+        header('Cache-Control: max-age=0');
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+        $objWriter->save('php://output');
+    }
 
     public function display_reg_History(){
         $this->mHeader['sub_id'] = 'view';
@@ -326,7 +378,7 @@ class Event extends MY_Controller {
         $this->mContent['event'] = $this->Event_model->find(array("id"=>$id), array(), array(), true);
        
         $this->render("{$this->sub_mLayout}reg_history_index", $this->mLayout);
-    }
+    } 
 
     public function get_reg_History(){
         $param = $this->input->post();

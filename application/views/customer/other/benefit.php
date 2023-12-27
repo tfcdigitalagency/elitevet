@@ -1,5 +1,10 @@
 <style>
-
+	.title_form{
+		text-transform: uppercase;
+		font-size: 28px;
+		font-weight: bold;
+		text-align:center;
+	}
 	.tablePrice .head{
 		padding:10px;
 	}
@@ -23,25 +28,26 @@
 		background: #f1f1f1;
 	}
 	.pack_name{
-		font-size: 18px;
+		font-size: 24px;
 		font-weight: bold;
 		text-align: center;
 	}
 	.pack_price{
-		font-size: 28px;
+		font-size: 20px;
 		font-weight: bold;
-		text-align: center;
+		text-align: center; 
 	}
 	.tablePrice .col-md-2{
 		padding-left: 0;
 		padding-right: 0;
-		width: 14.2857%;
-		flex: 0 0 14.2857%;
-		max-width: 14.2857%;
+		width: 16.6666%;
+		flex: 0 0 16.6666%;
+		max-width: 16.6666%;
 		border-top: 1px solid #ccc;
 		border-right: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
 	}
+	 
 
 	.tablePrice .col-md-2:first-child{
 		border-left: 1px solid #ccc;
@@ -106,7 +112,7 @@
 	.tablePrice .highlight_pack .ord,
 	.tablePrice .bg:hover .head,
 	.tablePrice .bg:hover li{
-		background:#294dff!important;
+		background:#438eff70!important;
 		color: #fff;
 		z-index: 10;
 		text-align: center;
@@ -138,6 +144,39 @@
 		border-style: none;
 		object-fit: revert;
 	}
+	
+	.tableSponsor{
+		display:table;
+		width:100%;
+	}
+	.tableSponsor .cell{
+		display:table-cell; 
+		padding:10px;
+		
+	}
+	.w30{
+		width:25%
+	}
+	.w60{
+		width:50%
+	}
+	.tableSponsor .cell .head{ 
+		border-radius:15px 15px 0 0;
+	}
+	.tableSponsor .cell .head img{max-height:120px;}
+	.tableSponsor .w30 .logo_img{
+		max-width:150px;
+	}
+	.tableSponsor .w60 .logo_img{
+		max-width:100%;
+		 
+	}
+	
+	.tableSponsor .cell .cell_inner{
+		margin:10px;
+		background: #fff; border-radius:5px; padding: 5px 15px;
+		height:100%; 
+	}
 
 	@media screen and (max-width: 667px){
 		.tablePrice .col-md-2{
@@ -157,6 +196,22 @@
 			display: block;
 			text-align: center;
 		}
+		
+		.tableSponsor{
+			display:block;
+			width:100%;
+		}
+		.tableSponsor .cell{
+			display:block; 
+			padding:10px;
+			
+		}
+		.w30{
+			width:100%
+		}
+		.w60{
+			width:100%
+		}
 
 	}
 </style>
@@ -164,12 +219,123 @@
 
 <main class="clearfix width-100 mt-5">
 	<div class="fusion-row" style="max-width:100%;">
+	<div style="text-align:center">
+				<h2 class="title_form">We are 501(c)19</h2>
+	</div>
+	<section id="content" class="full-width" style="margin-top: 10px;">
+            <div class="container">
+                <div class="hr-blue"></div>
+                <div class="bg-white">
+
+                    <div class="row">
+                         
+                        <div class="col-md-8"> 
+                             
+                            <p>A 501(c)19 non-profit veterans organization, the Elite SDVOB Network is an all-volunteer association comprised of business owners. Our mission is centered on advocacy, education and business opportunities advancement for service disabled veteran owned businesses and their allies.</p>
+
+                            <p>A national organization, the Elite SDVOB Network hosts events across the country, including a national convention that has been held annually since 2003. We collaborate with business leaders, policy makers, and the general public to provide the means for Service Disabled Veteran Owned Businesses to overcome challenges and prosper in an evolving business environment.</p>
+
+                            <p><a href="<?php echo site_url('customer/other/weare')?>">Read more </a><i class="fa fa-caret-right"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hr-blue"></div>
+                 
+            </div>
+        </section>
+		
 		<section id="content" class="full-width" style="margin-top: 10px;">
 			<div class="container-fluid" style="max-width: 1600px">
-				<h1>Benefit </h1>
+			
+			<div style="text-align:center">
+				<h2 class="title_form">Our Sponsors</h2>
+				<div class="elementor-element elementor-element-719f574 elementor-widget elementor-widget-image-carousel"
+					 data-id="719f574" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;6&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;direction&quot;:&quot;ltr&quot;}"
+					 data-widget_type="image-carousel.default">
+					<div class="elementor-widget-container">
+					<?php
+						$arySponsor = array( 
+							'Bronze'=>[],
+							'Gold'=>[],
+							'Silver'=>[] 
+						);
+						foreach($sponsor as $item){
+							if($item['type'] == 'Platinum' || $item['type'] == 'Gold'){
+								$arySponsor['Gold'][] = $item;
+							}
+							if($item['type'] == 'Silver'){
+								$arySponsor['Silver'][] = $item;
+							}
+							if($item['type'] == 'Bronze' || $item['type'] == 'Trailblazer'){
+								$arySponsor['Bronze'][] = $item;
+							}
+						}
+					?>
+					<div class="tableSponsor" style ="max-width:80%;margin:auto;">
+						 
+						<div class="cell w30">
+						<div class="head" style="margin:10px;"><h2><img src="/assets/sponsor/bronze.png"/></h2></div>
+						<div class="cell_inner">
+							
+							<div style="padding:20px;">
+								<?php foreach($arySponsor['Bronze'] as $item):?>
+								 <figure class="swiper-slide-inner">
+															<a href="<?php echo $item['url']?$item['url']:'#'?>" target="_blank">
+                                                            <img class="logo_img" src="<?=base_url().$item['icon']?>"
+                                                                 alt="<?=$item['name']?>">
+																 </a>
+                                                        </figure>
+								<?php endforeach;?>
+							</div>
+						</div>
+						</div>
+						 
+						 <div class="cell w60">
+						<div class="head" style="margin:10px;"><h2><img src="/assets/sponsor/gold.png"/></h2></div>
+						<div class="cell_inner">
+							
+							<div style="padding:20px;">
+								<?php foreach($arySponsor['Gold'] as $item):?>
+								 <figure class="swiper-slide-inner">
+															<a href="<?php echo $item['url']?$item['url']:'#'?>" target="_blank">
+                                                            <img class="logo_img" src="<?=base_url().$item['icon']?>"
+                                                                 alt="<?=$item['name']?>">
+																 </a>
+                                                        </figure>
+								<?php endforeach;?>
+							</div>
+						</div>
+						</div>
+						<div class="cell w30">
+						<div class="head" style="margin:10px;"><h2><img src="/assets/sponsor/silver.png"/></h2></div>
+						<div class="cell_inner">
+							
+							<div style="padding:20px;">
+								<?php foreach($arySponsor['Silver'] as $item):?>
+								 <figure class="swiper-slide-inner">
+															<a href="<?php echo $item['url']?$item['url']:'#'?>" target="_blank">
+                                                            <img class="logo_img" src="<?=base_url().$item['icon']?>"
+                                                                 alt="<?=$item['name']?>">
+																 </a>
+                                                        </figure>
+								<?php endforeach;?>
+							</div>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+				<div style="text-align:center">
+				<img style="max-width:100%;" src="/assets/sponsor_ad.jpg"/>
+				
+				</div>
+				
+				<h1 class="title_form" style="margin-top:50px;padding-bottom:20px;">Sponsor Packages</h1>
+				<a  name='select_package' style="position:relative; top:-190px;"></a>
 				<div class="tablePrice">
 					 <div class="row">
-						 <div class="col-md-2 hidemobile">
+						 <div class="col-md-2 col-md-4 hidemobile">
 							 <div class="head">
 								 <div class="title" style="position: relative;top:40px; padding-left: 10px;">Registrations</div>
 							 </div>
@@ -200,8 +366,8 @@
 						 </div>
 						 <div class="col-md-2 bg bg1">
 							 <div class="head">
-								 <div class="pack_name">Courage</div>
-								 <div class="pack_price">$15,000</div>
+								 <div class="pack_name">Platinum</div>
+								 <div class="pack_price">$25,000~$49,999</div>
 								 <div class="action"><a href="<?php echo site_url('customer/contact?pack=1')?>" class="btn btn-primary text-white">Register</a></div>
 							 </div>
 							 <div>
@@ -231,8 +397,8 @@
 						 </div>
 						 <div class="col-md-2 bg bg2 highlight_pack">
 							 <div class="head">
-								 <div class="pack_name">Exellance</div>
-								 <div class="pack_price">$10,000</div>
+								 <div class="pack_name">Gold</div>
+								 <div class="pack_price">$15,000~$24,999</div>
 								 <div class="action"><a href="<?php echo site_url('customer/contact?pack=2')?>" class="btn btn-primary text-white">Register</a></div>
 							 </div>
 							 <div>
@@ -262,8 +428,8 @@
 						 </div>
 						 <div class="col-md-2 bg bg3">
 							 <div class="head">
-								 <div class="pack_name">Integarity</div>
-								 <div class="pack_price">$5,000</div>
+								 <div class="pack_name">Silver</div>
+								 <div class="pack_price">$10,000~$14,999</div>
 								 <div class="action"><a href="<?php echo site_url('customer/contact?pack=3')?>" class="btn btn-primary text-white">Register</a></div>
 							 </div>
 							 <div>
@@ -293,8 +459,8 @@
 						 </div>
 						 <div class="col-md-2 bg bg4">
 							 <div class="head">
-								 <div class="pack_name">Honnor</div>
-								 <div class="pack_price">$1,500</div>
+								 <div class="pack_name">Bronze</div>
+								 <div class="pack_price">$5,000~$9,999</div>
 								 <div class="action"><a href="<?php echo site_url('customer/contact?pack=4')?>" class="btn btn-primary text-white">Register</a></div>
 							 </div>
 							 <div>
@@ -324,8 +490,8 @@
 						 </div>
 						 <div class="col-md-2 bg bg5">
 							 <div class="head">
-								 <div class="pack_name">Loyalty</div>
-								 <div class="pack_price">$200</div>
+								 <div class="pack_name">Trailblazer</div>
+								 <div class="pack_price">$3000</div>
 								 <div class="action"><a href="<?php echo site_url('customer/contact?pack=5')?>" class="btn btn-primary text-white">Register</a></div>
 							 </div>
 							 <div>
@@ -352,78 +518,11 @@
 								 </ul>
 							 </div>
 						 </div>
-						 <div class="col-md-2 bg bg6">
-							 <div class="head">
-								 <div class="pack_name">Commitment</div>
-								 <div class="pack_price">$60</div>
-								 <div class="action"><a href="<?php echo site_url('customer/contact?pack=6')?>" class="btn btn-primary text-white">Register</a></div>
-							 </div>
-							 <div>
-								 <ul>
-									 <li class="ord"><div class="hidedesktop">ELITE NOR CAL Annual Corporate Memberships</div><div class="check"><i class="fa fa-check"></i></div></li>
-									 <li><div class="hidedesktop">ELITE NOR CAL Annual Corporate Membership</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on Elite Website</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Logo on all Nor-Cal Elite emails</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Attendee Registration Sponsor</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Bid posting ELITE NOR CAL webinar</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Posting on  ELITE NOR CAL Bid board Opportunities</div><div class="check"></div></li>
-									 <li class="ord"><div class="hidedesktop">Logo as an ELITE NOR CAL Directory Sponsor?</div><div class="check"></div></li>
-									 <li ><div class="hidedesktop">Logo on Events Program</div><div class="check"></div></li>
-									 <li  class="ord"><div class="hidedesktop">Logo on main ELITE NOR CAL website</div><div class="check"></div></li>
-									 <li ><div class="hidedesktop">Logo on ELITE NOR CAL Network Newsletter</div><div class="check"></div></li>
-									 <li  class="ord"><div class="hidedesktop">Recognition at Events</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Attended Round Table Talks </div><div class="check"></div></li>
-									 <li  class="ord"><div class="hidedesktop">Virtual News Article posting </div><div class="check"></div></li>
-									 <li ><div class="hidedesktop">Logo on Virtual Events Welcome </div><div class="check"></div></li>
-									 <li  class="ord"><div class="hidedesktop">Include material in event packets</div><div class="check"></div></li>
-									 <li><div class="hidedesktop">Raffle gift for Events</div><div class="check"></div></li>
-									 <li  class="ord"><div class="hidedesktop">Participate in ELITE NOR CAL webinars training </div><div class="check"></div></li>
-								 </ul>
-							 </div>
-						 </div>
+						  
 					 </div>
 				</div>
-				<h2 style="margin-top: 40px;">Sponsors</h2>
-				<div style="background: #fff; border-radius:5px; padding: 5px 15px; " class="elementor-element elementor-element-719f574 elementor-widget elementor-widget-image-carousel"
-					 data-id="719f574" data-element_type="widget" data-settings="{&quot;slides_to_show&quot;:&quot;6&quot;,&quot;navigation&quot;:&quot;none&quot;,&quot;autoplay&quot;:&quot;yes&quot;,&quot;pause_on_hover&quot;:&quot;yes&quot;,&quot;pause_on_interaction&quot;:&quot;yes&quot;,&quot;autoplay_speed&quot;:5000,&quot;infinite&quot;:&quot;yes&quot;,&quot;speed&quot;:500,&quot;direction&quot;:&quot;ltr&quot;}"
-					 data-widget_type="image-carousel.default">
-					<div class="elementor-widget-container">
-						<div class="elementor-image-carousel-wrapper swiper-container mySwiper swiper-container-initialized swiper-container-horizontal"
-							 dir="ltr">
-							<div class="elementor-image-carousel  swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1840px, 0px, 0px);">
-								<?php $count = 0;?>
-								<?php foreach($sponsor as $item):?>
-									<div class="swiper-slide"
-										 data-swiper-slide-index="<?=$count;?>" style="width: 230px;">
-										<figure class="swiper-slide-inner">
-											<a href="<?php echo $item['url']?$item['url']:'#'?>" target="_blank">
-												<img class="swiper-slide-image" src="<?=base_url().$item['icon']?>"
-													 alt="<?=$item['name']?>">
-											</a>
-										</figure>
-									</div>
-									<?php $count++;?>
-								<?php endforeach;?>
-							</div>
-							<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
-						</div>
-					</div>
-				</div>
-				<script>
-					$(document).ready(function (){
-						var swiper = new Swiper(".mySwiper", {
-							slidesPerView: 10,
-							spaceBetween: 20,
-							freeMode: true,
-							pagination: {
-								el: ".swiper-pagination",
-								clickable: true,
-							},
-						});
-					})
-
-				</script>
+				
+				 
 			</div>
 	</div>
 

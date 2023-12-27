@@ -91,23 +91,20 @@
                                                                         <textarea class="elementor-field-textual elementor-field  elementor-size-sm" name="message" id="message" rows="4" placeholder="Message" required>
 																			<?php switch ($_GET['pack']){
 																				case 1:
-																					echo 'Register: Courage - $15,000';
+																					echo 'Register: Platinum - $25,000~$49,999';
 																					break;
 																				case 2:
-																					echo 'Register: Exellance - $10,000';
+																					echo 'Register: Gold - $15,000~$24,999';
 																					break;
 																				case 3:
-																					echo 'Register: Integarity - $5,000';
+																					echo 'Register: Silver - $10,000~$14,999';
 																					break;
 																				case 4:
-																					echo 'Register: Honnor - $1,500';
+																					echo 'Register: Bronze - $5,000~$9,999';
 																					break;
 																				case 5:
-																					echo 'Register: Loyalty - $200';
-																					break;
-																				case 6:
-																					echo 'Register: Commitment - $60';
-																					break;
+																					echo 'Trailblazer: Loyalty - $3000';
+																					break; 
 																			}?>
 																		</textarea>
                                                                     </div>

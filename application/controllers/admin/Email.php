@@ -22,8 +22,14 @@ class Email extends MY_Controller {
         $this->render("{$this->sub_mLayout}index", $this->mLayout);
     }
 
-	 public function get_Logs(){
-        $table_data['data'] = $this->Email_model->find(array(), array("id"=>'DESC'), array(), true);
+	 public function get_Logs($page = 1){
+
+		$max = 2000;
+		$offset = 0;
+		$this->db->order_by("id",'DESC');
+		$this->db->limit($max);
+		$result = $this->db->get_where('user_information',array())->result_array();
+        $table_data['data'] = $result;
 
         foreach ($table_data['data'] as $key => $row) {
             $table_data['data'][$key]["no"] = $key + 1;
@@ -32,9 +38,79 @@ class Email extends MY_Controller {
         }
         echo json_encode($table_data);
     }
+	
+	public function queue(){
+        $this->mHeader['sub_id'] = 'queue';
+        $this->render("{$this->sub_mLayout}queue", $this->mLayout);
+    }
+	
+	 public function get_queue($page = 1){
+		$q = $this->input->get('q');
+		$status = $this->input->get('status');
+		$max = 2000;
+		//$offset = 0;
+		//$this->db->order_by("id",'DESC');
+		//$this->db->limit($max);
+		
+		$WHERE = '';
+		
+		if($q){			
+			$WHERE = "WHERE (u.subject LIKE '%".$q."%' OR u.email LIKE '%".$q."%')";
+		}
+		 
+		if($status !== ''){
+			if(!$WHERE){
+				$WHERE ='WHERE u.status="'.$status.'" ';
+			}else{
+				$WHERE .='AND u.status="'.$status.'" ';
+			}
+		}
+		 
+		
+		$sql = 'SELECT * FROM(SELECT `subject`,email,`status`,`schedule`, created,updated,log  FROM tbl_email_queue
+					UNION
+					SELECT `subject`,email,`status`,`schedule`, created,updated,log  FROM tbl_email_queue_day) as u
+					'.$WHERE.' 
+					ORDER BY u.created DESC
+					LIMIT 0,'.$max.'
+					';
+		
+		//$result = $this->db->get_where('tbl_email_queue',array())->result_array();
+		$result = $this->db->query($sql)->result_array();
+		
+		
+        $table_data['data'] = $result;
 
-public function export_Logs(){
-        $result = $this->Email_model->find(array(), array(), array(), true);
+        foreach ($table_data['data'] as $key => $row) {
+            $table_data['data'][$key]["no"] = $key + 1;
+            $table_data['data'][$key]["status_label"] = $this->getStatus($row["status"]);
+			$table_data['data'][$key]["updated"] = $row["status"]!=0?$row["updated"]:'';
+			$table_data['data'][$key]["schedule"] = ($row["schedule"]?$row["schedule"]:'Right now');
+
+        }
+        echo json_encode($table_data);
+    }
+	
+	private function getStatus($status){
+		switch($status){
+			case -1:
+				return 'Failed';
+				break;
+			case 0:
+				return 'Waiting to be sent';
+			case 1:
+				return 'Sent';
+		}
+		
+			
+	}
+
+	public function export_Logs($page = 1){
+		$max = 200;
+		$offset = 0;
+		$this->db->order_by("id",'DESC');
+		$this->db->limit($max);
+		$result = $this->db->get_where('user_information',array())->result_array();
 
         foreach ($result as $key => $row) {
             $result[$key]["no"] = $key + 1;

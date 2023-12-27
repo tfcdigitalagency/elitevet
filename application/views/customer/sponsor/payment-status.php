@@ -1,4 +1,4 @@
-<div id="iv-form3" class="sign-up-wizard" style="max-width: 600px; margin: auto;">
+<div id="iv-form3" class="sign-up-wizard" style="max-width: 600px; margin: auto;padding-top:50px;padding-bottom:50px;">
 <?php if(!empty($order)){ ?>
     <!-- Display transaction status -->
     <?php if($order['payment_status'] == 'active'){ ?>

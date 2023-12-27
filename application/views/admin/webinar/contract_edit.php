@@ -15,8 +15,9 @@
     <!-- Basic modals -->
     <div class="card">
         <div class="card-body">
-			<form class="form-validate-jquery" method="post" target="_other">
+			<form autocomplete="off"  class="form-validate-jquery" method="post" target="_other">
 				<input type="text" class="form-control" id="contract_id" name="contract_id" value="<?php echo $data[0]['id']; ?>" hidden>
+				<input type="text" class="form-control" id="documents" name="documents" value="<?php echo $data[0]['documents']; ?>" hidden>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Opportunity Title<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
@@ -26,13 +27,57 @@
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Description</label>
 					<div class="col-lg-10">
-						<textarea rows="5" cols="3" class="form-control" id="description" name="description" placeholder="Please Input Description" ><?php echo $data[0]['details']; ?></textarea>
+						<textarea rows="15" cols="45" class="form-control" id="description" name="description" placeholder="Please Input Description" ><?php echo $data[0]['details']; ?></textarea>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Company<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
 						<input type="text" class="form-control" id="company" name="company" value="<?php echo $data[0]['company']; ?>" placeholder="Please input company name" required>
+					</div>
+				</div>
+				<?php if($data[0]['commodity']){ ?>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Commodity</label>
+					<div class="col-lg-10">
+						<table>
+						<?php
+							$commodity = json_decode($data[0]['commodity'],true);
+							foreach($commodity as $c){
+								?><tr><td><b>[<?php echo $c['formattedCode']?>]</b></td><td><?php echo $c['commodityDescription']?></td></tr><?php
+							}
+						 ?>
+						</table>
+					</div>
+				</div>
+				<?php }?>
+				<?php if($data[0]['documents']){ ?>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Documents</label>
+					<div class="col-lg-10">
+						<table>
+						<?php
+							$documents = json_decode($data[0]['documents'],true);
+							foreach($documents as $c){
+								?><tr><td><a href="<?php echo trim($c['path']);?>"><?php echo($c['fileName']);?></a></td></tr><?php
+							}
+						?>
+						</table>
+					</div>
+				</div>
+				<?php }?>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Company Type</label>
+					<div class="col-lg-4" style="float: right">
+						<select  class="form-control" id="company_type" name="company_type" >
+							<option value="">Select</option>
+							<?php foreach($company_type as $type){
+								?>
+								<option <?php echo ($type['id'] == $data[0]['company_type'])?'selected':'' ?> value="<?php echo $type['id']?>"><?php echo $type['title']?></option>
+								<?php
+								
+							}?>
+						</select>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -42,9 +87,9 @@
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-form-label col-lg-2">Email<span class="text-danger">*</span></label>
+					<label class="col-form-label col-lg-2">Email</label>
 					<div class="col-lg-10">
-						<input type="email" class="form-control" id="email" name="email" value="<?php echo $data[0]['email']; ?>" placeholder="Please enter Email" required>
+						<input type="email" class="form-control" id="email" name="email" value="<?php echo $data[0]['email']; ?>" placeholder="Please enter Email" >
 					</div>
 				</div>
 				<div class="form-group row">
@@ -62,13 +107,13 @@
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Post Start Date<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control pickadate" value="<?php echo $data[0]['start_date']; ?>"  id="start_date" name="start_date" placeholder="" required>
+						<input type="text" autocomplete="off"  class="form-control pickadate" value="<?php echo $data[0]['start_date']; ?>"  id="start_date" name="start_date" placeholder="" required>
 					</div>
 				</div>
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Post End Date<span class="text-danger">*</span></label>
 					<div class="col-lg-10">
-						<input type="text" class="form-control pickadate" id="end_date" name="end_date" value="<?php echo $data[0]['end_date']; ?>" placeholder="" required>
+						<input type="text" autocomplete="off"  class="form-control pickadate" id="end_date" name="end_date" value="<?php echo $data[0]['end_date']; ?>" placeholder="" required>
 					</div>
 				</div>
 
@@ -347,9 +392,7 @@
                     name:{
                         maxlength: 50
                     },
-                    description:{
-                        maxlength: 512
-                    },
+                    
                 },
                 messages: {
                     name: {
@@ -388,9 +431,11 @@
             var second_file = $("#second_image")[0].files[0];
             var A = new FormData();
             A.append("id", $("#contract_id").val());
+            A.append("documents", $("#documents").val());
             A.append("title", $("#title").val());
             A.append("details", $("#description").val());
 			A.append("company", $("#company").val());
+			A.append("company_type", $("#company_type").val());
 			A.append("name", $("#name").val());
 			A.append("email", $("#email").val());
 			A.append("phone", $("#phone").val());
@@ -428,7 +473,7 @@
 			};
             C.onload = function() {
 
-                location.href = base_url+'admin/webinar/postbids';
+                //location.href = base_url+'admin/webinar/postbids';
                 return;
             };
 

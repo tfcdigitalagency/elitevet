@@ -1,4 +1,6 @@
 <style type="text/css">
+	@page { margin: 15px 30px; }
+	body { margin: 0px; }
 	.question-item{
 		margin-top: 5px;
 	}
@@ -15,13 +17,13 @@
 		min-height: 25px;
 	}
 	.left .content{
-		padding-left: 50px;
+		padding-left: 40px;
 	}
 	.left .arrow{
 		background-image: url("<?php echo base_url()?>assets/capsta/left_arrow.jpg?v=1");
 		background-repeat: no-repeat;
 		background-position: top left;
-		padding-left: 50px;
+		padding-left: 40px;
 	}
 	.right .arrow{
 		background-image: url("<?php echo base_url()?>assets/capsta/right_arrow.jpg?v=1");
@@ -42,7 +44,29 @@
 		padding: 0 0 0 20px;
 	}
 </style>
-
+<?php
+	if($company_type){
+		if($company_type['image1']){
+			$image1 = $company_type['image1'];
+		}else{
+			$image1 = 'assets/capsta/Cap_Sta_14.jpg?t='.time();
+		}
+		if($company_type['image2']){
+			$image2 = $company_type['image2'];
+		}else{
+			$image2 = 'assets/capsta/Cap_Sta_15.jpg?t='.time();
+		}
+		if($company_type['image2']){
+			$image3 = $company_type['image3'];
+		}else{
+			$image3 = 'assets/capsta/img3.jpg';
+		}
+	}else{
+		$image1 = 'assets/capsta/Cap_Sta_14.jpg?t='.time();
+		$image2 = 'assets/capsta/Cap_Sta_15.jpg';
+		$image3 = 'assets/capsta/img3.jpg';
+	}
+?>
 <table class="card">
 	<tr>
 	<td class="card-body">
@@ -52,17 +76,16 @@
 		<div style="text-align: center">
 		<h1 style="margin: 0; font-size: 24px;">Capability Statement</h1>
 		<div style="font-size:24px"><b>Company:</b> <?php echo $company_name ?></div>
-			<div style="margin-top: 5px"><img width="380" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_14.jpg"></div>
-			<div style="margin-top: 5px"><img width="180" src="<?php echo base_url()?>/assets/capsta/Disable_Vet.jpg"></div>
+			<div style="margin-top: 5px"><img width="380" src="<?php echo base_url().$image1?>"></div>			 
 		</div>
 	</td>
 	</tr>
 	<tr><td>
 			<table style="width: 100%;">
-				<tr><td valign="middle" style="vertical-align: middle; height: 700px;">
-						<table width="100%" style="font-size: 13px;">
+				<tr><td valign="middle" style="vertical-align: middle;">
+						<table border="0" width="100%" style="font-size: 13px;">
 							<tr>
-								<td width="45%" style="vertical-align: top">
+								<td style="width:350px;vertical-align: top">
 									<div class="box left">
 										<div class="title arrow">CORPORATE PROFILE</div>
 										<div class="content">
@@ -87,24 +110,12 @@
 											<?php echo getSelected($survey[4])?>
 										</div>
 										<div style="margin-top: 5px">
-											<img width="100%" src="<?php echo base_url()?>/assets/capsta/Cap_Sta_15.jpg">
+											<img width="330" height="140" src="<?php echo base_url().$image2?>">
 										</div>
 									</div>
-									<div class="box">
-										<div class="title">CONTACT</div>
-										<div class="content">
-											<p><b>Name:</b> <?php echo $user->name ?><br>
-												<b>Company:</b> <?php echo $user->company ?><br>
-												<?php echo ($user->membership)?'<b>Member:</b> '.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
-												<b>Email:</b> <?php echo $user->email ?><br>
-												<b>Phone:</b> <?php echo $user->phone_number ?><br>
-											</p>
-										</div>
-									</div>
-
 								</td>
 								<td width="30" align="center" valign="middle" style="padding-top: 30px; vertical-align: center;">
-									<img src="<?php echo base_url()?>/assets/capsta/split.jpg">
+									<img height="480" width="20" src="<?php echo base_url()?>/assets/capsta/split.jpg">
 								</td>
 								<td width="45%" style="vertical-align: top">
 									<div class="box right">
@@ -148,15 +159,29 @@
 															</div>
 
 														</td>
-														<td width="30%">
-															<img width="100%" src="<?php echo base_url()?>/assets/capsta/img3.jpg">
+														<td width="30%" style="text-align:right;">
+															<img height="90" width="60" src="<?php echo base_url().$image3?>">
 														</td>
 													</tr>
 												</table>
 											</div>
 										</div>
 									</div>
-
+								</td>
+								</tr>
+								<tr>
+								<td style="vertical-align: top;text-align:center; padding-top:10px">
+									<div style="padding:10px; border:1px solid #000; border-top:2px solid #000;">
+									<b style="font-size:16px;">CERTIFICATIONS</b>
+									<div style="height:60px;"></div>
+									</div>
+								</td>
+								<td></td>
+								<td style="vertical-align: top;text-align:center; padding-top:10px">
+									<div style="padding:10px; border:1px solid #000; border-top:2px solid #000;">
+									<b style="font-size:16px;">COMPANY INFORMATION</b>
+									<div style="height:60px;"></div>
+									</div>									
 								</td>
 							</tr>
 						</table>
@@ -164,6 +189,16 @@
 			</table>
 		</td></tr>
 </table>
+<div class="box"> 
+										<div class="content">
+											<p><b>Name:</b> <?php echo $user->name ?><br>
+												<b>Company:</b> <?php echo $user->company ?><br>
+												<?php echo ($user->membership)?'<b>Member:</b> '.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
+												<b>Email:</b> <?php echo $user->email ?><br>
+												<b>Phone:</b> <?php echo $user->phone_number ?><br>
+											</p>
+										</div>
+									</div>
 <div style="text-align: center; margin-top: 10px; font-weight: bold; width: 100%; position: fixed; bottom: 0px;">
 	<?php echo $user->name ?> - <?php echo $user->phone_number ?> - <?php echo $user->email ?>
 </div>

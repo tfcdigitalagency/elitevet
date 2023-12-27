@@ -441,7 +441,29 @@
     <meta name="robots" content="noindex,nofollow">
     <link rel="dns-prefetch" href="https://s.w.org/">
     <link rel="alternate" type="application/rss+xml" title=" » Feed" href="https://ncdeliteveterans.org/">
-    <link rel="alternate" type="application/rss+xml" title=" » Comments Feed" href="https://ncdeliteveterans.org/">
+    <link rel="alternate" type="application/rss+xml" title=" » Comments Feed" href="https://ncdeliteveterans.org/"> 
+	<?php
+		$uri = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
+		if($uri == 'customer/home/referral'){
+			$share = get_config_content('referralshare');
+			?>
+			
+			 <!-- Open Graph meta tags for social sharing -->
+			<meta property="og:title" content="<?php echo $share->title?>">
+			<meta property="og:description" content="<?php echo $share->description?>">
+			<meta property="og:image" content="<?php echo base_url().$share->image1?>">
+			<meta property="og:url" content="<?php echo current_url()?>">
+			<meta property="og:type" content="Rich media">
+			<meta property="og:site_name" content="Elite SDVOB Network">
+			<!-- Twitter Card meta tags for social sharing (optional) -->
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:title" content="<?php echo $share->title?>">
+			<meta name="twitter:description" content="<?php echo $share->description?>">
+			<meta name="twitter:image" content="<?php echo base_url().$share->image1?>">
+			<!-- Additional meta tags if needed -->			 
+			<?php
+		}
+	?>	
     <script type="text/javascript">
         window._wpemojiSettings = {
             "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/",
@@ -570,39 +592,7 @@
     <script src="<?=base_url(CUSTOMER_URL)?>style/8033969.js(1).download" type="text/javascript"
             id="cookieBanner-8033969" data-cookieconsent="ignore" data-loader="hs-scriptloader"
             data-hsjs-portal="8033969" data-hsjs-env="prod" data-hsjs-hublet="na1"></script>
-    <script type="application/ld+json" class="yoast-schema-graph">
-            {
-                "@context": "https://schema.org",
-                "@graph": [{
-                    "@type": "WebSite",
-                    "@id": "https://elitesdvob.org/#website",
-                    "url": "https://elitesdvob.org/",
-                    "name": "Elite SDVOB Network",
-                    "description": "Advocacy | Education | Networking | Opportunity",
-                    "potentialAction": [{
-                        "@type": "SearchAction",
-                        "target": "https://elitesdvob.org/?s={search_term_string}",
-                        "query-input": "required name=search_term_string"
-                    }],
-                    "inLanguage": "en-US"
-                }, {
-                    "@type": "WebPage",
-                    "@id": "https://elitesdvob.org/membership/#webpage",
-                    "url": "https://elitesdvob.org/membership/",
-                    "name": "Membership - Elite SDVOB Network",
-                    "isPartOf": {
-                        "@id": "https://elitesdvob.org/#website"
-                    },
-                    "datePublished": "2015-02-20T20:12:45+00:00",
-                    "dateModified": "2020-08-12T15:49:51+00:00",
-                    "inLanguage": "en-US",
-                    "potentialAction": [{
-                        "@type": "ReadAction",
-                        "target": ["https://elitesdvob.org/membership/"]
-                    }]
-                }]
-            }
-        </script>
+    
     <!-- / Yoast SEO plugin. -->
     <link rel="dns-prefetch" href="https://js.hs-scripts.com/">
     <link rel="dns-prefetch" href="https://s.w.org/">
@@ -612,14 +602,7 @@
           href="https://elitesdvob.org/comments/feed/">
     <link rel="alternate" type="text/calendar" title="Elite SDVOB Network » iCal Feed"
           href="https://elitesdvob.org/events/?ical=1">
-    <link rel="alternate" type="application/rss+xml" title="Elite SDVOB Network » Membership Comments Feed"
-          href="https://elitesdvob.org/membership/feed/">
-    <meta property="og:title" content="Membership">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://elitesdvob.org/membership/">
-    <meta property="og:site_name" content="Elite SDVOB Network">
-    <meta property="og:description" content="JOIN ELITE A 501(c)19 non-profit veterans organization, the Elite SDVOB Network is an all-volunteer association">
-    <meta property="og:image" content="https://elitesdvob.org/wp-content/uploads/2020/07/EliteLogoHeader-225x51-1.png">
+   
     <script type="text/javascript">
         window._wpemojiSettings = {
             "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/13.0.1\/72x72\/",
@@ -761,8 +744,7 @@
     <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://elitesdvob.org/xmlrpc.php?rsd">
     <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://elitesdvob.org/wp-includes/wlwmanifest.xml">
     <link rel="shortlink" href="https://elitesdvob.org/?p=16">
-    <link rel="alternate" type="application/json+oembed" href="https://elitesdvob.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Felitesdvob.org%2Fmembership%2F">
-    <link rel="alternate" type="text/xml+oembed" href="https://elitesdvob.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2Felitesdvob.org%2Fmembership%2F&amp;format=xml">
+    
     <!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot
     WordPress plugin v7.44.6-->
     <script type="text/javascript">
@@ -986,6 +968,48 @@
 </head>
 
 <body class="page <?php echo $this->router->fetch_class();?> <?php echo $this->router->fetch_class();?>_<?php echo $this->router->fetch_method();?>">
+<?php
+		$uri = $this->uri->segment(1).'/'.$this->uri->segment(2).'/'.$this->uri->segment(3);
+		if($uri == 'customer/home/referral'){
+			$share = get_config_content('referralshare');
+			?> 
+			<script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@graph": [{
+                    "@type": "WebSite",
+                    "@id": "<?php echo base_url()?>",
+                    "url": "<?php echo base_url()?>",
+                    "name": "Disable Veteran Digital Engagements Portal",
+                    "description": "<?php echo $share->description?>",
+                    "potentialAction": [{
+                        "@type": "SearchAction",
+                        "target": "https://elitesdvob.org/?s={search_term_string}",
+                        "query-input": "required name=search_term_string"
+                    }],
+                    "inLanguage": "en-US"
+                }, {
+                    "@type": "WebPage",
+                    "@id": "<?php echo current_url()?>",
+                    "url": "<?php echo current_url()?>",
+                    "name": "<?php echo $share->title?>",
+					"description": "<?php echo $share->description?>",
+                    "isPartOf": {
+                        "@id": "<?php echo current_url()?>"
+                    },
+                    "datePublished": "2015-02-20T20:12:45+00:00",
+                    "dateModified": "2020-08-12T15:49:51+00:00",
+                    "inLanguage": "en-US",
+                    "potentialAction": [{
+                        "@type": "ReadAction",
+                        "target": ["<?php echo current_url()?>"]
+                    }]
+                }]
+            }			
+        </script>
+			<?php
+		}
+	?>	
     <div data-elementor-type="header" data-elementor-id="243" class="elementor elementor-243 elementor-location-header header-bg" data-elementor-settings="[]">
 		<div class="elementor-inner">
 			<div class="container-fluid" style="max-width: 1600px;">

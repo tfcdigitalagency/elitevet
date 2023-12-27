@@ -22,9 +22,10 @@
 
     <!-- Basic modals -->
     <div class="card">
-        <div class="card-body">
-            <div class="col-md-12">
-                <a href="<?php echo site_url('admin/dig/add');?>" class="btn bg-teal-400"><i class="icon-download"></i> Add New</a>
+        <div class="card-body">            
+			<div class="col-md-12">
+                <a onclick="showModal()" class="btn bg-teal-400">Scrape</a>
+				<a style="margin-left:15px;" href="<?php echo site_url('admin/dig/add');?>" class="btn bg-teal-400"><i class="icon-download"></i> Add New</a>
             </div>
             <div class="col-md-12">
                 <table class="table table-bordered" id="article_datatable" width="100%">
@@ -36,8 +37,30 @@
 
 </div>
 <!-- /content area -->
-
-
+<script>
+function showModal(){
+	$('#modalsearch').modal('show');
+}
+</script>
+<div class="modal fade" id="modalsearch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">       
+      <div class="modal-body">
+        <form action="<?php echo site_url('admin/dig/scrape')?>" method="GET">
+		<div class="input-group">
+		  <div class="form-outline" style="width: 80%;">
+			<input type="search" id="s" name="s" placeholder="Keyword..." class="form-control" /> 
+		  </div>
+		  <button type="submit" class="btn btn-primary">
+			Search
+		  </button>
+		</div>
+		
+		</form>
+      </div>       
+    </div>
+  </div>
+</div>
 <script>
 
     var $article_datatable = $('#article_datatable');
@@ -85,7 +108,7 @@
                     {"title": "Image", "data": "photo", "class": "text-left", "width": "10%"},
                     {"title": "Title", "data": "title", "class": "text-left", "width": "10%"},
                     {"title": "Pdf", "data": "pdf", "class": "text-center", "width": "10%"},                     
-                    //{"title": "Viewed", "data": "viewed", "class": "text-center", "width": "10%"},                     
+                    {"title": "Position", "data": "position", "class": "text-center", "width": "10%"},                     
                     {"title": "Clicked", "data": "clicked", "class": "text-center", "width": "10%"},                     
                     {"title": "Created", "data": "created_at", "class": "text-center", "width": "10%"},
                     {"title": "Action", "data": "id", "class": "action text-center", "width": "10%"},

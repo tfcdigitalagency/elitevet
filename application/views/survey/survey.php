@@ -25,13 +25,19 @@ label{
 	<div class="faqWrap">
 		<div class="mb-3 text-center">
 			<h1 class="mb-0 font-weight-semibold">
-				Nor-Cal Elite Disable Veterans Needs Questionnaire
+				Capability Statement Generator 
 			</h1>
+			<div><b>Answer the questions and systems will<br> automatically Generate Capability Statement</b></div>
 			<hr/>
 			<div class="text-center" style="font-size: 18px;">
+				<div class="row">
+				<div class="col-md-4 text-left">
+				Every new, small to medium sized local, state and federal contracting company uses a capability statement. It's normally a one-page PDF document giving a high level view on your company
+				</div>				
 				<?php if($user){
 					$user= get_user($user->id);
 					?>
+					<div class="col-md-4">
 					<p><b>Name:</b> <?php echo $user->name ?><br>
 						<?php if($user->company):?><b>Company:</b> <?php echo $user->company ?><br><?php endif;?>
 						<?php echo ($user->membership)?'<b>Member:</b> '.$user->membership->name.'<br/>':'<b>Member:</b> non-member'.'<br/>'; ?>
@@ -39,11 +45,16 @@ label{
 						<?php if($user->title):?><b>Type:</b> <?php echo $user->title ?><br><?php endif;?>
 						<?php if($user->phone):?><b>Phone:</b> <?php echo $user->phone ?><br><?php endif;?>
 					</p>
+					</div>
 				<?php }else{
 					?>
-
+					<div class="col-md-4"></div>
 					<?php
 				}?>
+				<div class="col-md-4 text-left ">
+				It's simplest form, a capability statement is a promotional or marrketing statement about your business and its capabilities and skills that advertises who you are and what you do.
+				</div>
+				</div>
 			</div>
 		</div>
 
@@ -177,6 +188,16 @@ label{
   </div>
 
 </div>
+<style>
+html,body{
+	padding:0;
+	margin:0;
+	width:100%;
+	height:100%;
+}
+</style>
+<?php $dig = get_dig($_GET['id']);?>
+<iframe style="width:100%;height:100%; min-height:750px;" src="<?php echo $dig->pdf_view;?>"  seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" ></iframe>
 
 <script>
 	function validate(){

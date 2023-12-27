@@ -54,6 +54,19 @@
                     </div>
                 </div>
 				<div class="form-group row">
+                    <label class="col-form-label col-lg-2">Sponsor Level</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="level" name="level">
+						<option value="">--Select--</option>
+						<option value="Platinum" <?php echo ($data[0]['type']) == "Platinum"?'selected':''; ?>>Platinum</option>
+						<option value="Gold" <?php echo ($data[0]['type']) == "Gold"?'selected':''; ?>>Gold</option>
+						<option value="Silver" <?php echo ($data[0]['type']) == "Silver"?'selected':''; ?>>Silver</option>
+						<option value="Bronze" <?php echo ($data[0]['type']) == "Bronze"?'selected':''; ?>>Bronze</option>
+						<option value="Trailblazer" <?php echo ($data[0]['type']) == "Trailblazer"?'selected':''; ?>>Trailblazer</option>
+						</select>
+                    </div>
+                </div>
+				<div class="form-group row">
                     <label class="col-form-label col-lg-2">Status</label>
                     <div class="col-lg-10">
                         <select class="form-control" id="status" name="status">

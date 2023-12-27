@@ -16,7 +16,7 @@ if($hash && !empty($data)){
 
 				<iframe src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1" width="240" height="180" scrolling="no" style="border:0;overflow:hidden;position: relative;bottom: 85px;"></iframe>
 
-				<a href="https://ncdeliteveterans.org/customer/whilewebinar" target="_blank">Visit Webinar page! (login required)</a> 
+				<a href="https://ncdeliteveterans.org/customer/testmode" target="_blank">Visit Webinar page! (login required)</a> 
 
 				<?php
 

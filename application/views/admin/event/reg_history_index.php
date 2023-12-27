@@ -22,6 +22,7 @@
     <div class="card">        
         <div class="card-body">            
             <div class="col-md-12">
+				<div style="position:relative;"><a style="position: absolute;left: 280px;top: 18px;z-index:99;" class="btn btn-primary" href="<?php echo site_url('admin/event/export_Event_History/'.$event_id)?>">Export</a></div>
                 <table class="table table-bordered" id="event_datatable" width="100%">
                 </table>
             </div>

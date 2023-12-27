@@ -65,6 +65,13 @@
 						<textarea rows="5" cols="3" class="form-control" id="content" name="content" placeholder="Please Enter content" required><?php echo @$data->content; ?></textarea>
 					</div>
 				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Questions</label>
+					<div class="col-lg-10">
+						<textarea rows="5" cols="3" class="form-control" id="questions" name="questions" placeholder="Please Enter Questions"><?php echo @$data->questions; ?></textarea>
+						<div style="color:#ccc">Input multiple question by each question in one line.</div>
+					</div>
+				</div>
 				<div class="form-group row" >
 					<label class="col-form-label col-lg-2"> </label>
 					<div class="col-lg-10">
@@ -166,7 +173,8 @@
 					type: $('#type').val(),
 					users: members.join(','),
 					subject: $('#subject').val(),
-					content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+					questions: $('#questions').val(),
+					content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="https://ncdeliteveterans.org/assets/')
 				},
                 dataType: 'json',
                 success: function (res) {
@@ -191,7 +199,7 @@
 			$('#subject').focus();
 			return;
 		}
-		var val = tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/');
+		var val = tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="https://ncdeliteveterans.org/assets/');
 		if(!val){
 			$('#content').focus();
 			return;
@@ -202,7 +210,8 @@
 			url: "<?php echo base_url(); ?>" + "admin/ads/save",
 			data : {
 				subject: $('#subject').val(),
-				content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				questions: $('#questions').val(),
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="https://ncdeliteveterans.org/assets/')
 			},
 			dataType: 'json',
 			success: function (res) {
@@ -221,7 +230,8 @@
 			url: base_url+'admin/ads/save_preview',
 			type : 'POST',
 			data : {
-				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				questions: $('#questions').val(),
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="https://ncdeliteveterans.org/assets/')
 			},
 			dataType: 'json',
 			cache: false,

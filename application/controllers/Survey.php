@@ -26,8 +26,13 @@ class Survey extends CI_Controller {
 		$check = $this->db->get_where('tbl_survey_result',array('md5(email)'=>$hash))->row();
 
 		$data = $this->input->post();
+		
+		
 		if($data['submit']){
+			 
 			if(!$check){
+				 
+				$company_type_name = $data['question'][32]['answer'][0]; 
 
 				$this->db->trans_start();
 				$item = array(
@@ -53,7 +58,7 @@ class Survey extends CI_Controller {
 				//send the cap-sta
 				$email = $user->email;
 				$subject = "Capability Statement";
-				$email_content = "Please find attachment its capability statement of your survey.";
+				$email_content = "Please find attachment its your capability statement.";
 				$content = 'Hi, '.$user->name. "<br/>".$email_content;
 				$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$user->name.'&t='.$user->phone_number.'&type='.$user->title.'&p=Email').'"/>';
 
@@ -66,12 +71,32 @@ class Survey extends CI_Controller {
 				$this->db->join('tbl_survey_detail as d','s.id = d.question_id AND result_id="'.$result_id.'"','left');
 
 				$mContent['survey'] = $this->db->get('tbl_survey as s')->result();
+				
+				$company_type = $this->db->get_where('tbl_company_type',array('title'=>$company_type_name))->row_array();
+				if(!$company_type){
+					$mContent['company_type'] = $this->db->get_where('tbl_company_type',array('id'=>$user->company_type))->row_array();
+					
+				}else{
+					$mContent['company_type'] = $company_type;
+					$this->db->update('tbl_user',array('company_type'=>$company_type['id']),array('id'=>$user->id));
+				}
+				
 				$html = $this->load->view('admin/survey/capsta',$mContent,true);
-				//echo $html;
+				//echo $html; die('end');
+				$file_name = 'capsta_'.$result_id.'_'.date("Ymd-his").'.pdf';
 				$this->load->library('pdf');
-				$attachment = FCPATH.'assets/capsta/capsta_'.$result_id.'_'.date("Ymd-his").'.pdf';
+				$attachment = FCPATH.'assets/capsta/'.$file_name;
 
 				$this->pdf->savePDF($html, $attachment, false);
+				//die($html);
+				$this->db->insert('tbl_cap_sta',array(
+					'name'=>$user->name,
+					'email'=>$email,
+					'company_type'=>$mContent['company_type']['id'],
+					'company_type_name'=>getSurveyOption($mContent['survey'][9]),
+					'company_name'=>$user->company,
+					'file'=>$file_name ,
+					'created_at'=>date("Y-m-d H:i:s")));
 
 				$this->db->insert('tbl_email_queue',array('email'=>$email,
 					'content'=>$content. $image_refer,
@@ -117,6 +142,22 @@ class Survey extends CI_Controller {
     protected function redirect($url) {
         redirect(base_url($url));
     }
+	
+	public function capstas(){ 
+		$this->load->library('zip');
+		$name = 'mydata1.txt';
+		$data = 'A Data String!';
+		unlink('/public_html/assets/tmp/capstas.zip');
+		$dir_f = FCPATH.'/assets/capsta/';
+		
+		$pdfs =  preg_grep('~\.(pdf)$~', scandir($dir_f));
+		foreach ($pdfs as $row)
+        {
+          $fileName = $dir_f.$row;
+          $this->zip->read_file($fileName);
+        }  
+		$this->zip->download('capstas.zip');
+	}
 
     protected function json($data) {
         $json = json_encode($data);

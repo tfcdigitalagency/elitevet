@@ -25,14 +25,18 @@ class Dig extends MY_Controller {
 	 
 	public function get_data(){
 		$this->db->select('*');
-		$this->db->order_by('created_at','desc');
+		$this->db->order_by('id','desc');
 		$data = $this->db->get_where('tbl_dig',array())->result_array();
 
 		foreach ($data as $k=>$v){
 
 			$data[$k]['title'] = $v['title'] ;			 
 			if($v['photo']) {
-				$data[$k]['photo'] = '<img src="' . base_url() . $v['photo'] . '" width="100" height="100"/>';
+				$urlImg = $v['photo'];
+				if(strpos($urlImg,'https://')=== false){
+					$urlImg = base_url().$urlImg;
+				}
+				$data[$k]['photo'] = '<img src="' . $urlImg . '" width="100" height="100"/>';
 			}
 		}
 
@@ -56,9 +60,24 @@ class Dig extends MY_Controller {
 			if($old) {				 
 				$title = $this->input->post('title');
 				$photo = $this->input->post('image');
+				$type = $this->input->post('type');
 				$pdf = $this->input->post('pdf_file');
+				$pdf_view = $this->input->post('pdf_view');
+				$home = $this->input->post('home')?1:0;
+				$position = $this->input->post('position');
+				if($position){
+					$this->db->update('tbl_dig',array('position'=>0),array('position'=>$position));
+				}
+				
+				if($home){
+					$this->db->update('tbl_dig',array('home'=>0));
+				}
 				$data = array(
 					'title' => $title,					 
+					'type' => $type,					 
+					'home' => $home,
+					'position' => $position,					
+					'pdf_view' => $pdf_view,					 
 					'created_at' => date("Y-m-d H:i:s")
 				);
 				
@@ -75,10 +94,23 @@ class Dig extends MY_Controller {
 		}else { 
 			$title = $this->input->post('title');
 			$photo = $this->input->post('photo');
+			$type = $this->input->post(type);
 			$pdf = $this->input->post('pdf'); 
+			$home = $this->input->post('home')?1:0;
+			$position = $this->input->post('position');
+			if($position){
+				$this->db->update('tbl_dig',array('position'=>0),array('position'=>$position));
+			}
+			
+			if($home){
+				$this->db->update('tbl_dig',array('home'=>0));
+			}
 			$data = array(
 				'title' => $title,
+				'type' => $type,
 				'photo' => $photo, 
+				'home' => $home,
+				'position' => $position,
 				'pdf' => $pdf,
 				'created_at' => date("Y-m-d H:i:s")
 			);			 
@@ -141,10 +173,16 @@ class Dig extends MY_Controller {
 		
 		$subject = 'THE ELITE SDVOB NET WORK - Digital Magazzine';
 		
+		$urlImg = $dig['photo'];
+		if(strpos($urlImg,'https://')=== false){
+			$urlImg = base_url().$urlImg;
+		}
+		
+		
 		$email_content = '
 					<table style="display:block;width:100%;border:1px solid #666; text-align:center;margin:auto;" cellspacing=0 cellpadding=0><tr>
 					<td style="padding:0px; width:50%;">
-					<img style="width:400px;" src="'.base_url().$dig['photo'].'"/>
+					<img style="width:400px;" src="'.$urlImg.'"/>
 					</td><td style="padding:10px; width:50%; text-align:center; vertical-align:middle;color:#fff">
 					'.($dig['title']?'':'<h1>'.$dig['title'].'</h1>').'
 					<h2><a target="_blank" style="display:inline-block;width:100%;" title="Dig Mag" href="'.base_url().$dig['pdf'].'">View Digital Magazine</a></h2>
@@ -171,5 +209,96 @@ class Dig extends MY_Controller {
 		}
 		echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has added to queue.'));
 	}
+	
+	function scrape(){
+		$key=$_GET['s'];
+		$url = 'https://freemagazines.top/wp-json/wp/v2/posts?search='.urlencode($key).'&author=1&orderby=date&order=desc';
+		$this->load->library('session');
+		$data = $this->curl_get_content($url);
+		 	
+		$total = 0;
+		if($data){
+			$data = json_decode($data,true);
+			
+			//echo '<pre>';print_r($data);die();
+			
+			foreach($data as $item){
+				
+				$media = $this->curl_get_content($item['_links']['wp:featuredmedia'][0]['href']);
+				$media = json_decode($media,true);
+				  
+				$pdf_urls = getUrlsFromEmbedTagsUsingRegex ($item['content']['rendered']);	
+				//print_r($pdf_urls);die();
+		
+				if($pdf_urls[0]){
+					$title = $item['title']['rendered'];
+					$photo = $media['guid']['rendered'];
+					$type = 0; 
+					$pdf = $pdf_urls[0];
+					$cid = $item['id'];
+					
+					$check = $this->db->get_where('tbl_dig',array('cid'=>$cid))->row();
+					 	
+					if(!$check){
+						$ins = array(
+							'title' => $title,
+							'type' => $type,
+							'photo' => $photo, 
+							'pdf' => $pdf,
+							'cid' => $cid,
+							'created_at' => date("Y-m-d H:i:s")
+						);			 
+						$this->db->insert('tbl_dig', $ins);
+						$new_article_id = $this->db->insert_id();
+						$total++;
+					}
+				}
+			}
+			 
+		}
+		$this->session->set_flashdata("message","found total ".count($data)." items and Inserted ".$total." to database, other items already added or cannot get PDF file link.");
+		redirect('admin/dig/');
+		
+	}
+	
+	function curl_get_content($url){
+		$agent= 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13';
 
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_VERBOSE, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+		curl_setopt($ch, CURLOPT_URL,$url);
+		$result=curl_exec($ch);
+		return $result;
+	}
+
+}
+
+
+function getUrlsFromEmbedTagsUsingRegex($html) {
+    $urls = [];
+
+    // Regular expression pattern to match embed tags and extract src attribute
+    $pattern = '/<embed[^>]+src="([^"]+)"/i';
+
+    // Perform the regex match
+    preg_match_all($pattern, $html, $matches);
+
+    // Extract URLs from the matched src attributes
+    if (!empty($matches[1])) {
+        $urls = $matches[1];
+    }else{
+		// Regular expression pattern to match embed tags and extract src attribute
+		$pattern = '/<a[^>]+href="([^"]+)"/i';
+
+		// Perform the regex match
+		preg_match_all($pattern, $html, $matches);
+		if (!empty($matches[1])) {
+			$urls = $matches[1];
+		}
+	}
+
+    return $urls;
 }

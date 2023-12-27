@@ -29,7 +29,7 @@
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Title *</label>
 					<div class="col-lg-10">
-						<input class="form-control" id="title" name="title" placeholder="Please Input Title" value="<?php echo $data['article_title']; ?>" required/>
+						<input class="form-control" id="title" name="title" placeholder="Please Input Title" value="<?php echo $data['title']; ?>" required/>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -39,11 +39,53 @@
 					</div>
 				</div>
 				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Type</label>
+					<div class="col-lg-6" id="pdf_type_wrap">
+						<label><input type="radio" name="type" value="1" <?php echo $data['type']?'checked':''; ?> id="type1"> Pdf File <label>
+						<label style="margin-left:15px;"><input type="radio" name="type" value= "0" <?php echo $data['type']?'':'checked'; ?> id="type0"> Pdf URL <label>
+					</div>
+				</div>
+				
+				
+				<div id="pdf_wrap" style="display:<?php echo $data['type']?'flex':'none'; ?>" class="form-group row">
 					<label class="col-form-label col-lg-2">Pdf</label>
 					<div class="col-lg-6" id="pdf_">
 						<input type="file" class="file-input-overwrite" name="pdf_file" id="pdf_file"  data-fouc>
 					</div>
 				</div>  
+				<div id="url_wrap" style="display:<?php echo $data['type']?'none':'flex'; ?>"  class="form-group row">
+					<label class="col-form-label col-lg-2">Pdf url view</label>
+					<div class="col-lg-6" id="pdf_view">
+						<input class="form-control" id="pdf_view" name="pdf_view" value="<?php echo $data['pdf_view']; ?>" placeholder="Please Input Pdf Link"/>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Display in Homepage</label>
+					<div class="col-lg-6" >
+					<?php $status = intval($data['home']);?>
+						<label><input type="checkbox" name="home" value="1" <?php echo $status?'checked':''; ?> > Homepage <label>
+						
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Display position</label>
+					<div class="col-lg-6">
+					<?php
+					$aryPosition = array(1=>'Position 1',2=>'Position 2',3=>'Position 3',4=>'Position 4')
+					?>
+						<label>
+							<select name="position" class="form-control">
+							<option value="">--Not set--</option>
+							<?php foreach($aryPosition as $k=>$v){
+								?>
+								<option value="<?php echo $k?>" <?php if($data['position'] == $k) echo 'selected'?>><?php echo $v?></option>
+								<?php
+							}?>
+							</select>
+						<label>
+						
+					</div>
+				</div>
 				<div class="form-group row" >
 					<label class="col-form-label col-lg-2">&nbsp;</label>
 					<div class="col-lg-6">
@@ -71,6 +113,17 @@
 	var previewZoomButtonClasses;
 	var previewZoomButtonIcons;
 	var fileActionSettings;
+	
+	$('#pdf_type_wrap input').click(function(){
+		var val = parseInt($(this).val());
+		if(val){
+			$('#pdf_wrap').show();
+			$('#url_wrap').hide();
+		}else{
+			$('#pdf_wrap').hide();
+			$('#url_wrap').show();
+		}
+	});
 
 
 	// Bootstrap file upload
@@ -147,9 +200,19 @@
 	jQuery(document).ready(function() {
 
 		if(icon==''){
-			$('#image_').empty();
+			/*$('#image_').empty();
 			$('#image_').append('<input type="file" class="file-input-overwrite" name="image" id="image"  data-fouc>');
-			_componentFileUpload();
+			_componentFileUpload();*/
+			$('#image').fileinput({
+			browseLabel: 'Search',
+			browseIcon: '<i class="icon-file-plus mr-2"></i>',
+			uploadIcon: '<i class="icon-file-upload2 mr-2"></i>',
+			removeIcon: '<i class="icon-cross2 font-size-base mr-2"></i>',
+			layoutTemplates: {
+				icon: '<i class="icon-file-check"></i>',
+				modal: modalTemplate
+			},
+		});
 
 		}else{
 			$('#image_').empty();
@@ -185,11 +248,22 @@
 		}
 		
 		if(pdf==''){
-			$('#pdf_').empty();
+			/*$('#pdf_').empty();
 			$('#pdf_').append('<input type="file" class="file-input-overwrite" name="pdf_file" id="pdf_file"  data-fouc>');
-			_componentFileUpload();
+			_componentFileUpload();*/
+			$('#pdf_file').fileinput({
+			browseLabel: 'Search',
+			browseIcon: '<i class="icon-file-plus mr-2"></i>',
+			uploadIcon: '<i class="icon-file-upload2 mr-2"></i>',
+			removeIcon: '<i class="icon-cross2 font-size-base mr-2"></i>',
+			layoutTemplates: {
+				icon: '<i class="icon-file-check"></i>',
+				modal: modalTemplate
+			},
+		});
 
 		}else{
+			 
 			$('#pdf_').empty();
 			$('#pdf_').append('<input type="file" class="file-input-overwrite" name="pdf_file" id="pdf_file"  data-fouc>');
 
@@ -250,6 +324,7 @@
 							icon: 'icon-checkmark3',
 							type: 'success'
 						});
+						location.href = base_url+'admin/dig';
 					}else{
 						new PNotify({
 							title: 'ERROR!',

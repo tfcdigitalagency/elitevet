@@ -26,11 +26,19 @@ class Ads extends MY_Controller {
 		$data = $this->input->post();
 		$data['content'] = replace_url($data['content']);		 
 		$data['content']= process_email_image($data['content']);
+		$data['questions'] = $data['questions']; 
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		if(!$config){
 			$this->db->insert('tbl_config' ,array('code'=>'SPONSOR','detail'=>json_encode($data)));
 		}else{
 			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>'SPONSOR'));
+		}
+		
+		if($data['questions']){
+			$exist = $this->db->get_where('ads_questions',array('hash'=>md5($data['questions'])))->row();
+			if(!$exist){
+				$this->db->insert('ads_questions',array('hash'=>md5($data['questions']),'question'=>$data['questions']));
+			}
 		}
 
 		echo json_encode(array('message'=>'Success.'));
@@ -42,7 +50,7 @@ class Ads extends MY_Controller {
 		$subject = $this->input->post('subject');
 		$email_content = $this->input->post('content');
 		$email_content = replace_url($email_content); 
-		 
+		$questions = $this->input->post('questions');
 		$type = $this->input->post('type');
 		if($type){
 			$user_id = explode(',',$this->input->post('users'));
@@ -74,11 +82,19 @@ class Ads extends MY_Controller {
 		$data = $this->input->post();
 		$data['content'] = replace_url($data['content']); 
 		$data['content']= process_email_image($data['content']);
+		$data['questions'] = $data['questions'];
 		$config = $this->db->get_where('tbl_config',array('code'=>'SPONSOR'))->row();
 		if(!$config){
 			$this->db->insert('tbl_config' ,array('code'=>'SPONSOR','detail'=>json_encode($data)));
 		}else{
 			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>'SPONSOR'));
+		}
+		
+		if($data['questions']){
+			$exist = $this->db->get_where('ads_questions',array('hash'=>md5($data['questions'])))->row();
+			if(!$exist){
+				$this->db->insert('ads_questions',array('hash'=>md5($data['questions']),'question'=>$data['questions']));
+			}
 		}
 
 		$ads_content = $data['content'];

@@ -32,11 +32,26 @@
 											<table class="gv-table-view-content" width="100%">
 												<tbody>
 												<tr id="gv-field-5-1" class="gv-field-5-1">
-													<th scope="row" width="30%"><span class="gv-field-label">Company</span></th>
+													<th scope="row" width="20%"><span class="gv-field-label">Company</span></th>
 													<td><?php echo $opportunity['company']?></td></tr>
+												
+												
+												<?php if($opportunity['commodity']){ ?>
 												<tr id="gv-field-5-2" class="gv-field-5-2">
+													<th scope="row"><span class="gv-field-label">Commodity</span></th>
+													<td>
+													<ul style="padding:0;margin:0">
+													<?php $commodity = json_decode($opportunity['commodity'],true);
+													foreach($commodity as $c){
+														?><li><b>[<?php echo $c['formattedCode']?>]</b> <?php echo $c['commodityDescription']?></li><?php
+													}
+													?>
+													</ul>
+													</td></tr>												
+												<?php }?>
+<tr id="gv-field-5-2" class="gv-field-5-2">
 													<th scope="row"><span class="gv-field-label">Name</span></th>
-													<td><?php echo $opportunity['name']?></td></tr>
+													<td><?php echo $opportunity['name']?></td></tr>												
 												<tr id="gv-field-5-4" class="gv-field-5-4">
 													<th scope="row"><span class="gv-field-label">Email</span></th>
 													<td><a href="mailto:<?php echo $opportunity['email']?>"><?php echo $opportunity['email']?></a></td></tr>
@@ -69,6 +84,20 @@
 														</a></td>
 												</tr>
 												<?php endif;?>
+												
+												<?php if($opportunity['documents']){ ?>
+												<tr id="gv-field-5-2" class="gv-field-5-2">
+													<th scope="row"><span class="gv-field-label">Documents</span></th>
+													<td>
+													<ul style="padding:0;margin:0">
+													<?php $commodity = json_decode($opportunity['documents'],true);
+													foreach($commodity as $c){
+														?><li><a href="<?php echo trim($c['path']);?>"><?php echo($c['fileName']);?></a></li><?php
+													}
+													?>
+													</ul>
+													</td></tr>												
+												<?php }?>	
 												</tbody>
 
 											</table>

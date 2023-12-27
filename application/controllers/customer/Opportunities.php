@@ -17,16 +17,36 @@ class Opportunities extends MY_Controller {
     /*
     * Training
     * */
-    public function index(){
+    public function index($record=0){
+		$this->load->library('pagination');
         $this->mHeader['sub_id'] = 'opportunities';
+		$per_page = 50;
+		
+		$total = $this->db->select('count(*) as total')->get_where('tbl_contract',array('status'=>'available','type'=>1))->row();
+		
 		$this->db->order_by('id','DESC');
 		$current_user =  $this->session->userdata('user');
+		
+		$config['base_url'] = site_url('/customer/opportunities/index');
+		$config['total_rows'] = $total->total;
+		$config['per_page'] = $per_page;
+		
+		$offset = $record;
+
 		if(!$current_user){
 			$this->db->limit(2);
+		}else{
+			$this->db->limit($per_page,$offset);
 		}
+		
+		$list = $this->db->get_where('tbl_contract',array('status'=>'available','type'=>1))->result_array();
+		$this->pagination->initialize($config);
+		
+		
         $this->mContent['current_user']  = $current_user;
         $this->mContent['checkPostBid']  = $this->checkPostBid();
-		$this->mContent['opportunities'] = $this->db->get_where('tbl_contract',array('status'=>'available','type'=>1))->result_array();
+		$this->mContent['opportunities'] = $list;
+		$this->mContent['paging'] = $this->pagination->create_links();
         $this->render("{$this->sub_mLayout}index", $this->mLayout);
     }
 

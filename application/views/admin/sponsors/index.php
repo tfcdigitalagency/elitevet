@@ -23,6 +23,7 @@
         <div class="card-body">
             <div class="col-md-12">
                 <button type="button" class="btn bg-teal-400" onclick="Add_sponsors()">New Sponsor</button>
+				<a href="<?php echo site_url('admin/sponsors/invoice')?>" class="btn btn-warning">Send Invoice</a>
             </div>
             <div class="col-md-12">
                 <table class="table table-bordered" id="sponsors_datatable" width="100%">
@@ -191,6 +192,7 @@
     }
 
     jQuery(document).ready(function() {
+		 
 
         $('#input_sponsor').fileinput({
             browseLabel: 'Browse',
@@ -222,7 +224,7 @@
                 },
                 "columnDefs": [
                     {
-                        "targets": [6],
+                        "targets": [7],
                         orderable: false,
                         "createdCell": function (td, cellData, rowData, row, col) {
                             if (!cellData || cellData == null || cellData == "") {
@@ -235,7 +237,7 @@
                         }
                     },
                     {
-                    "targets": [7],
+                    "targets": [9],
                     orderable: false,
                     "createdCell": function (td, cellData, rowData, row, col) {
                         var html = '';
@@ -248,12 +250,14 @@
                 ],
                 "columns": [
                     {"title": "No", "data": "no", "class": "text-center", "width": "5%"},
+                    {"title": "Create Link", "data": "create_link", "class": "text-center", "width": "5%"},
                     {"title": "Company", "data": "company", "class": "text-center", "width": "10%"},
                     {"title": "Name", "data": "name", "class": "text-center", "width": "10%"},
                     {"title": "Email", "data": "email", "class": "text-center", "width": "10%"},
                     {"title": "Phone", "data": "phone", "class": "text-center", "width": "10%"},
                     {"title": "Link", "data": "url", "class": "text-center", "width": "10%"},
                     {"title": "Icon", "data": "icon", "class": "text-center", "width": "10%"},
+                    {"title": "Level", "data": "type", "class": "text-center", "width": "10%"},
                     {"title": "Action", "data": "id", "class": "text-center", "width": "10%"},
                 ],
                 dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
@@ -321,6 +325,41 @@
 
         location.href = base_url+'admin/sponsors/add';
     }
+	
+	function copy_link(obj){
+		var link = $(obj).data('link');
+			copyToClipboard(link);
+			swal(
+						'Success!',
+						'Link was copied in clipboard!',
+						'success'
+					);
+	}
+	
+	function copyToClipboard(text) {
+		if (window.clipboardData && window.clipboardData.setData) {
+			// Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+			return window.clipboardData.setData("Text", text);
+
+		}
+		else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+			var textarea = document.createElement("textarea");
+			textarea.textContent = text;
+			textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+			document.body.appendChild(textarea);
+			textarea.select();
+			try {
+				return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+			}
+			catch (ex) {
+				console.warn("Copy to clipboard failed.", ex);
+				return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+			}
+			finally {
+				document.body.removeChild(textarea);
+			}
+		}
+	}
 
 
 </script>

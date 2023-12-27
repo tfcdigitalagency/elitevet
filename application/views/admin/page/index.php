@@ -7,6 +7,47 @@
 		cursor:pointer;
 	}
 </style>
+<style>
+
+
+.wrapper{
+  width:  1500px;
+  margin:  auto;
+  max-width: 100%;
+}
+
+label{
+	cursor:pointer;
+	margin-right:15px;
+}
+
+.memberBoard .memberCell{
+	border:1px solid #f1f1f1;
+	border-left:7px solid #f2795a;
+	margin:20px;
+	padding:20px; 
+}
+
+ .memberCell .name{
+	 font-size: 1.5rem;
+    text-transform: none;
+    font-weight: 400;
+    font-family: Oswald, sans-serif;
+    margin: 0;
+	color:#f2795a !important;
+ }
+ .memberCell .position{
+	font-size: 1.125rem;
+    letter-spacing: 0px;
+    font-weight: 600;
+    text-transform: none;
+    margin: 10px 0 0;
+	color: #b3b3b3 !important;
+ }
+ .memberCell .contact{
+ 
+ }
+</style>
 <!-- Page header -->
 
 
@@ -35,12 +76,24 @@
 						<input type="text" class="form-control" value="<?php echo @$page_content->title; ?>" name="title" id="title" required/>
 					</div>
 				</div>
+				<?php if(strtolower($page_code) == 'donate'){?>
+				<div class="form-group row">
+					<label class="col-form-label col-lg-2">Donations Values (USD) *</label>
+					<div class="col-lg-10">
+						<input type="text" class="form-control" value="<?php echo @$page_content->packamount; ?>" name="packamount" id="packamount" required/>
+						<div>Input multiple value by using comma.</div>
+					</div>
+				</div>
+				<?php }?>
+				
 				<div class="form-group row">
 					<label class="col-form-label col-lg-2">Page content *</label>
 					<div class="col-lg-10">
 						<textarea rows="5" cols="3" class="form-control" id="content" name="content" placeholder="Please Enter content" required><?php echo @$page_content->content; ?></textarea>
 					</div>
 				</div>
+				
+				
 				<div class="form-group row" >
 					<label class="col-form-label col-lg-2"> </label>
 					<div class="col-lg-10">
@@ -94,7 +147,7 @@
 			$('#title').focus();
 			return;
 		}
-		var val = tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/');
+		var val = tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="https://ncdeliteveterans.org/assets/');
 		if(!val){
 			$('#content').focus();
 			return;
@@ -105,7 +158,8 @@
 			url: "<?php echo base_url(); ?>" + "admin/page/save?page=<?=$page_code?>",
 			data : {
 				title: $('#title').val(),
-				content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				packamount: $('#packamount').val(),
+				content: tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="https://ncdeliteveterans.org/assets/')
 			},
 			dataType: 'json',
 			success: function (res) {

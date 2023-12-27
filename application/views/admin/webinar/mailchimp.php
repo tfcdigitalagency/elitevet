@@ -45,7 +45,14 @@
 				<div class="form-group row">
 					<label class="col-form-label col-lg-1">Overwrite Test Email:</label>
 					<div class="col-lg-11">
-						<label><input size="100" type="email" class="form-control" value="" name="test_email" id="test_email"/></label>
+						<label style="display:flex; ">
+						<div><input size="50" type="email" class="form-control" value="" name="test_email" id="test_email"/></div>
+						<div style="width:100px;padding:10px;">Send Type:</div>
+						<div><select style="width:200px;" class="form-control" id="send_type" name="send_type">
+						<option value='smtp'>SMTP</option><option value='mail'>PHP mail()</option>
+						</select>
+						</div>
+						</label>
 					</div>
 				</div>
 
@@ -113,11 +120,12 @@
     var loading = false;
     function send_Email() {
 		if(!confirm('Do you want to send email to user now?')) return;
+		var t = new Date().getTime();
         $.ajax({
-            url: base_url+'admin/webinar/send_Email',
+            url: base_url+'admin/webinar/send_Email?t='+t,
             type : 'POST',
             data : {
-                description: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
+                description: tinyMCE.get('content').getContent().replaceAll('../../', 'https://ncdeliteveterans.org/'),
                 address: $('#address').val(),
                 subject: $('#subject').val()
             },
@@ -136,17 +144,22 @@
     }
 
 	function preview_email(){
+		var t = new Date().getTime();
 		$.ajax({
-			url: base_url+'admin/webinar/save_preview',
+			url: base_url+'admin/webinar/save_preview?t='+t,
 			type : 'POST',
 			data : {
-				content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+				content: tinyMCE.get('content').getContent().replaceAll('../../', 'https://ncdeliteveterans.org/')
 			},
 			dataType: 'json',
 			cache: false,
 			success: function(result) {
-				$('#contentEmailPreview').html(result.preview);
-				$('#modalPreview').modal('show');
+				if(result.preview){
+					$('#contentEmailPreview').html(result.preview);
+					$('#modalPreview').modal('show');
+				}else{
+					alert("System error, server is not allow now");
+				}
 			}
 		});
 	}
@@ -156,25 +169,37 @@
 			$('#test_email').focus();
 			return;
 		}
+		var t = new Date().getTime();
         $.ajax({
-            url: base_url+'admin/webinar/send_test',
+            url: base_url+'admin/webinar/send_test?t='+t,
             type : 'POST',
             data : {
-                description: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/'),
+                description: tinyMCE.get('content').getContent().replaceAll('../../', 'https://ncdeliteveterans.org/'),
                 address: $('#address').val(),
                 subject: $('#subject').val(),
 				disable_ads: $('#disable_ads').is(":checked")?1:0,
-				test_email: $('#test_email').val()
+				test_email: $('#test_email').val(),
+				send_type: $('#send_type').val()
             },
 			dataType: 'json',
             cache: false,
             success: function(result) {
-                new PNotify({
-                    title: 'Success!',
-                    text: 'Send Email Success.',
-                    icon: 'icon-checkmark3',
-                    type: 'success'
-                });
+						if(result.status){
+							new PNotify({
+								title: 'Success!',
+								text: 'Send Email Success.',
+								icon: 'icon-checkmark3',
+								type: 'success'
+							});
+						}else{
+							new PNotify({
+								title: 'Error!',
+								text: 'Cannot send email',
+								icon: 'icon-checkmark3',
+								type: 'error'
+							});
+						}
+                
                 $('#message').html(result.message);
             }
         });
@@ -184,21 +209,31 @@
         if(loading == false){
             loading = true;
             $('.loading').removeClass('hide');
+			var t = new Date().getTime();
             $.ajax({
-                url: base_url+'admin/webinar/save_mailchimp',
+                url: base_url+'admin/webinar/save_mailchimp?t='+t,
                 type : 'POST',
                 data : {
-                  content: tinyMCE.get('content').getContent().replaceAll('<img src="../../assets/', '<img src="http://ncdeliteveterans.org/assets/')
+                  content: tinyMCE.get('content').getContent().replaceAll('../../', 'https://ncdeliteveterans.org/')
                 },
                 cache: false,
+				dataType: 'json',
                 success: function(result) {
-                  new PNotify({
-                      title: 'Success!',
-                      text: 'SaveMailchimp Success.',
-                      icon: 'icon-checkmark3',
-                      type: 'success'
-                  });
+				  if(result.status){	
+					  new PNotify({
+						  title: 'Success!',
+						  text: 'SaveMailchimp Success.',
+						  icon: 'icon-checkmark3',
+						  type: 'success'
+					  });
+					}else{
+						alert("System error, server is not allow now");
+					}
                 },
+				error: function (xhr, ajaxOptions, thrownError) {
+					alert(xhr.status);
+					alert(thrownError);
+				},
                 complete: function(){
                   loading = false;
                   $('.loading').addClass('hide');

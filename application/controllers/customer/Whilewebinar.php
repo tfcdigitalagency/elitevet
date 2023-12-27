@@ -18,10 +18,10 @@ class Whilewebinar extends MY_Controller {
     * */
     public function index(){
 
-        if(!$this->isadmin && !$this->ishost){
+        /*if(!$this->isadmin && !$this->ishost){
             echo "You don't have permission to access this page!";
             die();
-        }
+        }*/
 
         $this->mHeader['sub_id'] = 'whilewebinar';
 

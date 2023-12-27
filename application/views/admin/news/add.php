@@ -262,7 +262,7 @@
 	});
 
 	function save_article() {
-		var content =  tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="http://ncdeliteveterans.org/assets/');
+		var content =  tinyMCE.get('content').getContent().replaceAll('<img src="../assets/', '<img src="https://ncdeliteveterans.org/assets/');
 		var check = validator.checkForm();
 		if(!content) return;
 		if (!check)

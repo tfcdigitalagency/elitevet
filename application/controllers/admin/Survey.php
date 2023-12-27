@@ -72,7 +72,7 @@ class Survey extends MY_Controller {
 	public function result(){
 		$this->mHeader['sub_id'] = 'view';
 		$this->render("{$this->sub_mLayout}result", $this->mLayout);
-	}
+	}	
 
 	public function get_result(){
 		$this->db->select('sr.*,u.name as uname');
@@ -334,11 +334,20 @@ class Survey extends MY_Controller {
 	public function sendemail(){
 		$subject = $this->input->post('subject');
 		$email_content = $this->input->post('content');
+		
+		//die($email_content);
 
 		$type = $this->input->post('type');
-		if($type){
-			$user_id = $this->input->post('user');
-			$this->db->where_in('id',$user_id);
+		if($type ){
+			switch(intval($type)){
+				case 2:
+					$this->db->where('title','Disable Veteran');
+					break;
+				default:
+					$user_id = $this->input->post('user');
+					$this->db->where_in('id',$user_id);
+			}
+			
 		}
 
 		$data = $this->db->get_where('tbl_user',array('subscribe'=>1))->result_array();
@@ -346,38 +355,26 @@ class Survey extends MY_Controller {
 		foreach($data as $k=>$v){
 			$email = $v['email'];
 			$link = site_url('survey/?hash='.md5($email));
-			$survey = '<br><br>Please using access survey link bellow:<br><a href="'.$link.'">'.$link.'</a>';
+			$survey = '<br><br>Please use the access link bellow:<br><a href="'.$link.'">'.$link.'</a>';
 			$content = 'Hi, '.$v['name']. "<br/>".$email_content.$survey;
-			$image_refer = '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
-
+			
+			//$content.= '<br><br><div><img src="https://ncdeliteveterans.org/assets/Cap_Bid.jpg" style="max-width:100%;"/><br>';
+			
+			$content.= '<img alt="check" width="15" height="15" src="'.site_url('refered?e='.$email.'&s='.$subject.'&n='.$v['name'].'&t='.$v['phone_number'].'&type='.$v['title'].'&p=Email').'"/>';
+			$content.="</div>";
 			if($email){
 				//$this->sendMail($email, $content. $image_refer, $subject);
 				$this->db->insert('tbl_email_queue',array('email'=>$email,
-					'content'=>$content. $image_refer,
+					'content'=>$content,
 					'subject'=>$subject,'status'=>0,'created'=>date("Y-m-d H:i:s")));
 			}
 
 		}
 		echo json_encode(array('status'=>1,'message'=>''.count($data).' emails has added to queue.'));
 	}
-	public function sendMail($toEmail='' , $content = '' , $subject = '')
-	{
-		$mail = new PHPMailer();
-
-		$email_content = $this->load->view('email/template',array('email_content'=>$content,'email'=>$toEmail),true);
-
-		$mail->IsSMTP();
-		$mail->Host = 'localhost';
-		$mail->SMTPAuth = false;
-		$mail->From = 'support@ncdeliteveterans.org';
-		$mail->FromName = 'Elite Nor-Cal';
-
-		$mail->AddAddress($toEmail);
-
-		$mail->IsHTML(true);
-		$mail->Subject = $subject;
-		$mail->MsgHTML($email_content);
-
-		return $mail->Send();
-	}
+	// public function sendMail($toEmail='' , $content = '' , $subject = '')
+	// {
+	// 	$send = sendMail($subject,$toEmail,$content);
+	// 	return $send;
+	// }
 }

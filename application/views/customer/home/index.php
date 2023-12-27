@@ -477,7 +477,7 @@
                                          data-id="e041ca2" data-element_type="widget" data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
                                             <h2 class="elementor-heading-title elementor-size-default">
-                                                <strong>WHO WE</strong> ARE</h2>
+                                                <strong>WHO WE ARE</strong></h2>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-7368419 elementor-view-default elementor-widget elementor-widget-icon"
@@ -522,8 +522,7 @@
 The Nor-Cal Elite  Network is on a mission to provide educational, training, resources, and outreach to help Disable Veterans in business succeed.
 <br/>
 During these challenging times, the Veteran needs your support more than ever. Through sponsorship,
-<br/>
-<bold>Your financial support and partnership help Disable Veterans succeed. </bold>
+Your financial support and partnership help Disable Veterans succeed.
 
 <br/>
 Sponsor today!</p>
@@ -537,7 +536,7 @@ Sponsor today!</p>
                                                 <a href="/customer/other/about" class="elementor-button-link elementor-button elementor-size-sm"
                                                    role="button">
 						<span class="elementor-button-content-wrapper">
-						<span class="elementor-button-text">About Us</span>
+						<span class="elementor-button-text"><strong>About Us</strong></span>
 		</span>
                                                 </a>
                                             </div>
@@ -574,8 +573,8 @@ Sponsor today!</p>
                                     <div class="elementor-element elementor-element-275a231 elementor-widget elementor-widget-heading"
                                          data-id="275a231" data-element_type="widget" data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
-                                            <h2 class="elementor-heading-title elementor-size-default">OUR
-                                                <strong>SPONSORS</strong>
+                                            <h2 class="elementor-heading-title elementor-size-default"><strong>OUR
+                                                SPONSORS</strong>
                                             </h2>
 											<?php if(!$check_sponsor){?>
 											<div class="float-right" style="position: relative; z-index: 9">
@@ -683,7 +682,7 @@ Sponsor today!</p>
                                          data-id="3f4dea7" data-element_type="widget" data-widget_type="heading.default">
                                         <div class="elementor-widget-container">
                                             <h2 class="elementor-heading-title elementor-size-default">
-                                                <strong>CONTACT</strong>US</h2>
+                                                <strong>CONTACT US</strong></h2>
                                         </div>
                                     </div>
                                     <div class="elementor-element elementor-element-a7d7f95 elementor-view-default elementor-widget elementor-widget-icon"

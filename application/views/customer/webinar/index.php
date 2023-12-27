@@ -12,12 +12,17 @@ function getExcerpt($string, $long = 60)
 
 $contract = array_slice($contract, 0, 5);
 //$trainingvideo = array_slice($trainingvideo, 0, 2);
+$config = $this->db->get_where('tbl_config',array('code'=>'WEBINARMODE'))->row();
+$mode_data = @json_decode($config->detail,true);
+$mod = $mode_data['mod'];
 
 $this->Webinar_model->setTable('tbl_event');
 $live = $this->Webinar_model->find(array("status" => "upcoming"), array("start_time" => "ASC"), array(), true);
 if (count($live) > 0) {
 	$live = $live[0];
 }
+
+//$live = 1;
 
 $now = date("Y-m-d H:i:s");
 
@@ -216,9 +221,9 @@ $now = date("Y-m-d H:i:s");
 		<!-- Pre videos -->
 		<div class="card hide" id="prevideo">
 			<div class="card-body">
-				<iframe src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1"
-												width="100%" height="600" scrolling="no"
-												style="border:0;overflow:hidden"></iframe>
+				<video id="preVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%">
+											Your browser does not support the video element.
+										</video>
 			</div>
 		</div>
 
@@ -233,11 +238,11 @@ $now = date("Y-m-d H:i:s");
 						<div style="text-align: center" class="live-iframe">
 							<table width="100%">
 								<tr>
-									<td>
-										<iframe id="frameBroast2"
-												src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1"
-												width="100%" height=200" scrolling="no"
-												style="border:0;overflow:hidden"></iframe>
+									<td><video id="trainingVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%"
+							   class="hide">
+							Your browser does not support the video element.
+						</video>
+										
 									</td>
 								</tr>
 							</table>
@@ -252,10 +257,21 @@ $now = date("Y-m-d H:i:s");
 						<div style="text-align: center" class="live-iframe">
 							<table width="100%">
 								<tr>
-									<td>
-										<video id="preVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%">
-											Your browser does not support the video element.
-										</video>
+									<td>	
+											<?php if(!$mod){?>
+											<iframe 
+												src="https://server.ncdeliteveterans.org:8080/video.html" title="Video1"
+												width="100%" height=200" scrolling="no"
+												style="border:0;overflow:hidden"></iframe>
+												<?php
+											}else{?>
+												<iframe 
+												src="https://server.ncdeliteveterans.org:4000/video.html" title="Video1"
+												width="100%" height=200" scrolling="no"
+												style="border:0;overflow:hidden"></iframe>
+											<?php } ?> 
+												 
+										
 									</td>
 								</tr>
 							</table>
@@ -278,12 +294,18 @@ $now = date("Y-m-d H:i:s");
 						<div id="sponsors-single" class="hide" style="text-align: center">
 							<img src="<?= base_url() . $sponsor_image_url ?>" alt="" class="sponsor-single-image"/>
 						</div>
-
-
-						<video id="trainingVideoPlayer" src="" autoplay muted autobuffer controls style="width: 100%"
-							   class="hide">
-							Your browser does not support the video element.
-						</video>
+<?php if(!$mod){?>
+<iframe src="https://server.ncdeliteveterans.org:4000/video.html" id="frameBroast2" title="Video1"
+												width="100%" height="600" scrolling="no"
+												style="border:0;overflow:hidden"></iframe>
+<?php }else{
+	?>
+	<iframe src="https://server.ncdeliteveterans.org:8080/video.html" id="frameBroast2" title="Video1"
+												width="100%" height="600" scrolling="no"
+												style="border:0;overflow:hidden"></iframe>
+	<?php	
+}?>
+						
 
 					</div>
 
@@ -303,7 +325,7 @@ $now = date("Y-m-d H:i:s");
 							submitted.
 						</div>
 						<form id="frmFQA" method="POST"
-							  action="<?php echo site_url("/customer/whilewebinar/addQuestion") ?>">
+							  action="<?php echo site_url("/customer/testmode/addQuestion") ?>">
 							<div class="row">
 								<div class="col-md-10">
 									<input type="text" id="question" name="question" class="form-controls"/>
@@ -324,7 +346,7 @@ $now = date("Y-m-d H:i:s");
 						<div class="col-md-6">
 							<div class="faqWrap">
 								<h3>Webinar tool</h3>
-								<form action="<?php echo site_url('customer/whilewebinar/upload') ?>"
+								<form action="<?php echo site_url('customer/testmode/upload') ?>"
 									  style="display:<?php echo ($pdf_link) ? 'none' : '' ?>" id="pdf_form"
 									  enctype="multipart/form-data" method="post" accept-charset="utf-8">
 									<div class="row">
@@ -410,8 +432,8 @@ $now = date("Y-m-d H:i:s");
 
 		</div>
 	</div>
-	<div class="mb-3">
-
+	<div class="mb-3 " style="text-align: center;">
+			<a class="btn btn-primary" style="color:#fff; padding:15x 100px;" target="_blank" href="<?php echo site_url("customer/other/statistic");?>">View Statistics</a>
 	</div>
 
 </div>
@@ -437,7 +459,7 @@ $now = date("Y-m-d H:i:s");
 
 			jQuery.ajax({
 				type: "POST",
-				url: "<?php echo base_url(); ?>" + "customer/whilewebinar/upload",
+				url: "<?php echo base_url(); ?>" + "customer/testmode/upload",
 				data: form_data,
 				processData: false,
 				contentType: false,
@@ -479,7 +501,7 @@ $now = date("Y-m-d H:i:s");
 
 	function refreshQuestionTotal() {
 		$.ajax({
-			url: '<?php echo site_url("/customer/whilewebinar/totalRefresh")?>',
+			url: '<?php echo site_url("/customer/testmode/totalRefresh")?>',
 			type: 'POST',
 			dataType: 'json'
 		}).done(function (response) {
@@ -505,7 +527,7 @@ $now = date("Y-m-d H:i:s");
 			var t = new Date().getSeconds();
 			if (!broascatX) {
 				broascatX = true;
-				$('#frameBroast2').attr('src', "<?php echo site_url('customer/whilewebinar/host/4000');?>?t=" + t);
+				$('#frameBroast2').attr('src', "<?php echo site_url('customer/testmode/host/4000');?>?t=" + t);
 				$('#broadcasterNow').removeClass('btn-success').addClass('btn-danger').html('<i class="fa fa-camera"></i> Stop Broadcasting');
 			} else {
 				$('#frameBroast2').attr('src', "https://server.ncdeliteveterans.org:4000/video.html?t=" + t);

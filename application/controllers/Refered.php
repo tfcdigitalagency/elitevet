@@ -37,6 +37,10 @@ class Refered extends CI_Controller {
 					'email_open'=>1,
 				);
 				$this->db->insert('user_information',$data);
+				if($act =='postbid'){ 
+					$data['created'] = date("Y-m-d H:i:s");
+					$this->db->insert('tbl_bid_posting_emails',$data); 
+				}
 		}
 
 

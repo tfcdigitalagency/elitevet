@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+require 'system/PHPMailer.php';
 class Home extends MY_Controller {
     public $mLayout = 'customer/';
     public $sub_mLayout = 'customer/home/';
@@ -147,4 +147,112 @@ class Home extends MY_Controller {
 		$this->db->query($sql);
 		echo json_encode(array('status'=>1,'data'=>$id));
 	}
+	
+	public function document(){
+		//return $this->load->view('customer/home/pdf');
+		$this->render("{$this->sub_mLayout}pdf", $this->mLayout);
+	}
+	public function search_pdf(){
+		$key = $_GET['s'];
+		if($key){
+			$this->db->like('title',$key);
+		}
+		$items = $this->db->get_where('tbl_dig')->result_array();
+		$this->mContent['key'] = $key;
+		$this->mContent['items'] = $items;
+		$this->render("{$this->sub_mLayout}search_pdf", $this->mLayout);
+	}
+	public function digital(){
+		$this->db->order_by('position','ASC');
+		$items = $this->db->get_where('tbl_dig',array('position >'=>0))->result_array();		
+		$this->mContent['items'] = $items;
+		$this->render("{$this->sub_mLayout}digital", $this->mLayout);
+	}
+	
+	public function referral(){
+		$this->add_referal();
+		$user = $this->session->userdata('user');
+		$this->mContent['user'] = $user;
+		$this->render("{$this->sub_mLayout}referral", $this->mLayout);
+	}
+	
+	public function send_referral(){
+		$from= $_POST['from'];
+		$name= $_POST['name'];
+		$email= $_POST['email']; 
+		$error = "";
+		
+		if($name && $email){
+			$this->db->insert('tbl_referral',array('from'=>$from,'name'=>$name,'email'=>$email,'created'=>date("Y-m-d H:i:s")));			
+			$data['ok'] = $this->email($from, $name , $email);
+		}else{
+			$ok = 0;
+			$error = "Invalid information.";
+		}
+		echo json_encode(array('ok'=>$ok,'error'=>$error));
+	}
+	
+	public function answer($hash=''){
+		$email = $_GET['email'];
+		$questions = $this->db->get_where('ads_questions',array('hash'=>$hash))->row_array();
+		$user = $this->db->get_where('tbl_user',array('email'=>$email))->row_array();
+		$this->mContent['email'] = $email;
+		$this->mContent['user'] = $user;
+		$this->mContent['hash'] = $hash;
+		
+		$this->mContent['questions'] = $questions;
+		$this->render("{$this->sub_mLayout}answer", $this->mLayout);
+	}
+	
+	public function save_answer(){
+		$email= $_POST['email'];
+		$answer= $_POST['answer'];
+		$questions= $_POST['questions']; 
+		$hash= $_POST['hash']; 
+		$error = "";
+		
+		$answers = [];
+		foreach($questions as $k=>$q){
+			$answers[] = array('question'=>$q,'answer'=>$answer[$k]);
+		}
+		
+		if($email && !empty($answers)){
+			$this->db->insert('ads_questions_answer',array('answer'=>json_encode($answers),'hash'=>$hash,'email'=>$email));			
+			$ok = 1;
+		}else{
+			$ok = 0;
+			$error = "Invalid infomation.";
+		}
+		echo json_encode(array('ok'=>$ok,'error'=>$error));
+	}
+
+	public function test(){
+		$send = $this->email('Luc','XXX','lucdt@ideavietnam.com');
+		var_dump($send);
+	}
+
+	
+	protected function email($from,$name,$toEmail){
+		 
+		$subject = "ELite NCD Veterans Group Webinar System";
+		$ads_content = "Hi,".$name."<br/><br/>";
+		$ads_content .= "<h3>ELite NCD Veterans Group Webinar System</h3><br><br>";
+		
+		if($from){
+			$ads_content .= "From: ".$from."<br/><br/>";
+		}
+		
+		$ads_content .= "<h4>Networking so important!</h4>";
+		
+		$ads_content .= "The Northern California Chapter of Elite Service-Disabled Veteran Network is a nonprofit tax-deductible 501(c)19 organization.<br/><br/>";				 
+		$ads_content .= "<a style=\"display:inline-block; background:#1E62EB; color:#fff;text-decoration: none; padding:3px 15px; border:1px solid #ccc; border-radius:3px;\" href='".site_url('customer/home/referral?ref_name='.$name.'&ref_email='.$email)."'>Check it out View Now</a><br><br>"; 
+		$content = $ads_content;
+
+		return $this->sendMail($subject,$toEmail,$content);
+
+	}
+
+	
+	
 }
+

@@ -42,6 +42,8 @@
 		}
 
 	}
+	
+	//$islive = true;
 ?>
 <!DOCTYPE HTML>
 <html lang="en-US">

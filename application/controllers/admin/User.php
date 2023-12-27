@@ -28,6 +28,7 @@ class User extends MY_Controller {
 
         $this->mHeader['sub_id'] = 'user_view';
         $this->mContent['membership'] = $this->Membership_model->find(array(), array(), array(), true);
+        $this->mContent['company_type'] = $this->db->get_where('tbl_company_type',array())->result_array();
         $this->render("{$this->sub_mLayout}user", $this->mLayout);
     }
 
@@ -50,9 +51,11 @@ class User extends MY_Controller {
        $status = $this->db->update('tbl_user',
 		   array("name"=>$data['name'],"email"=>$data['email'],
 			   "phone_number"=>$data['phone_number'],
+			   "postcode"=>$data['postcode'],
 			   "title"=>$data['title'],
 			   "company"=>$data['company'],
 			   "membership_id"=>$data['membership_id'],
+			   "company_type"=>$data['company_type'],
 			   "is_admin"=>$data['is_admin']),
 		   array("id"=>$data['id'])
 	   );
@@ -195,9 +198,11 @@ class User extends MY_Controller {
                 'password' => md5($data['password']),
                 'name' => $data['name'],
                 'phone_number' => $data['phonenumber'],
+                'postcode' => $data['postcode'],
                 'title' => $data['title'],
                 'company' => $data['company'],
-                'is_admin' => $data['admin']
+                'is_admin' => $data['admin'],
+                'company_type' => $data['company_type']
             ));
             $result['status'] = 'success';
             echo json_encode($result);
@@ -279,6 +284,7 @@ class User extends MY_Controller {
 		$phone_number =$row[4];
 		$title =$row[5];
 		$company =$row[6];
+		$postcode =$row[7];
 		$membership_id = $this->getMemberShip($row[3]);
 		$this->db->insert('tbl_user',
 		array(
@@ -288,7 +294,8 @@ class User extends MY_Controller {
 			'phone_number'=>$phone_number,
 			'title'=>$title,
 			'company'=>$company,
-			'membership_id'=>$membership_id
+			'membership_id'=>$membership_id,
+			'postcode'=>$postcode
 		));
 	}
 }

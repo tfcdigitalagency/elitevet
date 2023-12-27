@@ -22,7 +22,7 @@
 		//echo $datediff;
 
 		// Action
-		if($datediff > 0 && $datediff < 8){
+		if($datediff > 0 && $datediff < 2){
 
 			$res = array(
 				'event_name' => $event['name'],

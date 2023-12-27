@@ -25,16 +25,42 @@ class Page extends MY_Controller {
 		}
 
 		$this->mContent['page_content'] = $page_content;
-		$this->render("{$this->sub_mLayout}index", $this->mLayout);
+		 
+		switch($this->page_code){
+			case 'REFERRALSHARE':
+				$page = 'referralshare';
+				break;
+			case 'CAPSTA':
+				$page = 'capsta';
+				break;				
+			default:
+				$page = 'index';
+		}
+		
+		$this->render("{$this->sub_mLayout}".$page, $this->mLayout);
 	}
 
 	public function save(){
 		$data = $this->input->post();
-		$data['content'] = str_replace('src="../assets','src="https://ncdeliteveterans.org/assets',$data['content']);
-		$config = $this->db->get_where('tbl_config',array('code'=>$this->page_code))->row();
+		
+		if (!empty($_FILES['image1']['name'])) {
+			if( !file_exists('./assets/uploads/share') )
+				mkdir('./assets/uploads/share', 0777, true);
+			$file_name = time().$_FILES['image1']['name'];
+
+			if (move_uploaded_file($_FILES['image1']['tmp_name'],'assets/uploads/share/'.$file_name)) {
+				$data['image1'] = 'assets/uploads/share/'.$file_name;
+			}
+		}
+		
+		$config = $this->db->get_where('tbl_config',array('code'=>$this->page_code))->row();		
 		if(!$config){
 			$this->db->insert('tbl_config' ,array('code'=>$this->page_code,'detail'=>json_encode($data)));
 		}else{
+			$old_data = json_decode($config->detail);
+			if(!isset($data['image1'])){
+				$data['image1'] = $old_data->image1;
+			}
 			$this->db->update('tbl_config' ,array('detail'=>json_encode($data)),array('code'=>$this->page_code));
 		}
 

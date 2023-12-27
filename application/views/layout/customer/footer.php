@@ -47,39 +47,44 @@
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-10 current_page_item menu-item-82"><a href="<?=base_url().'customer/home'?>" aria-current="page" class="elementor-item <?=($id == 'home')?'elementor-item-active':'elementor-item-anchor'?>">Home</a></li>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="<?=base_url().'customer/other/about'?>" class="elementor-item <?=($id == 'about')?'elementor-item-active':'elementor-item-anchor'?>">About Us</a></li>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="<?=base_url().'customer/other/wedo'?>" class="elementor-item <?=($id == 'wedo')?'elementor-item-active':'elementor-item-anchor'?>">What We Do</a></li>
-											<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
+											
+											<?php if(@$this->session->userdata('user')['membership_id'] > 0){ ?>
 												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="<?=base_url().'customer/event'?>" class="elementor-item <?=($id == 'event')?'elementor-item-active':'elementor-item-anchor'?>">EVENT</a></li>
 											<?php } ?>
 
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'news'?>" class="elementor-item <?=($id == 'news')?'elementor-item-active':'elementor-item-anchor'?>">NEWS</a></li>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'activity'?>" class="elementor-item <?=($id == 'activity')?'elementor-item-active':'elementor-item-anchor'?>">GALLERY</a></li>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'customer/home/page/memberboard'?>" class="elementor-item <?=($id == 'memberboard')?'elementor-item-active':'elementor-item-anchor'?>">Board Members</a></li>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-87"><a href="<?=base_url().'customer/contact'?>" class="elementor-item <?=($id == 'contact')?'elementor-item-active':'elementor-item-anchor'?>">CONTACT</a></li>
 										</ul>
 									</div>
 									<div class="col-md-3 footer_group">
 										<h3>Members Area</h3>
 										<ul>
-											<?php if($this->session->userdata('user')['membership_id'] > 0){ ?>
+											<?php if(@$this->session->userdata('user')['membership_id'] > 0){ ?>
 												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/training'?>" class="elementor-item <?=($id == 'training')?'elementor-item-active':'elementor-item-anchor'?>">TRAINING</a></li>
 											<?php } else { ?>
 												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-85"><a href="<?=base_url().'customer/other/membership'?>" class="elementor-item <?=($id == 'membership')?'elementor-item-active':'elementor-item-anchor'?>">Membership</a></li>
 											<?php } ?>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/webinar'?>" class="elementor-item <?=($id == 'webinar')?'elementor-item-active':'elementor-item-anchor'?>">WEBINAR</a></li>
-
-											<?php if($this->session->userdata('user')['is_admin'] > 0){ ?>
-												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/whilewebinar'?>" class="elementor-item <?=($id == 'whilewebinar')?'elementor-item-active':'elementor-item-anchor'?>">WHILEWEBINAR</a></li>
-											<?php } ?>
-
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/opportunities'?>" class="elementor-item <?=($id == 'opportunities')?'elementor-item-active':'elementor-item-anchor'?>">OPPORTUNITIES</a></li>
-											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/other/benefit'?>" class="elementor-item <?=($id == 'benefit')?'elementor-item-active':'elementor-item-anchor'?>">Benefit</a></li>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-84"><a href="<?=base_url().'customer/other/benefit'?>" class="elementor-item <?=($id == 'benefit')?'elementor-item-active':'elementor-item-anchor'?>">SPONSORS</a></li>
 
+											<?php if(check_sponsor()){ ?>
+												<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=site_url('/customer/other/search_cap_sta')?>" class="elementor-item <?=($id == 'search_cap_sta')?'elementor-item-active':'elementor-item-anchor'?>">DOWNLOAD CAP-STA</a></li>
+											<?php }
+											?>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-83"><a href="<?=base_url().'customer/home/referral'?>" class="elementor-item <?=($id == 'wedo')?'elementor-item-active':'elementor-item-anchor'?>">Referral</a></li>
 
 										</ul>
 									</div>
-									<div class="col-md-3 footer_group">
+									<div class="col-md-4 footer_group">
 										<h3>Useful Links</h3>
 										<ul>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="https://elitesdvob.org/find-an-sdvob/" class="elementor-item <?=($id == 'find')?'elementor-item-active':'elementor-item-anchor'?>" target="_blank">Find an SDVOB</a></li>
 											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/home/page/sdvosb'?>" class="elementor-item <?=($id == 'sdvosb')?'elementor-item-active':'elementor-item-anchor'?>">SDVOSB Programs</a></li>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url().'customer/other/review'?>" class="elementor-item <?=($id == 'sdvosb')?'elementor-item-active':'elementor-item-anchor'?>">Sponsorship Review</a></li>
+											<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-86"><a href="<?=base_url('/customer/home/digital')?>" class="elementor-item">Digital Magazine</a></li>
 										</ul>
 									</div>
 								</div>
@@ -99,11 +104,16 @@
 			</style>
 			<div class="dig_wrap">
 			<?php
-				$dig = get_dig();
+				$dig = get_home_dig();
 				if($dig){
-					?><a target="_blank" style="display:inline-block;width:100%;" class="dig_item" data-id="<?php echo $dig->id ?>" title="Dig Mag" href="<?php echo  base_url().$dig->pdf ?>">
+					$urlImg = $dig->photo;
+					if(strpos($urlImg,'https://')=== false){
+						$urlImg = base_url().$urlImg;
+					}
+					$link = (!$dig->type)?  site_url('/customer/home/document/?id=').$dig->id : base_url().$dig->pdf;
+					?><a target="_blank" style="display:inline-block;width:100%;" class="dig_item" data-id="<?php echo $dig->id ?>" title="Dig Mag" href="<?php echo $link; ?>">
 					<table style="display:block;width:100%;border:1px solid #666;" cellspacing=0 cellpadding=0><tr><td style="padding:0px;">
-					<img style="width:100%;height:100%;" src="<?php echo  base_url().$dig->photo?>"/>
+					<img style="width:100%;height:100%;" src="<?php echo  $urlImg?>"/>
 					</td><td style="padding:10px; text-align:center;color:#fff">
 					<b>View Digital Magazine</b>
 					</td>
